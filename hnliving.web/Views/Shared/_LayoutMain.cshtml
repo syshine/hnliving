@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")@*-3.3.7*@
+    @*@Scripts.Render("~/bundles/modernizr")*@
+    @RenderSection("csses", required: false)
+</head>
+<body>
+    <div class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+        @Html.ActionLink("琼游记", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#collapsibleNavbarMain">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="collapsibleNavbarMain">
+            <ul class="navbar-nav">
+                <li class="nav-item">@Html.ActionLink("主页", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("关于", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("联系方式", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+            </ul>
+            @*@Html.Partial("_LoginPartial")*@
+        </div>
+    </div>
+
+    @*<div style="margin-top:56px;"></div>   设置margin-top是为了不让固定的导航栏遮挡住内容*@
+
+    <div>
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")@*-3.3.7*@
+    @RenderSection("scripts", required: false)
+</body>
+</html>
