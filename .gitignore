@@ -1,0 +1,10 @@
+# building generate files
+*.pdb
+
+
+# Generated files
+bin/
+
+
+# Log Files
+*.log
