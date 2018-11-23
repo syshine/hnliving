@@ -106,6 +106,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Study\Images\bootstrap.jpg" />
+    <Content Include="Areas\Study\Images\csharp.jpg" />
+    <Content Include="Areas\Study\Images\h5.jpg" />
+    <Content Include="Areas\Study\Images\mvc.jpg" />
     <Content Include="Content\bootstrap-3.3.7.css" />
     <Content Include="Content\bootstrap-3.3.7.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -122,6 +126,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Study\Views\web.config" />
     <Content Include="Areas\Study\Views\Bootstrap\Buttons.cshtml" />
+    <Content Include="Areas\Study\Views\Shared\_LayoutDefault.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
