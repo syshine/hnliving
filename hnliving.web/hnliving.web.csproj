@@ -127,6 +127,9 @@
     <Content Include="Areas\Study\Views\web.config" />
     <Content Include="Areas\Study\Views\Bootstrap\Buttons.cshtml" />
     <Content Include="Areas\Study\Views\Shared\_LayoutDefault.cshtml" />
+    <Content Include="Areas\Study\Views\Bootstrap\ButtonGroup.cshtml" />
+    <Content Include="Areas\Study\Views\Bootstrap\Collapse.cshtml" />
+    <Content Include="Areas\Study\Views\Bootstrap\Card.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

@@ -3,99 +3,71 @@
     ViewBag.Title = "Buttons";
 }
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12 col-lg-6">
-            <h4 class="mt-2">按钮样式</h4>
-            <button type="button" class="btn mt-2">基本按钮</button>
-            <button type="button" class="btn btn-secondary mt-2">次要按钮</button>
-            <button type="button" class="btn btn-success mt-2">成功</button>
-            <button type="button" class="btn btn-info mt-2">信息</button>
-            <button type="button" class="btn btn-warning mt-2">警告</button>
-            <button type="button" class="btn btn-danger mt-2">危险</button>
-            <button type="button" class="btn btn-dark mt-2">黑色</button>
-            <button type="button" class="btn btn-light mt-2">浅色</button>
-            <button type="button" class="btn btn-link mt-2">链接</button>
 
-            <h4 class="mt-2">按钮元素</h4>
-            <a href="#" class="btn btn-info" role="button">链接按钮</a>
-            <button type="button" class="btn btn-info">按钮</button>
-            <input type="button" class="btn btn-info" value="输入框按钮">
-            <input type="submit" class="btn btn-info" value="提交按钮">
+<div class="col-sm-12 col-lg-6">
+    <h4 class="mt-4">按钮样式</h4>
+    <button type="button" class="btn mb-2">基本按钮</button>
+    <button type="button" class="btn btn-secondary mb-2">次要按钮</button>
+    <button type="button" class="btn btn-success mb-2">成功</button>
+    <button type="button" class="btn btn-info mb-2">信息</button>
+    <button type="button" class="btn btn-warning mb-2">警告</button>
+    <button type="button" class="btn btn-danger mb-2">危险</button>
+    <button type="button" class="btn btn-dark mb-2">黑色</button>
+    <button type="button" class="btn btn-light mb-2">浅色</button>
+    <button type="button" class="btn btn-link mb-2">链接</button>
 
-            <h4 class="mt-2">按钮设置边框</h4>
-            <button type="button" class="btn btn-outline-primary">主要按钮</button>
-            <button type="button" class="btn btn-outline-secondary">次要按钮</button>
-            <button type="button" class="btn btn-outline-success">成功</button>
-            <button type="button" class="btn btn-outline-info">信息</button>
-            <button type="button" class="btn btn-outline-warning">警告</button>
-            <button type="button" class="btn btn-outline-danger">危险</button>
-            <button type="button" class="btn btn-outline-dark">黑色</button>
-            <button type="button" class="btn btn-outline-light text-dark">浅色</button>
+    <h4 class="mt-4">按钮元素</h4>
+    <a href="#" class="btn btn-info mb-2" role="button">链接按钮</a>
+    <button type="button" class="btn btn-info mb-2">按钮</button>
+    <input type="button" class="btn btn-info mb-2" value="输入框按钮">
+    <input type="submit" class="btn btn-info mb-2" value="提交按钮">
 
-            <h4 class="mt-2">不同大小的按钮</h4>
-            <button type="button" class="btn btn-primary btn-lg">大号按钮</button>
-            <button type="button" class="btn btn-primary">默认按钮</button>
-            <button type="button" class="btn btn-primary btn-sm">小号按钮</button>
+    <h4 class="mt-4">按钮设置边框</h4>
+    <button type="button" class="btn btn-outline-primary mb-2">主要按钮</button>
+    <button type="button" class="btn btn-outline-secondary mb-2">次要按钮</button>
+    <button type="button" class="btn btn-outline-success mb-2">成功</button>
+    <button type="button" class="btn btn-outline-info mb-2">信息</button>
+    <button type="button" class="btn btn-outline-warning mb-2">警告</button>
+    <button type="button" class="btn btn-outline-danger mb-2">危险</button>
+    <button type="button" class="btn btn-outline-dark mb-2">黑色</button>
+    <button type="button" class="btn btn-outline-light text-dark mb-2">浅色</button>
 
-            <h4 class="mt-2">块级按钮</h4>
-            <button type="button" class="btn btn-primary btn-block">按钮 1</button>
-            <button type="button" class="btn btn-default btn-block">按钮 2</button>
+    <h4 class="mt-4">不同大小的按钮</h4>
+    <button type="button" class="btn btn-primary btn-lg mb-2">大号按钮</button>
+    <button type="button" class="btn btn-primary mb-2">默认按钮</button>
+    <button type="button" class="btn btn-primary btn-sm mb-2">小号按钮</button>
 
-            <h4 class="mt-2">大的块级按钮</h4>
-            <button type="button" class="btn btn-primary btn-lg btn-block">按钮 1</button>
-            <button type="button" class="btn btn-default btn-lg btn-block">按钮 2</button>
+    <h4 class="mt-4">块级按钮</h4>
+    <button type="button" class="btn btn-primary btn-block mb-2">按钮 1</button>
+    <button type="button" class="btn btn-default btn-block mb-2">按钮 2</button>
 
-            <h4 class="mt-2">小的块级按钮</h4>
-            <button type="button" class="btn btn-primary btn-sm btn-block">按钮 1</button>
-            <button type="button" class="btn btn-default btn-sm btn-block">按钮 2</button>
+    <h4 class="mt-4">大的块级按钮</h4>
+    <button type="button" class="btn btn-primary btn-lg btn-block mb-2">按钮 1</button>
+    <button type="button" class="btn btn-default btn-lg btn-block mb-2">按钮 2</button>
 
-            <h2>按钮状态</h2>
-            <button type="button" class="btn btn-primary">主要按钮</button>
-            <button type="button" class="btn btn-primary active">点击后的按钮</button>
-            <div data-toggle="tooltip" data-placement="right" title="提示内容" id="btn-disabled" style="display:inline-block">
-                <button type="button" class="btn btn-primary" disabled>禁止点击的按钮</button>
-            </div>
-            <div data-toggle="tooltip" data-placement="right" title="提示内容" id="a-disabled" style="display:inline-block">
-                <a href="#" class="btn btn-primary disabled">禁止点击的链接</a>
-            </div>
-        </div>
+    <h4 class="mt-4">小的块级按钮</h4>
+    <button type="button" class="btn btn-primary btn-sm btn-block mb-2">按钮 1</button>
+    <button type="button" class="btn btn-default btn-sm btn-block mb-2">按钮 2</button>
 
-        @*<div class="col-sm-12 col-lg-6">
-            <div id="show" class="alert alert-info mt-5" style="min-height:300px;">点击按钮可查看代码</div>
-        </div>*@
+    <h4 class="mt-4">按钮状态</h4>
+    <button type="button" class="btn btn-primary mb-2">主要按钮</button>
+    <button type="button" class="btn btn-primary mb-2 active">点击后的按钮</button>
+    <div data-toggle="tooltip" data-placement="right" title="提示内容" id="btn-disabled" style="display:inline-block">
+        <button type="button" class="btn btn-primary mb-2" disabled>禁止点击的按钮</button>
     </div>
-
-    @*<div class="navbar navbar-expand-md">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            ddddddddd
-        </button>
-        
-    </div>*@
-    @*<div class="container">
-        <div class="visible-lg">
-            bbbbbb
-        </div>
-    </div>*@
+    <div data-toggle="tooltip" data-placement="right" title="提示内容" id="a-disabled" style="display:inline-block">
+        <a href="#" class="btn btn-primary mb-2 disabled">禁止点击的链接</a>
+    </div>
 </div>
 
-@*<div class="fixed-bottom">
-    <div id="show" class="alert alert-info" style="min-height:300px;margin:0;">点击按钮可查看代码</div>
-</div>*@
-
 @section onready{
-    @*<script>
-    $(document).ready(function () {*@
-            $(".btn").click(function () {
-                // 获取和显示当前按钮的html
-                $("#show").text($(this).prop("outerHTML"));
-            });
+    $(".btn").click(function () {
+    setShowCode(this);
+    });
 
-            // 不能点击的按钮改成提示内容，必须写在$('[data-toggle="tooltip"]').tooltip();上面
-            $("#btn-disabled").attr("title", $("#btn-disabled").html());
-            $("#a-disabled").attr("title", $("#a-disabled").html());
+    // 不能点击的按钮改成提示内容，必须写在$('[data-toggle="tooltip"]').tooltip();上面
+    $("#btn-disabled").attr("title", $("#btn-disabled").html());
+    $("#a-disabled").attr("title", $("#a-disabled").html());
 
-            $('[data-toggle="tooltip"]').tooltip();
-        @*});
-    </script>*@
+    $('[data-toggle="tooltip"]').tooltip();
 }

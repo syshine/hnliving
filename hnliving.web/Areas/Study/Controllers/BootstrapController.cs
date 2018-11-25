@@ -18,5 +18,20 @@ namespace hnliving.web.Areas.Study.Controllers
         {
             return View();
         }
+
+        public ActionResult ButtonGroup()
+        {
+            return View();
+        }
+
+        public ActionResult Collapse()
+        {
+            return View();
+        }
+
+        public ActionResult Card()
+        {
+            return View();
+        }
     }
 }
