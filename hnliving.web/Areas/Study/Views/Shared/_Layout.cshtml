@@ -25,6 +25,13 @@
             top: 50%;
             left: 0;
         }
+
+        /*razor语法和媒体查询冲突，使用两个at*/
+        @@media screen and (max-width: 767.98px) {
+            /*body {
+                background-color:lightblue;
+            }*/
+        }
     </style>
 </head>
 <body>
@@ -46,18 +53,29 @@
     </div>
 
     @*<div style="margin-top:56px;"></div>   设置margin-top是为了不让固定的导航栏遮挡住内容*@
-    @*<span class=" nav_fixed">aaa</span>*@
-    <div class="hidden-lg dip1 pull-right">bbb</div>
+    <div class="nav_fixed d-md-none">&gt&gt</div>
 
     <div class="container-fluid body-content p-0">
         <br />
         <div class="row">
-            <div class="col-md-2">
-                <div id="leftNav">
+            <div class="col-md-3 col-lg-2">
+                <div id="leftNav" class="d-md-none">
                     正在加载...
                 </div>
+                @*<div class="navbar navbar-expand-md nav_fixed">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#collapsibleNavbarLeft">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="collapsibleNavbarLeft">
+                        <ul class="navbar-nav" id="leftNav">
+                            正在加载...
+                        </ul>
+                    </div>
+                </div>*@
             </div>
-            <div class="col-md-10">
+            <div class="col-md-9 col-lg-10">
                 <div class="container">
                     <div class="row">
                         @RenderBody()
@@ -89,6 +107,11 @@
             // 滚动条滚动事件
             $(window).scroll(function () {
                 fixBottom();
+            });
+
+            // 窗口改变大小事件
+            $(window).resize(function () {
+                //console.log($(document).width());
             });
 
             // 页面显示时先执行一次
@@ -127,10 +150,16 @@
                         html += "<a href='" + navParam.navList[j].url + "' class='list-group-item'>" + navParam.navList[j].title + "</a>";
                     else
                         html += "<a href='" + navParam.navList[j].url + "' class='list-group-item active'>" + navParam.navList[j].title + "</a>";
+
+                    // 如果是当前页面，设置为活动属性
+                    //if (window.location.pathname.toLowerCase() != navParam.navList[j].url.toLowerCase())
+                    //    html += "<li class='nav-item'><a href='" + navParam.navList[j].url + "' class='nav-link'>" + navParam.navList[j].title + "</a></li>";
+                    //else
+                    //    html += "<li class='nav-item'><a href='" + navParam.navList[j].url + "' class='nav-link active'>" + navParam.navList[j].title + "</a></li>";
                 }
             }
             if (html != "") {
-                console.log(html);
+                //console.log(html);
                 $("#" + id).html(html);
             }
         }
