@@ -30,9 +30,9 @@ namespace hnliving.web
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                      "~/Scripts/umd/popper.js",    // popper.js需要放在bootstrap.js前面
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/bootstrap.bundle.js",
-                      "~/Scripts/umd/popper.js",
+                      //"~/Scripts/bootstrap.bundle.js",    // 添加后下拉框第一次点击需要点击两次才生效
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

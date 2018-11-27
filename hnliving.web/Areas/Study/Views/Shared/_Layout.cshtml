@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Study Bootstrap</title>
+    @*<link rel="shortcut icon" href="~/Images/Icons/lg.ico" />*@
+    @*<link rel="bookmark" href="~/Images/Icons/lg.ico" type="image/x-icon"/>*@ 
     @Styles.Render("~/Content/css")
     @*@Scripts.Render("~/bundles/modernizr")*@
     @RenderSection("csses", required: false)
@@ -11,7 +13,7 @@
 
     <style>
         /*固定到底部*/
-        .bottom_fixed {
+        .bottom-fixed {
             position: fixed;
             z-index: 100;
             bottom: 0;
@@ -19,23 +21,62 @@
             right: 0;
         }
 
-        .nav_fixed {
+        /*左侧导航栏开关*/
+        .left-nav-toggler {
             position: fixed;
             z-index: 101;
-            top: 50%;
-            left: 0;
+            left:0;
+            font-size:25px; /*bootstrap中的图标，是用字体的形式表示的，改变大小只需要设置它的font-size就行*/
+            background-color:lightgray;
+
+            /*滑动效果*/
+            transition:left .3s linear;
+            -moz-transition:left .3s linear;     /* Firefox 4 */
+            -webkit-transition:left .3s linear;  /* Safari and Chrome */
+            -o-transition:left .3s linear;       /* Opera */
         }
 
-        /*razor语法和媒体查询冲突，使用两个at*/
+        .left-nav-toggler-expand {
+            left: 50%;
+        }
+
+        .show-code-height {
+            min-height:50px;
+            max-height:500px;
+        }
+
+        /*razor语法和媒体查询符号冲突，需使用两个at*/
         @@media screen and (max-width: 767.98px) {
-            /*body {
-                background-color:lightblue;
-            }*/
+            .left-nav-fixed {
+                position: fixed;
+                z-index: 101;
+                left: -50%;
+                
+                /*滑动效果*/
+                transition:left .3s linear;
+                -moz-transition:left .3s linear;     /* Firefox 4 */
+                -webkit-transition:left .3s linear;  /* Safari and Chrome */
+                -o-transition:left .3s linear;       /* Opera */
+            }
+
+            .left-nav-fixed-expand {
+                left: 0;
+            }
+
+            .scroll-y-auto {
+                max-height: 550px;/*340px;*/
+                overflow-y: auto;
+            }
+
+            .show-code-height {
+                min-height:50px;
+                max-height:200px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+    <div class="navbar navbar-expand-md bg-dark navbar-dark fixed-top" id="navMain">
         @Html.ActionLink("琼游记", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         <div class="navbar-header">
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#collapsibleNavbarMain">
@@ -53,29 +94,18 @@
     </div>
 
     @*<div style="margin-top:56px;"></div>   设置margin-top是为了不让固定的导航栏遮挡住内容*@
-    <div class="nav_fixed d-md-none">&gt&gt</div>
+    <div class="left-nav-toggler d-md-none" id="left-nav-toggler">
+        <i class="glyphicon glyphicon-menu-right"></i>
+    </div>
 
     <div class="container-fluid body-content p-0">
-        <br />
-        <div class="row">
-            <div class="col-md-3 col-lg-2">
-                <div id="leftNav" class="d-md-none">
+        <div class="row mr-0">
+            <div class="col-md-3 mt-md-4">
+                <div id="leftNav" class="col-6 col-md-12 p-0 left-nav-fixed scroll-y-auto">
                     正在加载...
                 </div>
-                @*<div class="navbar navbar-expand-md nav_fixed">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#collapsibleNavbarLeft">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                    </div>
-                    <div class="collapse navbar-collapse" id="collapsibleNavbarLeft">
-                        <ul class="navbar-nav" id="leftNav">
-                            正在加载...
-                        </ul>
-                    </div>
-                </div>*@
             </div>
-            <div class="col-md-9 col-lg-10">
+            <div class="col-md-9">
                 <div class="container">
                     <div class="row">
                         @RenderBody()
@@ -85,8 +115,8 @@
         </div>
         <br />
         @*显示html代码的div参考位置*@
-        <div id="ref_loc"></div>
-        <pre id="show_code" class="alert alert-info pre-scrollable pl-3 pr-3 m-0" style="min-height:50px;max-height:200px;">点击按钮可查看代码</pre>
+        <div id="ref-loc"></div>
+        <pre id="show-code" class="alert alert-info pl-3 pr-3 m-0 show-code-height">点击实例可查看代码</pre>
         <hr />
     </div>
     <footer>
@@ -102,6 +132,10 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
+            // 设置左侧导航栏开关位置
+            $("#left-nav-toggler").css("top", $("#navMain").innerHeight());//.offset({ top: $("#navMain").innerHeight(), left: 0 });
+
+            // 绑定左侧导航栏菜单
             bindNav("leftNav", navBs);
 
             // 滚动条滚动事件
@@ -117,19 +151,26 @@
             // 页面显示时先执行一次
             fixBottom();
 
-            // 设置show_code代码
+            // 设置show-code代码
             $(".code-div").click(function () {
                 // 获取和显示当前按钮的html
                 var formattedHtml = HTMLFormat($(this).html());
-                $("#show_code").text(formattedHtml);
+                $("#show-code").text(formattedHtml);
 
 
                 // 获取和显示当前按钮的html
-                $("#show_code").text($(this).html());
+                $("#show-code").text($(this).html());
 
                 // 内容变化时引起高度变化
-                code_height = $("#show_code").height();
+                code_height = $("#show-code").height();
             });
+
+            // 左侧导航栏开关
+            $("#left-nav-toggler").click(function () {
+                $("#leftNav").toggleClass("left-nav-fixed-expand");
+                $(this).toggleClass("left-nav-toggler-expand");
+                $(this).children(".glyphicon").toggleClass("glyphicon-menu-right").toggleClass("glyphicon-menu-left");
+            })
 
             // onReady script 代码区
             @RenderSection("onready", required: false)
@@ -166,13 +207,13 @@
 
         // 固定下边栏
         function fixBottom() {
-            //获取show_code的高度，innerHeight包含padding，$("#show_code").height()不包含padding
-            var code_height = $("#show_code").innerHeight();
+            //获取show-code的高度，innerHeight包含padding，$("#show-code").height()不包含padding
+            var code_height = $("#show-code").innerHeight();
             //console.log("code_height的高度：" + code_height);
 
-            //获取 id="ref_loc" 元素，offsetTop是当前元素·距离网页窗口顶部的距离
-            var offset_top = $("#ref_loc").offset().top;
-            //console.log("ref_loc距离顶部的距离：" + offset_top);
+            //获取 id="ref-loc" 元素，offsetTop是当前元素·距离网页窗口顶部的距离
+            var offset_top = $("#ref-loc").offset().top;
+            //console.log("ref-loc距离顶部的距离：" + offset_top);
 
             var doc_height = $(window).height();
             //console.log("height：" + doc_height);
@@ -183,29 +224,29 @@
 
             if (doc_height + scroll_top < offset_top + code_height) {
                 // 到达顶部位置，动态的添加元素属性，并给元素添加相应的元素样式
-                $("#show_code").addClass("bottom_fixed");
-                $("#ref_loc").height(code_height);  // 为了防止滚动条高度变化
+                $("#show-code").addClass("bottom-fixed");
+                $("#ref-loc").height(code_height);  // 为了防止滚动条高度变化
                 //console.log("固定");
             } else {
                 // 同理，把之前添加的元素移除即可
-                $("#show_code").removeClass("bottom_fixed");
-                $("#ref_loc").height("0");
+                $("#show-code").removeClass("bottom-fixed");
+                $("#ref-loc").height("0");
                 //console.log("取消固定");
             }
         }
 
-        // 设置show_code代码
+        // 设置show-code代码
         function setShowCode(ctrl) {
             // 获取和显示当前按钮的html
             var formattedHtml = HTMLFormat($(ctrl).prop("outerHTML"));
             //console.log(formattedHtml1);
-            $("#show_code").text(formattedHtml);
+            $("#show-code").text(formattedHtml);
 
             // 获取和显示当前按钮的html
-            //$("#show_code").text($(ctrl).prop("outerHTML"));
+            //$("#show-code").text($(ctrl).prop("outerHTML"));
 
             // 内容变化时引起高度变化
-            code_height = $("#show_code").height();
+            code_height = $("#show-code").height();
         }
 
         // html代码格式化

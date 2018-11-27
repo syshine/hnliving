@@ -126,6 +126,8 @@
     <Content Include="Images\banner01.jpg" />
     <Content Include="Images\banner02.jpg" />
     <Content Include="Images\banner03.jpg" />
+    <Content Include="Images\Icons\lg.ico" />
+    <Content Include="Images\字体图标对照表.jpg" />
     <Content Include="Navigate\BootstrapNav.js" />
     <Content Include="Scripts\bootstrap-3.3.7.js" />
     <Content Include="Scripts\bootstrap-3.3.7.min.js" />
