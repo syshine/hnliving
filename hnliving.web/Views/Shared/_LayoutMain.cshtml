@@ -22,13 +22,13 @@
                 <li class="nav-item">@Html.ActionLink("关于", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                 <li class="nav-item">@Html.ActionLink("联系方式", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
             </ul>
-            @*@Html.Partial("_LoginPartial")*@
+            @Html.Partial("_LoginPartial")
         </div>
     </div>
 
     @*<div style="margin-top:56px;"></div>   设置margin-top是为了不让固定的导航栏遮挡住内容*@
 
-    <div>
+    <div class="container">
         @RenderBody()
     </div>
 
