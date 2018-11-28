@@ -131,7 +131,6 @@
     <Content Include="Navigate\BootstrapNav.js" />
     <Content Include="Scripts\bootstrap-3.3.7.js" />
     <Content Include="Scripts\bootstrap-3.3.7.min.js" />
-    <Content Include="Areas\Study\Views\web.config" />
     <Content Include="Areas\Study\Views\Bootstrap\Buttons.cshtml" />
     <Content Include="Areas\Study\Views\Shared\_LayoutDefault.cshtml" />
     <Content Include="Areas\Study\Views\Bootstrap\ButtonGroup.cshtml" />
@@ -166,7 +165,9 @@
     <Content Include="Areas\Travel\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Travel\Views\Home\Index.cshtml" />
     <Content Include="Areas\Cate\Views\web.config" />
+    <Content Include="Areas\Study\Views\web.config" />
     <Content Include="Areas\Travel\Views\web.config" />
+    <Content Include="App_Data\rdbs.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -198,6 +199,7 @@
     <Compile Include="Areas\Study\StudyAreaRegistration.cs" />
     <Compile Include="Areas\Travel\Controllers\HomeController.cs" />
     <Compile Include="Areas\Travel\TravelAreaRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -238,14 +240,24 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Areas\Cate\Models\" />
     <Folder Include="Areas\Study\Models\" />
     <Folder Include="Areas\Travel\Models\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\src\Libraries\Lib.Core\Lib.Core.csproj">
+      <Project>{1717afaf-8ee1-4d46-a9ab-2f0c33ef6f67}</Project>
+      <Name>Lib.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\src\Libraries\Lib.Services\Lib.Services.csproj">
+      <Project>{5965e7d1-84d3-4d64-9cd6-9586bde15984}</Project>
+      <Name>Lib.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
