@@ -1,0 +1,38 @@
+﻿.bg-light-3 {
+  background-color: rgba(248, 249, 250, .3) !important;
+}
+.bg-light-5 {
+  background-color: rgba(248, 249, 250, .5) !important;
+}
+.bg-light-7 {
+  background-color: rgba(248, 249, 250, .7) !important;
+}
+.bg-light-8 {
+  background-color: rgba(248, 249, 250, .8) !important;
+}
+
+.bg-teal-3 {
+  background-color: rgba(32, 201, 151, .3) !important;
+}
+.bg-teal-5 {
+  background-color: rgba(32, 201, 151, .5) !important;
+}
+.bg-teal-7 {
+  background-color: rgba(32, 201, 151, .7) !important;
+}
+.bg-teal-8 {
+  background-color: rgba(32, 201, 151, .8) !important;
+}
+
+.bg-info-3 {
+  background-color: rgba(23, 162, 184, .3) !important;
+}
+.bg-info-5 {
+  background-color: rgba(23, 162, 184, .5) !important;
+}
+.bg-info-7 {
+  background-color: rgba(23, 162, 184, .7) !important;
+}
+.bg-info-8 {
+  background-color: rgba(23, 162, 184, .8) !important;
+}
