@@ -28,7 +28,7 @@ window.onmouseout = function (e) {
     warea.y = null;
 };
 // 添加粒子
-// 根据初始化canvas的大小，计算加入粒子的个数
+// 控制粒子密度，根据初始化canvas的大小，计算加入粒子的个数
 var dotCnt = canvas.width * canvas.height / 5000;
 // x，y为粒子坐标，xa, ya为粒子xy轴加速度，max为连线的最大距离
 var dots = [];

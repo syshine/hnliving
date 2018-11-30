@@ -36,3 +36,20 @@
 .bg-info-8 {
   background-color: rgba(23, 162, 184, .8) !important;
 }
+
+
+
+
+
+
+.text-v-lgdt-btg {
+    background-image: linear-gradient(0deg,rgb(32, 201, 151), rgb(0, 148, 255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-h-lgdt-btg {
+    background-image: linear-gradient(90deg,rgb(32, 201, 151), rgb(0, 148, 255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
