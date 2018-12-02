@@ -3,10 +3,6 @@
     ViewBag.Title = "首页";
 }
 
-@section csses{
-    <link href="~/Content/Animate.css" rel="stylesheet" />
-}
-
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -15,17 +11,17 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <a href=@Url.Action("Index", "Home", new { area = "Travel" })>
+            <a href=@Url.Action("Building", "Assistant")>
                 <img class="d-block w-100" src="~/Images/banner01.jpg" alt="First slide">
             </a>
         </div>
         <div class="carousel-item">
-            <a href=@Url.Action("Index", "Home", new { area = "Cate" })>
+            <a href=@Url.Action("Building", "Assistant")>
                 <img class="d-block w-100" src="~/Images/banner02.jpg" alt="Second slide">
             </a>
         </div>
         <div class="carousel-item">
-            <a href=@Url.Action("Index", "Home", new { area = "Study" })>
+            <a href=@Url.Action("Building", "Assistant")>
                 <img class="d-block w-100" src="~/Images/banner03.jpg" alt="Third slide">
             </a>
         </div>
@@ -40,9 +36,9 @@
     </a>
 </div>
 
-<div class="mt-5 text-center display-4 strong text-v-lgdt-btg zoomInUp">
+<div class="mt-5 text-center display-4 text-h-lgdt-vtb ">@*zoomInUp*@
     欢迎来到
-    <span class="hub m-1">琼游记</span>
+    <span class="hub-lg m-1">琼游记</span>
     翱翔！
 </div>
 

@@ -27,7 +27,8 @@ namespace hnliving.web
 
             bundles.Add(new StyleBundle("~/Content/css-3.3.7").Include(
                       "~/Content/bootstrap-3.3.7.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/animate.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/umd/popper.js",    // popper.js需要放在bootstrap.js前面
@@ -38,7 +39,8 @@ namespace hnliving.web
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/color.css"));
+                      "~/Content/color.css",
+                      "~/Content/animate.css"));
         }
     }
 }

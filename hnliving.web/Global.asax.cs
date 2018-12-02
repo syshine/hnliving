@@ -15,6 +15,14 @@ namespace hnliving.web
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            //RegisterView(); //注册视图访问规则
         }
+
+        //protected void RegisterView()
+        //{
+        //    ViewEngines.Engines.Clear();
+        //    ViewEngines.Engines.Add(new Areas.AreasViewEngine());
+        //}
     }
 }

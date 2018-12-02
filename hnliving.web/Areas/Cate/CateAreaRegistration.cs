@@ -18,10 +18,13 @@ namespace hnliving.web.Areas.Cate
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
-            //此路由不能删除
             context.MapRoute("Cate_default",
                               "Cate/{controller}/{action}/{id}",
-                              new { action = "Index", id = UrlParameter.Optional });
+                              new { controller = "home", action = "Index", id = UrlParameter.Optional });
+            //此路由不能删除
+            //context.MapRoute("Cate_default",
+            //                  "Cate/{controller}/{action}/{id}",
+            //                  new { action = "Index", id = UrlParameter.Optional });
 
         }
     }

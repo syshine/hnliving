@@ -60,6 +60,11 @@
 }
 
 .hub {
+    animation: hub 20s infinite;
+    -webkit-animation: hub 20s infinite;
+}
+
+.hub-lg {
     font-size: 6rem;
     background-image: linear-gradient(0deg,#0094ff,#ffd800);
     -webkit-background-clip: text;

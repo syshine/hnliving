@@ -4,20 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace hnliving.web.Areas.Cate.Controllers
+namespace hnliving.web.Areas.Study.Controllers.Program
 {
     public class HomeController : Controller
     {
-        // GET: Cate/Home
+        // GET: Study/Program/Home
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "areas Cate description page.";
-
             return View();
         }
     }

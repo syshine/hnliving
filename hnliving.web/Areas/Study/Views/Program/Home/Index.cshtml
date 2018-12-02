@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Study/Views/Shared/_LayoutDefault.cshtml";
 }
@@ -7,14 +6,14 @@
 @section csses{
     <style>
         .card-width {
-            width:300px;
-            min-width:200px;
+            width: 300px;
+            min-width: 200px;
         }
 
         /*razor语法和媒体查询符号冲突，需使用两个at*/
         @@media screen and (max-width: 575.98px) {
             .card-width {
-                width:200px;
+                width: 200px;
             }
         }
     </style>
@@ -28,9 +27,9 @@
         <div class="card m-2 m-md-4 card-width">
             <img class="card-img-top" src="~/Areas/Study/Images/csharp.jpg" alt="c# image" style="width:100%;height:200px;">
             <div class="card-body">
-                <h4 class="card-title">程序</h4>
-                <p class="card-text">C#,html,bootstrap等技术学习资料。</p>
-                @Html.ActionLink("查看更多", "Index", "Program", new { area = "Study" }, new { @class = "btn btn-primary" })
+                <h4 class="card-title">C#</h4>
+                <p class="card-text">C#是微软公司发布的一种面向对象的、运行于.NET Framework之上的高级程序设计语言。</p>
+                <a href="#" class="btn btn-primary">查看更多</a> @*position-absolute style="bottom:0;margin-bottom:1.25rem;"*@
             </div>
         </div>
 
@@ -49,6 +48,17 @@
                 <h4 class="card-title">Bootsrap</h4>
                 <p class="card-text">Bootstrap是美国Twitter公司的设计师Mark Otto和Jacob Thornton合作基于HTML、CSS、JavaScript 开发的简洁、直观、强悍的前端开发框架，使得 Web 开发更加快捷。</p>
                 @Html.ActionLink("查看更多", "Buttons", "Bootstrap", new { area = "Study" }, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+
+        <div class="card m-2 m-md-4 card-width">
+            <img class="card-img-top" src="~/Areas/Study/Images/h5.jpg" alt="h5 image" style="width:100%;height:200px;">
+            <div class="card-body">
+                <h4 class="card-title">Swiper</h4>
+                <p class="card-text">Swiper(Swiper master)是目前应用较广泛的移动端网页触摸内容滑动js插件。</p>
+                <a href="~/Study/Swiper/Index.cshtml" class="btn btn-primary">查看更多</a>
+                <a href="~/Study/Program/Swiper/Index.cshtml" class="btn btn-primary">查看更多...</a>
+                @Html.ActionLink("查看更多", "Index", "Swiper", new { area = "Study" }, new { @class = "btn btn-primary" })
             </div>
         </div>
 

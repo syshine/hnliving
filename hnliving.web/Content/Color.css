@@ -1,14 +1,28 @@
-﻿.bg-light-3 {
-  background-color: rgba(248, 249, 250, .3) !important;
+﻿
+.bg-orange-3 {
+  background-color: rgba(253, 126, 20, .3) !important;
 }
-.bg-light-5 {
-  background-color: rgba(248, 249, 250, .5) !important;
+.bg-orange-5 {
+  background-color: rgba(253, 126, 20, .5) !important;
 }
-.bg-light-7 {
-  background-color: rgba(248, 249, 250, .7) !important;
+.bg-orange-7 {
+  background-color: rgba(253, 126, 20, .7) !important;
 }
-.bg-light-8 {
-  background-color: rgba(248, 249, 250, .8) !important;
+.bg-orange-8 {
+  background-color: rgba(253, 126, 20, .8) !important;
+}
+
+.bg-gray-3 {
+  background-color: rgba(108, 117, 125, .3) !important;
+}
+.bg-gray-5 {
+  background-color: rgba(108, 117, 125, .5) !important;
+}
+.bg-gray-7 {
+  background-color: rgba(108, 117, 125, .7) !important;
+}
+.bg-gray-8 {
+  background-color: rgba(108, 117, 125, .8) !important;
 }
 
 .bg-teal-3 {
@@ -37,19 +51,43 @@
   background-color: rgba(23, 162, 184, .8) !important;
 }
 
+.bg-light-3 {
+  background-color: rgba(248, 249, 250, .3) !important;
+}
+.bg-light-5 {
+  background-color: rgba(248, 249, 250, .5) !important;
+}
+.bg-light-7 {
+  background-color: rgba(248, 249, 250, .7) !important;
+}
+.bg-light-8 {
+  background-color: rgba(248, 249, 250, .8) !important;
+}
 
 
 
 
 
 .text-v-lgdt-btg {
-    background-image: linear-gradient(0deg,rgb(32, 201, 151), rgb(0, 148, 255));
+    background-image: linear-gradient(0deg,rgb(24, 211, 97), rgb(0, 148, 255));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .text-h-lgdt-btg {
-    background-image: linear-gradient(90deg,rgb(32, 201, 151), rgb(0, 148, 255));
+    background-image: linear-gradient(90deg,rgb(24, 211, 97), rgb(0, 148, 255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-v-lgdt-vtb {
+    background-image: linear-gradient(0deg,rgb(178, 203, 238), rgb(100, 80, 142));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-h-lgdt-vtb {
+    background-image: linear-gradient(90deg,rgb(178, 203, 238), rgb(100, 80, 142));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
