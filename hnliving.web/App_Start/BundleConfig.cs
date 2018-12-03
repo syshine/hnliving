@@ -41,6 +41,26 @@ namespace hnliving.web
                       "~/Content/site.css",
                       "~/Content/color.css",
                       "~/Content/animate.css"));
+
+            #region Swiper
+
+            bundles.Add(new ScriptBundle("~/bundles/Swiper").Include(
+                      "~/Plugins/Swiper/js/swiper.js",
+                      "~/Plugins/Swiper/js/swiper.animate.min.js"));
+
+            bundles.Add(new StyleBundle("~/Content/Swiper").Include(
+                      "~/Plugins/Swiper/css/swiper.css",
+                      "~/Plugins/Swiper/css/animate.css"));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/Swiper-min").Include(
+                      "~/Plugins/Swiper/js/swiper.min.js",
+                      "~/Plugins/Swiper/js/swiper.animate.min.js"));
+
+            bundles.Add(new StyleBundle("~/Content/Swiper-min").Include(
+                      "~/Plugins/Swiper/css/swiper.min.css",
+                      "~/Plugins/Swiper/css/animate.min.css"));
+            #endregion
         }
     }
 }

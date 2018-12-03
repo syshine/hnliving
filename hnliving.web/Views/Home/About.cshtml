@@ -3,38 +3,127 @@
     ViewBag.Title = "关于我们";
 }
 
-<img src="~/image/banner-1.jpg" alt="First slide">
-啊啊啊
-<div id="myCarousel" class="carousel slide">
-    <!-- 轮播（Carousel）指标 -->
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-    <!-- 轮播（Carousel）项目 -->
-    <div class="carousel-inner">
-        <div class="item active">
-            <img src="~/image/banner-1.jpg" alt="First slide">
+<div class="swiper-container banner">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <a href=@Url.Action("Building", "Assistant")>
+                <img class="d-block w-100" src="~/Images/banner01.jpg" alt="First slide">
+            </a>
         </div>
-        <div class="item">
-            <img src="~/image/banner-2.jpg" alt="Second slide">
+        <div class="swiper-slide">
+            <a href=@Url.Action("Building", "Assistant")>
+                <img class="d-block w-100" src="~/Images/banner02.jpg" alt="First slide">
+            </a>
         </div>
-        <div class="item">
-            <img src="~/image/banner-3.jpg" alt="Third slide">
+        <div class="swiper-slide">
+            <a href=@Url.Action("Building", "Assistant")>
+                <img class="d-block w-100" src="~/Images/banner03.jpg" alt="First slide">
+            </a>
+        </div>
+        <div class="swiper-slide">
+            <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="2s" swiper-animate-delay="0.5s">Animate.css</p>
         </div>
     </div>
-    <!-- 轮播（Carousel）导航 -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+
+    <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
+
+    <!-- 如果需要导航按钮 -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+    <!-- 如果需要滚动条 -->
+    @*<div class="swiper-scrollbar"></div>*@
 </div>
 
+<div class="swiper-container anim">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide bg-info" style="min-height:200px;">
+            <p></p>
+            <div class="ani display-3 text-center text-black-50" swiper-animate-effect="rotateIn" swiper-animate-duration="1s" swiper-animate-delay="0.3s">Animate.css</div>
+        </div>
+        <div class="swiper-slide bg-danger" style="min-height:200px;">
+            <p></p>
+            <div class="ani display-3 text-center text-v-lgdt-btg" swiper-animate-effect="rubberBand" swiper-animate-duration="1s" swiper-animate-delay="0.3s">Animate.css</div>
+        </div>
+        <div class="swiper-slide bg-success" style="min-height:200px;">
+            <p></p>
+            <div class="ani display-3 text-center text-white" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s" swiper-animate-delay="0.3s">Animate.css</div>
+        </div>
+        <div class="swiper-slide bg-dark" style="min-height:200px;">
+            <p></p>
+            <div class="ani display-3 text-center text-v-lgdt-vtb" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="0.3s">Animate.css</div>
+        </div>
+    </div>
+
+    <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
+
+    <!-- 如果需要导航按钮 -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+    <!-- 如果需要滚动条 -->
+    @*<div class="swiper-scrollbar"></div>*@
+</div>
 
 <div style="height:1800px;"></div>
-尾巴
+        尾巴
+
+@section scripts {
+
+    <script>
+
+      var mySwiper = new Swiper ('.banner', {
+        loop: true, // 循环模式选项
+
+        // 如果需要分页器
+        pagination: {
+          el: '.swiper-pagination',
+        },
+
+        // 如果需要前进后退按钮
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+
+        // 如果需要滚动条
+        //scrollbar: {
+        //  el: '.swiper-scrollbar',
+          //},
+      })
+
+
+      var mySwiper = new Swiper('.anim', {
+          loop: true, // 循环模式选项
+
+          // 如果需要分页器
+          pagination: {
+              el: '.swiper-pagination',
+          },
+
+          // 如果需要前进后退按钮
+          navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+          },
+
+          // 如果需要滚动条
+          //scrollbar: {
+          //  el: '.swiper-scrollbar',
+          //},
+
+          on: {
+              init: function () {
+                  swiperAnimateCache(this); //隐藏动画元素 
+                  swiperAnimate(this); //初始化完成开始动画
+              },
+              slideChangeTransitionEnd: function () {
+                  swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+                  //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+              }
+          }
+      })
+    </script>
+}

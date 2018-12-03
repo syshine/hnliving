@@ -82,10 +82,10 @@
       <publishTime>11/23/2018 23:48:06</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>12/02/2018 22:33:12</publishTime>
+      <publishTime>12/03/2018 22:06:03</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>12/02/2018 22:33:11</publishTime>
+      <publishTime>12/03/2018 22:06:03</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>11/03/2015 17:43:42</publishTime>
@@ -94,7 +94,7 @@
       <publishTime>11/03/2015 17:43:42</publishTime>
     </File>
     <File Include="bin/hnliving.web.dll">
-      <publishTime>12/02/2018 17:06:13</publishTime>
+      <publishTime>12/03/2018 22:05:46</publishTime>
     </File>
     <File Include="bin/Lib.Core.dll">
       <publishTime>12/02/2018 17:06:09</publishTime>
@@ -285,8 +285,29 @@
     <File Include="packages.config">
       <publishTime>11/28/2018 21:04:15</publishTime>
     </File>
+    <File Include="Plugins/Swiper/css/animate.css">
+      <publishTime>11/12/2018 17:54:11</publishTime>
+    </File>
+    <File Include="Plugins/Swiper/css/animate.min.css">
+      <publishTime>11/12/2018 17:54:04</publishTime>
+    </File>
+    <File Include="Plugins/Swiper/css/swiper.css">
+      <publishTime>11/01/2018 03:58:10</publishTime>
+    </File>
+    <File Include="Plugins/Swiper/css/swiper.min.css">
+      <publishTime>11/01/2018 03:58:10</publishTime>
+    </File>
+    <File Include="Plugins/Swiper/js/swiper.animate.min.js">
+      <publishTime>11/12/2018 17:54:08</publishTime>
+    </File>
+    <File Include="Plugins/Swiper/js/swiper.js">
+      <publishTime>11/01/2018 03:58:10</publishTime>
+    </File>
+    <File Include="Plugins/Swiper/js/swiper.min.js">
+      <publishTime>11/01/2018 03:58:10</publishTime>
+    </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>12/02/2018 22:33:05</publishTime>
+      <publishTime>12/03/2018 22:05:53</publishTime>
     </File>
     <File Include="Scripts/bootstrap-3.3.7.js">
       <publishTime>11/23/2018 23:48:06</publishTime>
@@ -436,13 +457,13 @@
       <publishTime>12/01/2018 16:37:15</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
-      <publishTime>11/23/2018 23:48:06</publishTime>
+      <publishTime>12/03/2018 22:04:38</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>12/02/2018 22:32:48</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutMain.cshtml">
-      <publishTime>12/02/2018 22:31:36</publishTime>
+      <publishTime>12/03/2018 21:39:51</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>11/29/2018 20:44:05</publishTime>

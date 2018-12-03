@@ -6,6 +6,8 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")@*-3.3.7*@
     @*@Scripts.Render("~/bundles/modernizr")*@
+    @Styles.Render("~/Content/Swiper-min")
+
     @RenderSection("csses", required: false)
 
     <script type="text/javascript">
@@ -39,6 +41,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")@*-3.3.7*@
+    @Scripts.Render("~/bundles/Swiper-min")
     @RenderSection("scripts", required: false)
 </body>
 </html>
