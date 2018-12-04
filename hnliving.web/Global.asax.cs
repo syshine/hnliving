@@ -19,10 +19,10 @@ namespace hnliving.web
             //RegisterView(); //注册视图访问规则
         }
 
-        //protected void RegisterView()
-        //{
-        //    ViewEngines.Engines.Clear();
-        //    ViewEngines.Engines.Add(new Areas.AreasViewEngine());
-        //}
+        protected void RegisterView()
+        {
+            ViewEngines.Engines.Clear();
+            ViewEngines.Engines.Add(new HnlViewEngine());
+        }
     }
 }

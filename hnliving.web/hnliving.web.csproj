@@ -181,18 +181,23 @@
     <Content Include="Areas\Cate\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Cate\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Cate\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Travel\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Travel\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Travel\Views\Home\Index.cshtml" />
     <Content Include="Areas\Cate\Views\web.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Areas\Study\Views\web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Areas\Travel\Views\web.config" />
     <Content Include="App_Data\rdbs.config" />
     <Content Include="Areas\Study\Views\Program\Home\Index.cshtml" />
+    <Content Include="Areas\Travel\HaiKou\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Travel\HaiKou\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Travel\HaiKou\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Travel\HaiKou\Views\web.config" />
+    <Content Include="Areas\Travel\SanYa\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Travel\SanYa\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Travel\SanYa\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Travel\SanYa\Views\web.config" />
+    <Content Include="Areas\Travel\Views\Test\Index.cshtml" />
     <None Include="Properties\PublishProfiles\hnl-c.pubxml" />
     <None Include="Properties\PublishProfiles\hnl.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -228,8 +233,11 @@
     <Compile Include="Areas\Study\Controllers\Program\HomeController.cs" />
     <Compile Include="Areas\Study\Controllers\Program\SwiperController.cs" />
     <Compile Include="Areas\Study\StudyAreaRegistration.cs" />
-    <Compile Include="Areas\Travel\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Travel\TravelAreaRegistration.cs" />
+    <Compile Include="Areas\Travel\HaiKou\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Travel\HaiKou\Controllers\TestController.cs" />
+    <Compile Include="Areas\Travel\HaiKou\TravelHaiKouAreaRegistration.cs" />
+    <Compile Include="Areas\Travel\SanYa\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Travel\SanYa\TravelSanYaAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AssistantController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -282,7 +290,10 @@
   <ItemGroup>
     <Folder Include="Areas\Cate\Models\" />
     <Folder Include="Areas\Study\Models\" />
-    <Folder Include="Areas\Travel\Models\" />
+    <Folder Include="Areas\Travel\HaiKou\Models\" />
+    <Folder Include="Areas\Travel\HaiKou\Views\Test\" />
+    <Folder Include="Areas\Travel\SanYa\Models\" />
+    <Folder Include="Areas\Travel\WenChang\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

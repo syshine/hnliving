@@ -4,13 +4,20 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace hnliving.web.Areas.Study.Program.Controllers.Program
+namespace hnliving.web.Areas.Travel.Sanya.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Study/Program/Home
+        // GET: Travel/Home
         public ActionResult Index()
         {
+            return View();
+        }
+
+        public ActionResult About()
+        {
+            ViewBag.Message = "Travel description page.";
+
             return View();
         }
     }

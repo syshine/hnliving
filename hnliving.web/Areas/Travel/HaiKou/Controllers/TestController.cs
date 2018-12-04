@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace hnliving.web.Areas.Study.Program.Controllers.Program
+namespace hnliving.web.Areas.Travel.HaiKou.Controllers
 {
-    public class HomeController : Controller
+    public class TestController : Controller
     {
-        // GET: Study/Program/Home
+        // GET: Travel/Test
         public ActionResult Index()
         {
             return View();

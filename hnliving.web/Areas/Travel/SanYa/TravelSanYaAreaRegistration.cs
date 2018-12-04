@@ -6,21 +6,21 @@ using System.Web.Mvc;
 
 namespace hnliving.web.Areas.Travel
 {
-    public class TravelAreaRegistration : AreaRegistration
+    public class TravelSanYaAreaRegistration : AreaRegistration
     {
         public override string AreaName
         {
             get
             {
-                return "Travel";
+                return "Travel_SanYa";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
             //此路由不能删除
-            context.MapRoute("Travel_default",
-                              "Travel/{controller}/{action}/{id}",
+            context.MapRoute("Travel_SanYa_default",
+                              "Travel/SanYa/{controller}/{action}/{id}",
                               new { action = "Index", id = UrlParameter.Optional });
 
         }
