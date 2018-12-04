@@ -3,7 +3,7 @@
     ViewBag.Title = "关于我们";
 }
 
-<div class="swiper-container banner">
+<div class="swiper-container" id="banner">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
             <a href=@Url.Action("Building", "Assistant")>
@@ -20,9 +20,6 @@
                 <img class="d-block w-100" src="~/Images/banner03.jpg" alt="First slide">
             </a>
         </div>
-        <div class="swiper-slide">
-            <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="2s" swiper-animate-delay="0.5s">Animate.css</p>
-        </div>
     </div>
 
     <!-- 如果需要分页器 -->
@@ -36,7 +33,7 @@
     @*<div class="swiper-scrollbar"></div>*@
 </div>
 
-<div class="swiper-container anim">
+<div class="swiper-container" id="anim">
     <div class="swiper-wrapper">
         <div class="swiper-slide bg-info" style="min-height:200px;">
             <p></p>
@@ -72,58 +69,66 @@
 
 @section scripts {
 
-    <script>
+<script>
 
-      var mySwiper = new Swiper ('.banner', {
+    var mySwiper = new Swiper('#banner', {
         loop: true, // 循环模式选项
 
         // 如果需要分页器
         pagination: {
-          el: '.swiper-pagination',
+            el: '.swiper-pagination',
+            clickable: true,                //--实现小圆点点击
         },
 
         // 如果需要前进后退按钮
         navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
         },
 
         // 如果需要滚动条
         //scrollbar: {
         //  el: '.swiper-scrollbar',
-          //},
-      })
+        //},
+
+        // 自动轮播
+        autoplay: {
+            delay: 3000,                    // 3秒切换一次
+            stopOnLastSlide: false,         // 如果设置为true，当切换到最后一个slide时停止自动切换。（loop模式下无效）。
+            disableOnInteraction: false,    // 用户操作swiper之后，是否禁止autoplay.默认为true：停止。
+        },
+    })
 
 
-      var mySwiper = new Swiper('.anim', {
-          loop: true, // 循环模式选项
+    var mySwiper = new Swiper('#anim', {
+        loop: true, // 循环模式选项
 
-          // 如果需要分页器
-          pagination: {
-              el: '.swiper-pagination',
-          },
+        // 如果需要分页器
+        pagination: {
+            el: '.swiper-pagination',
+        },
 
-          // 如果需要前进后退按钮
-          navigation: {
-              nextEl: '.swiper-button-next',
-              prevEl: '.swiper-button-prev',
-          },
+        // 如果需要前进后退按钮
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
 
-          // 如果需要滚动条
-          //scrollbar: {
-          //  el: '.swiper-scrollbar',
-          //},
+        // 如果需要滚动条
+        //scrollbar: {
+        //  el: '.swiper-scrollbar',
+        //},
 
-          on: {
-              init: function () {
-                  swiperAnimateCache(this); //隐藏动画元素 
-                  swiperAnimate(this); //初始化完成开始动画
-              },
-              slideChangeTransitionEnd: function () {
-                  swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
-                  //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
-              }
-          }
-      })
-    </script>
+        on: {
+            init: function () {
+                swiperAnimateCache(this); //隐藏动画元素
+                swiperAnimate(this); //初始化完成开始动画
+            },
+            slideChangeTransitionEnd: function () {
+                swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+                //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+            }
+        }
+    })
+</script>
 }

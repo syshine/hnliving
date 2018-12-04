@@ -193,6 +193,7 @@
     <Content Include="Areas\Travel\Views\web.config" />
     <Content Include="App_Data\rdbs.config" />
     <Content Include="Areas\Study\Views\Program\Home\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\hnl-c.pubxml" />
     <None Include="Properties\PublishProfiles\hnl.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

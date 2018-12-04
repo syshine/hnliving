@@ -11,7 +11,7 @@
     <ProjectView>ShowAllFiles</ProjectView>
     <UseIISExpress>true</UseIISExpress>
     <ToolsVersionPromptShown>1.8</ToolsVersionPromptShown>
-    <NameOfLastUsedPublishProfile>hnl</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>hnl-c</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

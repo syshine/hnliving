@@ -72,3 +72,17 @@
     animation: hub 20s infinite;
     -webkit-animation: hub 20s infinite;
 }
+
+.ani-dur-1 {
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    -o-animation-duration: 1s;
+}
+
+.ani-dur-2 {
+    animation-duration: 2s;
+    -webkit-animation-duration: 2s;
+    -moz-animation-duration: 2s;
+    -o-animation-duration: 2s;
+}
