@@ -18,6 +18,13 @@ namespace hnliving.web.Areas.Study
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
+
+            context.MapRoute(
+                name: "Study_Civil_Servant",
+                url: "Study/CivilServant/{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "hnliving.web.Areas.Study.Controllers.CivilServant" }
+            );
             context.MapRoute(
                 name: "Study_Program",
                 url: "Study/Program/{controller}/{action}/{id}",
@@ -26,16 +33,16 @@ namespace hnliving.web.Areas.Study
             );
 
             context.MapRoute(
-                name: "Study_Civil_Servant",
-                url: "Study/CivilServant/{controller}/{action}/{id}",
+                name: "Study_Education",
+                url: "Study/Education/{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces: new[] { "hnliving.web.Areas.Study.Controllers.CivilServant" }
+                namespaces: new[] { "hnliving.web.Areas.Study.Controllers.Education" }
             );
 
             //此路由不能删除
             context.MapRoute(name: "Study_default",
                              url: "Study/{controller}/{action}/{id}",
-                             defaults: new { action = "Index", id = UrlParameter.Optional },
+                             defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                              namespaces: new[] { "hnliving.web.Areas.Study.Controllers" });
 
         }

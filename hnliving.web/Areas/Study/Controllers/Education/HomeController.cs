@@ -4,14 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace hnliving.web.Areas.Study.Controllers.CivilServant
+namespace hnliving.web.Areas.Study.Controllers.Education
 {
     public class HomeController : Controller
     {
-        // GET: Study/CivilServant/Home
+        // GET: Study/Education/Home
         public ActionResult Index()
         {
-            return View("~/Areas/Study/Views/CivilServant/Home/Index.cshtml");
+            return View("~/Areas/Study/Views/Education/Home/Index.cshtml");
         }
     }
 }

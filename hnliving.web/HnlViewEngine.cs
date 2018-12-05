@@ -19,14 +19,17 @@ namespace hnliving.web
 
             AreaViewLocationFormats = new[]
             {
-                "~/Areas/{2}/Views/CivilServant/{1}/{0}.cshtml",
-                "~/Areas/{2}/Views/Program/{1}/{0}.cshtml",
-
-                "~/Areas/{2}/Views/CivilServant/Shared/{0}.cshtml",
-                "~/Areas/{2}/Views/Program/Shared/{0}.cshtml",
 
                 "~/Areas/{2}/Views/{1}/{0}.cshtml",
                 "~/Areas/{2}/Views/Shared/{0}.cshtml",
+
+                "~/Areas/{2}/Views/CivilServant/{1}/{0}.cshtml",
+                "~/Areas/{2}/Views/Education/{1}/{0}.cshtml",
+                "~/Areas/{2}/Views/Program/{1}/{0}.cshtml",
+
+                "~/Areas/{2}/Views/CivilServant/Shared/{0}.cshtml",
+                "~/Areas/{2}/Views/Education/Shared/{0}.cshtml",
+                "~/Areas/{2}/Views/Program/Shared/{0}.cshtml",
                 
             };
         }

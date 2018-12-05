@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace hnliving.web.Areas.Study.Controllers
+namespace hnliving.web.Areas.Study.Controllers.Program
 {
     public class BootstrapController : Controller
     {
-        // GET: Study/Bootstrap
+        // GET: Study/Program/Bootstrap
         public ActionResult Index()
         {
             return View();
