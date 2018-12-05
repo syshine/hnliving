@@ -16,13 +16,7 @@ namespace hnliving.web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            //RegisterView(); //注册视图访问规则
-        }
-
-        protected void RegisterView()
-        {
-            ViewEngines.Engines.Clear();
-            ViewEngines.Engines.Add(new HnlViewEngine());
+            HnlViewEngine.RegisterView();//注册多级目录扩展
         }
     }
 }

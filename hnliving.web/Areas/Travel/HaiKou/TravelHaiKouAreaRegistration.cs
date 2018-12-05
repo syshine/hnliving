@@ -19,13 +19,13 @@ namespace hnliving.web.Areas.Travel.HaiKou
         public override void RegisterArea(AreaRegistrationContext context)
         {
             //此路由不能删除
-            context.MapRoute("Travel_HaiKou_default",
-                              "Travel/HaiKou/{controller}/{action}/{id}",
-                              new { action = "Index", id = UrlParameter.Optional });
-//,
-//                              new[] { "hnliving.web.Areas.Travel.HaiKou.Controllers" }
+            context.MapRoute(name: "Travel_HaiKou_default",
+                             url: "Travel/HaiKou/{controller}/{action}/{id}",
+                             defaults: new { action = "Index", id = UrlParameter.Optional },
+                             namespaces: new[] { "hnliving.web.Areas.Travel.HaiKou.Controllers" });
 
-            
+
+
         }
     }
 }

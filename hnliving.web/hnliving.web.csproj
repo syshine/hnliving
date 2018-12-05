@@ -197,7 +197,14 @@
     <Content Include="Areas\Travel\SanYa\Views\Home\Index.cshtml" />
     <Content Include="Areas\Travel\SanYa\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Travel\SanYa\Views\web.config" />
-    <Content Include="Areas\Travel\Views\Test\Index.cshtml" />
+    <Content Include="Areas\Travel\HaiKou\Views\Test\Index.cshtml" />
+    <Content Include="Areas\Study\Views\CivilServant\Home\Index.cshtml" />
+    <Content Include="Areas\Study\Views\Program\Swiper\Index.cshtml" />
+    <Content Include="Areas\Study\Views\Program\Swiper\Test.cshtml" />
+    <Content Include="Areas\Study\Views\CivilServant\Analysis\Index.cshtml" />
+    <Content Include="Areas\Study\Views\Program\Home\About.cshtml" />
+    <Content Include="Areas\Study\Views\CivilServant\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Study\Views\CivilServant\_ViewStart.cshtml" />
     <None Include="Properties\PublishProfiles\hnl-c.pubxml" />
     <None Include="Properties\PublishProfiles\hnl.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -224,10 +231,11 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\AreasViewEngine.cs" />
     <Compile Include="Areas\Cate\CateAreaRegistration.cs" />
     <Compile Include="Areas\Cate\Controllers\HomeController.cs" />
     <Compile Include="Areas\Study\Controllers\BootstrapController.cs" />
+    <Compile Include="Areas\Study\Controllers\CivilServant\AnalysisController.cs" />
+    <Compile Include="Areas\Study\Controllers\CivilServant\HomeController.cs" />
     <Compile Include="Areas\Study\Controllers\HomeController.cs" />
     <Compile Include="Areas\Study\Controllers\ProgramController.cs" />
     <Compile Include="Areas\Study\Controllers\Program\HomeController.cs" />
@@ -291,7 +299,6 @@
     <Folder Include="Areas\Cate\Models\" />
     <Folder Include="Areas\Study\Models\" />
     <Folder Include="Areas\Travel\HaiKou\Models\" />
-    <Folder Include="Areas\Travel\HaiKou\Views\Test\" />
     <Folder Include="Areas\Travel\SanYa\Models\" />
     <Folder Include="Areas\Travel\WenChang\" />
   </ItemGroup>
