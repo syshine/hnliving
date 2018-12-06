@@ -141,6 +141,8 @@
     <Content Include="Images\Icons\lg.ico" />
     <Content Include="Images\字体图标对照表.jpg" />
     <Content Include="Navigate\BootstrapNav.js" />
+    <Content Include="Plugins\Anime\anime.js" />
+    <Content Include="Plugins\Anime\anime.min.js" />
     <Content Include="Plugins\Swiper\css\animate.css" />
     <Content Include="Plugins\Swiper\css\animate.min.css" />
     <Content Include="Plugins\Swiper\css\swiper.css" />
@@ -211,6 +213,7 @@
     <Content Include="Areas\Study\Views\Program\_ViewStart.cshtml" />
     <Content Include="Areas\Study\Views\Program\Shared\_Layout.cshtml" />
     <Content Include="Areas\Study\Views\Program\Shared\_LayoutBootstrap.cshtml" />
+    <Content Include="Areas\Study\Views\Program\AnimeJs\Targets.cshtml" />
     <None Include="Properties\PublishProfiles\hnl-c.pubxml" />
     <None Include="Properties\PublishProfiles\hnl.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -239,6 +242,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Cate\CateAreaRegistration.cs" />
     <Compile Include="Areas\Cate\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Study\Controllers\Program\AnimeJsController.cs" />
     <Compile Include="Areas\Study\Controllers\Program\BootstrapController.cs" />
     <Compile Include="Areas\Study\Controllers\CivilServant\AnalysisController.cs" />
     <Compile Include="Areas\Study\Controllers\CivilServant\HomeController.cs" />

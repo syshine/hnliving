@@ -61,6 +61,11 @@ namespace hnliving.web
                       "~/Plugins/Swiper/css/swiper.min.css",
                       "~/Plugins/Swiper/css/animate.min.css"));
             #endregion
+
+            #region Anime.js
+            bundles.Add(new ScriptBundle("~/bundles/anime-js").Include(
+                      "~/Plugins/Anime/anime.min.js"));
+            #endregion
         }
     }
 }

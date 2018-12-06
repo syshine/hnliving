@@ -1,0 +1,152 @@
+﻿
+@{
+    ViewBag.Title = "Targets";
+}
+
+@section csses {
+    <style>
+        .square,
+        .circle {
+            pointer-events: none;
+            position: relative;
+            width: 28px;
+            height: 28px;
+            margin: 1px;
+            background-color: #FF7C72;/*currentColor*/
+            font-size: 12px;
+        }
+
+        .small {
+            width: 18px;
+            height: 18px;
+        }
+
+        .large {
+            width: 48px;
+            height: 48px;
+        }
+
+        .line {
+          width: 100%;
+          padding: 1px 0px;
+        }
+    </style>
+}
+
+<h2>动画目标</h2>
+
+
+<div class="col-12">
+    <h4 class="mt-4">CSS选择器</h4>
+    <div class="code-div">
+        <div id="cssSelector">
+            <div class="line">
+                <div class="square el"></div>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">DOM元素</h4>
+    <div class="code-div">
+        <div id="domNode">
+            <div class="large square el"></div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">DOM元素列表</h4>
+    <div class="code-div">
+        <div id="nodeList">
+            <div class="line">
+                <div class="small square el"></div>
+            </div>
+            <div class="line">
+                <div class="small square el"></div>
+            </div>
+            <div class="line">
+                <div class="small square el"></div>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">JAVASCRIPT对象</h4>
+    <div class="code-div">
+        <div id="JSobject">
+            <pre>{"charged":"18%"}</pre>
+        </div>
+    </div>
+
+    <h4 class="mt-4">JAVASCRIPT数组</h4>
+    <div class="code-div">
+        <div id="JSarray">
+            <div class="line">
+                <div class="square el-01" style="transform: translateX(296.588px);"></div>
+            </div>
+            <div class="line">
+                <div class="square el-02" style="transform: translateX(296.588px);"></div>
+            </div>
+            <div class="line">
+                <div class="square el-03" style="transform: translateX(296.588px);"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+@section scripts {
+
+<script>
+    // CSS选择器
+    var cssSelector = anime({
+        targets: '#cssSelector .el',
+        translateX: 250
+    });
+
+    // DOM元素
+    var el = document.querySelector('#domNode .el');
+
+    var domNode = anime({
+        targets: el,
+        translateX: 250
+    });
+
+    // DOM元素列表
+    var els = document.querySelectorAll('#nodeList .el');
+
+    var nodeList = anime({
+        targets: els,
+        translateX: 250
+    });
+
+    // JAVASCRIPT对象
+    var obj = { charged: '0%' };
+
+    var JSobject = anime({
+        targets: obj,
+        charged: '100%',
+        round: 1,
+        easing: 'linear',
+        update: function () {
+            var el = document.querySelector('#JSobject pre');
+            el.innerHTML = JSON.stringify(obj);
+        }
+    });
+    /*
+    round 通过舍入值来删除小数
+    默认 false
+    类型 number，boolean，function(target, index, totalTargets)
+    10次幂 例：round:100 取两位小数
+    */
+
+    // JAVASCRIPT数组
+    var el = document.querySelector('#JSarray .el-01');
+
+    var JSarray = anime({
+        targets: [el, '#JSarray .el-02', '#JSarray .el-03'],
+        translateX: 250
+    });
+
+</script>
+
+}
+

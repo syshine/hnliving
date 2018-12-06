@@ -38,6 +38,15 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/anime-js")
     @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // onReady script 代码区
+            @RenderSection("onready", required: false)
+
+        });
+    </script>
 </body>
 </html>
