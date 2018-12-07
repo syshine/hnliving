@@ -37,23 +37,23 @@
 
 
 <div class="col-12">
-    <h4 class="mt-4">CSS选择器</h4>
+    <h4 class="mt-4" id="cssSel">CSS选择器</h4>
     <div class="code-div">
         <div id="cssSelector">
             <div class="line">
-                <div class="square el"></div>
+                <div class="square el" id="aaa"></div>
             </div>
         </div>
     </div>
 
-    <h4 class="mt-4">DOM元素</h4>
+    <h4 class="mt-4" id="domNode">DOM元素</h4>
     <div class="code-div">
         <div id="domNode">
             <div class="large square el"></div>
         </div>
     </div>
 
-    <h4 class="mt-4">DOM元素列表</h4>
+    <h4 class="mt-4" id="nodeList">DOM元素列表</h4>
     <div class="code-div">
         <div id="nodeList">
             <div class="line">
@@ -68,24 +68,24 @@
         </div>
     </div>
 
-    <h4 class="mt-4">JAVASCRIPT对象</h4>
+    <h4 class="mt-4" id="jsObj">JAVASCRIPT对象</h4>
     <div class="code-div">
         <div id="JSobject">
             <pre>{"charged":"18%"}</pre>
         </div>
     </div>
 
-    <h4 class="mt-4">JAVASCRIPT数组</h4>
+    <h4 class="mt-4" id="jsArr">JAVASCRIPT数组</h4>
     <div class="code-div">
         <div id="JSarray">
             <div class="line">
-                <div class="square el-01" style="transform: translateX(296.588px);"></div>
+                <div class="square el-01" @*style="transform: translateX(296.588px);"*@></div>
             </div>
             <div class="line">
-                <div class="square el-02" style="transform: translateX(296.588px);"></div>
+                <div class="square el-02" @*style="transform: translateX(296.588px);"*@></div>
             </div>
             <div class="line">
-                <div class="square el-03" style="transform: translateX(296.588px);"></div>
+                <div class="square el-03" @*style="transform: translateX(296.588px);"*@></div>
             </div>
         </div>
     </div>
@@ -97,56 +97,103 @@
 
 <script>
     // CSS选择器
-    var cssSelector = anime({
-        targets: '#cssSelector .el',
-        translateX: 250
-    });
+    function cssSel() {
+        $('#cssSelector .el').css('transform', 'translateX(0px)');
+        var cssSelector = anime({
+            targets: '#cssSelector .el',
+            translateX: 250
+        });
+    }
+    cssSel();   // 立即执行
 
     // DOM元素
-    var el = document.querySelector('#domNode .el');
+    function domNode() {
+        $('#domNode .el').css('transform', 'translateX(0px)');
 
-    var domNode = anime({
-        targets: el,
-        translateX: 250
-    });
+        var el = document.querySelector('#domNode .el');
+
+        var domNode = anime({
+            targets: el,
+            translateX: 250
+        });
+    }
+    domNode();   // 立即执行
 
     // DOM元素列表
-    var els = document.querySelectorAll('#nodeList .el');
+    function nodeList() {
+        $('#nodeList .el').css('transform', 'translateX(0px)');
 
-    var nodeList = anime({
-        targets: els,
-        translateX: 250
-    });
+        var els = document.querySelectorAll('#nodeList .el');
+
+        var nodeList = anime({
+            targets: els,
+            translateX: 250
+        });
+    }
+    nodeList();   // 立即执行
 
     // JAVASCRIPT对象
-    var obj = { charged: '0%' };
+    function jsObj() {
+        var obj = { charged: '0%' };
 
-    var JSobject = anime({
-        targets: obj,
-        charged: '100%',
-        round: 1,
-        easing: 'linear',
-        update: function () {
-            var el = document.querySelector('#JSobject pre');
-            el.innerHTML = JSON.stringify(obj);
-        }
-    });
-    /*
-    round 通过舍入值来删除小数
-    默认 false
-    类型 number，boolean，function(target, index, totalTargets)
-    10次幂 例：round:100 取两位小数
-    */
+        var JSobject = anime({
+            targets: obj,
+            charged: '100%',
+            round: 1,
+            easing: 'linear',
+            update: function () {
+                var el = document.querySelector('#JSobject pre');
+                el.innerHTML = JSON.stringify(obj);
+            }
+        });
+        /*
+        round 通过舍入值来删除小数
+        默认 false
+        类型 number，boolean，function(target, index, totalTargets)
+        10次幂 例：round:100 取两位小数
+        */
+    }
+    jsObj();   // 立即执行
 
     // JAVASCRIPT数组
-    var el = document.querySelector('#JSarray .el-01');
+    function jsArr() {
+        $('#JSarray .square').css('transform', 'translateX(0px)');
 
-    var JSarray = anime({
-        targets: [el, '#JSarray .el-02', '#JSarray .el-03'],
-        translateX: 250
+        var el = document.querySelector('#JSarray .el-01');
+
+        var JSarray = anime({
+            targets: [el, '#JSarray .el-02', '#JSarray .el-03'],
+            translateX: 250
+        });
+    }
+    jsArr();   // 立即执行
+
+    $(document).ready(function () {
+        // CSS选择器 单击再次动作
+        $('#cssSel').click(function () {
+            cssSel();
+        })
+
+        // DOM元素 单击再次动作
+        $('#domNode').click(function () {
+            domNode();
+        })
+
+        // DOM元素列表 单击再次动作
+        $('#nodeList').click(function () {
+            nodeList();
+        })
+
+        // JAVASCRIPT对象 单击再次动作
+        $('#jsObj').click(function () {
+            jsObj();
+        })
+
+        // JAVASCRIPT数组 单击再次动作
+        $('#jsArr').click(function () {
+            jsArr();
+        })
     });
-
 </script>
 
 }
-
