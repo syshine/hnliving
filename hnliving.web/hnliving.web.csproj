@@ -140,6 +140,7 @@
     <Content Include="Images\banner03.jpg" />
     <Content Include="Images\Icons\lg.ico" />
     <Content Include="Images\字体图标对照表.jpg" />
+    <Content Include="Navigate\AnimeJsNav.js" />
     <Content Include="Navigate\BootstrapNav.js" />
     <Content Include="Plugins\Anime\anime.js" />
     <Content Include="Plugins\Anime\anime.min.js" />
@@ -214,6 +215,8 @@
     <Content Include="Areas\Study\Views\Program\Shared\_Layout.cshtml" />
     <Content Include="Areas\Study\Views\Program\Shared\_LayoutBootstrap.cshtml" />
     <Content Include="Areas\Study\Views\Program\AnimeJs\Targets.cshtml" />
+    <Content Include="Areas\Study\Views\Program\Bootstrap\TabPane.cshtml" />
+    <Content Include="Areas\Study\Views\Program\Shared\_LayoutAnimeJs.cshtml" />
     <None Include="Properties\PublishProfiles\hnl-c.pubxml" />
     <None Include="Properties\PublishProfiles\hnl.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

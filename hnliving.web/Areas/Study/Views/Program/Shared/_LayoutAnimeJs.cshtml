@@ -45,6 +45,21 @@
             max-height:50vh; /*500px;*/
         }
 
+        .nav-tabs .nav-link {
+            /*border: 1px solid transparent;
+            border-top-left-radius: 0.25rem;
+            border-top-right-radius: 0.25rem;*/
+            background-color: #fff;
+            border-color: #e9ecef #e9ecef #dee2e6;
+        }
+
+        .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+            /*color: #495057;*/
+            background-color: #d1ecf1;
+            border-color: #bee5eb #dee2e6 #d1ecf1;
+            /*border-color: #dee2e6 #dee2e6 #fff;*/
+        }
+
         /*razor语法和媒体查询符号冲突，需使用两个at*/
         @@media screen and (max-width: 767.98px) {
             .left-nav-fixed {
@@ -116,7 +131,20 @@
         <br />
         @*显示html代码的div参考位置*@
         <div id="ref-loc"></div>
-        <pre id="show-code" class="alert alert-info pl-3 pr-3 m-0 show-code-height">点击实例可查看代码</pre>
+        <div id="code-wrap" class="m-0 show-code-height">
+            <ul id="tabCode" class="nav nav-tabs">
+                <li class="nav-item"><a href="#html-code" class="nav-link active show" data-toggle="tab">html</a></li>
+                <li class="nav-item"><a href="#js-code" class="nav-link" data-toggle="tab">javascript</a></li>
+            </ul>
+            <div id="tabCodeContent" class="tab-content">
+                <div class="tab-pane fade active show" id="html-code">
+                    <pre id="show-code" class="alert alert-info">点击实例可查看代码</pre>
+                </div>
+                <div class="tab-pane fade" id="js-code">
+                    <pre id="show-js" class="alert alert-info pl-3 pr-3 m-0 show-code-height">点击实例可查看JavaScript代码</pre>
+                </div>
+            </div>
+        </div>
         <hr />
     </div>
     <footer>
@@ -125,9 +153,10 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/anime-js")
     @RenderSection("scripts", required: false)
 
-    <script src="~/Navigate/BootstrapNav.js"></script>
+    <script src="~/Navigate/AnimeJsNav.js"></script>
 
     <script type="text/javascript">
 
@@ -136,7 +165,7 @@
             $("#left-nav-toggler").css("top", $("#navMain").innerHeight());//.offset({ top: $("#navMain").innerHeight(), left: 0 });
 
             // 绑定左侧导航栏菜单
-            bindNav("leftNav", navBs);
+            bindNav("leftNav", navAj);
 
             // 滚动条滚动事件
             $(window).scroll(function () {
@@ -162,7 +191,7 @@
                 $("#show-code").text($(this).html());
 
                 // 内容变化时引起高度变化
-                code_height = $("#show-code").height();
+                code_height = $("#code-wrap").height();//show-code
             });
 
             // 左侧导航栏开关
@@ -208,28 +237,28 @@
         // 固定下边栏
         function fixBottom() {
             //获取show-code的高度，innerHeight包含padding，$("#show-code").height()不包含padding
-            var code_height = $("#show-code").innerHeight();
-            //console.log("code_height的高度：" + code_height);
+            var code_height = $("#code-wrap").innerHeight();//show-code
+            console.log("code_height的高度：" + code_height);
 
             //获取 id="ref-loc" 元素，offsetTop是当前元素·距离网页窗口顶部的距离
             var offset_top = $("#ref-loc").offset().top;
-            //console.log("ref-loc距离顶部的距离：" + offset_top);
+            console.log("ref-loc距离顶部的距离：" + offset_top);
 
             var doc_height = $(window).height();
-            //console.log("height：" + doc_height);
+            console.log("height：" + doc_height);
 
             //获取垂直滚动的距离（scrollTop()是从顶部开始滚动产生的距离）
             var scroll_top = $(document).scrollTop();
-            //console.log("滚动的距离:" + scroll_top);
+            console.log("滚动的距离:" + scroll_top);
 
             if (doc_height + scroll_top < offset_top + code_height) {
                 // 到达顶部位置，动态的添加元素属性，并给元素添加相应的元素样式
-                $("#show-code").addClass("bottom-fixed");
+                $("#code-wrap").addClass("bottom-fixed");//show-code
                 $("#ref-loc").height(code_height);  // 为了防止滚动条高度变化
                 //console.log("固定");
             } else {
                 // 同理，把之前添加的元素移除即可
-                $("#show-code").removeClass("bottom-fixed");
+                $("#code-wrap").removeClass("bottom-fixed");//show-code
                 $("#ref-loc").height("0");
                 //console.log("取消固定");
             }
@@ -246,7 +275,7 @@
             //$("#show-code").text($(ctrl).prop("outerHTML"));
 
             // 内容变化时引起高度变化
-            code_height = $("#show-code").height();
+            code_height = $("#code-wrap").height();//show-code
         }
 
         // html代码格式化

@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "Targets";
+    Layout = "~/Areas/Study/Views/Program/Shared/_LayoutAnimeJs.cshtml";
 }
 
 @section csses {
@@ -46,14 +47,14 @@
         </div>
     </div>
 
-    <h4 class="mt-4" id="domNode">DOM元素</h4>
+    <h4 class="mt-4">DOM元素</h4>
     <div class="code-div">
         <div id="domNode">
             <div class="large square el"></div>
         </div>
     </div>
 
-    <h4 class="mt-4" id="nodeList">DOM元素列表</h4>
+    <h4 class="mt-4">DOM元素列表</h4>
     <div class="code-div">
         <div id="nodeList">
             <div class="line">
@@ -68,14 +69,14 @@
         </div>
     </div>
 
-    <h4 class="mt-4" id="jsObj">JAVASCRIPT对象</h4>
+    <h4 class="mt-4">JAVASCRIPT对象</h4>
     <div class="code-div">
         <div id="JSobject">
             <pre>{"charged":"18%"}</pre>
         </div>
     </div>
 
-    <h4 class="mt-4" id="jsArr">JAVASCRIPT数组</h4>
+    <h4 class="mt-4">JAVASCRIPT数组</h4>
     <div class="code-div">
         <div id="JSarray">
             <div class="line">
@@ -170,7 +171,7 @@
 
     $(document).ready(function () {
         // CSS选择器 单击再次动作
-        $('#cssSel').click(function () {
+        $('#cssSelector').click(function () {
             cssSel();
         })
 
@@ -185,12 +186,12 @@
         })
 
         // JAVASCRIPT对象 单击再次动作
-        $('#jsObj').click(function () {
+        $('#JSobject').click(function () {
             jsObj();
         })
 
         // JAVASCRIPT数组 单击再次动作
-        $('#jsArr').click(function () {
+        $('#JSarray').click(function () {
             jsArr();
         })
     });
