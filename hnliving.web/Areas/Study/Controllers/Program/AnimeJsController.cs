@@ -18,5 +18,10 @@ namespace hnliving.web.Areas.Study.Controllers.Program
         {
             return View();
         }
+
+        public ActionResult Attribute()
+        {
+            return View();
+        }
     }
 }

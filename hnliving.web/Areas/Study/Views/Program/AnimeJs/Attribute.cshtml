@@ -1,0 +1,289 @@
+﻿
+@{
+    ViewBag.Title = "Targets";
+    Layout = "~/Areas/Study/Views/Program/Shared/_LayoutAnimeJs.cshtml";
+}
+
+@section csses {
+    <style>
+        .square,
+        .circle {
+            pointer-events: none;
+            position: relative;
+            width: 28px;
+            height: 28px;
+            margin: 1px;
+            background-color: #FF7C72;/*currentColor*/
+            font-size: 12px;
+        }
+
+        .small {
+            width: 18px;
+            height: 18px;
+        }
+
+        .large {
+            width: 48px;
+            height: 48px;
+        }
+
+        .line {
+          width: 100%;
+          padding: 1px 0px;
+        }
+    </style>
+}
+
+<h2>动画目标</h2>
+
+
+<div class="col-12">
+    <h4 class="mt-4" id="cssSel">CSS</h4>
+    <div class="code-div">
+        <div id="cssProperties">
+            <div class="large square el"></div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">CSS TRANSFORMS变换</h4>
+    <div class="code-div">
+        <div id="CSStransforms">
+            <div class="square el"></div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">JAVASCRIPT对象属性</h4>
+    <div class="code-div">
+        <div id="JSobjectProp">
+            <pre>{"prop1":5,"prop2":"10%"}</pre>
+        </div>
+    </div>
+
+    <h4 class="mt-4">DOM属性</h4>
+    <div class="code-div">
+        <div id="domAttributes">
+            <input class="text-output" value="4">
+        </div>
+    </div>
+
+    <h4 class="mt-4">SVG属性</h4>
+    <div class="code-div">
+        <div id="svgAttributes">
+            <svg width="128" height="128" viewBox="0 0 128 128">
+                <polygon points="64 68.86326446301015 8.574 99.98495522486455 63.23961577469183 67.54580060579175 64 3.984955224864545 64.76038422530817 67.54580060579175 119.426 99.98495522486455 " fill="currentColor"></polygon>
+            </svg>
+        </div>
+    </div>
+
+</div>
+
+@section JsCode {
+    @*CSS*@
+    <div class="js-code" data-id="cssProperties">
+        function cssProp() {
+            var cssProperties = anime({
+                targets: '#cssProperties .el',
+                opacity: .5,
+                left: '240px',
+                backgroundColor: '#FFF',
+                borderRadius: ['0em', '2em'],
+                easing: 'easeInOutQuad'
+            });
+            /*
+            opacity 透明度 0~1
+            backgroundColor
+            fontSize
+            borderRadius
+            backgroundColor
+            等...
+            */
+        }
+        cssProp();   // 立即执行
+    </div>
+
+    @*CSS TRANSFORMS变换*@
+    <div class="js-code" data-id="CSStransforms">
+        function CSStransf() {
+            var CSStransforms = anime({
+                targets: '#CSStransforms .el',
+                translateX: 250,
+                scale: 2,
+                rotate: '1turn'
+            });
+            /*
+            translateX x轴的值
+            translateY y轴的值
+            retate 旋转
+            scale 大小变换 例：scale:2
+            rotate 旋转 例：rotate:'1turn'（旋转一周）
+            */
+        }
+        CSStransf();   // 立即执行
+    </div>
+
+    @*JAVASCRIPT对象属性*@
+    <div class="js-code" data-id="JSobjectProp">
+        function JSobjProp() {
+            var myObject = {
+                prop1: 0,
+                prop2: '0%'
+            }
+            var JSobjectProp = anime({
+            targets: myObject,
+            prop1: 50,
+            prop2: '100%',
+            easing: 'linear',
+            round: 1,
+            update: function () {
+                var el = document.querySelector('#JSobjectProp pre');
+                el.innerHTML = JSON.stringify(myObject);
+                }
+            });
+        }
+        JSobjProp();   // 立即执行
+    </div>
+
+    @*DOM属性*@
+    <div class="js-code" data-id="domAttributes">        
+        function domAttr() {
+            var domAttributes = anime({
+                targets: '#domAttributes input',
+                value: 1000,
+                round: 1,
+                easing: 'easeInOutExpo'
+            });
+        }
+        domAttr();   // 立即执行
+    </div>
+
+    @*SVG属性*@
+    <div class="js-code" data-id="svgAttributes">                
+        function svgAttr() {
+            var svgAttributes = anime({
+                targets: '#svgAttributes polygon',
+                points: '64 128 8.574 96 8.574 32 64 0 119.426 32 119.426 96',
+                easing: 'easeInOutExpo'
+            });
+        }
+        svgAttr();   // 立即执行
+    </div>
+}
+
+@section scripts {
+
+<script>
+    // CSS
+    function cssProp() {
+        $('#cssSelector .el').css("opacity", "1");
+        $('#cssSelector .el').css("left", "0px");
+        $('#cssSelector .el').css("background-color", "#FF7C72");
+        $('#cssSelector .el').css("borderRadius", "0em");
+        //$('#cssSelector .el').css({ 'opacity': '1', 'left': '0px', 'background-color': '#FF7C72', 'borderRadius': '0em' });
+        var cssProperties = anime({
+            targets: '#cssProperties .el',
+            opacity: .5,
+            left: '240px',
+            backgroundColor: '#555555',
+            borderRadius: ['0em', '2em'],
+            easing: 'easeInOutQuad'
+        });
+        /*
+        opacity 透明度 0~1
+        backgroundColor
+        fontSize
+        borderRadius
+        backgroundColor
+        等...
+        */
+    }
+    cssProp();   // 立即执行
+
+    // CSS TRANSFORMS变换
+    function CSStransf() {
+        $('#CSStransforms .el').css('translateX', '0px').css('scale', '1');
+        var CSStransforms = anime({
+            targets: '#CSStransforms .el',
+            translateX: 250,
+            scale: 2,
+            rotate: '1turn'
+        });
+        /*
+        translateX x轴的值
+        translateY y轴的值
+        retate 旋转
+        scale 大小变换 例：scale:2
+        rotate 旋转 例：rotate:'1turn'（旋转一周）
+         */
+    }
+    CSStransf();   // 立即执行
+
+    // JAVASCRIPT对象属性
+    function JSobjProp() {
+        var myObject = {
+            prop1: 0,
+            prop2: '0%'
+        }
+        var JSobjectProp = anime({
+            targets: myObject,
+            prop1: 50,
+            prop2: '100%',
+            easing: 'linear',
+            round: 1,
+            update: function () {
+                var el = document.querySelector('#JSobjectProp pre');
+                el.innerHTML = JSON.stringify(myObject);
+            }
+        });
+    }
+    JSobjProp();   // 立即执行
+
+    // DOM属性
+    function domAttr() {
+        var domAttributes = anime({
+            targets: '#domAttributes input',
+            value: 1000,
+            round: 1,
+            easing: 'easeInOutExpo'
+        });
+    }
+    domAttr();   // 立即执行
+
+    // SVG属性
+    function svgAttr() {
+        var svgAttributes = anime({
+            targets: '#svgAttributes polygon',
+            points: '64 128 8.574 96 8.574 32 64 0 119.426 32 119.426 96',
+            easing: 'easeInOutExpo'
+        });
+    }
+    svgAttr();   // 立即执行
+
+    $(document).ready(function () {
+        // CSS 单击再次动作
+        $('#cssProperties').click(function () {
+            cssProp();
+        })
+
+        // CSS TRANSFORMS变换 单击再次动作
+        $('#CSStransforms').click(function () {
+            CSStransf();
+        })
+
+        // JAVASCRIPT对象属性 单击再次动作
+        $('#JSobjectProp').click(function () {
+            JSobjProp();
+        })
+
+        // DOM属性 单击再次动作
+        $('#domAttributes').click(function () {
+            domAttr();
+        })
+
+        // SVG属性 单击再次动作
+        $('#svgAttributes').click(function () {
+            svgAttr();
+        })
+    });
+</script>
+
+}

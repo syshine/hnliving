@@ -93,6 +93,89 @@
 
 </div>
 
+@section JsCode {
+    @*CSS选择器*@
+    <div class="js-code" data-id="cssSelector">
+        function cssSel() {
+            $('#cssSelector .el').css('transform', 'translateX(0px)');
+            var cssSelector = anime({
+            targets: '#cssSelector .el',
+            translateX: 250
+            });
+        }
+        cssSel();   // 立即执行
+    </div>
+
+    @*DOM元素*@
+    <div class="js-code" data-id="domNode">
+        function domNode() {
+            $('#domNode .el').css('transform', 'translateX(0px)');
+
+            var el = document.querySelector('#domNode .el');
+
+            var domNode = anime({
+            targets: el,
+            translateX: 250
+            });
+        }
+        domNode();   // 立即执行
+    </div>
+
+    @*DOM元素列表*@
+    <div class="js-code" data-id="nodeList">
+        function nodeList() {
+            $('#nodeList .el').css('transform', 'translateX(0px)');
+
+            var els = document.querySelectorAll('#nodeList .el');
+
+            var nodeList = anime({
+            targets: els,
+            translateX: 250
+            });
+        }
+        nodeList();   // 立即执行
+    </div>
+
+    @*JAVASCRIPT对象*@
+    <div class="js-code" data-id="JSobject">        
+        function jsObj() {
+            var obj = { charged: '0%' };
+
+            var JSobject = anime({
+                targets: obj,
+                charged: '100%',
+                round: 1,
+                easing: 'linear',
+                update: function () {
+                var el = document.querySelector('#JSobject pre');
+                el.innerHTML = JSON.stringify(obj);
+                }
+            });
+            /*
+            round 通过舍入值来删除小数
+            默认 false
+            类型 number，boolean，function(target, index, totalTargets)
+            10次幂 例：round:100 取两位小数
+            */
+        }
+        jsObj();   // 立即执行
+    </div>
+
+    @*JAVASCRIPT数组*@
+    <div class="js-code" data-id="JSarray">                
+        function jsArr() {
+            $('#JSarray .square').css('transform', 'translateX(0px)');
+
+            var el = document.querySelector('#JSarray .el-01');
+
+            var JSarray = anime({
+            targets: [el, '#JSarray .el-02', '#JSarray .el-03'],
+            translateX: 250
+            });
+        }
+        jsArr();   // 立即执行
+    </div>
+}
 
 @section scripts {
 

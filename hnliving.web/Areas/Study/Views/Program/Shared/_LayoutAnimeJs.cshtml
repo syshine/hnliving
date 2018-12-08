@@ -151,6 +151,10 @@
         <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
     </footer>
 
+    <div id="js-code-wrap" class="d-none">
+        @RenderSection("JsCode", required: false)
+    </div>
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/anime-js")
@@ -189,6 +193,11 @@
 
                 // 获取和显示当前按钮的html
                 $("#show-code").text($(this).html());
+
+                // 获取和显示当前按钮的jscode
+                var jsId = $(this).children("div").eq(0).attr("id");
+                var jscode = $("#js-code-wrap .js-code[data-id=" + jsId + "]").html();
+                $("#show-js").text(jscode);
 
                 // 内容变化时引起高度变化
                 code_height = $("#code-wrap").height();//show-code
@@ -238,18 +247,18 @@
         function fixBottom() {
             //获取show-code的高度，innerHeight包含padding，$("#show-code").height()不包含padding
             var code_height = $("#code-wrap").innerHeight();//show-code
-            console.log("code_height的高度：" + code_height);
+            //console.log("code_height的高度：" + code_height);
 
             //获取 id="ref-loc" 元素，offsetTop是当前元素·距离网页窗口顶部的距离
             var offset_top = $("#ref-loc").offset().top;
-            console.log("ref-loc距离顶部的距离：" + offset_top);
+            //console.log("ref-loc距离顶部的距离：" + offset_top);
 
             var doc_height = $(window).height();
-            console.log("height：" + doc_height);
+            //console.log("height：" + doc_height);
 
             //获取垂直滚动的距离（scrollTop()是从顶部开始滚动产生的距离）
             var scroll_top = $(document).scrollTop();
-            console.log("滚动的距离:" + scroll_top);
+            //console.log("滚动的距离:" + scroll_top);
 
             if (doc_height + scroll_top < offset_top + code_height) {
                 // 到达顶部位置，动态的添加元素属性，并给元素添加相应的元素样式
