@@ -46,7 +46,7 @@
     </div>
 
     <h4 class="mt-4">CSS TRANSFORMS变换</h4>
-    <div class="code-div">
+    <div class="code-div mt-5 mb-5">
         <div id="CSStransforms">
             <div class="square el"></div>
         </div>
@@ -62,7 +62,7 @@
     <h4 class="mt-4">DOM属性</h4>
     <div class="code-div">
         <div id="domAttributes">
-            <input class="text-output" value="4">
+            <input class="text-output" value="3">
         </div>
     </div>
 
@@ -174,11 +174,6 @@
 <script>
     // CSS
     function cssProp() {
-        $('#cssSelector .el').css("opacity", "1");
-        $('#cssSelector .el').css("left", "0px");
-        $('#cssSelector .el').css("background-color", "#FF7C72");
-        $('#cssSelector .el').css("borderRadius", "0em");
-        //$('#cssSelector .el').css({ 'opacity': '1', 'left': '0px', 'background-color': '#FF7C72', 'borderRadius': '0em' });
         var cssProperties = anime({
             targets: '#cssProperties .el',
             opacity: .5,
@@ -200,7 +195,6 @@
 
     // CSS TRANSFORMS变换
     function CSStransf() {
-        $('#CSStransforms .el').css('translateX', '0px').css('scale', '1');
         var CSStransforms = anime({
             targets: '#CSStransforms .el',
             translateX: 250,
@@ -261,11 +255,17 @@
     $(document).ready(function () {
         // CSS 单击再次动作
         $('#cssProperties').click(function () {
+            //$('#cssProperties .el').css("opacity", "1");
+            //$('#cssProperties .el').css("left", "0px");
+            //$('#cssProperties .el').css("background-color", "#FF7C72");
+            //$('#cssProperties .el').css("borderRadius", "0em");
+            $('#cssProperties .el').css({ 'opacity': '1', 'left': '0px', 'background-color': '#FF7C72', 'borderRadius': '0em' });
             cssProp();
         })
 
         // CSS TRANSFORMS变换 单击再次动作
         $('#CSStransforms').click(function () {
+            $('#CSStransforms .el').css('transform', 'translateX(0px) scale(1)');
             CSStransf();
         })
 
@@ -276,11 +276,13 @@
 
         // DOM属性 单击再次动作
         $('#domAttributes').click(function () {
+            $('#domAttributes input').attr('value', '3');
             domAttr();
         })
 
         // SVG属性 单击再次动作
         $('#svgAttributes').click(function () {
+            $('#svgAttributes polygon').attr('points', '64 68.86326446301015 8.574 99.98495522486455 63.23961577469183 67.54580060579175 64 3.984955224864545 64.76038422530817 67.54580060579175 119.426 99.98495522486455');
             svgAttr();
         })
     });
