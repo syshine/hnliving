@@ -1,0 +1,439 @@
+﻿
+@{
+    ViewBag.Title = "TimeLine";
+    Layout = "~/Areas/Study/Views/Program/Shared/_LayoutAnimeJs.cshtml";
+}
+
+
+<h2>动画赋值</h2>
+
+
+<div class="col-12">
+    <h4 class="mt-4">无单位数值</h4>
+    <div class="code-div">
+        <div id="unitlessValue">
+            <div class="square shadow bg-thin-dark-green-5"></div>
+            <div class="square el bg-thin-dark-green"></div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">有单位数值</h4>
+    <div class="code-div">
+        <div id="specificUnitValue">
+            <div class="square shadow bg-thin-dark-green-5"></div>
+            <div class="square el bg-thin-dark-green"></div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">相对数值</h4>
+    <div class="code-div">
+        <div id="relativeValues">
+            <div class="square shadow bg-thin-dark-green-5"></div>
+            <div class="square el bg-thin-dark-green"></div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">颜色值</h4>
+    <div class="code-div">
+        <div id="colors">
+            <div class="line">
+                <div class="square shadow bg-thin-dark-green-5"></div>
+                <div class="square el bg-thin-dark-green"></div>
+            </div>
+            <div class="line">
+                <div class="square shadow bg-thin-dark-green-5"></div>
+                <div class="square el bg-thin-dark-green"></div>
+            </div>
+            <div class="line">
+                <div class="square shadow bg-thin-dark-green-5"></div>
+                <div class="square el bg-thin-dark-green"></div>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">设定动画初始值</h4>
+    <div class="code-div">
+        <div id="specificInitialValue">
+            <div class="square shadow bg-thin-dark-green-5"></div>
+            <div class="square el bg-thin-dark-green"></div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">函数返回数值</h4>
+    <div class="code-div">
+        <div id="functionBasedPropVal">
+            <div class="line">
+                <div class="square shadow bg-thin-dark-green-5"></div>
+                <div data-x="160" class="small square el bg-thin-dark-green"></div>
+            </div>
+            <div class="line">
+                <div class="square shadow bg-thin-dark-green-5"></div>
+                <div data-x="80" class="small square el bg-thin-dark-green"></div>
+            </div>
+            <div class="line">
+                <div class="square shadow bg-thin-dark-green-5"></div>
+                <div data-x="250" class="small square el bg-thin-dark-green"></div>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">关键帧</h4>
+    <div class="code-div">
+        <div id="keyframes">
+            <div class="square shadow bg-thin-dark-green-5"></div>
+            <div class="square el bg-thin-dark-green"></div>
+        </div>
+    </div>
+</div>
+
+@section JsCode {
+    @*无单位数值*@
+    <div class="js-code" data-id="unitlessValue">
+        // 无单位数值
+        function unitlessVal() {
+            var unitlessValue = anime({
+                targets: '#unitlessValue .el',
+                translateX: 250,
+                rotate: 540
+            });
+        }
+        unitlessVal();   // 立即执行
+    </div>
+
+    @*有单位数值*@
+    <div class="js-code" data-id="specificUnitValue">
+        // 有单位数值
+        function specUnitVal() {
+            var specificUnitValue = anime({
+                targets: '#specificUnitValue .el',
+                translateX: '20em',
+                rotate: '1.5turn'
+            });
+        }
+        specUnitVal();   // 立即执行
+    </div>
+    
+    @*相对数值*@
+    <div class="js-code" data-id="relativeValues">
+        // 相对数值
+        function relVal() {
+            var relativeValues = anime({
+                targets: '#relativeValues .el',
+                translateX: {
+                    value: '+=150',
+                    duration: 1000
+                },
+                width: {
+                    value: '-=10',
+                    duration: 1800,
+                    easing: 'easeInOutSine'
+                },
+                height: {
+                    value: '*=4',
+                    duration: 1800,
+                    easing: 'easeInOutSine'
+                },
+                direction: 'alternate'
+            });
+        }
+        relVal();   // 立即执行
+    </div>
+
+    @*颜色值*@
+    <div class="js-code" data-id="colors">
+        // 颜色值
+        function clrs() {
+            var colors = anime({
+                targets: '#colors .el',
+                translateX: 250,
+                backgroundColor: [
+                { value: '#FFF' }, // Or #FFFFFF
+                { value: 'rgb(255, 0, 0)' },
+                { value: 'hsl(100, 60%, 60%)' }
+                ],
+                easing: 'linear',
+                direction: 'alternate',
+                duration: 2000
+            });
+        }
+        clrs();   // 立即执行
+    </div>
+
+    @*设定动画初始值*@
+    <div class="js-code" data-id="specificInitialValue">        
+        // 设定动画初始值
+        function specInitValue() {
+            var specificInitialValue = anime({
+                targets: '#specificInitialValue .el',
+                translateX: [100, 250],
+                delay: 500,
+                direction: 'alternate',
+                loop: true
+            });
+            /*
+            anime({
+            targets: 'div',
+            translateX: [100, 200], // Translate X from 100 to 200
+            rotate: ['.5turn', '1turn'], // Rotate from 180deg to 360deg
+            scale: ['*=2', 1], // Scale from 2 times the original value to 1,
+            backgroundColor: ['rgb(255,0,0)', '#FFF'],
+            duration: 1500
+            });
+            */
+        }
+        specInitValue();   // 立即执行
+    </div>
+
+    @*函数返回数值*@
+    <div class="js-code" data-id="JSarray">                
+        // 函数返回数值
+        function funcProVal() {
+            var functionBasedPropVal = anime({
+                targets: '#funcProVal .el',
+                translateX: function (el) {
+                    return el.getAttribute('data-x');
+                },
+                translateY: function (el, i) {
+                    return 50 + (-50 * i);
+                },
+                scale: function (el, i, l) {
+                    return (l - i) + .25;
+                },
+                rotate: function () { return anime.random(-360, 360); },
+                duration: function () { return anime.random(1200, 1800); },
+                duration: function () { return anime.random(800, 1600); },
+                delay: function () { return anime.random(0, 1000); },
+                direction: 'alternate',
+                loop: true
+            });
+        }
+        funcProVal();   // 立即执行
+    </div>
+
+    @*关键帧*@
+    <div class="js-code" data-id="unitlessValue">
+        // 关键帧
+        function keyFrm() {
+            var keyframes = anime({
+                targets: '#keyframes .el',
+                translateX: [
+                    { value: 250, duration: 1000, delay: 500, elasticity: 0 },
+                    { value: 0, duration: 1000, delay: 500, elasticity: 0 }
+                ],
+                translateY: [
+                    { value: -40, duration: 500, elasticity: 100 },
+                    { value: 40, duration: 500, delay: 1000, elasticity: 100 },
+                    { value: 0, duration: 500, delay: 1000, elasticity: 100 }
+                ],
+                scaleX: [
+                    { value: 4, duration: 100, delay: 500, easing: 'easeOutExpo' },
+                    { value: 1, duration: 900, elasticity: 300 },
+                    { value: 4, duration: 100, delay: 500, easing: 'easeOutExpo' },
+                    { value: 1, duration: 900, elasticity: 300 }
+                ],
+                scaleY: [
+                    { value: [1.75, 1], duration: 500 },
+                    { value: 2, duration: 50, delay: 1000, easing: 'easeOutExpo' },
+                    { value: 1, duration: 450 },
+                    { value: 1.75, duration: 50, delay: 1000, easing: 'easeOutExpo' },
+                    { value: 1, duration: 450 }
+                ],
+                loop: true
+            });
+        }
+        keyFrm();   // 立即执行
+    </div>
+}
+
+@section scripts {
+
+<script>
+    // 无单位数值
+    function unitlessVal() {
+        var unitlessValue = anime({
+            targets: '#unitlessValue .el',
+            translateX: 250,
+            rotate: 540
+        });
+    }
+    unitlessVal();   // 立即执行
+
+    // 有单位数值
+    function specUnitVal() {
+        var specificUnitValue = anime({
+            targets: '#specificUnitValue .el',
+            translateX: '20em',
+            rotate: '1.5turn'
+        });
+    }
+    specUnitVal();   // 立即执行
+
+    // 相对数值
+    function relVal() {
+        var relativeValues = anime({
+            targets: '#relativeValues .el',
+            translateX: {
+                value: '+=150',
+                duration: 1000
+            },
+            width: {
+                value: '-=10',
+                duration: 1800,
+                easing: 'easeInOutSine'
+            },
+            height: {
+                value: '*=4',
+                duration: 1800,
+                easing: 'easeInOutSine'
+            },
+            direction: 'alternate'
+        });
+    }
+    relVal();   // 立即执行
+
+    // 颜色值
+    function clrs() {
+        var colors = anime({
+            targets: '#colors .el',
+            translateX: 250,
+            backgroundColor: [
+              { value: '#FFF' }, // Or #FFFFFF
+              { value: 'rgb(255, 0, 0)' },
+              { value: 'hsl(100, 60%, 60%)' }
+            ],
+            easing: 'linear',
+            direction: 'alternate',
+            duration: 2000
+        });
+    }
+    clrs();   // 立即执行
+
+    // 设定动画初始值
+    function specInitValue() {
+        var specificInitialValue = anime({
+            targets: '#specificInitialValue .el',
+            translateX: [100, 250],
+            delay: 500,
+            direction: 'alternate',
+            loop: true
+        });
+        /*
+        anime({
+          targets: 'div',
+          translateX: [100, 200], // Translate X from 100 to 200
+          rotate: ['.5turn', '1turn'], // Rotate from 180deg to 360deg
+          scale: ['*=2', 1], // Scale from 2 times the original value to 1,
+          backgroundColor: ['rgb(255,0,0)', '#FFF'],
+          duration: 1500
+        });
+        */
+    }
+    specInitValue();   // 立即执行
+
+    // 函数返回数值
+    function funcProVal() {
+        var functionBasedPropVal = anime({
+            targets: '#funcProVal .el',
+            translateX: function (el) {
+                return el.getAttribute('data-x');
+            },
+            translateY: function (el, i) {
+                return 50 + (-50 * i);
+            },
+            scale: function (el, i, l) {
+                return (l - i) + .25;
+            },
+            rotate: function () { return anime.random(-360, 360); },
+            duration: function () { return anime.random(1200, 1800); },
+            duration: function () { return anime.random(800, 1600); },
+            delay: function () { return anime.random(0, 1000); },
+            direction: 'alternate',
+            loop: true
+        });
+    }
+    funcProVal();   // 立即执行
+
+    // 关键帧
+    function keyFrm() {
+        var keyframes = anime({
+            targets: '#keyframes .el',
+            translateX: [
+              { value: 250, duration: 1000, delay: 500, elasticity: 0 },
+              { value: 0, duration: 1000, delay: 500, elasticity: 0 }
+            ],
+            translateY: [
+              { value: -40, duration: 500, elasticity: 100 },
+              { value: 40, duration: 500, delay: 1000, elasticity: 100 },
+              { value: 0, duration: 500, delay: 1000, elasticity: 100 }
+            ],
+            scaleX: [
+              { value: 4, duration: 100, delay: 500, easing: 'easeOutExpo' },
+              { value: 1, duration: 900, elasticity: 300 },
+              { value: 4, duration: 100, delay: 500, easing: 'easeOutExpo' },
+              { value: 1, duration: 900, elasticity: 300 }
+            ],
+            scaleY: [
+              { value: [1.75, 1], duration: 500 },
+              { value: 2, duration: 50, delay: 1000, easing: 'easeOutExpo' },
+              { value: 1, duration: 450 },
+              { value: 1.75, duration: 50, delay: 1000, easing: 'easeOutExpo' },
+              { value: 1, duration: 450 }
+            ],
+            loop: true
+        });
+    }
+    keyFrm();   // 立即执行
+
+    $(document).ready(function () {
+        // 无单位数值 单击再次动作
+        $('#unitlessValue').click(function () {
+            $(this).children('.el').css('transform', 'translateX(0px)');
+
+            unitlessVal();
+        })
+
+        // 有单位数值 单击再次动作
+        $('#specificUnitValue').click(function () {
+            $(this).children('.el').css('transform', 'translateX(0px)');
+
+            specUnitVal();
+        })
+
+        // 相对数值 单击再次动作
+        $('#relativeValues').click(function () {
+            $(this).children('.el').css('transform', 'translateX(0px)');
+
+            relVal();
+        })
+
+        // 颜色值 单击再次动作
+        $('#colors').click(function () {
+            $(this).children('.el').css('transform', 'translateX(0px)');
+
+            clrs();
+        })
+
+        // 设定动画初始值 单击再次动作
+        $('#specificInitialValue').click(function () {
+            $(this).children('.el').css('transform', 'translateX(100px)');
+
+            specInitValue();
+        })
+
+        // 函数返回数值 单击再次动作
+        $('#funcProVal').click(function () {
+            $(this).find('.el').css('transform', 'translateX(0px), translateY(0px)');
+
+            funcProVal();
+        })
+
+        // 关键帧 单击再次动作
+        $('#keyframes').click(function () {
+            $(this).find('.el').css('transform', 'translateX(0px), translateY(0px)');
+
+            keyFrm();
+        })
+    });
+</script>
+
+}

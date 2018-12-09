@@ -218,6 +218,11 @@
     <Content Include="Areas\Study\Views\Program\Bootstrap\TabPane.cshtml" />
     <Content Include="Areas\Study\Views\Program\Shared\_LayoutAnimeJs.cshtml" />
     <Content Include="Areas\Study\Views\Program\AnimeJs\Attribute.cshtml" />
+    <Content Include="Areas\Study\Views\Program\AnimeJs\Parameter.cshtml" />
+    <Content Include="Areas\Study\Views\Program\AnimeJs\FuncRetPar.cshtml" />
+    <Content Include="Areas\Study\Views\Program\AnimeJs\DirAndLoop.cshtml" />
+    <Content Include="Areas\Study\Views\Program\AnimeJs\Assign.cshtml" />
+    <Content Include="Areas\Study\Views\Program\AnimeJs\TimeLine.cshtml" />
     <None Include="Properties\PublishProfiles\hnl-c.pubxml" />
     <None Include="Properties\PublishProfiles\hnl.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

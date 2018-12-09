@@ -1,75 +1,47 @@
 ﻿
 @{
-    ViewBag.Title = "Targets";
+    ViewBag.Title = "Attribute";
     Layout = "~/Areas/Study/Views/Program/Shared/_LayoutAnimeJs.cshtml";
 }
 
-@section csses {
-    <style>
-        .square,
-        .circle {
-            pointer-events: none;
-            position: relative;
-            width: 28px;
-            height: 28px;
-            margin: 1px;
-            background-color: #FF7C72;/*currentColor*/
-            font-size: 12px;
-        }
-
-        .small {
-            width: 18px;
-            height: 18px;
-        }
-
-        .large {
-            width: 48px;
-            height: 48px;
-        }
-
-        .line {
-          width: 100%;
-          padding: 1px 0px;
-        }
-    </style>
-}
-
-<h2>动画目标</h2>
+<h2>属性变化</h2>
 
 
 <div class="col-12">
-    <h4 class="mt-4" id="cssSel">CSS</h4>
+    <h4 class="mt-4">CSS</h4>
     <div class="code-div">
         <div id="cssProperties">
-            <div class="large square el"></div>
+            <div class="large square shadow bg-thin-orange-5"></div>
+            <div class="large square el bg-thin-orange"></div>
         </div>
     </div>
 
     <h4 class="mt-4">CSS TRANSFORMS变换</h4>
     <div class="code-div mt-5 mb-5">
         <div id="CSStransforms">
-            <div class="square el"></div>
+            <div class="square shadow bg-thin-orange-5"></div>
+            <div class="square el bg-thin-orange"></div>
         </div>
     </div>
 
     <h4 class="mt-4">JAVASCRIPT对象属性</h4>
     <div class="code-div">
         <div id="JSobjectProp">
-            <pre>{"prop1":5,"prop2":"10%"}</pre>
+            <pre class="text-thin-orange">{"prop1":5,"prop2":"10%"}</pre>
         </div>
     </div>
 
     <h4 class="mt-4">DOM属性</h4>
     <div class="code-div">
         <div id="domAttributes">
-            <input class="text-output" value="3">
+            <input class="text-output text-thin-orange" value="3">
         </div>
     </div>
 
     <h4 class="mt-4">SVG属性</h4>
     <div class="code-div">
         <div id="svgAttributes">
-            <svg width="128" height="128" viewBox="0 0 128 128">
+            <svg width="128" height="128" viewBox="0 0 128 128" class="text-thin-orange">
                 <polygon points="64 68.86326446301015 8.574 99.98495522486455 63.23961577469183 67.54580060579175 64 3.984955224864545 64.76038422530817 67.54580060579175 119.426 99.98495522486455 " fill="currentColor"></polygon>
             </svg>
         </div>
@@ -255,17 +227,13 @@
     $(document).ready(function () {
         // CSS 单击再次动作
         $('#cssProperties').click(function () {
-            //$('#cssProperties .el').css("opacity", "1");
-            //$('#cssProperties .el').css("left", "0px");
-            //$('#cssProperties .el').css("background-color", "#FF7C72");
-            //$('#cssProperties .el').css("borderRadius", "0em");
-            $('#cssProperties .el').css({ 'opacity': '1', 'left': '0px', 'background-color': '#FF7C72', 'borderRadius': '0em' });
+            $(this).children('.el').css({ 'opacity': '1', 'left': '0px', 'background-color': '#FF7C72', 'borderRadius': '0em' });
             cssProp();
         })
 
         // CSS TRANSFORMS变换 单击再次动作
         $('#CSStransforms').click(function () {
-            $('#CSStransforms .el').css('transform', 'translateX(0px) scale(1)');
+            $(this).children('.el').css('transform', 'translateX(0px) scale(1)');
             CSStransf();
         })
 
@@ -276,13 +244,13 @@
 
         // DOM属性 单击再次动作
         $('#domAttributes').click(function () {
-            $('#domAttributes input').attr('value', '3');
+            $(this).children('input').attr('value', '3');
             domAttr();
         })
 
         // SVG属性 单击再次动作
         $('#svgAttributes').click(function () {
-            $('#svgAttributes polygon').attr('points', '64 68.86326446301015 8.574 99.98495522486455 63.23961577469183 67.54580060579175 64 3.984955224864545 64.76038422530817 67.54580060579175 119.426 99.98495522486455');
+            $(this).find('polygon').attr('points', '64 68.86326446301015 8.574 99.98495522486455 63.23961577469183 67.54580060579175 64 3.984955224864545 64.76038422530817 67.54580060579175 119.426 99.98495522486455');
             svgAttr();
         })
     });

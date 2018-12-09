@@ -1,0 +1,353 @@
+﻿
+@{
+    ViewBag.Title = "DirAndLoop";
+    Layout = "~/Areas/Study/Views/Program/Shared/_LayoutAnimeJs.cshtml";
+}
+
+
+<h2>方向和循环</h2>
+
+
+<div class="col-12">
+    <h4 class="mt-4">ALTERNATE（回复）方向</h4>
+    <div class="code-div">
+        <div id="alternate">
+            <div class="square shadow bg-thin-green-5"></div>
+            <div class="square el bg-thin-green"></div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">REVERSE（反）方向</h4>
+    <div class="code-div">
+        <div id="reverse">
+            <div class="square shadow bg-thin-green-5"></div>
+            <div class="square el bg-thin-green"></div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">LOOP(循环)一定次数</h4>
+    <div class="code-div">
+        <div id="loop">
+            <div class="square shadow bg-thin-green-5"></div>
+            <div class="square el bg-thin-green"></div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">回复循环</h4>
+    <div class="code-div">
+        <div id="loopAlternate">
+            <div class="square shadow bg-thin-green-5"></div>
+            <div class="square el bg-thin-green"></div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">反向循环</h4>
+    <div class="code-div">
+        <div id="loopReverse">
+            <div class="square shadow bg-thin-green-5"></div>
+            <div class="square el bg-thin-green"></div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">无限循环</h4>
+    <div class="code-div">
+        <div id="infiniteLoop">
+            <div class="square shadow bg-thin-green-5"></div>
+            <div class="square el bg-thin-green"></div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">无限反复（ALTERNATE）循环</h4>
+    <div class="code-div">
+        <div id="infiniteLoopAlternate">
+            <div class="square shadow bg-thin-green-5"></div>
+            <div class="square el bg-thin-green"></div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">无限反方向（REVERSE）循环</h4>
+    <div class="code-div">
+        <div id="infiniteLoopReverse">
+            <div class="square shadow bg-thin-green-5"></div>
+            <div class="square el bg-thin-green"></div>
+        </div>
+    </div>
+</div>
+
+@section JsCode {
+    @*ALTERNATE（回复）方向*@
+    <div class="js-code" data-id="alternate">
+        // ALTERNATE（回复）方向
+        function alt() {
+            var alternate = anime({
+                targets: '#alternate .el',
+                translateX: 250,
+                direction: 'alternate'
+            });
+        /*
+        direction 方向
+        默认 'normal'
+        类型 'normal', 'reverse' 反向, 'alternate'会还原
+        */
+        }
+        alt();   // 立即执行
+    </div>
+
+    @*REVERSE（反）方向*@
+    <div class="js-code" data-id="reverse">
+        // REVERSE（反）方向
+        function rev() {
+            var reverse = anime({
+                targets: '#reverse .el',
+                translateX: 250,
+                direction: 'reverse'
+            });
+        }
+        rev();   // 立即执行
+    </div>
+
+    @*LOOP(循环)一定次数*@
+    <div class="js-code" data-id="loop">
+        // LOOP(循环)一定次数
+            function lp() {
+                var loop = anime({
+                targets: '#loop .el',
+                translateX: 250,
+                loop: 3
+            });
+        /*
+        loop 是否循环/总共循环次数，包括第一次
+        默认 false
+        number，boolean
+        */
+        }
+        lp();   // 立即执行
+    </div>
+
+    @*回复循环*@
+    <div class="js-code" data-id="loopAlternate">        
+        // 回复循环
+        function lpAlt() {
+            var loopAlternate = anime({
+                targets: '#loopAlternate .el',
+                translateX: 250,
+                loop: 3,
+                direction: 'alternate'
+            });
+        }
+        lpAlt();   // 立即执行
+    </div>
+
+    @*反向循环*@
+    <div class="js-code" data-id="loopReverse">                
+        // 反向循环
+        function lpRev() {
+            var loopReverse = anime({
+                targets: '#loopReverse .el',
+                translateX: 250,
+                loop: 3,
+                direction: 'reverse'
+            });
+        }
+        lpRev();   // 立即执行
+    </div>
+
+    @*无限循环*@
+    <div class="js-code" data-id="infiniteLoop">                
+        // 无限循环
+        function infLp() {
+            var infiniteLoop = anime({
+                targets: '#infiniteLoop .el',
+                translateX: 250,
+                loop: true
+            });
+        }
+        infLp();   // 立即执行
+    </div>
+
+    @*无限反复（ALTERNATE）循环*@
+    <div class="js-code" data-id="infiniteLoopAlternate">                
+        // 无限反复（ALTERNATE）循环
+        function infLpAlt() {
+            var infiniteLoopAlternate = anime({
+                targets: '#infiniteLoopAlternate .el',
+                translateX: 250,
+                direction: 'alternate',
+                loop: true
+            });
+        }
+        infLpAlt();   // 立即执行
+    </div>
+
+    @*无限反方向（REVERSE）循环*@
+    <div class="js-code" data-id="infiniteLoopReverse">                
+        // 无限反方向（REVERSE）循环
+        function infLpARev() {
+            var infiniteLoopReverse = anime({
+                targets: '#infiniteLoopReverse .el',
+                translateX: 250,
+                direction: 'reverse',
+                loop: true
+            });
+        }
+        infLpARev();   // 立即执行
+    </div>
+}
+
+@section scripts {
+
+<script>
+    // ALTERNATE（回复）方向
+    function alt() {
+        var alternate = anime({
+            targets: '#alternate .el',
+            translateX: 250,
+            direction: 'alternate'
+        });
+        /*
+        direction 方向
+        默认 'normal'
+        类型 'normal', 'reverse' 反向, 'alternate'会还原
+        */
+    }
+    alt();   // 立即执行
+
+    // REVERSE（反）方向
+    function rev() {
+        var reverse = anime({
+            targets: '#reverse .el',
+            translateX: 250,
+            direction: 'reverse'
+        });
+    }
+    rev();   // 立即执行
+
+    // LOOP(循环)一定次数
+    function lp() {
+        var loop = anime({
+            targets: '#loop .el',
+            translateX: 250,
+            loop: 3
+        });
+        /*
+        loop 是否循环/总共循环次数，包括第一次
+        默认 false
+        number，boolean
+        */
+    }
+    lp();   // 立即执行
+
+    // 回复循环
+    function lpAlt() {
+        var loopAlternate = anime({
+            targets: '#loopAlternate .el',
+            translateX: 250,
+            loop: 3,
+            direction: 'alternate'
+        });
+    }
+    lpAlt();   // 立即执行
+
+    // 反向循环
+    function lpRev() {
+        var loopReverse = anime({
+            targets: '#loopReverse .el',
+            translateX: 250,
+            loop: 3,
+            direction: 'reverse'
+        });
+    }
+    lpRev();   // 立即执行
+
+    // 无限循环
+    function infLp() {
+        var infiniteLoop = anime({
+            targets: '#infiniteLoop .el',
+            translateX: 250,
+            loop: true
+        });
+    }
+    infLp();   // 立即执行
+
+    // 无限反复（ALTERNATE）循环
+    function infLpAlt() {
+        var infiniteLoopAlternate = anime({
+            targets: '#infiniteLoopAlternate .el',
+            translateX: 250,
+            direction: 'alternate',
+            loop: true
+        });
+    }
+    infLpAlt();   // 立即执行
+
+    // 无限反方向（REVERSE）循环
+    function infLpARev() {
+        var infiniteLoopReverse = anime({
+            targets: '#infiniteLoopReverse .el',
+            translateX: 250,
+            direction: 'reverse',
+            loop: true
+        });
+    }
+    infLpARev();   // 立即执行
+
+    $(document).ready(function () {
+        // ALTERNATE（回复）方向 单击再次动作
+        $('#alternate').click(function () {
+            $(this).children('.el').css('transform', 'translateX(0px)');
+
+            alt();
+        })
+
+        // REVERSE（反）方向 单击再次动作
+        $('#reverse').click(function () {
+            $(this).children('.el').css('transform', 'translateX(0px)');
+
+            rev();
+        })
+
+        // LOOP(循环)一定次数 单击再次动作
+        $('#loop').click(function () {
+            $(this).children('.el').css('transform', 'translateX(0px)');
+
+            lp();
+        })
+
+        // 回复循环 单击再次动作
+        $('#loopAlternate').click(function () {
+            $(this).children('.el').css('transform', 'translateX(0px)');
+
+            lpAlt();
+        })
+
+        // 反向循环 单击再次动作
+        $('#loopReverse').click(function () {
+            $(this).find('.el').css('transform', 'translateX(0px)');
+
+            lpRev();
+        })
+
+        // 无限循环 单击再次动作
+        $('#infiniteLoop').click(function () {
+            $(this).find('.el').css('transform', 'translateX(0px)');
+
+            infLp();
+        })
+
+        // 无限反复（ALTERNATE）循环 单击再次动作
+        $('#infiniteLoopAlternate').click(function () {
+            $(this).find('.el').css('transform', 'translateX(0px)');
+
+            infLpAlt();
+        })
+
+        // 无限反方向（REVERSE）循环 单击再次动作
+        $('#infiniteLoopReverse').click(function () {
+            //$(this).find('.el').css('transform', 'translateX(0px)');
+
+            infLpRev();
+        })
+    });
+</script>
+
+}

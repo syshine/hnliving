@@ -1,0 +1,266 @@
+﻿
+@{
+    ViewBag.Title = "Parameter";
+    Layout = "~/Areas/Study/Views/Program/Shared/_LayoutAnimeJs.cshtml";
+}
+
+<h2>动画参数</h2>
+
+
+<div class="col-12">
+    <h4 class="mt-4">DURATION（动画持续时间）</h4>
+    <div class="code-div">
+        <div id="duration">
+            <div class="square shadow bg-thin-yellow-5"></div>
+            <div class="square el bg-thin-yellow"></div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">DELAY（延迟播放）</h4>
+    <div class="code-div">
+        <div id="delay">
+            <div class="square shadow bg-thin-yellow-5"></div>
+            <div class="square el bg-thin-yellow"></div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">EASING（动画缓冲，缓动函数）</h4>
+    <div class="code-div">
+        <div id="easing">
+            <div class="square shadow bg-thin-yellow-5"></div>
+            <div class="square el bg-thin-yellow"></div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">特殊动画参数</h4>
+    <div class="code-div mt-5 mb-5">
+        <div id="specificPropertyParameters">
+            <div class="square shadow bg-thin-yellow-5"></div>
+            <div class="square el bg-thin-yellow"></div>
+        </div>
+    </div>
+
+</div>
+
+@section JsCode {
+    @*DURATION（动画持续时间）*@
+    <div class="js-code" data-id="duration">
+        // DURATION（动画持续时间）
+        function dur() {
+            /*
+            默认1000
+            单位 毫秒
+            类型number，function(target, index, totalTargets)
+            */
+            var duration = anime({
+                targets: '#duration .el',
+                translateX: 250,
+                duration: 3000
+            });
+        }
+        dur();   // 立即执行
+    </div>
+
+    @*DELAY（延迟播放）*@
+    <div class="js-code" data-id="delay">
+        // DELAY（延迟播放）
+        function dl() {
+            /*
+            默认0
+            单位 毫秒
+            类型number，function(target, index, totalTargets)
+            */
+            var delay = anime({
+                targets: '#delay .el',
+                translateX: 250,
+                delay: 1000
+            });
+        }
+        dl();   // 立即执行
+    </div>
+
+    @*EASING（动画缓冲，缓动函数）*@
+    <div class="js-code" data-id="easing">
+        // EASING（动画缓冲，缓动函数）
+        function ease() {
+            /*
+            默认'easeOutElastic'
+            类型 string或自定义Bézier曲线坐标（数组）
+            */
+            var easing = anime({
+                targets: '#easing .el',
+                translateX: 250,
+                easing: 'easeInOutQuart'
+            });
+            /*
+            具体可以查看动画缓冲效果
+            easeInQuad  easeOutQuad  easeInOutQuad
+
+            easeInCubic  easeOutCubic  easeInOutCubic
+
+            easeInQuart  easeOutQuart  easeInOutQuart
+
+            easeInQuint  easeOutQuint  easeInOutQuint
+
+            easeInSine  easeOutSine  easeInOutSine
+
+            easeInExpo  easeOutExpo  easeInOutExpo
+
+            easeInCirc  easeOutCirc  easeInOutCirc
+
+            easeInBack  easeOutBack  easeInOutBack
+
+            easeInElastic  easeOutElastic  easeInOutElastic
+            */
+        }
+        ease();   // 立即执行
+    </div>
+
+    @*特殊动画参数*@
+    <div class="js-code" data-id="specificPropertyParameters">        
+        // 特殊动画参数
+        function specPropPar() {
+            var specificPropertyParameters = anime({
+                targets: '#specificPropertyParameters .el',
+                translateX: {
+                    value: 250,
+                    duration: 800
+                },
+                rotate: {
+                    value: 360,
+                    duration: 1800,
+                    easing: 'easeInOutSine'
+                },
+                scale: {
+                    value: 2,
+                    duration: 1600,
+                    delay: 800,
+                    easing: 'easeInOutQuart'
+                },
+                delay: 250 // All properties except 'scale' inherit 250ms delay
+            });
+        }
+        specPropPar();   // 立即执行
+    </div>
+}
+
+@section scripts {
+
+<script>
+    // DURATION（动画持续时间）
+    function dur() {
+        /*
+        默认1000
+        单位 毫秒
+        类型number，function(target, index, totalTargets)
+        */
+        var duration = anime({
+            targets: '#duration .el',
+            translateX: 250,
+            duration: 3000
+        });
+    }
+    dur();   // 立即执行
+
+    // DELAY（延迟播放）
+    function dl() {
+        /*
+        默认0
+        单位 毫秒
+        类型number，function(target, index, totalTargets)
+        */
+        var delay = anime({
+            targets: '#delay .el',
+            translateX: 250,
+            delay: 1000
+        });
+    }
+    dl();   // 立即执行
+
+    // EASING（动画缓冲，缓动函数）
+    function ease() {
+        /*
+        默认'easeOutElastic'
+        类型 string或自定义Bézier曲线坐标（数组）
+        */
+        var easing = anime({
+            targets: '#easing .el',
+            translateX: 250,
+            easing: 'easeInOutQuart'
+        });
+        /*
+        具体可以查看动画缓冲效果
+        easeInQuad  easeOutQuad  easeInOutQuad
+        
+        easeInCubic  easeOutCubic  easeInOutCubic
+        
+        easeInQuart  easeOutQuart  easeInOutQuart
+        
+        easeInQuint  easeOutQuint  easeInOutQuint
+        
+        easeInSine  easeOutSine  easeInOutSine
+        
+        easeInExpo  easeOutExpo  easeInOutExpo
+        
+        easeInCirc  easeOutCirc  easeInOutCirc
+        
+        easeInBack  easeOutBack  easeInOutBack
+        
+        easeInElastic  easeOutElastic  easeInOutElastic
+        */
+
+    }
+    ease();   // 立即执行
+
+    // 特殊动画参数
+    function specPropPar() {
+        var specificPropertyParameters = anime({
+            targets: '#specificPropertyParameters .el',
+            translateX: {
+                value: 250,
+                duration: 800
+            },
+            rotate: {
+                value: 360,
+                duration: 1800,
+                easing: 'easeInOutSine'
+            },
+            scale: {
+                value: 2,
+                duration: 1600,
+                delay: 800,
+                easing: 'easeInOutQuart'
+            },
+            delay: 250 // All properties except 'scale' inherit 250ms delay
+        });
+    }
+    specPropPar();   // 立即执行
+
+    $(document).ready(function () {
+        // DURATION（动画持续时间）
+        $('#duration').click(function () {
+            $(this).children('.el').css('transform', 'translateX(0px)');
+            dur();
+        })
+
+        // DELAY（延迟播放） 单击再次动作
+        $('#delay').click(function () {
+            $(this).children('.el').css('transform', 'translateX(0px)');
+            dl();
+        })
+
+        // EASING（动画缓冲，缓动函数） 单击再次动作
+        $('#easing').click(function () {
+            $(this).children('.el').css('transform', 'translateX(0px)');
+            ease();
+        })
+
+        // 特殊动画参数 单击再次动作
+        $('#specificPropertyParameters').click(function () {
+            $(this).children('.el').css('transform', 'translateX(0px) scale(1)');
+            specPropPar();
+        })
+    });
+</script>
+
+}

@@ -4,45 +4,17 @@
     Layout = "~/Areas/Study/Views/Program/Shared/_LayoutAnimeJs.cshtml";
 }
 
-@section csses {
-    <style>
-        .square,
-        .circle {
-            pointer-events: none;
-            position: relative;
-            width: 28px;
-            height: 28px;
-            margin: 1px;
-            background-color: #FF7C72;/*currentColor*/
-            font-size: 12px;
-        }
-
-        .small {
-            width: 18px;
-            height: 18px;
-        }
-
-        .large {
-            width: 48px;
-            height: 48px;
-        }
-
-        .line {
-          width: 100%;
-          padding: 1px 0px;
-        }
-    </style>
-}
 
 <h2>动画目标</h2>
 
 
 <div class="col-12">
-    <h4 class="mt-4" id="cssSel">CSS选择器</h4>
+    <h4 class="mt-4">CSS选择器</h4>
     <div class="code-div">
         <div id="cssSelector">
             <div class="line">
-                <div class="square el" id="aaa"></div>
+                <div class="square shadow bg-thin-red-5"></div>
+                <div class="square el bg-thin-red"></div>
             </div>
         </div>
     </div>
@@ -50,7 +22,8 @@
     <h4 class="mt-4">DOM元素</h4>
     <div class="code-div">
         <div id="domNode">
-            <div class="large square el"></div>
+            <div class="large square shadow bg-thin-red-5"></div>
+            <div class="large square el bg-thin-red"></div>
         </div>
     </div>
 
@@ -58,13 +31,16 @@
     <div class="code-div">
         <div id="nodeList">
             <div class="line">
-                <div class="small square el"></div>
+                <div class="small square shadow bg-thin-red-5"></div>
+                <div class="small square el bg-thin-red"></div>
             </div>
             <div class="line">
-                <div class="small square el"></div>
+                <div class="small square shadow bg-thin-red-5"></div>
+                <div class="small square el bg-thin-red"></div>
             </div>
             <div class="line">
-                <div class="small square el"></div>
+                <div class="small square shadow bg-thin-red-5"></div>
+                <div class="small square el bg-thin-red"></div>
             </div>
         </div>
     </div>
@@ -72,7 +48,7 @@
     <h4 class="mt-4">JAVASCRIPT对象</h4>
     <div class="code-div">
         <div id="JSobject">
-            <pre>{"charged":"18%"}</pre>
+            <pre class="text-thin-red">{"charged":"18%"}</pre>
         </div>
     </div>
 
@@ -80,13 +56,16 @@
     <div class="code-div">
         <div id="JSarray">
             <div class="line">
-                <div class="square el-01" @*style="transform: translateX(296.588px);"*@></div>
+                <div class="square shadow bg-thin-red-5"></div>
+                <div class="square el-01 bg-thin-red"></div>
             </div>
             <div class="line">
-                <div class="square el-02" @*style="transform: translateX(296.588px);"*@></div>
+                <div class="square shadow bg-thin-red-5"></div>
+                <div class="square el-02 bg-thin-red"></div>
             </div>
             <div class="line">
-                <div class="square el-03" @*style="transform: translateX(296.588px);"*@></div>
+                <div class="square shadow bg-thin-red-5"></div>
+                <div class="square el-03 bg-thin-red"></div>
             </div>
         </div>
     </div>
@@ -182,7 +161,6 @@
 <script>
     // CSS选择器
     function cssSel() {
-        $('#cssSelector .el').css('transform', 'translateX(0px)');
         var cssSelector = anime({
             targets: '#cssSelector .el',
             translateX: 250
@@ -192,8 +170,6 @@
 
     // DOM元素
     function domNode() {
-        $('#domNode .el').css('transform', 'translateX(0px)');
-
         var el = document.querySelector('#domNode .el');
 
         var domNode = anime({
@@ -205,8 +181,6 @@
 
     // DOM元素列表
     function nodeList() {
-        $('#nodeList .el').css('transform', 'translateX(0px)');
-
         var els = document.querySelectorAll('#nodeList .el');
 
         var nodeList = anime({
@@ -241,8 +215,6 @@
 
     // JAVASCRIPT数组
     function jsArr() {
-        $('#JSarray .square').css('transform', 'translateX(0px)');
-
         var el = document.querySelector('#JSarray .el-01');
 
         var JSarray = anime({
@@ -255,16 +227,22 @@
     $(document).ready(function () {
         // CSS选择器 单击再次动作
         $('#cssSelector').click(function () {
+            $(this).find('.el').css('transform', 'translateX(0px)');
+
             cssSel();
         })
 
         // DOM元素 单击再次动作
         $('#domNode').click(function () {
+            $(this).children('.el').css('transform', 'translateX(0px)');
+
             domNode();
         })
 
         // DOM元素列表 单击再次动作
         $('#nodeList').click(function () {
+            $(this).find('.el').css('transform', 'translateX(0px)');
+
             nodeList();
         })
 
@@ -275,6 +253,8 @@
 
         // JAVASCRIPT数组 单击再次动作
         $('#JSarray').click(function () {
+            $(this).find('.el').css('transform', 'translateX(0px)');
+
             jsArr();
         })
     });

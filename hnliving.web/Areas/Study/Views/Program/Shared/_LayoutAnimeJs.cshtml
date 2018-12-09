@@ -21,10 +21,21 @@
             right: 0;
         }
 
+        /*底部代码固定开关*/
+        .btm-fix-toggler {
+            position: fixed;
+            z-index: 101;
+            bottom: 0;
+            left: 0;
+            padding: 0.5rem 1rem;
+            font-size:25px; /*bootstrap中的图标，是用字体的形式表示的，改变大小只需要设置它的font-size就行*/
+            background-color:lightgray;
+        }
+
         /*左侧导航栏开关*/
         .left-nav-toggler {
             position: fixed;
-            z-index: 101;
+            z-index: 200;
             left:0;
             font-size:25px; /*bootstrap中的图标，是用字体的形式表示的，改变大小只需要设置它的font-size就行*/
             background-color:lightgray;
@@ -45,6 +56,11 @@
             max-height:50vh; /*500px;*/
         }
 
+        .show-code-wrap-height {
+            min-height:50px;
+            max-height:60vh;
+        }
+
         .nav-tabs .nav-link {
             /*border: 1px solid transparent;
             border-top-left-radius: 0.25rem;
@@ -60,11 +76,50 @@
             /*border-color: #dee2e6 #dee2e6 #fff;*/
         }
 
+        
+        .square,
+        .circle {
+            pointer-events: none;
+            position: relative;
+            width: 28px;
+            height: 28px;
+            margin: 1px;
+            font-size: 12px;
+        }
+
+        .small {
+            width: 18px;
+            height: 18px;
+        }
+
+        .large {
+            width: 48px;
+            height: 48px;
+        }
+
+        .line {
+          width: 100%;
+          padding: 1px 0px;
+        }
+
+        .shadow {
+          position: absolute;
+        }
+
+        .small-min-height {
+            min-height: 100px;
+        }
+
+        .medium-min-height {
+            min-height: 200px;
+        }
+
+
         /*razor语法和媒体查询符号冲突，需使用两个at*/
         @@media screen and (max-width: 767.98px) {
             .left-nav-fixed {
                 position: fixed;
-                z-index: 101;
+                z-index: 200;
                 left: -50%;
                 
                 /*滑动效果*/
@@ -90,7 +145,7 @@
         }
     </style>
 </head>
-<body>
+<body class="bg-dark text-light">
     <div class="navbar navbar-expand-md bg-dark navbar-dark fixed-top" id="navMain">
         @Html.ActionLink("琼游记", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         <div class="navbar-header">
@@ -112,15 +167,22 @@
     <div class="left-nav-toggler d-md-none" id="left-nav-toggler">
         <i class="glyphicon glyphicon-menu-right"></i>
     </div>
+    @*<ul id="aaa" class="nav nav-tabs btm-fix-toggler invisible">
+        <li class="nav-item">
+            <div class="nav-link bg-gray-8" id="bbb">
+                <i class="glyphicon glyphicon-menu-up"></i>
+            </div>
+        </li>
+    </ul>*@
 
     <div class="container-fluid body-content p-0">
         <div class="row mr-0">
-            <div class="col-md-3 mt-md-4">
+            <div class="col-md-3"> @*mt-md-4*@
                 <div id="leftNav" class="col-6 col-md-12 p-0 left-nav-fixed scroll-y-auto">
                     正在加载...
                 </div>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-9 ml-5 ml-md-0">
                 <div class="container">
                     <div class="row">
                         @RenderBody()
@@ -131,17 +193,24 @@
         <br />
         @*显示html代码的div参考位置*@
         <div id="ref-loc"></div>
-        <div id="code-wrap" class="m-0 show-code-height">
+        <div id="code-wrap" class="m-0 show-code-wrap-height">
             <ul id="tabCode" class="nav nav-tabs">
+                <li class="nav-item">
+                    <div class="nav-link bg-gray-8">
+                        <div class="" id="btm-fix-toggler">
+                            <i class="glyphicon glyphicon-menu-down"></i>
+                        </div>
+                    </div>
+                </li>
                 <li class="nav-item"><a href="#html-code" class="nav-link active show" data-toggle="tab">html</a></li>
                 <li class="nav-item"><a href="#js-code" class="nav-link" data-toggle="tab">javascript</a></li>
             </ul>
             <div id="tabCodeContent" class="tab-content">
                 <div class="tab-pane fade active show" id="html-code">
-                    <pre id="show-code" class="alert alert-info">点击实例可查看代码</pre>
+                    <pre id="show-code" class="alert-info m-0 show-code-height">点击实例可查看代码</pre>
                 </div>
                 <div class="tab-pane fade" id="js-code">
-                    <pre id="show-js" class="alert alert-info pl-3 pr-3 m-0 show-code-height">点击实例可查看JavaScript代码</pre>
+                    <pre id="show-js" class="alert-info m-0 show-code-height">点击实例可查看JavaScript代码</pre>
                 </div>
             </div>
         </div>
@@ -163,6 +232,7 @@
     <script src="~/Navigate/AnimeJsNav.js"></script>
 
     <script type="text/javascript">
+        var enableFixBtm = true;
 
         $(document).ready(function () {
             // 设置左侧导航栏开关位置
@@ -173,7 +243,9 @@
 
             // 滚动条滚动事件
             $(window).scroll(function () {
-                fixBottom();
+                if (enableFixBtm) {
+                    fixBottom();
+                }
             });
 
             // 窗口改变大小事件
@@ -200,8 +272,26 @@
                 $("#show-js").text(jscode);
 
                 // 内容变化时引起高度变化
-                code_height = $("#code-wrap").height();//show-code
+                code_height = $("#code-wrap").height();
             });
+
+            // 底部代码固定开关
+            $("#btm-fix-toggler").click(function () {
+                if (enableFixBtm) {
+                    // 关闭固定
+                    enableFixBtm = false;
+                    $(this).children(".glyphicon").removeClass("glyphicon-menu-down").addClass("glyphicon-menu-up");
+                    //$(this).addClass("btm-fix-toggler");
+                    $("#code-wrap").removeClass("bottom-fixed");
+                } else {
+                    // 打开固定
+                    enableFixBtm = true;
+                    $(this).children(".glyphicon").removeClass("glyphicon-menu-up").addClass("glyphicon-menu-down");
+                    //$(this).removeClass("btm-fix-toggler");
+                    //$("#aaa").removeClass("invisible");
+                    fixBottom();
+                }
+            })
 
             // 左侧导航栏开关
             $("#left-nav-toggler").click(function () {
@@ -245,8 +335,8 @@
 
         // 固定下边栏
         function fixBottom() {
-            //获取show-code的高度，innerHeight包含padding，$("#show-code").height()不包含padding
-            var code_height = $("#code-wrap").innerHeight();//show-code
+            //获取show-wrap的高度，innerHeight包含padding，$("#show-wrap").height()不包含padding
+            var code_height = $("#code-wrap").innerHeight();
             //console.log("code_height的高度：" + code_height);
 
             //获取 id="ref-loc" 元素，offsetTop是当前元素·距离网页窗口顶部的距离
@@ -262,12 +352,12 @@
 
             if (doc_height + scroll_top < offset_top + code_height) {
                 // 到达顶部位置，动态的添加元素属性，并给元素添加相应的元素样式
-                $("#code-wrap").addClass("bottom-fixed");//show-code
+                $("#code-wrap").addClass("bottom-fixed");
                 $("#ref-loc").height(code_height);  // 为了防止滚动条高度变化
                 //console.log("固定");
             } else {
                 // 同理，把之前添加的元素移除即可
-                $("#code-wrap").removeClass("bottom-fixed");//show-code
+                $("#code-wrap").removeClass("bottom-fixed");
                 $("#ref-loc").height("0");
                 //console.log("取消固定");
             }
@@ -284,7 +374,7 @@
             //$("#show-code").text($(ctrl).prop("outerHTML"));
 
             // 内容变化时引起高度变化
-            code_height = $("#code-wrap").height();//show-code
+            code_height = $("#code-wrap").height();
         }
 
         // html代码格式化
