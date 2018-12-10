@@ -151,6 +151,20 @@
 .text-thin-purple       { color: #8453E3; }
 .text-thin-lavender     { color: #C26EFF; }
 .text-thin-pink         { color: #FB89FB; }
+
+
+.text-thin-red-5        { color: rgba(255, 20, 97, .5) !important; }
+.text-thin-orange-5     { color: rgba(255, 124, 114, .5) !important; }
+.text-thin-yellow-5     { color: rgba(251, 243, 140, .5) !important; }
+.text-thin-citrus-5     { color: rgba(166, 255, 143, .5) !important; }
+.text-thin-green-5      { color: rgba(24, 255, 146, .5) !important; }
+.text-thin-dark-green-5 { color: rgba(28, 226, 178, .5) !important; }
+.text-thin-turquoise-5  { color: rgba(94, 243, 251, .5) !important; }
+.text-thin-light-blue-5 { color: rgba(97, 195, 255, .5) !important; }
+.text-thin-blue-5       { color: rgba(90, 135, 255, .5) !important; }
+.text-thin-purple-5     { color: rgba(132, 83, 227, .5) !important; }
+.text-thin-lavender-5   { color: rgba(194, 110, 255, .5) !important; }
+.text-thin-pink-5       { color: rgba(251, 137, 251, .5) !important; }
 /*普通文字颜色结束*/
 
 

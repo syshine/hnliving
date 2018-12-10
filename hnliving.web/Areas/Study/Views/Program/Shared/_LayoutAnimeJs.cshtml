@@ -87,6 +87,20 @@
             font-size: 12px;
         }
 
+        .circle {
+          border-radius: 50%;
+        }
+
+        .triangle {
+          pointer-events: none;
+          position: relative;
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 0 14px 24px 14px;
+          border-color: transparent transparent currentColor transparent;
+        }
+
         .small {
             width: 18px;
             height: 18px;
@@ -104,6 +118,7 @@
 
         .shadow {
           position: absolute;
+          opacity: .2;
         }
 
         .small-min-height {

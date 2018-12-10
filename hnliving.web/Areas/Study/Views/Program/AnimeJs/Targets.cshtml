@@ -13,7 +13,7 @@
     <div class="code-div">
         <div id="cssSelector">
             <div class="line">
-                <div class="square shadow bg-thin-red-5"></div>
+                <div class="square shadow bg-thin-red"></div>
                 <div class="square el bg-thin-red"></div>
             </div>
         </div>
@@ -22,7 +22,7 @@
     <h4 class="mt-4">DOM元素</h4>
     <div class="code-div">
         <div id="domNode">
-            <div class="large square shadow bg-thin-red-5"></div>
+            <div class="large square shadow bg-thin-red"></div>
             <div class="large square el bg-thin-red"></div>
         </div>
     </div>
@@ -31,15 +31,15 @@
     <div class="code-div">
         <div id="nodeList">
             <div class="line">
-                <div class="small square shadow bg-thin-red-5"></div>
+                <div class="small square shadow bg-thin-red"></div>
                 <div class="small square el bg-thin-red"></div>
             </div>
             <div class="line">
-                <div class="small square shadow bg-thin-red-5"></div>
+                <div class="small square shadow bg-thin-red"></div>
                 <div class="small square el bg-thin-red"></div>
             </div>
             <div class="line">
-                <div class="small square shadow bg-thin-red-5"></div>
+                <div class="small square shadow bg-thin-red"></div>
                 <div class="small square el bg-thin-red"></div>
             </div>
         </div>
@@ -56,15 +56,15 @@
     <div class="code-div">
         <div id="JSarray">
             <div class="line">
-                <div class="square shadow bg-thin-red-5"></div>
+                <div class="square shadow bg-thin-red"></div>
                 <div class="square el-01 bg-thin-red"></div>
             </div>
             <div class="line">
-                <div class="square shadow bg-thin-red-5"></div>
+                <div class="square shadow bg-thin-red"></div>
                 <div class="square el-02 bg-thin-red"></div>
             </div>
             <div class="line">
-                <div class="square shadow bg-thin-red-5"></div>
+                <div class="square shadow bg-thin-red"></div>
                 <div class="square el-03 bg-thin-red"></div>
             </div>
         </div>
@@ -253,7 +253,9 @@
 
         // JAVASCRIPT数组 单击再次动作
         $('#JSarray').click(function () {
-            $(this).find('.el').css('transform', 'translateX(0px)');
+            $(this).find('.el-01').css('transform', 'translateX(0px)');
+            $(this).find('.el-02').css('transform', 'translateX(0px)');
+            $(this).find('.el-03').css('transform', 'translateX(0px)');
 
             jsArr();
         })

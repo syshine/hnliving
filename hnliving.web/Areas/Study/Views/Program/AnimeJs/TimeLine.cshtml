@@ -5,434 +5,431 @@
 }
 
 
-<h2>动画赋值</h2>
+<h2>时间轴</h2>
 
 
 <div class="col-12">
-    <h4 class="mt-4">无单位数值</h4>
+    <h4 class="mt-4">时间轴</h4>
     <div class="code-div">
-        <div id="unitlessValue">
-            <div class="square shadow bg-thin-dark-green-5"></div>
-            <div class="square el bg-thin-dark-green"></div>
-        </div>
-    </div>
-
-    <h4 class="mt-4">有单位数值</h4>
-    <div class="code-div">
-        <div id="specificUnitValue">
-            <div class="square shadow bg-thin-dark-green-5"></div>
-            <div class="square el bg-thin-dark-green"></div>
-        </div>
-    </div>
-
-    <h4 class="mt-4">相对数值</h4>
-    <div class="code-div">
-        <div id="relativeValues">
-            <div class="square shadow bg-thin-dark-green-5"></div>
-            <div class="square el bg-thin-dark-green"></div>
-        </div>
-    </div>
-
-    <h4 class="mt-4">颜色值</h4>
-    <div class="code-div">
-        <div id="colors">
+        <div id="basicTimeline">
             <div class="line">
-                <div class="square shadow bg-thin-dark-green-5"></div>
-                <div class="square el bg-thin-dark-green"></div>
+                <div class="square shadow bg-thin-turquoise"></div>
+                <div class="square el bg-thin-turquoise"></div>
             </div>
             <div class="line">
-                <div class="square shadow bg-thin-dark-green-5"></div>
-                <div class="square el bg-thin-dark-green"></div>
+                <div class="circle shadow bg-thin-turquoise"></div>
+                <div class="circle el bg-thin-turquoise"></div>
             </div>
             <div class="line">
-                <div class="square shadow bg-thin-dark-green-5"></div>
-                <div class="square el bg-thin-dark-green"></div>
+                <div class="triangle shadow text-thin-turquoise"></div>
+                <div class="triangle el text-thin-turquoise"></div>
             </div>
         </div>
     </div>
 
-    <h4 class="mt-4">设定动画初始值</h4>
+    <h4 class="mt-4">设定相对位置</h4>
     <div class="code-div">
-        <div id="specificInitialValue">
-            <div class="square shadow bg-thin-dark-green-5"></div>
-            <div class="square el bg-thin-dark-green"></div>
-        </div>
-    </div>
-
-    <h4 class="mt-4">函数返回数值</h4>
-    <div class="code-div">
-        <div id="functionBasedPropVal">
+        <div id="relativeOffset">
             <div class="line">
-                <div class="square shadow bg-thin-dark-green-5"></div>
-                <div data-x="160" class="small square el bg-thin-dark-green"></div>
+                <div class="square shadow bg-thin-turquoise"></div>
+                <div class="square el bg-thin-turquoise"></div>
             </div>
             <div class="line">
-                <div class="square shadow bg-thin-dark-green-5"></div>
-                <div data-x="80" class="small square el bg-thin-dark-green"></div>
+                <div class="circle shadow bg-thin-turquoise"></div>
+                <div class="circle el bg-thin-turquoise"></div>
             </div>
             <div class="line">
-                <div class="square shadow bg-thin-dark-green-5"></div>
-                <div data-x="250" class="small square el bg-thin-dark-green"></div>
+                <div class="triangle shadow text-thin-turquoise"></div>
+                <div class="triangle el text-thin-turquoise"></div>
             </div>
         </div>
     </div>
 
-    <h4 class="mt-4">关键帧</h4>
+    <h4 class="mt-4">设置绝对位置</h4>
     <div class="code-div">
-        <div id="keyframes">
-            <div class="square shadow bg-thin-dark-green-5"></div>
-            <div class="square el bg-thin-dark-green"></div>
+        <div id="absoluteOffset">
+            <div class="line">
+                <div class="square shadow bg-thin-turquoise"></div>
+                <div class="square el bg-thin-turquoise"></div>
+            </div>
+            <div class="line">
+                <div class="circle shadow bg-thin-turquoise"></div>
+                <div class="circle el bg-thin-turquoise"></div>
+            </div>
+            <div class="line">
+                <div class="triangle shadow text-thin-turquoise"></div>
+                <div class="triangle el text-thin-turquoise"></div>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">时间轴参数</h4>
+    <div class="code-div">
+        <div id="timelineParameters">
+            <div class="line">
+                <div class="square shadow bg-thin-turquoise"></div>
+                <div class="square el bg-thin-turquoise"></div>
+            </div>
+            <div class="line">
+                <div class="circle shadow bg-thin-turquoise"></div>
+                <div class="circle el bg-thin-turquoise"></div>
+            </div>
+            <div class="line">
+                <div class="triangle shadow text-thin-turquoise"></div>
+                <div class="triangle el text-thin-turquoise"></div>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">继承参数</h4>
+    <div class="code-div">
+        <div id="TLParamsInheritance">
+            <div class="line">
+                <div class="square shadow bg-thin-turquoise"></div>
+                <div class="square el bg-thin-turquoise"></div>
+            </div>
+            <div class="line">
+                <div class="circle shadow bg-thin-turquoise"></div>
+                <div class="circle el bg-thin-turquoise"></div>
+            </div>
+            <div class="line">
+                <div class="triangle shadow text-thin-turquoise"></div>
+                <div class="triangle el text-thin-turquoise"></div>
+            </div>
         </div>
     </div>
 </div>
 
 @section JsCode {
-    @*无单位数值*@
-    <div class="js-code" data-id="unitlessValue">
-        // 无单位数值
-        function unitlessVal() {
-            var unitlessValue = anime({
-                targets: '#unitlessValue .el',
+    @*时间轴*@
+    <div class="js-code" data-id="basicTimeline">
+        // 时间轴
+        function basicTline() {
+            var basicTimeline = anime.timeline();
+
+            basicTimeline
+            .add({
+                targets: '#basicTimeline .square.el',
                 translateX: 250,
-                rotate: 540
-            });
-        }
-        unitlessVal();   // 立即执行
-    </div>
-
-    @*有单位数值*@
-    <div class="js-code" data-id="specificUnitValue">
-        // 有单位数值
-        function specUnitVal() {
-            var specificUnitValue = anime({
-                targets: '#specificUnitValue .el',
-                translateX: '20em',
-                rotate: '1.5turn'
-            });
-        }
-        specUnitVal();   // 立即执行
-    </div>
-    
-    @*相对数值*@
-    <div class="js-code" data-id="relativeValues">
-        // 相对数值
-        function relVal() {
-            var relativeValues = anime({
-                targets: '#relativeValues .el',
-                translateX: {
-                    value: '+=150',
-                    duration: 1000
-                },
-                width: {
-                    value: '-=10',
-                    duration: 1800,
-                    easing: 'easeInOutSine'
-                },
-                height: {
-                    value: '*=4',
-                    duration: 1800,
-                    easing: 'easeInOutSine'
-                },
-                direction: 'alternate'
-            });
-        }
-        relVal();   // 立即执行
-    </div>
-
-    @*颜色值*@
-    <div class="js-code" data-id="colors">
-        // 颜色值
-        function clrs() {
-            var colors = anime({
-                targets: '#colors .el',
+                easing: 'easeOutExpo'
+            })
+            .add({
+                targets: '#basicTimeline .circle.el',
                 translateX: 250,
-                backgroundColor: [
-                { value: '#FFF' }, // Or #FFFFFF
-                { value: 'rgb(255, 0, 0)' },
-                { value: 'hsl(100, 60%, 60%)' }
-                ],
-                easing: 'linear',
-                direction: 'alternate',
-                duration: 2000
-            });
-        }
-        clrs();   // 立即执行
-    </div>
-
-    @*设定动画初始值*@
-    <div class="js-code" data-id="specificInitialValue">        
-        // 设定动画初始值
-        function specInitValue() {
-            var specificInitialValue = anime({
-                targets: '#specificInitialValue .el',
-                translateX: [100, 250],
-                delay: 500,
-                direction: 'alternate',
-                loop: true
+                easing: 'easeOutExpo'
+            })
+            .add({
+                targets: '#basicTimeline .triangle.el',
+                translateX: 250,
+                easing: 'easeOutExpo'
             });
             /*
-            anime({
-            targets: 'div',
-            translateX: [100, 200], // Translate X from 100 to 200
-            rotate: ['.5turn', '1turn'], // Rotate from 180deg to 360deg
-            scale: ['*=2', 1], // Scale from 2 times the original value to 1,
-            backgroundColor: ['rgb(255,0,0)', '#FFF'],
-            duration: 1500
-            });
+            使用.add()给timeline添加动画：
             */
         }
-        specInitValue();   // 立即执行
+        basicTline();   // 立即执行
     </div>
 
-    @*函数返回数值*@
-    <div class="js-code" data-id="JSarray">                
-        // 函数返回数值
-        function funcProVal() {
-            var functionBasedPropVal = anime({
-                targets: '#funcProVal .el',
-                translateX: function (el) {
-                    return el.getAttribute('data-x');
-                },
-                translateY: function (el, i) {
-                    return 50 + (-50 * i);
-                },
-                scale: function (el, i, l) {
-                    return (l - i) + .25;
-                },
-                rotate: function () { return anime.random(-360, 360); },
-                duration: function () { return anime.random(1200, 1800); },
-                duration: function () { return anime.random(800, 1600); },
-                delay: function () { return anime.random(0, 1000); },
+    @*设定相对位置*@
+    <div class="js-code" data-id="relativeOffset">
+        // 设定相对位置
+        function relOffset() {
+            var relativeOffset = anime.timeline();
+
+            relativeOffset
+            .add({
+                targets: '#relativeOffset .square.el',
+                translateX: 250,
+                easing: 'easeOutExpo',
+            })
+            .add({
+                targets: '#relativeOffset .circle.el',
+                translateX: 250,
+                easing: 'easeOutExpo',
+                offset: '-=600' // 前动画完成之前600ms开始此动画
+            })
+            .add({
+                targets: '#relativeOffset .triangle.el',
+                translateX: 250,
+                easing: 'easeOutExpo',
+                offset: '-=800' // 前动画完成之前800ms开始此动画
+            });
+        }
+        relOffset();   // 立即执行
+    </div>
+    
+    @*设置绝对位置*@
+    <div class="js-code" data-id="absoluteOffset">
+        // 设置绝对位置
+        function absOffset() {
+            var absoluteOffset = anime.timeline();
+
+            absoluteOffset
+            .add({
+                targets: '#absoluteOffset .square.el',
+                translateX: 250,
+                easing: 'easeOutExpo',
+                offset: 1000 // 在时间轴1000ms处开始动画
+            })
+            .add({
+                targets: '#absoluteOffset .circle.el',
+                translateX: 250,
+                easing: 'easeOutExpo',
+                offset: 500 // 在时间轴500ms处开始动画
+            })
+            .add({
+                targets: '#absoluteOffset .triangle.el',
+                translateX: 250,
+                easing: 'easeOutExpo',
+                offset: 0 // Starts at 0ms of the timeline
+            });
+        }
+        absOffset();   // 立即执行
+    </div>
+
+    @*时间轴参数*@
+    <div class="js-code" data-id="timelineParameters">
+        // 时间轴参数
+        function timelineParam() {
+            var timelineParameters = anime.timeline({
                 direction: 'alternate',
                 loop: true
             });
+
+            timelineParameters
+            .add({
+                targets: '#timelineParameters .square.el',
+                translateX: [{ value: 80 }, { value: 160 }, { value: 250 }],
+                translateY: [{ value: 30 }, { value: 60 }, { value: 60 }],
+                duration: 3000
+            })
+            .add({
+                targets: '#timelineParameters .circle.el',
+                translateX: [{ value: 80 }, { value: 160 }, { value: 250 }],
+                translateY: [{ value: 30 }, { value: -30 }, { value: -30 }],
+                duration: 3000,
+                offset: 200
+            })
+            .add({
+                targets: '#timelineParameters .triangle.el',
+                translateX: [{ value: 80 }, { value: 250 }],
+                translateY: [{ value: -60 }, { value: -30 }, { value: -30 }],
+                duration: 3000,
+                offset: 400
+            });
+
         }
-        funcProVal();   // 立即执行
+        timelineParam();   // 立即执行
     </div>
 
-    @*关键帧*@
-    <div class="js-code" data-id="unitlessValue">
-        // 关键帧
-        function keyFrm() {
-            var keyframes = anime({
-                targets: '#keyframes .el',
-                translateX: [
-                    { value: 250, duration: 1000, delay: 500, elasticity: 0 },
-                    { value: 0, duration: 1000, delay: 500, elasticity: 0 }
-                ],
-                translateY: [
-                    { value: -40, duration: 500, elasticity: 100 },
-                    { value: 40, duration: 500, delay: 1000, elasticity: 100 },
-                    { value: 0, duration: 500, delay: 1000, elasticity: 100 }
-                ],
-                scaleX: [
-                    { value: 4, duration: 100, delay: 500, easing: 'easeOutExpo' },
-                    { value: 1, duration: 900, elasticity: 300 },
-                    { value: 4, duration: 100, delay: 500, easing: 'easeOutExpo' },
-                    { value: 1, duration: 900, elasticity: 300 }
-                ],
-                scaleY: [
-                    { value: [1.75, 1], duration: 500 },
-                    { value: 2, duration: 50, delay: 1000, easing: 'easeOutExpo' },
-                    { value: 1, duration: 450 },
-                    { value: 1.75, duration: 50, delay: 1000, easing: 'easeOutExpo' },
-                    { value: 1, duration: 450 }
-                ],
+    @*继承参数*@
+    <div class="js-code" data-id="TLParamsInheritance"> 
+        // 继承参数       
+        function TLParamInher() {
+            var TLParamsInheritance = anime.timeline({
+                targets: '#TLParamsInheritance .el',
+                delay: function (el, i) { return i * 200 },
+                duration: 500,
+                easing: 'easeOutExpo',
+                direction: 'alternate',
                 loop: true
             });
+
+            TLParamsInheritance
+            .add({
+                translateX: 250,
+            })
+            .add({
+                opacity: .5,
+                translateX: 250,
+                scale: 2,
+            })
+            .add({
+                translateX: 0,
+                scale: 1
+            });
         }
-        keyFrm();   // 立即执行
+        TLParamInher();   // 立即执行
     </div>
+
 }
 
 @section scripts {
 
 <script>
-    // 无单位数值
-    function unitlessVal() {
-        var unitlessValue = anime({
-            targets: '#unitlessValue .el',
-            translateX: 250,
-            rotate: 540
-        });
-    }
-    unitlessVal();   // 立即执行
+    // 时间轴
+    function basicTline() {
+        var basicTimeline = anime.timeline();
 
-    // 有单位数值
-    function specUnitVal() {
-        var specificUnitValue = anime({
-            targets: '#specificUnitValue .el',
-            translateX: '20em',
-            rotate: '1.5turn'
-        });
-    }
-    specUnitVal();   // 立即执行
-
-    // 相对数值
-    function relVal() {
-        var relativeValues = anime({
-            targets: '#relativeValues .el',
-            translateX: {
-                value: '+=150',
-                duration: 1000
-            },
-            width: {
-                value: '-=10',
-                duration: 1800,
-                easing: 'easeInOutSine'
-            },
-            height: {
-                value: '*=4',
-                duration: 1800,
-                easing: 'easeInOutSine'
-            },
-            direction: 'alternate'
-        });
-    }
-    relVal();   // 立即执行
-
-    // 颜色值
-    function clrs() {
-        var colors = anime({
-            targets: '#colors .el',
-            translateX: 250,
-            backgroundColor: [
-              { value: '#FFF' }, // Or #FFFFFF
-              { value: 'rgb(255, 0, 0)' },
-              { value: 'hsl(100, 60%, 60%)' }
-            ],
-            easing: 'linear',
-            direction: 'alternate',
-            duration: 2000
-        });
-    }
-    clrs();   // 立即执行
-
-    // 设定动画初始值
-    function specInitValue() {
-        var specificInitialValue = anime({
-            targets: '#specificInitialValue .el',
-            translateX: [100, 250],
-            delay: 500,
-            direction: 'alternate',
-            loop: true
-        });
+        basicTimeline
+          .add({
+              targets: '#basicTimeline .square.el',
+              translateX: 250,
+              easing: 'easeOutExpo'
+          })
+          .add({
+              targets: '#basicTimeline .circle.el',
+              translateX: 250,
+              easing: 'easeOutExpo'
+          })
+          .add({
+              targets: '#basicTimeline .triangle.el',
+              translateX: 250,
+              easing: 'easeOutExpo'
+          });
         /*
-        anime({
-          targets: 'div',
-          translateX: [100, 200], // Translate X from 100 to 200
-          rotate: ['.5turn', '1turn'], // Rotate from 180deg to 360deg
-          scale: ['*=2', 1], // Scale from 2 times the original value to 1,
-          backgroundColor: ['rgb(255,0,0)', '#FFF'],
-          duration: 1500
-        });
+        使用.add()给timeline添加动画：
         */
     }
-    specInitValue();   // 立即执行
+    basicTline();   // 立即执行
 
-    // 函数返回数值
-    function funcProVal() {
-        var functionBasedPropVal = anime({
-            targets: '#funcProVal .el',
-            translateX: function (el) {
-                return el.getAttribute('data-x');
-            },
-            translateY: function (el, i) {
-                return 50 + (-50 * i);
-            },
-            scale: function (el, i, l) {
-                return (l - i) + .25;
-            },
-            rotate: function () { return anime.random(-360, 360); },
-            duration: function () { return anime.random(1200, 1800); },
-            duration: function () { return anime.random(800, 1600); },
-            delay: function () { return anime.random(0, 1000); },
+    // 设定相对位置
+    function relOffset() {
+        var relativeOffset = anime.timeline();
+
+        relativeOffset
+          .add({
+              targets: '#relativeOffset .square.el',
+              translateX: 250,
+              easing: 'easeOutExpo',
+          })
+          .add({
+              targets: '#relativeOffset .circle.el',
+              translateX: 250,
+              easing: 'easeOutExpo',
+              offset: '-=600' // 前动画完成之前600ms开始此动画
+          })
+          .add({
+              targets: '#relativeOffset .triangle.el',
+              translateX: 250,
+              easing: 'easeOutExpo',
+              offset: '-=800' // 前动画完成之前800ms开始此动画
+          });
+    }
+    relOffset();   // 立即执行
+
+    // 设置绝对位置
+    function absOffset() {
+        var absoluteOffset = anime.timeline();
+
+        absoluteOffset
+          .add({
+              targets: '#absoluteOffset .square.el',
+              translateX: 250,
+              easing: 'easeOutExpo',
+              offset: 1000 // 在时间轴1000ms处开始动画
+          })
+          .add({
+              targets: '#absoluteOffset .circle.el',
+              translateX: 250,
+              easing: 'easeOutExpo',
+              offset: 500 // 在时间轴500ms处开始动画
+          })
+          .add({
+              targets: '#absoluteOffset .triangle.el',
+              translateX: 250,
+              easing: 'easeOutExpo',
+              offset: 0 // Starts at 0ms of the timeline
+          });
+    }
+    absOffset();   // 立即执行
+
+    // 时间轴参数
+    function timelineParam() {
+        var timelineParameters = anime.timeline({
             direction: 'alternate',
             loop: true
         });
-    }
-    funcProVal();   // 立即执行
 
-    // 关键帧
-    function keyFrm() {
-        var keyframes = anime({
-            targets: '#keyframes .el',
-            translateX: [
-              { value: 250, duration: 1000, delay: 500, elasticity: 0 },
-              { value: 0, duration: 1000, delay: 500, elasticity: 0 }
-            ],
-            translateY: [
-              { value: -40, duration: 500, elasticity: 100 },
-              { value: 40, duration: 500, delay: 1000, elasticity: 100 },
-              { value: 0, duration: 500, delay: 1000, elasticity: 100 }
-            ],
-            scaleX: [
-              { value: 4, duration: 100, delay: 500, easing: 'easeOutExpo' },
-              { value: 1, duration: 900, elasticity: 300 },
-              { value: 4, duration: 100, delay: 500, easing: 'easeOutExpo' },
-              { value: 1, duration: 900, elasticity: 300 }
-            ],
-            scaleY: [
-              { value: [1.75, 1], duration: 500 },
-              { value: 2, duration: 50, delay: 1000, easing: 'easeOutExpo' },
-              { value: 1, duration: 450 },
-              { value: 1.75, duration: 50, delay: 1000, easing: 'easeOutExpo' },
-              { value: 1, duration: 450 }
-            ],
+        timelineParameters
+          .add({
+              targets: '#timelineParameters .square.el',
+              translateX: [{ value: 80 }, { value: 160 }, { value: 250 }],
+              translateY: [{ value: 30 }, { value: 60 }, { value: 60 }],
+              duration: 3000
+          })
+          .add({
+              targets: '#timelineParameters .circle.el',
+              translateX: [{ value: 80 }, { value: 160 }, { value: 250 }],
+              translateY: [{ value: 30 }, { value: -30 }, { value: -30 }],
+              duration: 3000,
+              offset: 200
+          })
+          .add({
+              targets: '#timelineParameters .triangle.el',
+              translateX: [{ value: 80 }, { value: 250 }],
+              translateY: [{ value: -60 }, { value: -30 }, { value: -30 }],
+              duration: 3000,
+              offset: 400
+          });
+
+    }
+    timelineParam();   // 立即执行
+
+    // 继承参数
+    function TLParamInher() {
+        var TLParamsInheritance = anime.timeline({
+            targets: '#TLParamsInheritance .el',
+            delay: function (el, i) { return i * 200 },
+            duration: 500,
+            easing: 'easeOutExpo',
+            direction: 'alternate',
             loop: true
         });
+
+        TLParamsInheritance
+        .add({
+            translateX: 250,
+        })
+        .add({
+            opacity: .5,
+            translateX: 250,
+            scale: 2,
+        })
+        .add({
+            translateX: 0,
+            scale: 1
+        });
     }
-    keyFrm();   // 立即执行
+    TLParamInher();   // 立即执行
+
+    
 
     $(document).ready(function () {
-        // 无单位数值 单击再次动作
-        $('#unitlessValue').click(function () {
-            $(this).children('.el').css('transform', 'translateX(0px)');
+        // 时间轴 单击再次动作
+        $('#basicTimeline').click(function () {
+            $(this).find('.el').css('transform', 'translateX(0px)');
 
-            unitlessVal();
+            basicTline();
         })
 
-        // 有单位数值 单击再次动作
-        $('#specificUnitValue').click(function () {
-            $(this).children('.el').css('transform', 'translateX(0px)');
+        // 设定相对位置 单击再次动作
+        $('#relativeOffset').click(function () {
+            $(this).find('.el').css('transform', 'translateX(0px)');
 
-            specUnitVal();
+            relOffset();
         })
 
-        // 相对数值 单击再次动作
-        $('#relativeValues').click(function () {
-            $(this).children('.el').css('transform', 'translateX(0px)');
+        // 设置绝对位置 单击再次动作
+        $('#absoluteOffset').click(function () {
+            $(this).find('.el').css('transform', 'translateX(0px)');
 
-            relVal();
+            absOffset();
         })
 
-        // 颜色值 单击再次动作
-        $('#colors').click(function () {
-            $(this).children('.el').css('transform', 'translateX(0px)');
+        //// 时间轴参数 单击再次动作
+        //$('#timelineParameters').click(function () {
+        //    $(this).find('.el').css('transform', 'translateX(0px), translateY(0px)');
 
-            clrs();
-        })
+        //    timelineParam();
+        //})
 
-        // 设定动画初始值 单击再次动作
-        $('#specificInitialValue').click(function () {
-            $(this).children('.el').css('transform', 'translateX(100px)');
+        //// 继承参数 单击再次动作
+        //$('#TLParamsInheritance').click(function () {
+        //    $(this).find('.el').css({'transform': 'translateX(100px), translateY(0px), scale(1)', 'opacity':'1'});
 
-            specInitValue();
-        })
-
-        // 函数返回数值 单击再次动作
-        $('#funcProVal').click(function () {
-            $(this).find('.el').css('transform', 'translateX(0px), translateY(0px)');
-
-            funcProVal();
-        })
-
-        // 关键帧 单击再次动作
-        $('#keyframes').click(function () {
-            $(this).find('.el').css('transform', 'translateX(0px), translateY(0px)');
-
-            keyFrm();
-        })
+        //    TLParamInher();
+        //})
     });
 </script>
 
