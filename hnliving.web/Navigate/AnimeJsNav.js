@@ -21,6 +21,21 @@
     }, {
         "title": "时间轴",
         "url": "/study/program/AnimeJs/TimeLine"
+    }, {
+        "title": "动画播放控制",
+        "url": "/study/program/AnimeJs/Control"
+    }, {
+        "title": "回调函数",
+        "url": "/study/program/AnimeJs/Callbacks"
+    }, {
+        "title": "异步对象",
+        "url": "/study/program/AnimeJs/Async"
+    }, {
+        "title": "可缩放矢量图形(SVG)",
+        "url": "/study/program/AnimeJs/SVG"
+    }, {
+        "title": "动画缓冲效果",
+        "url": "/study/program/AnimeJs/Easing"
     }
     ]
 }

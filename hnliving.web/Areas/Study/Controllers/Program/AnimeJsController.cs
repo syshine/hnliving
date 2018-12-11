@@ -76,5 +76,50 @@ namespace hnliving.web.Areas.Study.Controllers.Program
         {
             return View();
         }
+
+        /// <summary>
+        /// 动画播放控制
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Control()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// 回调函数
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Callbacks()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// 异步对象
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Async()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// SVG ( Scalable Vector Graphics ) 可缩放矢量图形
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult SVG()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// 动画缓冲效果
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Easing()
+        {
+            return View();
+        }
     }
 }
