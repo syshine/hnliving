@@ -82,6 +82,8 @@
 
 </div>
 
+<div id="theme-clr" class="invisible"></div>
+
 @section JsCode {
     @*DURATION（动画持续时间函数）*@
     <div class="js-code" data-id="functionBasedDuration">
@@ -287,6 +289,8 @@
             $(this).find('.el').css('transform', 'translateX(0px)');
             combFuncProp();
         })
+
+        $("#theme-clr").css('color', '#A6FF8F');
     });
 </script>
 

@@ -42,6 +42,8 @@
 
 </div>
 
+<div id="theme-clr" class="invisible"></div>
+
 @section JsCode {
     @*DURATION（动画持续时间）*@
     <div class="js-code" data-id="duration">
@@ -260,6 +262,8 @@
             $(this).children('.el').css('transform', 'translateX(0px) scale(1)');
             specPropPar();
         })
+
+        $("#theme-clr").css('color', '#FBF38C');
     });
 </script>
 
