@@ -224,6 +224,8 @@
     <Content Include="Areas\Study\Views\Program\AnimeJs\Assign.cshtml" />
     <Content Include="Areas\Study\Views\Program\AnimeJs\TimeLine.cshtml" />
     <Content Include="Areas\Study\Views\Program\AnimeJs\Control.cshtml" />
+    <Content Include="Areas\Study\Views\Program\AnimeJs\Callbacks.cshtml" />
+    <Content Include="Areas\Study\Views\Program\AnimeJs\Index.cshtml" />
     <None Include="Properties\PublishProfiles\hnl-c.pubxml" />
     <None Include="Properties\PublishProfiles\hnl.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

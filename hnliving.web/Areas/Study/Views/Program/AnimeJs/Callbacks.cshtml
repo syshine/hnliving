@@ -1,0 +1,332 @@
+﻿
+@{
+    ViewBag.Title = "TimeLine";
+    Layout = "~/Areas/Study/Views/Program/Shared/_LayoutAnimeJs.cshtml";
+}
+
+
+<h2>回调函数</h2>
+
+
+<div class="col-12">
+    <h4 class="mt-4">全部回调函数展示</h4>
+    <div class="code-div">
+        <div id="allCallbacks">
+            <div class="logs"> <input class="log update-log"> <input class="log began-log"> <input class="log completed-log"> </div>
+            <div class="line">
+                <div class="small square shadow bg-thin-blue"></div>
+                <div class="small square el bg-thin-blue"></div>
+            </div>
+            <div class="line">
+                <div class="small square shadow bg-thin-blue"></div>
+                <div class="small square el bg-thin-blue"></div>
+            </div>
+            <div class="line">
+                <div class="small square shadow bg-thin-blue"></div>
+                <div class="small square el bg-thin-blue"></div>
+            </div>
+            <div class="line player align-items"></div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">UPDATE</h4>
+    <div class="code-div">
+        <div id="update">
+            <div class="logs"> <input class="log current-time-log"> <input class="log progress-log"> </div>
+            <div class="large square shadow bg-thin-blue"></div>
+            <div class="large square el bg-thin-blue"></div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">BEGIN</h4>
+    <div class="code-div">
+        <div id="begin">
+            <div class="logs"> <input class="log began-log" value="began : false"> </div>
+            <div class="large square shadow bg-thin-blue"></div>
+            <div class="large square el bg-thin-blue"></div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">RUN</h4>
+    <div class="code-div">
+        <div id="run">
+            <div class="logs"> <input class="log current-time-log" value="not running"> <input class="log progress-log" value="progress : 0%"> </div>
+            <div class="large square shadow bg-thin-blue"></div>
+            <div class="large square el bg-thin-blue"></div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">COMPLETE</h4>
+    <div class="code-div">
+        <div id="complete">
+            <div class="logs"> <input class="log completed-log" value="completed : false"> </div>
+            <div class="square shadow bg-thin-blue"></div>
+            <div class="square el bg-thin-blue"></div>
+        </div>
+    </div>
+</div>
+
+<div id="theme-clr" class="invisible"></div>
+
+@section JsCode {
+    @*全部回调函数展示*@
+    <div class="js-code" data-id="allCallbacks">
+        // 全部回调函数展示
+        var updateLogEl2 = document.querySelector('#allCallbacks .update-log');
+        var beganLogEl2 = document.querySelector('#allCallbacks .began-log');
+        var completedLogEl2 = document.querySelector('#allCallbacks .completed-log');
+        console.log(allCallbacks);
+
+        var allCallbacks = anime({
+            targets: '#allCallbacks .el',
+            translateX: 250,
+            delay: function (el, i) { return 1000 + (i * 100); },
+            duration: function (el, i) { return 500 + (i * 500); }
+        });
+
+        allCallbacks.update = function (anim) {
+            if (!anim.began) {
+                updateLogEl2.value = 'begins in ' + Math.round(anim.delay - anim.currentTime) + 'ms';
+                beganLogEl2.value = '';
+            } else {
+                updateLogEl2.value = 'begins in 0ms';
+            }
+            if (!anim.completed) {
+                completedLogEl2.value = '';
+            }
+        }
+
+        allCallbacks.begin = function () { beganLogEl2.value = 'began'; };
+        allCallbacks.complete = function () { completedLogEl2.value = 'completed'; };
+    </div>
+
+    @*UPDATE*@
+    <div class="js-code" data-id="update">
+        // UPDATE
+        var updateLogEl = document.querySelector('#update .current-time-log');
+        var progressLogEl = document.querySelector('#update .progress-log');
+
+        var update = anime({
+            targets: '#update .el',
+            translateX: 250,
+            delay: 1000,
+            update: function (anim) {
+                updateLogEl.value = 'current time : ' + Math.round(anim.currentTime) + 'ms';
+                progressLogEl.value = 'progress : ' + Math.round(anim.progress) + '%';
+            }
+        });
+        /*
+        在实例播放时，每个帧都会调用update()。
+        */
+    </div>
+    
+    @*BEGIN*@
+    <div class="js-code" data-id="begin">
+        // BEGIN
+        var beganLogEl = document.querySelector('#begin .began-log');
+
+        var begin = anime({
+            targets: '#begin .el',
+            translateX: 250,
+            delay: 1000,
+            duration: 3000,
+            begin: function (anim) {
+                beganLogEl.value = 'began : ' + anim.began;
+            }
+        });
+        /*
+        begin() 只会在动画开始(delay结束)时调用一次
+        */
+    </div>
+
+    @*RUN*@
+    <div class="js-code" data-id="run">
+        // RUN
+        var runLogEl = document.querySelector('#run .current-time-log');
+        var runProgressLogEl = document.querySelector('#run .progress-log');
+
+        var run = anime({
+            targets: '#run .el',
+            translateX: 250,
+            delay: 1000,
+            run: function (anim) {
+                runLogEl.value = 'running';
+                runProgressLogEl.value = 'progress : ' + Math.round(anim.progress) + '%';
+            },
+            complete: function (anim) {
+                runLogEl.value = 'not running';
+                runProgressLogEl.value = 'progress : 100%';
+            }
+        });
+        /*
+        在实例播放时，每个帧都会调用run()。(delay之后)
+        */
+    </div>
+
+    @*COMPLETE*@
+    <div class="js-code" data-id="complete"> 
+        // COMPLETE
+        var completedLogEl = document.querySelector('#complete .completed-log');
+
+        var complete = anime({
+            targets: '#complete .el',
+            translateX: 250,
+            complete: function (anim) {
+                completedLogEl.value = 'completed : ' + anim.completed;
+            }
+        });
+    </div>
+
+}
+
+@section scripts {
+
+<script>
+    // 全部回调函数展示
+    function allCbks() {
+        var updateLogEl2 = document.querySelector('#allCallbacks .update-log');
+        var beganLogEl2 = document.querySelector('#allCallbacks .began-log');
+        var completedLogEl2 = document.querySelector('#allCallbacks .completed-log');
+        console.log(allCallbacks);
+
+        var allCallbacks = anime({
+            targets: '#allCallbacks .el',
+            translateX: 250,
+            delay: function (el, i) { return 1000 + (i * 100); },
+            duration: function (el, i) { return 500 + (i * 500); }
+        });
+
+        allCallbacks.update = function (anim) {
+            if (!anim.began) {
+                updateLogEl2.value = 'begins in ' + Math.round(anim.delay - anim.currentTime) + 'ms';
+                beganLogEl2.value = '';
+            } else {
+                updateLogEl2.value = 'begins in 0ms';
+            }
+            if (!anim.completed) {
+                completedLogEl2.value = '';
+            }
+        }
+
+        allCallbacks.begin = function () { beganLogEl2.value = 'began'; };
+        allCallbacks.complete = function () { completedLogEl2.value = 'completed'; };
+    }
+    allCbks();   // 立即执行
+
+    // UPDATE
+    function updateCb() {
+        var updateLogEl = document.querySelector('#update .current-time-log');
+        var progressLogEl = document.querySelector('#update .progress-log');
+
+        var update = anime({
+            targets: '#update .el',
+            translateX: 250,
+            delay: 1000,
+            update: function (anim) {
+                updateLogEl.value = 'current time : ' + Math.round(anim.currentTime) + 'ms';
+                progressLogEl.value = 'progress : ' + Math.round(anim.progress) + '%';
+            }
+        });
+        /*
+        在实例播放时，每个帧都会调用update()。
+        */
+    }
+    updateCb();   // 立即执行
+
+    // BEGIN
+    function beginCb() {
+        var beganLogEl = document.querySelector('#begin .began-log');
+
+        var begin = anime({
+            targets: '#begin .el',
+            translateX: 250,
+            delay: 1000,
+            duration: 3000,
+            begin: function (anim) {
+                beganLogEl.value = 'began : ' + anim.began;
+            }
+        });
+        /*
+        begin() 只会在动画开始(delay结束)时调用一次
+        */
+    }
+    beginCb();   // 立即执行
+
+    // RUN
+    function runCb() {
+        var runLogEl = document.querySelector('#run .current-time-log');
+        var runProgressLogEl = document.querySelector('#run .progress-log');
+
+        var run = anime({
+            targets: '#run .el',
+            translateX: 250,
+            delay: 1000,
+            run: function (anim) {
+                runLogEl.value = 'running';
+                runProgressLogEl.value = 'progress : ' + Math.round(anim.progress) + '%';
+            },
+            complete: function (anim) {
+                runLogEl.value = 'not running';
+                runProgressLogEl.value = 'progress : 100%';
+            }
+        });
+        /*
+        在实例播放时，每个帧都会调用run()。(delay之后)
+        */
+    }
+    runCb();   // 立即执行
+
+    // COMPLETE
+    function completeCb() {
+        var completedLogEl = document.querySelector('#complete .completed-log');
+
+        var complete = anime({
+            targets: '#complete .el',
+            translateX: 250,
+            complete: function (anim) {
+                completedLogEl.value = 'completed : ' + anim.completed;
+            }
+        });
+    }
+    completeCb();   // 立即执行
+
+    
+
+    $(document).ready(function () {
+        // 全部回调函数展示 单击再次动作
+        $('#allCallbacks').click(function () {
+            $(this).find('.el').css('transform', 'translateX(0px)');
+            allCbks();
+        })
+
+        // UPDATE 单击再次动作
+        $('#update').click(function () {
+            $(this).find('.el').css('transform', 'translateX(0px)');
+            updateCb();
+        })
+
+        // BEGIN 单击再次动作
+        $('#begin').click(function () {
+            $(this).find('.el').css('transform', 'translateX(0px)');
+            $(this).find('.began-log').val('began : false');
+            beginCb();
+        })
+
+        // RUN 单击再次动作
+        $('#run').click(function () {
+            $(this).find('.el').css('transform', 'translateX(0px)');
+            runCb();
+        })
+
+        // COMPLETE 单击再次动作
+        $('#complete').click(function () {
+            $(this).find('.el').css('transform', 'translateX(0px)');
+            $(this).find('.completed-log').val('completed : false');
+            completeCb();
+        })
+
+        $("#theme-clr").css('color', '#5A87FF');
+    });
+</script>
+
+}
