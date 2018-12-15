@@ -226,6 +226,9 @@
     <Content Include="Areas\Study\Views\Program\AnimeJs\Control.cshtml" />
     <Content Include="Areas\Study\Views\Program\AnimeJs\Callbacks.cshtml" />
     <Content Include="Areas\Study\Views\Program\AnimeJs\Index.cshtml" />
+    <Content Include="Areas\Study\Views\Program\AnimeJs\Async.cshtml" />
+    <Content Include="Areas\Study\Views\Program\AnimeJs\SVG.cshtml" />
+    <Content Include="Areas\Study\Views\Program\AnimeJs\Easing.cshtml" />
     <None Include="Properties\PublishProfiles\hnl-c.pubxml" />
     <None Include="Properties\PublishProfiles\hnl.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

@@ -1,0 +1,605 @@
+﻿
+@{
+    ViewBag.Title = "Easing";
+    Layout = "~/Areas/Study/Views/Program/Shared/_LayoutAnimeJs.cshtml";
+}
+
+
+<h2>动画缓冲效果（EASING）</h2>
+
+
+<div class="col-12">
+    <h4 class="mt-4">缓动效果</h4>
+    <div class="code-div">
+        <div id="penner">
+            <div class="line">
+                <div class="small stretched square shadow bg-thin-pink"></div>
+                <div class="small stretched square linear bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="small stretched square shadow bg-thin-pink"></div>
+                <div class="small stretched square InQuad bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="small stretched square shadow bg-thin-pink"></div>
+                <div class="small stretched square InCubic bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="small stretched square shadow bg-thin-pink"></div>
+                <div class="small stretched square InQuart bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="small stretched square shadow bg-thin-pink"></div>
+                <div class="small stretched square InQuint bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="small stretched square shadow bg-thin-pink"></div>
+                <div class="small stretched square InSine bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="small stretched square shadow bg-thin-pink"></div>
+                <div class="small stretched square InExpo bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="small stretched square shadow bg-thin-pink"></div>
+                <div class="small stretched square InCirc bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="small stretched square shadow bg-thin-pink"></div>
+                <div class="small stretched square InBack bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="small stretched square shadow bg-thin-pink"></div>
+                <div class="small stretched square OutQuad bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="small stretched square shadow bg-thin-pink"></div>
+                <div class="small stretched square OutCubic bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="small stretched square shadow bg-thin-pink"></div>
+                <div class="small stretched square OutQuart bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="small stretched square shadow bg-thin-pink"></div>
+                <div class="small stretched square OutQuint bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="small stretched square shadow bg-thin-pink"></div>
+                <div class="small stretched square OutSine bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="small stretched square shadow bg-thin-pink"></div>
+                <div class="small stretched square OutExpo bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="small stretched square shadow bg-thin-pink"></div>
+                <div class="small stretched square OutCirc bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="small stretched square shadow bg-thin-pink"></div>
+                <div class="small stretched square OutBack bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="small stretched square shadow bg-thin-pink"></div>
+                <div class="small stretched square InOutQuad bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="small stretched square shadow bg-thin-pink"></div>
+                <div class="small stretched square InOutCubic bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="small stretched square shadow bg-thin-pink"></div>
+                <div class="small stretched square InOutQuart bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="small stretched square shadow bg-thin-pink"></div>
+                <div class="small stretched square InOutQuint bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="small stretched square shadow bg-thin-pink"></div>
+                <div class="small stretched square InOutSine bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="small stretched square shadow bg-thin-pink"></div>
+                <div class="small stretched square InOutExpo bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="small stretched square shadow bg-thin-pink"></div>
+                <div class="small stretched square InOutCirc bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="small stretched square shadow bg-thin-pink"></div>
+                <div class="small stretched square InOutBack bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">缓动强度</h4>
+    <div class="code-div">
+        <div id="elasticity">
+            <div class="line">
+                <div class="stretched square shadow bg-thin-pink"></div>
+                <div class="stretched square elasticity-0 bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="stretched square shadow bg-thin-pink"></div>
+                <div class="stretched square elasticity-100 bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="stretched square shadow bg-thin-pink"></div>
+                <div class="stretched square elasticity-200 bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="stretched square shadow bg-thin-pink"></div>
+                <div class="stretched square elasticity-300 bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="stretched square shadow bg-thin-pink"></div>
+                <div class="stretched square elasticity-400 bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="stretched square shadow bg-thin-pink"></div>
+                <div class="stretched square elasticity-500 bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="stretched square shadow bg-thin-pink"></div>
+                <div class="stretched square elasticity-600 bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="stretched square shadow bg-thin-pink"></div>
+                <div class="stretched square elasticity-700 bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="stretched square shadow bg-thin-pink"></div>
+                <div class="stretched square elasticity-800 bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="stretched square shadow bg-thin-pink"></div>
+                <div class="stretched square elasticity-900 bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+            <div class="line">
+                <div class="stretched square shadow bg-thin-pink"></div>
+                <div class="stretched square elasticity-1000 bg-thin-pink" style="transform: translateX(0px);"></div>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">自定义贝塞尔曲线</h4>
+    <div class="code-div">
+        <div id="customBezier">
+            <div class="square large shadow bg-thin-pink"></div>
+            <div class="square large el bg-thin-pink"></div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">自定义缓动函数</h4>
+    <div class="code-div">
+        <div id="customEasingFunction">
+            <div class="square large shadow bg-thin-pink"></div>
+            <div class="square large el bg-thin-pink"></div>
+        </div>
+    </div>
+</div>
+
+<div id="theme-clr" class="invisible"></div>
+
+@section JsCode {
+    @*缓动效果*@
+    <div class="js-code" data-id="penner">
+        // 缓动效果
+        var penner = anime.timeline();
+        penner
+          .add({
+              targets: '#penner .linear', translateX: 250, offset: 0,
+              easing: 'linear'
+          })
+          .add({
+              targets: '#penner .InQuad', translateX: 250, offset: 0,
+              easing: 'easeInQuad'
+          })
+          .add({
+              targets: '#penner .InCubic', translateX: 250, offset: 0,
+              easing: 'easeInCubic'
+          })
+          .add({
+              targets: '#penner .InQuart', translateX: 250, offset: 0,
+              easing: 'easeInQuart'
+          })
+          .add({
+              targets: '#penner .InQuint', translateX: 250, offset: 0,
+              easing: 'easeInQuint'
+          })
+          .add({
+              targets: '#penner .InSine', translateX: 250, offset: 0,
+              easing: 'easeInSine'
+          })
+          .add({
+              targets: '#penner .InExpo', translateX: 250, offset: 0,
+              easing: 'easeInExpo'
+          })
+          .add({
+              targets: '#penner .InCirc', translateX: 250, offset: 0,
+              easing: 'easeInCirc'
+          })
+          .add({
+              targets: '#penner .InBack', translateX: 250, offset: 0,
+              easing: 'easeInBack'
+          })
+          .add({
+              targets: '#penner .OutQuad', translateX: 250, offset: 0,
+              easing: 'easeOutQuad'
+          })
+          .add({
+              targets: '#penner .OutCubic', translateX: 250, offset: 0,
+              easing: 'easeOutCubic'
+          })
+          .add({
+              targets: '#penner .OutQuart', translateX: 250, offset: 0,
+              easing: 'easeOutQuart'
+          })
+          .add({
+              targets: '#penner .OutQuint', translateX: 250, offset: 0,
+              easing: 'easeOutQuint'
+          })
+          .add({
+              targets: '#penner .OutSine', translateX: 250, offset: 0,
+              easing: 'easeOutSine'
+          })
+          .add({
+              targets: '#penner .OutExpo', translateX: 250, offset: 0,
+              easing: 'easeOutExpo'
+          })
+          .add({
+              targets: '#penner .OutCirc', translateX: 250, offset: 0,
+              easing: 'easeOutCirc'
+          })
+          .add({
+              targets: '#penner .OutBack', translateX: 250, offset: 0,
+              easing: 'easeOutBack'
+          })
+          .add({
+              targets: '#penner .InOutQuad', translateX: 250, offset: 0,
+              easing: 'easeInOutQuad'
+          })
+          .add({
+              targets: '#penner .InOutCubic', translateX: 250, offset: 0,
+              easing: 'easeInOutCubic'
+          })
+          .add({
+              targets: '#penner .InOutQuart', translateX: 250, offset: 0,
+              easing: 'easeInOutQuart'
+          })
+          .add({
+              targets: '#penner .InOutQuint', translateX: 250, offset: 0,
+              easing: 'easeInOutQuint'
+          })
+          .add({
+              targets: '#penner .InOutSine', translateX: 250, offset: 0,
+              easing: 'easeInOutSine'
+          })
+          .add({
+              targets: '#penner .InOutExpo', translateX: 250, offset: 0,
+              easing: 'easeInOutExpo'
+          })
+          .add({
+              targets: '#penner .InOutCirc', translateX: 250, offset: 0,
+              easing: 'easeInOutCirc'
+          })
+          .add({
+              targets: '#penner .InOutBack', translateX: 250, offset: 0,
+              easing: 'easeInOutBack'
+          });
+    </div>
+
+    @*缓动强度*@
+    <div class="js-code" data-id="elasticity">
+        // 缓动强度
+        var elasticity = anime.timeline();
+        elasticity.add({
+            targets: '#elasticity .elasticity-0', translateX: 250, offset: 0,
+            duration: 3000,
+            elasticity: 0,
+        })
+        .add({
+            targets: '#elasticity .elasticity-100', translateX: 250, offset: 0,
+            duration: 3000,
+            elasticity: 100,
+        })
+        .add({
+            targets: '#elasticity .elasticity-200', translateX: 250, offset: 0,
+            duration: 3000,
+            elasticity: 200,
+        })
+        .add({
+            targets: '#elasticity .elasticity-300', translateX: 250, offset: 0,
+            duration: 3000,
+            elasticity: 300,
+        })
+        .add({
+            targets: '#elasticity .elasticity-400', translateX: 250, offset: 0,
+            duration: 3000,
+            elasticity: 400,
+        })
+        .add({
+            targets: '#elasticity .elasticity-500', translateX: 250, offset: 0,
+            duration: 3000,
+            elasticity: 500,
+        })
+        .add({
+            targets: '#elasticity .elasticity-600', translateX: 250, offset: 0,
+            duration: 3000,
+            elasticity: 600,
+        })
+        .add({
+            targets: '#elasticity .elasticity-700', translateX: 250, offset: 0,
+            duration: 3000,
+            elasticity: 700,
+        })
+        .add({
+            targets: '#elasticity .elasticity-800', translateX: 250, offset: 0,
+            duration: 3000,
+            elasticity: 800,
+        })
+        .add({
+            targets: '#elasticity .elasticity-900', translateX: 250, offset: 0,
+            duration: 3000,
+            elasticity: 900,
+        })
+        .add({
+            targets: '#elasticity .elasticity-1000', translateX: 250, offset: 0,
+            duration: 3000,
+            elasticity: 1000,
+        });
+    </div>
+    
+    @*自定义贝塞尔曲线*@
+    <div class="js-code" data-id="customBezier">
+        // 自定义贝塞尔曲线
+        var customBezier = anime({
+            targets: '#customBezier .el',
+            translateX: 250,
+            easing: [.91, -0.54, .29, 1.56]
+        });
+    </div>
+
+    @*自定义缓动函数*@
+    <div class="js-code" data-id="customEasingFunction">
+        // 自定义缓动函数
+        anime.easings['myCustomEasingName'] = function (t) {
+            return Math.pow(Math.sin(t * 3), 3);
+        }
+        var customEasingFunction = anime({
+            targets: '#customEasingFunction .el',
+            translateX: 250,
+            easing: 'myCustomEasingName'
+        });
+    </div>
+}
+
+@section scripts {
+
+<script>
+    // 缓动效果
+    function penner_easing() {
+        var penner = anime.timeline();
+        penner
+          .add({
+              targets: '#penner .linear', translateX: 250, offset: 0,
+              easing: 'linear'
+          })
+          .add({
+              targets: '#penner .InQuad', translateX: 250, offset: 0,
+              easing: 'easeInQuad'
+          })
+          .add({
+              targets: '#penner .InCubic', translateX: 250, offset: 0,
+              easing: 'easeInCubic'
+          })
+          .add({
+              targets: '#penner .InQuart', translateX: 250, offset: 0,
+              easing: 'easeInQuart'
+          })
+          .add({
+              targets: '#penner .InQuint', translateX: 250, offset: 0,
+              easing: 'easeInQuint'
+          })
+          .add({
+              targets: '#penner .InSine', translateX: 250, offset: 0,
+              easing: 'easeInSine'
+          })
+          .add({
+              targets: '#penner .InExpo', translateX: 250, offset: 0,
+              easing: 'easeInExpo'
+          })
+          .add({
+              targets: '#penner .InCirc', translateX: 250, offset: 0,
+              easing: 'easeInCirc'
+          })
+          .add({
+              targets: '#penner .InBack', translateX: 250, offset: 0,
+              easing: 'easeInBack'
+          })
+          .add({
+              targets: '#penner .OutQuad', translateX: 250, offset: 0,
+              easing: 'easeOutQuad'
+          })
+          .add({
+              targets: '#penner .OutCubic', translateX: 250, offset: 0,
+              easing: 'easeOutCubic'
+          })
+          .add({
+              targets: '#penner .OutQuart', translateX: 250, offset: 0,
+              easing: 'easeOutQuart'
+          })
+          .add({
+              targets: '#penner .OutQuint', translateX: 250, offset: 0,
+              easing: 'easeOutQuint'
+          })
+          .add({
+              targets: '#penner .OutSine', translateX: 250, offset: 0,
+              easing: 'easeOutSine'
+          })
+          .add({
+              targets: '#penner .OutExpo', translateX: 250, offset: 0,
+              easing: 'easeOutExpo'
+          })
+          .add({
+              targets: '#penner .OutCirc', translateX: 250, offset: 0,
+              easing: 'easeOutCirc'
+          })
+          .add({
+              targets: '#penner .OutBack', translateX: 250, offset: 0,
+              easing: 'easeOutBack'
+          })
+          .add({
+              targets: '#penner .InOutQuad', translateX: 250, offset: 0,
+              easing: 'easeInOutQuad'
+          })
+          .add({
+              targets: '#penner .InOutCubic', translateX: 250, offset: 0,
+              easing: 'easeInOutCubic'
+          })
+          .add({
+              targets: '#penner .InOutQuart', translateX: 250, offset: 0,
+              easing: 'easeInOutQuart'
+          })
+          .add({
+              targets: '#penner .InOutQuint', translateX: 250, offset: 0,
+              easing: 'easeInOutQuint'
+          })
+          .add({
+              targets: '#penner .InOutSine', translateX: 250, offset: 0,
+              easing: 'easeInOutSine'
+          })
+          .add({
+              targets: '#penner .InOutExpo', translateX: 250, offset: 0,
+              easing: 'easeInOutExpo'
+          })
+          .add({
+              targets: '#penner .InOutCirc', translateX: 250, offset: 0,
+              easing: 'easeInOutCirc'
+          })
+          .add({
+              targets: '#penner .InOutBack', translateX: 250, offset: 0,
+              easing: 'easeInOutBack'
+          });
+    }
+    penner_easing();   // 立即执行
+
+    // 缓动强度
+    function elasticity_easing() {
+        var elasticity = anime.timeline();
+        elasticity.add({
+            targets: '#elasticity .elasticity-0', translateX: 250, offset: 0,
+            duration: 3000,
+            elasticity: 0,
+        })
+        .add({
+            targets: '#elasticity .elasticity-100', translateX: 250, offset: 0,
+            duration: 3000,
+            elasticity: 100,
+        })
+        .add({
+            targets: '#elasticity .elasticity-200', translateX: 250, offset: 0,
+            duration: 3000,
+            elasticity: 200,
+        })
+        .add({
+            targets: '#elasticity .elasticity-300', translateX: 250, offset: 0,
+            duration: 3000,
+            elasticity: 300,
+        })
+        .add({
+            targets: '#elasticity .elasticity-400', translateX: 250, offset: 0,
+            duration: 3000,
+            elasticity: 400,
+        })
+        .add({
+            targets: '#elasticity .elasticity-500', translateX: 250, offset: 0,
+            duration: 3000,
+            elasticity: 500,
+        })
+        .add({
+            targets: '#elasticity .elasticity-600', translateX: 250, offset: 0,
+            duration: 3000,
+            elasticity: 600,
+        })
+        .add({
+            targets: '#elasticity .elasticity-700', translateX: 250, offset: 0,
+            duration: 3000,
+            elasticity: 700,
+        })
+        .add({
+            targets: '#elasticity .elasticity-800', translateX: 250, offset: 0,
+            duration: 3000,
+            elasticity: 800,
+        })
+        .add({
+            targets: '#elasticity .elasticity-900', translateX: 250, offset: 0,
+            duration: 3000,
+            elasticity: 900,
+        })
+        .add({
+            targets: '#elasticity .elasticity-1000', translateX: 250, offset: 0,
+            duration: 3000,
+            elasticity: 1000,
+        });
+    }
+    elasticity_easing();   // 立即执行
+
+    // 自定义贝塞尔曲线
+    function customBezier_easing() {
+        var customBezier = anime({
+            targets: '#customBezier .el',
+            translateX: 250,
+            easing: [.91, -0.54, .29, 1.56]
+        });
+    }
+    customBezier_easing();   // 立即执行
+
+    // 自定义缓动函数
+    function customFunc_easing() {
+        anime.easings['myCustomEasingName'] = function (t) {
+            return Math.pow(Math.sin(t * 3), 3);
+        }
+        var customEasingFunction = anime({
+            targets: '#customEasingFunction .el',
+            translateX: 250,
+            easing: 'myCustomEasingName'
+        });
+    }
+    customFunc_easing();   // 立即执行
+    
+
+    $(document).ready(function () {
+        // 缓动效果 单击再次动作
+        $('#penner').click(function () {
+            $(this).find('.square:not(.shadow)').css('transform', 'translateX(0px)');
+            penner_easing();
+        })
+
+        // 缓动强度 单击再次动作
+        $('#elasticity').click(function () {
+            $(this).find('.square:not(.shadow)').css('transform', 'translateX(0px)');
+            elasticity_easing();
+        })
+
+        // 自定义贝塞尔曲线 单击再次动作
+        $('#customBezier').click(function () {
+            $(this).find('.el').css('transform', 'translateX(0px)');
+            customBezier_easing();
+        })
+
+        // 自定义缓动函数 单击再次动作
+        $('#customEasingFunction').click(function () {
+            $(this).find('.el').css('transform', 'translateX(0px)');
+            customFunc_easing();
+        })
+
+        // 主题色
+        $("#theme-clr").css('color', '#FB89FB');
+    });
+</script>
+
+}

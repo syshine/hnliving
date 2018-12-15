@@ -106,152 +106,136 @@
     @*时间轴*@
     <div class="js-code" data-id="basicTimeline">
         // 时间轴
-        function basicTline() {
-            var basicTimeline = anime.timeline();
+        var basicTimeline = anime.timeline();
 
-            basicTimeline
-            .add({
-                targets: '#basicTimeline .square.el',
-                translateX: 250,
-                easing: 'easeOutExpo'
-            })
-            .add({
-                targets: '#basicTimeline .circle.el',
-                translateX: 250,
-                easing: 'easeOutExpo'
-            })
-            .add({
-                targets: '#basicTimeline .triangle.el',
-                translateX: 250,
-                easing: 'easeOutExpo'
-            });
-            /*
-            使用.add()给timeline添加动画：
-            */
-        }
-        basicTline();   // 立即执行
+        basicTimeline
+        .add({
+            targets: '#basicTimeline .square.el',
+            translateX: 250,
+            easing: 'easeOutExpo'
+        })
+        .add({
+            targets: '#basicTimeline .circle.el',
+            translateX: 250,
+            easing: 'easeOutExpo'
+        })
+        .add({
+            targets: '#basicTimeline .triangle.el',
+            translateX: 250,
+            easing: 'easeOutExpo'
+        });
+        /*
+        使用.add()给timeline添加动画：
+        */
     </div>
 
     @*设定相对位置*@
     <div class="js-code" data-id="relativeOffset">
         // 设定相对位置
-        function relOffset() {
-            var relativeOffset = anime.timeline();
+        var relativeOffset = anime.timeline();
 
-            relativeOffset
-            .add({
-                targets: '#relativeOffset .square.el',
-                translateX: 250,
-                easing: 'easeOutExpo',
-            })
-            .add({
-                targets: '#relativeOffset .circle.el',
-                translateX: 250,
-                easing: 'easeOutExpo',
-                offset: '-=600' // 前动画完成之前600ms开始此动画
-            })
-            .add({
-                targets: '#relativeOffset .triangle.el',
-                translateX: 250,
-                easing: 'easeOutExpo',
-                offset: '-=800' // 前动画完成之前800ms开始此动画
-            });
-        }
-        relOffset();   // 立即执行
+        relativeOffset
+        .add({
+            targets: '#relativeOffset .square.el',
+            translateX: 250,
+            easing: 'easeOutExpo',
+        })
+        .add({
+            targets: '#relativeOffset .circle.el',
+            translateX: 250,
+            easing: 'easeOutExpo',
+            offset: '-=600' // 前动画完成之前600ms开始此动画
+        })
+        .add({
+            targets: '#relativeOffset .triangle.el',
+            translateX: 250,
+            easing: 'easeOutExpo',
+            offset: '-=800' // 前动画完成之前800ms开始此动画
+        });
     </div>
     
     @*设置绝对位置*@
     <div class="js-code" data-id="absoluteOffset">
         // 设置绝对位置
-        function absOffset() {
-            var absoluteOffset = anime.timeline();
+        var absoluteOffset = anime.timeline();
 
-            absoluteOffset
-            .add({
-                targets: '#absoluteOffset .square.el',
-                translateX: 250,
-                easing: 'easeOutExpo',
-                offset: 1000 // 在时间轴1000ms处开始动画
-            })
-            .add({
-                targets: '#absoluteOffset .circle.el',
-                translateX: 250,
-                easing: 'easeOutExpo',
-                offset: 500 // 在时间轴500ms处开始动画
-            })
-            .add({
-                targets: '#absoluteOffset .triangle.el',
-                translateX: 250,
-                easing: 'easeOutExpo',
-                offset: 0 // Starts at 0ms of the timeline
-            });
-        }
-        absOffset();   // 立即执行
+        absoluteOffset
+        .add({
+            targets: '#absoluteOffset .square.el',
+            translateX: 250,
+            easing: 'easeOutExpo',
+            offset: 1000 // 在时间轴1000ms处开始动画
+        })
+        .add({
+            targets: '#absoluteOffset .circle.el',
+            translateX: 250,
+            easing: 'easeOutExpo',
+            offset: 500 // 在时间轴500ms处开始动画
+        })
+        .add({
+            targets: '#absoluteOffset .triangle.el',
+            translateX: 250,
+            easing: 'easeOutExpo',
+            offset: 0 // Starts at 0ms of the timeline
+        });
     </div>
 
     @*时间轴参数*@
     <div class="js-code" data-id="timelineParameters">
         // 时间轴参数
-        function timelineParam() {
-            var timelineParameters = anime.timeline({
-                direction: 'alternate',
-                loop: true
-            });
+        var timelineParameters = anime.timeline({
+            direction: 'alternate',
+            loop: true
+        });
 
-            timelineParameters
-            .add({
-                targets: '#timelineParameters .square.el',
-                translateX: [{ value: 80 }, { value: 160 }, { value: 250 }],
-                translateY: [{ value: 30 }, { value: 60 }, { value: 60 }],
-                duration: 3000
-            })
-            .add({
-                targets: '#timelineParameters .circle.el',
-                translateX: [{ value: 80 }, { value: 160 }, { value: 250 }],
-                translateY: [{ value: 30 }, { value: -30 }, { value: -30 }],
-                duration: 3000,
-                offset: 200
-            })
-            .add({
-                targets: '#timelineParameters .triangle.el',
-                translateX: [{ value: 80 }, { value: 250 }],
-                translateY: [{ value: -60 }, { value: -30 }, { value: -30 }],
-                duration: 3000,
-                offset: 400
-            });
-
-        }
-        timelineParam();   // 立即执行
+        timelineParameters
+        .add({
+            targets: '#timelineParameters .square.el',
+            translateX: [{ value: 80 }, { value: 160 }, { value: 250 }],
+            translateY: [{ value: 30 }, { value: 60 }, { value: 60 }],
+            duration: 3000
+        })
+        .add({
+            targets: '#timelineParameters .circle.el',
+            translateX: [{ value: 80 }, { value: 160 }, { value: 250 }],
+            translateY: [{ value: 30 }, { value: -30 }, { value: -30 }],
+            duration: 3000,
+            offset: 200
+        })
+        .add({
+            targets: '#timelineParameters .triangle.el',
+            translateX: [{ value: 80 }, { value: 250 }],
+            translateY: [{ value: -60 }, { value: -30 }, { value: -30 }],
+            duration: 3000,
+            offset: 400
+        });
     </div>
 
     @*继承参数*@
     <div class="js-code" data-id="TLParamsInheritance"> 
-        // 继承参数       
-        function TLParamInher() {
-            var TLParamsInheritance = anime.timeline({
-                targets: '#TLParamsInheritance .el',
-                delay: function (el, i) { return i * 200 },
-                duration: 500,
-                easing: 'easeOutExpo',
-                direction: 'alternate',
-                loop: true
-            });
+        // 继承参数
+        var TLParamsInheritance = anime.timeline({
+            targets: '#TLParamsInheritance .el',
+            delay: function (el, i) { return i * 200 },
+            duration: 500,
+            easing: 'easeOutExpo',
+            direction: 'alternate',
+            loop: true
+        });
 
-            TLParamsInheritance
-            .add({
-                translateX: 250,
-            })
-            .add({
-                opacity: .5,
-                translateX: 250,
-                scale: 2,
-            })
-            .add({
-                translateX: 0,
-                scale: 1
-            });
-        }
-        TLParamInher();   // 立即执行
+        TLParamsInheritance
+        .add({
+            translateX: 250,
+        })
+        .add({
+            opacity: .5,
+            translateX: 250,
+            scale: 2,
+        })
+        .add({
+            translateX: 0,
+            scale: 1
+        });
     </div>
 
 }
@@ -433,6 +417,7 @@
         //    TLParamInher();
         //})
 
+        // 主题色
         $("#theme-clr").css('color', '#5EF3FB');
     });
 </script>

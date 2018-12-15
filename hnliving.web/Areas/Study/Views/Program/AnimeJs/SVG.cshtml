@@ -1,0 +1,188 @@
+﻿
+@{
+    ViewBag.Title = "SVG";
+    Layout = "~/Areas/Study/Views/Program/Shared/_LayoutAnimeJs.cshtml";
+}
+
+
+<h2>可缩放矢量图形 SVG ( Scalable Vector Graphics ) </h2>
+
+
+<div class="col-12">
+    <h4 class="mt-4">运动路径</h4>
+    <div class="code-div">
+        <div id="motionPath">
+            <div class="motion-path">
+                <div class="small square shadow follow-path bg-thin-lavender"></div>
+                <div class="small square el follow-path bg-thin-lavender"></div>
+                <svg width="256" height="112" viewBox="0 0 256 112">
+                    <path fill="none" stroke="#C26EFF" stroke-width="1" d="M8,56 C8,33.90861 25.90861,16 48,16 C70.09139,16 88,33.90861 88,56 C88,78.09139 105.90861,92 128,92 C150.09139,92 160,72 160,56 C160,40 148,24 128,24 C108,24 96,40 96,56 C96,72 105.90861,92 128,92 C154,93 168,78 168,56 C168,33.90861 185.90861,16 208,16 C230.09139,16 248,33.90861 248,56 C248,78.09139 230.09139,96 208,96 L48,96 C25.90861,96 8,78.09139 8,56 Z"></path>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="mt-4">变形，为两个SVG形状设置动画</h4>
+    <div class="code-div">
+        <div id="morphing">
+            <svg width="140" height="140" viewBox="0 0 140 140">
+                <g fill="none" fill-rule="evenodd">
+                    <g fill="#C26EFF" fill-opacity=".15" transform="translate(0 6)">
+                        <polygon points="70 0 136.574 48.369 111.145 126.631 28.855 126.631 3.426 48.369"></polygon>
+                        <polygon points="70 18 119.455 53.931 100.565 112.069 39.435 112.069 20.545 53.931"></polygon>
+                        <polygon points="70 34.86 101.727 57.911 89.609 95.209 50.391 95.209 38.273 57.911"></polygon>
+                        <polygon points="70 50.898 84.864 61.697 79.186 79.171 60.814 79.171 55.136 61.697"></polygon>
+                    </g>
+                    <polygon class="polymorph" stroke-width="1" stroke="#C26EFF" points="70 26.10298288150957 119.45029512461709 60.24529512461709 101.50575362921207 119.48657313074374 52.092048753829154 99.52801711849042 5.5289828815095685 55.11122925229749 "></polygon>
+                </g>
+            </svg>
+        </div>
+    </div>
+
+    <h4 class="mt-4">画线，根据SVG形状线条绘制动画</h4>
+    <div class="code-div">
+        <div id="lineDrawing">
+            <svg viewBox="0 0 280 100">
+                <g fill="none" fill-rule="evenodd" stroke="#C26EFF" stroke-width="1" class="lines">
+                    <path d="M58 80V50.12C57.7 41.6 51.14 35 43 35a15 15 0 0 0 0 30h7.5v15H43a30 30 0 1 1 0-60c16.42 0 29.5 13.23 30 29.89V80H58z" stroke-dasharray="316.85528564453125" style="stroke-dashoffset: 316.405px;"></path>
+                    <path d="M73 80V20H58v60h15z" stroke-dasharray="150" style="stroke-dashoffset: 150px;"></path>
+                    <path d="M58 80V49.77C58.5 33.23 71.58 20 88 20a30 30 0 0 1 30 30v30h-15V50a15 15 0 0 0-15-15c-8.14 0-14.7 6.6-15 15.12V80H58zm75 0V20h-15v60h15z" stroke-dasharray="441.1739501953125" style="stroke-dashoffset: 441.174px;"></path>
+                    <path d="M118 80V49.77C118.5 33.23 131.58 20 148 20a30 30 0 0 1 30 30v30h-15V50a15 15 0 0 0-15-15c-8.14 0-14.7 6.6-15 15.12V80h-15zm-7.5-60a7.5 7.5 0 1 1-7.48 8v-1c.25-3.9 3.5-7 7.48-7z" stroke-dasharray="338.3053894042969" style="stroke-dashoffset: 338.305px;"></path>
+                    <path d="M133 65a15 15 0 0 1-15-15v-7.5h-15V50a30 30 0 0 0 30 30V65zm30 15V49.77C163.5 33.23 176.58 20 193 20a30 30 0 0 1 30 30v30h-15V50a15 15 0 0 0-15-15c-8.14 0-14.7 6.6-15 15.12V80h-15z" stroke-dasharray="406.8699035644531" style="stroke-dashoffset: 406.87px;"></path>
+                    <path d="M238 65a15 15 0 0 1 0-30c8.1 0 14.63 6.53 15 15h-15v15h30V49.89C267.5 33.23 254.42 20 238 20a30 30 0 0 0 0 60V65z" stroke-dasharray="301.8561706542969" style="stroke-dashoffset: 301.856px;"></path>
+                    <path d="M260.48 65a7.5 7.5 0 1 1-7.48 8v-1c.26-3.9 3.5-7 7.48-7z" stroke-dasharray="47.128875732421875" style="stroke-dashoffset: 47.1289px;"></path>
+                </g>
+            </svg>
+        </div>
+    </div>
+</div>
+
+<div id="theme-clr" class="invisible"></div>
+
+@section JsCode {
+    @*运动路径*@
+    <div class="js-code" data-id="motionPath">
+        // 运动路径
+        // 创建一个路径`object`
+        var path = anime.path('#motionPath path');
+
+        var motionPath = anime({
+        targets: '#motionPath .el',
+        translateX: path('x'), // 沿着路径对象的x值
+        translateY: path('y'), // 沿着路径对象的y值
+        rotate: path('angle'), // 沿着路径对象的角度值
+        easing: 'linear',
+        duration: 2000,
+        loop: true
+        });
+    </div>
+
+    @*变形，为两个SVG形状设置动画*@
+    <div class="js-code" data-id="morphing">
+        // 变形，为两个SVG形状设置动画
+        var morphing = anime({
+            targets: '#morphing .polymorph',
+            points: [
+              { value: '70 41 118.574 59.369 111.145 132.631 60.855 84.631 20.426 60.369' },
+              { value: '70 6 119.574 60.369 100.145 117.631 39.855 117.631 55.426 68.369' },
+              { value: '70 57 136.574 54.369 89.145 100.631 28.855 132.631 38.426 64.369' },
+              { value: '70 24 119.574 60.369 100.145 117.631 50.855 101.631 3.426 54.369' }
+            ],
+            easing: 'easeOutQuad',
+            duration: 2000,
+            loop: true
+        });
+    </div>
+    
+    @*画线，根据SVG形状线条绘制动画*@
+    <div class="js-code" data-id="lineDrawing">
+        // 画线，根据SVG形状线条绘制动画
+        var lineDrawing = anime({
+            targets: '#lineDrawing .lines path',
+            strokeDashoffset: [anime.setDashoffset, 0],
+            easing: 'easeInOutSine',
+            duration: 1500,
+            delay: function (el, i) { return i * 250 },
+            direction: 'alternate',
+            loop: true
+        });
+    </div>
+}
+
+@section scripts {
+
+<script>
+    // 运动路径
+    function motPath() {
+        // 创建一个路径`object`
+        var path = anime.path('#motionPath path');
+
+        var motionPath = anime({
+            targets: '#motionPath .el',
+            translateX: path('x'), // 沿着路径对象的x值
+            translateY: path('y'), // 沿着路径对象的y值
+            rotate: path('angle'), // 沿着路径对象的角度值
+            easing: 'linear',
+            duration: 2000,
+            loop: true
+        });
+    }
+    motPath();   // 立即执行
+
+    // 变形，为两个SVG形状设置动画
+    function morph() {
+        var morphing = anime({
+            targets: '#morphing .polymorph',
+            points: [
+              { value: '70 41 118.574 59.369 111.145 132.631 60.855 84.631 20.426 60.369' },
+              { value: '70 6 119.574 60.369 100.145 117.631 39.855 117.631 55.426 68.369' },
+              { value: '70 57 136.574 54.369 89.145 100.631 28.855 132.631 38.426 64.369' },
+              { value: '70 24 119.574 60.369 100.145 117.631 50.855 101.631 3.426 54.369' }
+            ],
+            easing: 'easeOutQuad',
+            duration: 2000,
+            loop: true
+        });
+    }
+    morph();   // 立即执行
+
+    // 画线，根据SVG形状线条绘制动画
+    function lineDraw() {
+        var lineDrawing = anime({
+            targets: '#lineDrawing .lines path',
+            strokeDashoffset: [anime.setDashoffset, 0],
+            easing: 'easeInOutSine',
+            duration: 1500,
+            delay: function (el, i) { return i * 250 },
+            direction: 'alternate',
+            loop: true
+        });
+    }
+    lineDraw();   // 立即执行
+    
+
+    $(document).ready(function () {
+        //// 运动路径 单击再次动作
+        //$('#motionPath').click(function () {
+        //    motPath();
+        //})
+
+        //// 变形，为两个SVG形状设置动画 单击再次动作
+        //$('#update').click(function () {
+        //    $(this).find('.el').css('transform', 'translateX(0px)');
+        //    updateCb();
+        //})
+
+        //// 画线，根据SVG形状线条绘制动画 单击再次动作
+        //$('#begin').click(function () {
+        //    $(this).find('.el').css('transform', 'translateX(0px)');
+        //    $(this).find('.began-log').val('began : false');
+        //    beginCb();
+        //})
+
+        // 主题色
+        $("#theme-clr").css('color', '#C26EFF');
+    });
+</script>
+
+}

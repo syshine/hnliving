@@ -88,95 +88,83 @@
     @*DURATION（动画持续时间函数）*@
     <div class="js-code" data-id="functionBasedDuration">
         // DURATION（动画持续时间函数）
-        function funcDuration() {
-            /*
-            默认1000
-            单位 毫秒
-            类型number，function(target, index, totalTargets)
-            */
-            var functionBasedDuration = anime({
-                targets: '#functionBasedDuration .el',
-                translateX: 250,
-                direction: 'alternate',
-                loop: true,
-                duration: function (el, i, l) {
-                    return 1000 + (i * 1000);
-                }
-            });
-        }
-        funcDuration();   // 立即执行
+        /*
+        默认1000
+        单位 毫秒
+        类型number，function(target, index, totalTargets)
+        */
+        var functionBasedDuration = anime({
+            targets: '#functionBasedDuration .el',
+            translateX: 250,
+            direction: 'alternate',
+            loop: true,
+            duration: function (el, i, l) {
+                return 1000 + (i * 1000);
+            }
+        });
     </div>
 
     @*DELAY（延迟动画函数）*@
     <div class="js-code" data-id="functionBasedDelay">
         // DELAY（延迟动画函数）
-        function funcDelay() {
-            /*
-            默认0
-            单位 毫秒
-            类型number，function(target, index, totalTargets)
-            */
-            var functionBasedDelay = anime({
-                targets: '#functionBasedDelay .el',
-                translateX: 250,
-                direction: 'alternate',
-                loop: true,
-                delay: function (el, i, l) {
-                    return i * 100;
-                }
-            });
-        }
-        funcDelay();   // 立即执行
+        /*
+        默认0
+        单位 毫秒
+        类型number，function(target, index, totalTargets)
+        */
+        var functionBasedDelay = anime({
+            targets: '#functionBasedDelay .el',
+            translateX: 250,
+            direction: 'alternate',
+            loop: true,
+            delay: function (el, i, l) {
+                return i * 100;
+            }
+        });
     </div>
 
     @*ELASTICITY(缓冲强度函数)*@
     <div class="js-code" data-id="functionBasedElasticity">
         // ELASTICITY(缓冲强度函数)
-        function funcElasticity() {
-            /*
-            elasticity 弹性强度
-            默认 500
-            类型 number，function(target, index, totalTargets)
-            range[0-1000]
-            */
-            var functionBasedElasticity = anime({
-                targets: '#functionBasedElasticity .el',
-                translateX: 250,
-                direction: 'alternate',
-                loop: true,
-                elasticity: function (el, i, l) {
-                    return (200 + i * 200);
-                }
-            });
-        }
-        funcElasticity();   // 立即执行
+        /*
+        elasticity 弹性强度
+        默认 500
+        类型 number，function(target, index, totalTargets)
+        range[0-1000]
+        */
+        var functionBasedElasticity = anime({
+            targets: '#functionBasedElasticity .el',
+            translateX: 250,
+            direction: 'alternate',
+            loop: true,
+            elasticity: function (el, i, l) {
+                return (200 + i * 200);
+            }
+        });
     </div>
 
     @*综合以上*@
     <div class="js-code" data-id="combinedFunctionBasedProp">        
         // 综合以上
-        function combFuncProp() {
-            var combinedFunctionBasedProp = anime({
-                targets: '#combinedFunctionBasedProp .el',
-                translateX: 250,
-                rotate: 180,
-                duration: function (target) {
-                    // Duration based on every div 'data-duration' attribute
-                    return target.getAttribute('data-duration');
-                },
-                delay: function (target, index) {
-                    // 100ms delay multiplied by every div index, in ascending order
-                    return index * 100;
-                },
-                elasticity: function (target, index, totalTargets) {
-                    // Elasticity multiplied by every div index, in descending order
-                    return 200 + ((totalTargets - index) * 200);
-                },
-                direction: 'alternate',
-                loop: true
-            });
-        }
-        combFuncProp();   // 立即执行
+        var combinedFunctionBasedProp = anime({
+            targets: '#combinedFunctionBasedProp .el',
+            translateX: 250,
+            rotate: 180,
+            duration: function (target) {
+                // Duration based on every div 'data-duration' attribute
+                return target.getAttribute('data-duration');
+            },
+            delay: function (target, index) {
+                // 100ms delay multiplied by every div index, in ascending order
+                return index * 100;
+            },
+            elasticity: function (target, index, totalTargets) {
+                // Elasticity multiplied by every div index, in descending order
+                return 200 + ((totalTargets - index) * 200);
+            },
+            direction: 'alternate',
+            loop: true
+        });
     </div>
 }
 
@@ -290,6 +278,7 @@
             combFuncProp();
         })
 
+        // 主题色
         $("#theme-clr").css('color', '#A6FF8F');
     });
 </script>

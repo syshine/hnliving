@@ -48,101 +48,89 @@
     @*DURATION（动画持续时间）*@
     <div class="js-code" data-id="duration">
         // DURATION（动画持续时间）
-        function dur() {
-            /*
-            默认1000
-            单位 毫秒
-            类型number，function(target, index, totalTargets)
-            */
-            var duration = anime({
-                targets: '#duration .el',
-                translateX: 250,
-                duration: 3000
-            });
-        }
-        dur();   // 立即执行
+        /*
+        默认1000
+        单位 毫秒
+        类型number，function(target, index, totalTargets)
+        */
+        var duration = anime({
+            targets: '#duration .el',
+            translateX: 250,
+            duration: 3000
+        });
     </div>
 
     @*DELAY（延迟播放）*@
     <div class="js-code" data-id="delay">
         // DELAY（延迟播放）
-        function dl() {
-            /*
-            默认0
-            单位 毫秒
-            类型number，function(target, index, totalTargets)
-            */
-            var delay = anime({
-                targets: '#delay .el',
-                translateX: 250,
-                delay: 1000
-            });
-        }
-        dl();   // 立即执行
+        /*
+        默认0
+        单位 毫秒
+        类型number，function(target, index, totalTargets)
+        */
+        var delay = anime({
+            targets: '#delay .el',
+            translateX: 250,
+            delay: 1000
+        });
     </div>
 
     @*EASING（动画缓冲，缓动函数）*@
     <div class="js-code" data-id="easing">
         // EASING（动画缓冲，缓动函数）
-        function ease() {
-            /*
-            默认'easeOutElastic'
-            类型 string或自定义Bézier曲线坐标（数组）
-            */
-            var easing = anime({
-                targets: '#easing .el',
-                translateX: 250,
-                easing: 'easeInOutQuart'
-            });
-            /*
-            具体可以查看动画缓冲效果
-            easeInQuad  easeOutQuad  easeInOutQuad
+        /*
+        默认'easeOutElastic'
+        类型 string或自定义Bézier曲线坐标（数组）
+        */
+        var easing = anime({
+            targets: '#easing .el',
+            translateX: 250,
+            easing: 'easeInOutQuart'
+        });
+        /*
+        具体可以查看动画缓冲效果
+        easeInQuad  easeOutQuad  easeInOutQuad
 
-            easeInCubic  easeOutCubic  easeInOutCubic
+        easeInCubic  easeOutCubic  easeInOutCubic
 
-            easeInQuart  easeOutQuart  easeInOutQuart
+        easeInQuart  easeOutQuart  easeInOutQuart
 
-            easeInQuint  easeOutQuint  easeInOutQuint
+        easeInQuint  easeOutQuint  easeInOutQuint
 
-            easeInSine  easeOutSine  easeInOutSine
+        easeInSine  easeOutSine  easeInOutSine
 
-            easeInExpo  easeOutExpo  easeInOutExpo
+        easeInExpo  easeOutExpo  easeInOutExpo
 
-            easeInCirc  easeOutCirc  easeInOutCirc
+        easeInCirc  easeOutCirc  easeInOutCirc
 
-            easeInBack  easeOutBack  easeInOutBack
+        easeInBack  easeOutBack  easeInOutBack
 
-            easeInElastic  easeOutElastic  easeInOutElastic
-            */
-        }
-        ease();   // 立即执行
+        easeInElastic  easeOutElastic  easeInOutElastic
+        */
     </div>
 
     @*特殊动画参数*@
     <div class="js-code" data-id="specificPropertyParameters">        
         // 特殊动画参数
-        function specPropPar() {
-            var specificPropertyParameters = anime({
-                targets: '#specificPropertyParameters .el',
-                translateX: {
-                    value: 250,
-                    duration: 800
-                },
-                rotate: {
-                    value: 360,
-                    duration: 1800,
-                    easing: 'easeInOutSine'
-                },
-                scale: {
-                    value: 2,
-                    duration: 1600,
-                    delay: 800,
-                    easing: 'easeInOutQuart'
-                },
-                delay: 250 // All properties except 'scale' inherit 250ms delay
-            });
-        }
-        specPropPar();   // 立即执行
+        var specificPropertyParameters = anime({
+            targets: '#specificPropertyParameters .el',
+            translateX: {
+                value: 250,
+                duration: 800
+            },
+            rotate: {
+                value: 360,
+                duration: 1800,
+                easing: 'easeInOutSine'
+            },
+            scale: {
+                value: 2,
+                duration: 1600,
+                delay: 800,
+                easing: 'easeInOutQuart'
+            },
+            delay: 250 // All properties except 'scale' inherit 250ms delay
+        });
     </div>
 }
 
@@ -263,6 +251,7 @@
             specPropPar();
         })
 
+        // 主题色
         $("#theme-clr").css('color', '#FBF38C');
     });
 </script>

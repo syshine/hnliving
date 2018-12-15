@@ -54,92 +54,82 @@
 @section JsCode {
     @*CSS*@
     <div class="js-code" data-id="cssProperties">
-        function cssProp() {
-            var cssProperties = anime({
-                targets: '#cssProperties .el',
-                opacity: .5,
-                left: '240px',
-                backgroundColor: '#FFF',
-                borderRadius: ['0em', '2em'],
-                easing: 'easeInOutQuad'
-            });
-            /*
-            opacity 透明度 0~1
-            backgroundColor
-            fontSize
-            borderRadius
-            backgroundColor
-            等...
-            */
-        }
-        cssProp();   // 立即执行
+        // CSS
+        var cssProperties = anime({
+            targets: '#cssProperties .el',
+            opacity: .5,
+            left: '240px',
+            backgroundColor: '#FFF',
+            borderRadius: ['0em', '2em'],
+            easing: 'easeInOutQuad'
+        });
+        /*
+        opacity 透明度 0~1
+        backgroundColor
+        fontSize
+        borderRadius
+        backgroundColor
+        等...
+        */
     </div>
 
     @*CSS TRANSFORMS变换*@
     <div class="js-code" data-id="CSStransforms">
-        function CSStransf() {
-            var CSStransforms = anime({
-                targets: '#CSStransforms .el',
-                translateX: 250,
-                scale: 2,
-                rotate: '1turn'
-            });
-            /*
-            translateX x轴的值
-            translateY y轴的值
-            retate 旋转
-            scale 大小变换 例：scale:2
-            rotate 旋转 例：rotate:'1turn'（旋转一周）
-            */
-        }
-        CSStransf();   // 立即执行
+        // CSS TRANSFORMS变换
+        var CSStransforms = anime({
+            targets: '#CSStransforms .el',
+            translateX: 250,
+            scale: 2,
+            rotate: '1turn'
+        });
+        /*
+        translateX x轴的值
+        translateY y轴的值
+        retate 旋转
+        scale 大小变换 例：scale:2
+        rotate 旋转 例：rotate:'1turn'（旋转一周）
+        */
     </div>
 
     @*JAVASCRIPT对象属性*@
     <div class="js-code" data-id="JSobjectProp">
-        function JSobjProp() {
-            var myObject = {
-                prop1: 0,
-                prop2: '0%'
-            }
-            var JSobjectProp = anime({
-            targets: myObject,
-            prop1: 50,
-            prop2: '100%',
-            easing: 'linear',
-            round: 1,
-            update: function () {
-                var el = document.querySelector('#JSobjectProp pre');
-                el.innerHTML = JSON.stringify(myObject);
-                }
-            });
+        // JAVASCRIPT对象属性
+        var myObject = {
+            prop1: 0,
+            prop2: '0%'
         }
-        JSobjProp();   // 立即执行
+        var JSobjectProp = anime({
+        targets: myObject,
+        prop1: 50,
+        prop2: '100%',
+        easing: 'linear',
+        round: 1,
+        update: function () {
+            var el = document.querySelector('#JSobjectProp pre');
+            el.innerHTML = JSON.stringify(myObject);
+            }
+        });
     </div>
 
     @*DOM属性*@
-    <div class="js-code" data-id="domAttributes">        
-        function domAttr() {
-            var domAttributes = anime({
-                targets: '#domAttributes input',
-                value: 1000,
-                round: 1,
-                easing: 'easeInOutExpo'
-            });
-        }
-        domAttr();   // 立即执行
+    <div class="js-code" data-id="domAttributes">
+        // DOM属性
+        var domAttributes = anime({
+            targets: '#domAttributes input',
+            value: 1000,
+            round: 1,
+            easing: 'easeInOutExpo'
+        });
     </div>
 
     @*SVG属性*@
-    <div class="js-code" data-id="svgAttributes">                
-        function svgAttr() {
-            var svgAttributes = anime({
-                targets: '#svgAttributes polygon',
-                points: '64 128 8.574 96 8.574 32 64 0 119.426 32 119.426 96',
-                easing: 'easeInOutExpo'
-            });
-        }
-        svgAttr();   // 立即执行
+    <div class="js-code" data-id="svgAttributes">
+        // SVG属性
+        var svgAttributes = anime({
+            targets: '#svgAttributes polygon',
+            points: '64 128 8.574 96 8.574 32 64 0 119.426 32 119.426 96',
+            easing: 'easeInOutExpo'
+        });
     </div>
 }
 
@@ -152,7 +142,7 @@
             targets: '#cssProperties .el',
             opacity: .5,
             left: '240px',
-            backgroundColor: '#555555',
+            backgroundColor: '#FFF',
             borderRadius: ['0em', '2em'],
             easing: 'easeInOutQuad'
         });
@@ -256,6 +246,7 @@
             svgAttr();
         })
 
+        // 主题色
         $("#theme-clr").css('color', '#FF7C72');
     });
 </script>

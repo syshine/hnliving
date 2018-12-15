@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewBag.Title = "Async";
+    Layout = "~/Areas/Study/Views/Program/Shared/_LayoutAnimeJs.cshtml";
+}
+
+
+<h2>异步对象</h2>
+
+
+<div class="col-12">
+    <h4 class="mt-4">FINISHED</h4>
+    <div class="code-div">
+        <div id="finishedPromise">
+            <div class="logs"> <input class="log finished-log text-thin-purple"> </div>
+            <div class="large square shadow bg-thin-purple"></div>
+            <div class="large square el bg-thin-purple"></div>
+        </div>
+    </div>
+</div>
+
+<div id="theme-clr" class="invisible"></div>
+
+@section JsCode {
+    @*FINISHED*@
+    <div class="js-code" data-id="finishedPromise">
+        // FINISHED
+        var finishedLogEl = document.querySelector('#finishedPromise .finished-log');
+
+        var finishedPromise = anime({
+            targets: '#finishedPromise .el',
+            translateX: 250,
+            delay: 1000
+        });
+
+        var promise = finishedPromise.finished.then(logFinished);
+
+        function logFinished() {
+            finishedLogEl.value = 'Promise resolved';
+
+            // Rebind the promise, since this demo can be looped.
+            setTimeout(function () {
+                promise = finishedPromise.finished.then(logFinished);
+            });
+        }
+
+        finishedPromise.update = function (anim) {
+            if (!anim.completed) {
+                finishedLogEl.value = '';
+            }
+        }
+    </div>
+
+}
+
+@section scripts {
+
+<script>
+    // FINISHED
+    function finishPromise() {
+        var finishedLogEl = document.querySelector('#finishedPromise .finished-log');
+
+        var finishedPromise = anime({
+            targets: '#finishedPromise .el',
+            translateX: 250,
+            delay: 1000
+        });
+
+        var promise = finishedPromise.finished.then(logFinished);
+
+        function logFinished() {
+            finishedLogEl.value = 'Promise resolved';
+
+            // Rebind the promise, since this demo can be looped.
+            setTimeout(function () {
+                promise = finishedPromise.finished.then(logFinished);
+            });
+        }
+
+        finishedPromise.update = function (anim) {
+            if (!anim.completed) {
+                finishedLogEl.value = '';
+            }
+        }
+    }
+    finishPromise();   // 立即执行
+
+    
+
+    $(document).ready(function () {
+        // FINISHED 单击再次动作
+        $('#finishedPromise').click(function () {
+            $(this).find('.el').css('transform', 'translateX(0px)');
+            finishPromise();
+        })
+
+        // 主题色
+        $("#theme-clr").css('color', '#8453E3');
+    });
+</script>
+
+}

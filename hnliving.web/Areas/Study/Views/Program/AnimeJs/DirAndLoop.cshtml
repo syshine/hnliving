@@ -80,119 +80,95 @@
     @*ALTERNATE（回复）方向*@
     <div class="js-code" data-id="alternate">
         // ALTERNATE（回复）方向
-        function alt() {
-            var alternate = anime({
-                targets: '#alternate .el',
-                translateX: 250,
-                direction: 'alternate'
-            });
+        var alternate = anime({
+            targets: '#alternate .el',
+            translateX: 250,
+            direction: 'alternate'
+        });
         /*
         direction 方向
         默认 'normal'
         类型 'normal', 'reverse' 反向, 'alternate'会还原
         */
-        }
-        alt();   // 立即执行
     </div>
 
     @*REVERSE（反）方向*@
     <div class="js-code" data-id="reverse">
         // REVERSE（反）方向
-        function rev() {
-            var reverse = anime({
-                targets: '#reverse .el',
-                translateX: 250,
-                direction: 'reverse'
-            });
-        }
-        rev();   // 立即执行
+        var reverse = anime({
+            targets: '#reverse .el',
+            translateX: 250,
+            direction: 'reverse'
+        });
     </div>
 
     @*LOOP(循环)一定次数*@
     <div class="js-code" data-id="loop">
         // LOOP(循环)一定次数
-            function lp() {
-                var loop = anime({
-                targets: '#loop .el',
-                translateX: 250,
-                loop: 3
-            });
+        var loop = anime({
+            targets: '#loop .el',
+            translateX: 250,
+            loop: 3
+        });
         /*
         loop 是否循环/总共循环次数，包括第一次
         默认 false
         number，boolean
         */
-        }
-        lp();   // 立即执行
     </div>
 
     @*回复循环*@
     <div class="js-code" data-id="loopAlternate">        
         // 回复循环
-        function lpAlt() {
-            var loopAlternate = anime({
-                targets: '#loopAlternate .el',
-                translateX: 250,
-                loop: 3,
-                direction: 'alternate'
-            });
-        }
-        lpAlt();   // 立即执行
+        var loopAlternate = anime({
+            targets: '#loopAlternate .el',
+            translateX: 250,
+            loop: 3,
+            direction: 'alternate'
+        });
     </div>
 
     @*反向循环*@
     <div class="js-code" data-id="loopReverse">                
         // 反向循环
-        function lpRev() {
-            var loopReverse = anime({
-                targets: '#loopReverse .el',
-                translateX: 250,
-                loop: 3,
-                direction: 'reverse'
-            });
-        }
-        lpRev();   // 立即执行
+        var loopReverse = anime({
+            targets: '#loopReverse .el',
+            translateX: 250,
+            loop: 3,
+            direction: 'reverse'
+        });
     </div>
 
     @*无限循环*@
     <div class="js-code" data-id="infiniteLoop">                
         // 无限循环
-        function infLp() {
-            var infiniteLoop = anime({
-                targets: '#infiniteLoop .el',
-                translateX: 250,
-                loop: true
-            });
-        }
-        infLp();   // 立即执行
+        var infiniteLoop = anime({
+            targets: '#infiniteLoop .el',
+            translateX: 250,
+            loop: true
+        });
     </div>
 
     @*无限反复（ALTERNATE）循环*@
     <div class="js-code" data-id="infiniteLoopAlternate">                
         // 无限反复（ALTERNATE）循环
-        function infLpAlt() {
-            var infiniteLoopAlternate = anime({
-                targets: '#infiniteLoopAlternate .el',
-                translateX: 250,
-                direction: 'alternate',
-                loop: true
-            });
-        }
-        infLpAlt();   // 立即执行
+        var infiniteLoopAlternate = anime({
+            targets: '#infiniteLoopAlternate .el',
+            translateX: 250,
+            direction: 'alternate',
+            loop: true
+        });
     </div>
 
     @*无限反方向（REVERSE）循环*@
     <div class="js-code" data-id="infiniteLoopReverse">                
         // 无限反方向（REVERSE）循环
-        function infLpARev() {
-            var infiniteLoopReverse = anime({
-                targets: '#infiniteLoopReverse .el',
-                translateX: 250,
-                direction: 'reverse',
-                loop: true
-            });
-        }
-        infLpARev();   // 立即执行
+        var infiniteLoopReverse = anime({
+            targets: '#infiniteLoopReverse .el',
+            translateX: 250,
+            direction: 'reverse',
+            loop: true
+        });
     </div>
 }
 
@@ -350,6 +326,7 @@
             infLpRev();
         })
 
+        // 主题色
         $("#theme-clr").css('color', '#18FF92');
     });
 </script>
