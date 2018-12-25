@@ -66,6 +66,20 @@ namespace hnliving.web
             bundles.Add(new ScriptBundle("~/bundles/anime-js").Include(
                       "~/Plugins/Anime/anime.min.js"));
             #endregion
+
+            #region H5
+
+            bundles.Add(new ScriptBundle("~/bundles/H5").Include(
+                      "~/Plugins/Swiper/js/swiper.min.js",
+                      "~/Plugins/Swiper/js/swiper.animate.min.js"));
+
+            bundles.Add(new StyleBundle("~/Content/H5").Include(
+                      "~/Content/bootstrap.css",
+                      "~/Content/color.css",
+                      "~/Content/animate.css",
+                      "~/Plugins/Swiper/css/swiper.min.css",
+                      "~/Plugins/Swiper/css/animate.min.css"));
+            #endregion
         }
     }
 }

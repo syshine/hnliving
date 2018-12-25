@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace hnliving.web.Areas.H5.Controlers.Festival
+namespace hnliving.web.Areas.H5.Controllers.Festival
 {
     public class SpringController : Controller
     {

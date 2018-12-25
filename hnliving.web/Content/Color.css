@@ -196,3 +196,23 @@
 }
 
 /*渐变文字颜色结束*/
+
+
+/*渐变背景颜色*/
+
+.bg-lgdt-btg {
+    background-image: linear-gradient(0deg,rgb(24, 211, 97),rgb(0, 148, 255));
+}
+
+.bg-lgdt-gtb {
+    background-image: linear-gradient(0deg,rgb(0, 148, 255),rgb(24, 211, 97));
+}
+
+.bg-lgdt-vtb {
+    background-image: linear-gradient(0deg,rgb(178, 203, 238),rgb(100, 80, 142));
+}
+
+.bg-lgdt-btv {
+    background-image: linear-gradient(0deg,rgb(100, 80, 142),rgb(178, 203, 238));
+}
+/*渐变背景颜色结束*/

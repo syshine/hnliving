@@ -234,6 +234,10 @@
     <Content Include="Areas\H5\Views\Festival\Spring\Y2019.cshtml" />
     <Content Include="Areas\H5\Views\Festival\Shared\_Layout.cshtml" />
     <Content Include="Areas\H5\Views\Festival\_ViewStart.cshtml" />
+    <Content Include="Areas\H5\Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Areas\H5\Views\Home\Index.cshtml" />
     <None Include="Properties\PublishProfiles\hnl-c.pubxml" />
     <None Include="Properties\PublishProfiles\hnl.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -262,7 +266,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Cate\CateAreaRegistration.cs" />
     <Compile Include="Areas\Cate\Controllers\HomeController.cs" />
-    <Compile Include="Areas\H5\Controlers\Festival\SpringController.cs" />
+    <Compile Include="Areas\H5\Controllers\HomeController.cs" />
+    <Compile Include="Areas\H5\Controllers\Festival\SpringController.cs" />
     <Compile Include="Areas\H5\H5AreaRegistration.cs" />
     <Compile Include="Areas\Study\Controllers\Program\AnimeJsController.cs" />
     <Compile Include="Areas\Study\Controllers\Program\BootstrapController.cs" />
@@ -329,9 +334,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Cate\Models\" />
-    <Folder Include="Areas\H5\Controlers\Business\" />
-    <Folder Include="Areas\H5\Controlers\Demo\" />
+    <Folder Include="Areas\H5\Controllers\Business\" />
+    <Folder Include="Areas\H5\Controllers\Demo\" />
     <Folder Include="Areas\H5\Models\" />
+    <Folder Include="Areas\H5\Views\Default\" />
     <Folder Include="Areas\Study\Models\" />
     <Folder Include="Areas\Travel\HaiKou\Models\" />
     <Folder Include="Areas\Travel\SanYa\Models\" />
