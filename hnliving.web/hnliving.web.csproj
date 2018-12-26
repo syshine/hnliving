@@ -118,6 +118,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\H5\Images\001.jpg" />
+    <Content Include="Areas\H5\Images\002.jpg" />
+    <Content Include="Areas\H5\Images\003.jpg" />
+    <Content Include="Areas\H5\Images\004.jpg" />
+    <Content Include="Areas\H5\Images\005.jpg" />
+    <Content Include="Areas\H5\Images\006.jpg" />
+    <Content Include="Areas\H5\Images\007.jpeg" />
+    <Content Include="Areas\H5\Images\008.jpg" />
+    <Content Include="Areas\H5\Images\009.jpg" />
+    <Content Include="Areas\H5\Images\010.jpg" />
+    <Content Include="Areas\H5\Images\101.jpg" />
+    <Content Include="Areas\H5\Images\101.png" />
+    <Content Include="Areas\H5\Images\102.png" />
+    <Content Include="Areas\H5\Images\103.png" />
+    <Content Include="Areas\H5\Images\2019.png" />
     <Content Include="Areas\Study\Images\bootstrap.jpg" />
     <Content Include="Areas\Study\Images\csharp.jpg" />
     <Content Include="Areas\Study\Images\h5.jpg" />
@@ -238,6 +253,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Areas\H5\Views\Home\Index.cshtml" />
+    <Content Include="Areas\H5\Views\Demo\Svg\Test1.cshtml" />
     <None Include="Properties\PublishProfiles\hnl-c.pubxml" />
     <None Include="Properties\PublishProfiles\hnl.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -266,6 +282,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Cate\CateAreaRegistration.cs" />
     <Compile Include="Areas\Cate\Controllers\HomeController.cs" />
+    <Compile Include="Areas\H5\Controllers\Demo\SvgController.cs" />
     <Compile Include="Areas\H5\Controllers\HomeController.cs" />
     <Compile Include="Areas\H5\Controllers\Festival\SpringController.cs" />
     <Compile Include="Areas\H5\H5AreaRegistration.cs" />
@@ -335,7 +352,6 @@
   <ItemGroup>
     <Folder Include="Areas\Cate\Models\" />
     <Folder Include="Areas\H5\Controllers\Business\" />
-    <Folder Include="Areas\H5\Controllers\Demo\" />
     <Folder Include="Areas\H5\Models\" />
     <Folder Include="Areas\H5\Views\Default\" />
     <Folder Include="Areas\Study\Models\" />
