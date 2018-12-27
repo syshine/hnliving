@@ -26,6 +26,7 @@ namespace hnliving.web
             WorkContext.IsHttpAjax = WebHelper.IsAjax();
             WorkContext.IP = WebHelper.GetIP();
             WorkContext.Url = WebHelper.GetUrl();
+            WorkContext.RawUrl = WebHelper.GetRawUrl();
             WorkContext.UrlReferrer = WebHelper.GetUrlReferrer();
 
             //获得用户唯一标示符sid

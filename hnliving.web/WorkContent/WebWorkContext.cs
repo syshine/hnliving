@@ -20,6 +20,8 @@ namespace hnliving.web
 
         public string Url;//当前url
 
+        public string RawUrl;//当前url信息（不包括主机和端口）
+
         public string UrlReferrer;//上一次访问的url
 
         public string Sid;//用户sid

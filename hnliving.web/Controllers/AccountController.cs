@@ -48,12 +48,12 @@ namespace hnliving.web.Controllers
                 return View(model);
             }
 
-            if (model.Email.Length == 0)
-                return View(model);
-            else if (model.Email.Length > 10)
-                return RedirectToLocal(returnUrl);
-            else
-                return View(model);
+            //if (model.Email.Length == 0)
+            //    return View(model);
+            //else if (model.Email.Length > 10)
+            //    return RedirectToLocal(returnUrl);
+            //else
+            //    return View(model);
 
             #region //  登陆
             ////ajax请求
@@ -62,30 +62,30 @@ namespace hnliving.web.Controllers
             //string verifyCode = WebHelper.GetFormString("verifyCode");
             //int isRemember = WebHelper.GetFormInt("isRemember");
 
-            //StringBuilder errorList = new StringBuilder("[");
-            ////验证账户名
-            //if (string.IsNullOrWhiteSpace(accountName))
-            //{
-            //    errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "accountName", "账户名不能为空", "}");
-            //}
-            //else if (accountName.Length < 4 || accountName.Length > 50)
-            //{
-            //    errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "accountName", "账户名必须大于3且不大于50个字符", "}");
-            //}
-            //else if ((!SecureHelper.IsSafeSqlString(accountName, false)))
-            //{
-            //    errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "accountName", "账户名不存在", "}");
-            //}
+            StringBuilder errorList = new StringBuilder("[");
+            //验证账户名
+            if (string.IsNullOrWhiteSpace(model.Email))
+            {
+                errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "accountName", "账户名不能为空", "}");
+            }
+            else if (model.Email.Length < 4 || model.Email.Length > 50)
+            {
+                errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "accountName", "账户名必须大于3且不大于50个字符", "}");
+            }
+            else if ((!SecureHelper.IsSafeSqlString(model.Email, false)))
+            {
+                errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "accountName", "账户名不存在", "}");
+            }
 
-            ////验证密码
-            //if (string.IsNullOrWhiteSpace(password))
-            //{
-            //    errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "password", "密码不能为空", "}");
-            //}
-            //else if (password.Length < 4 || password.Length > 32)
-            //{
-            //    errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "password", "密码必须大于3且不大于32个字符", "}");
-            //}
+            //验证密码
+            if (string.IsNullOrWhiteSpace(model.Password))
+            {
+                errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "password", "密码不能为空", "}");
+            }
+            else if (model.Password.Length < 4 || model.Password.Length > 32)
+            {
+                errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "password", "密码必须大于3且不大于32个字符", "}");
+            }
 
             //////验证验证码
             ////if (CommonHelper.IsInArray(WorkContext.PageKey, WorkContext.MallConfig.VerifyPages))
@@ -131,14 +131,19 @@ namespace hnliving.web.Controllers
             //    }
             //}
 
+            if(model.Email == "admin@qq.com" && model.Password == "admin")
+                return RedirectToLocal(returnUrl);
+            else
+                return AjaxResult("error", "登录失败");
+
             //if (errorList.Length > 1)//验证失败时
             //{
-            //    return View("error", "登录成功");
+            //    return AjaxResult("error", "登录失败");
             //}
             //else//验证成功时
             //{
 
-            //    return View("success", "登录成功");
+            //    return AjaxResult("success", "登录成功");
             //}
             #endregion
 
@@ -160,9 +165,15 @@ namespace hnliving.web.Controllers
             //}
         }
 
+        /// <summary>
+        /// 重定向到本网站页面，如果不是本网站，则返回主页，用于避免跳转攻击
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         private ActionResult RedirectToLocal(string returnUrl)
         {
-            if (Url.IsLocalUrl(returnUrl))
+            if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
+                && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
             {
                 return Redirect(returnUrl);
             }

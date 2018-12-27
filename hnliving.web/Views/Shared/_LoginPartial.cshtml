@@ -18,7 +18,7 @@ else
 {
     <ul class="nav navbar-nav ml-auto">
         <li>@Html.ActionLink("注册", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })</li>
-        <li>@Html.ActionLink("登录", "Login", "Account", routeValues: new RouteValueDictionary { { "returnUrl", WorkContext.Url } }, htmlAttributes: new Dictionary<string, object> { { "id", "loginLink" }, { "class", "nav-link" } })</li>
+        <li>@Html.ActionLink("登录", "Login", "Account", routeValues: new RouteValueDictionary { { "returnUrl", WorkContext.RawUrl } }, htmlAttributes: new Dictionary<string, object> { { "id", "loginLink" }, { "class", "nav-link" } })</li>
         @*<li><a class="nav-link" id="loginLink" href="@Url.Action("login", "account", new RouteValueDictionary { { "returnUrl", WorkContext.Url } })">[登录]</a></li>*@
     </ul>
 }
