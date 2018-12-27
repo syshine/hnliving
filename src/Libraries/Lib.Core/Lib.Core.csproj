@@ -72,6 +72,8 @@
     <Compile Include="Random\MngRandom.cs" />
     <Compile Include="Random\IRandomStrategy.cs" />
     <Compile Include="Random\RandomImage.cs" />
+    <Compile Include="Session\MngSession.cs" />
+    <Compile Include="Session\ISessionStrategy.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

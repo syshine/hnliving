@@ -14,7 +14,7 @@ using hnliving.web.Models;
 
 namespace hnliving.web.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseWebController
     {
         // GET: Account
         public ActionResult Index()
@@ -29,7 +29,9 @@ namespace hnliving.web.Controllers
         {
             string returnUrl = WebHelper.GetQueryString("returnUrl");
             if (returnUrl.Length == 0)
-                returnUrl = "/";
+                ViewBag.ReturnUrl = "/";
+            else
+                ViewBag.ReturnUrl = returnUrl;
 
             return View();
         }

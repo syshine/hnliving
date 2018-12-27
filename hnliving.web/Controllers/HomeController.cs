@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace hnliving.web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseWebController
     {
         // GET: Home
         public ActionResult Index()
