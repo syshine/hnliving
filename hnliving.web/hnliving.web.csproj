@@ -255,6 +255,7 @@
     </Content>
     <Content Include="Areas\H5\Views\Home\Index.cshtml" />
     <Content Include="Areas\H5\Views\Demo\Svg\Test1.cshtml" />
+    <Content Include="App_Data\site.config" />
     <None Include="Properties\PublishProfiles\hnl-c.pubxml" />
     <None Include="Properties\PublishProfiles\hnl.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -308,10 +309,13 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BaseWebController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ToolController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HnlViewEngine.cs" />
+    <Compile Include="ImageResult.cs" />
+    <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="PromptModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -350,6 +354,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Assistant\NotFound.cshtml" />
     <Content Include="Views\Assistant\Building.cshtml" />
+    <Content Include="Views\Shared\prompt.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

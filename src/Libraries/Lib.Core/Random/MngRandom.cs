@@ -6,11 +6,11 @@ namespace Lib.Core
     /// <summary>
     /// BrnMall随机性管理类
     /// </summary>
-    public class BMARandom
+    public class MngRandom
     {
         private static IRandomStrategy _irandomstrategy = null;//随机性策略
 
-        static BMARandom()
+        static MngRandom()
         {
             try
             {
@@ -21,7 +21,7 @@ namespace Lib.Core
             }
             catch
             {
-                throw new BaseException("创建'随机性策略对象'失败,可能存在的原因:未将'随机性策略程序集'添加到bin目录中;'随机性策略程序集'文件名不符合'BrnMall.RandomStrategy.{策略名称}.dll'格式");
+                throw new BaseException("创建'随机性策略对象'失败,可能存在的原因:未将'随机性策略程序集'添加到bin目录中;'随机性策略程序集'文件名不符合'hnliving.RandomStrategy.{策略名称}.dll'格式");
             }
         }
 

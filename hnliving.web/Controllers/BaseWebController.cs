@@ -79,12 +79,12 @@ namespace hnliving.web
             }
 
             //设置用户等级
-            if (UserRanks.IsBanUserRank(partUserInfo.UserRid) && partUserInfo.LiftBanTime <= DateTime.Now)
-            {
-                UserRankInfo userRankInfo = UserRanks.GetUserRankByCredits(partUserInfo.PayCredits);
-                Users.UpdateUserRankByUid(partUserInfo.Uid, userRankInfo.UserRid);
-                partUserInfo.UserRid = userRankInfo.UserRid;
-            }
+            //if (UserRanks.IsBanUserRank(partUserInfo.UserRid) && partUserInfo.LiftBanTime <= DateTime.Now)
+            //{
+            //    UserRankInfo userRankInfo = UserRanks.GetUserRankByCredits(partUserInfo.PayCredits);
+            //    Users.UpdateUserRankByUid(partUserInfo.Uid, userRankInfo.UserRid);
+            //    partUserInfo.UserRid = userRankInfo.UserRid;
+            //}
 
             //当用户被禁止访问时重置用户为游客
             if (partUserInfo.UserRid == 1)
@@ -135,8 +135,8 @@ namespace hnliving.web
                 return;
 
             //当用户为会员时,更新用户的在线时间
-            if (WorkContext.Uid > 0)
-                Users.UpdateUserOnlineTime(WorkContext.Uid);
+            //if (WorkContext.Uid > 0)
+            //    Users.UpdateUserOnlineTime(WorkContext.Uid);
         }
 
         protected override void OnActionExecuted(ActionExecutedContext filterContext)

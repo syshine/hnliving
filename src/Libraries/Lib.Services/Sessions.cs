@@ -14,7 +14,7 @@ namespace Lib.Services
 
         static Sessions()
         {
-            _isessionstrategy = BMASession.Instance;
+            _isessionstrategy = MngSession.Instance;
         }
 
         /// <summary>

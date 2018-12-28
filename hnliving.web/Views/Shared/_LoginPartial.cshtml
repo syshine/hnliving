@@ -8,9 +8,10 @@
 
     <ul class="nav navbar-nav">
         <li>
-            @Html.ActionLink("你好，" + "路人甲"@*User.Identity.GetUserName()*@ + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
+            @Html.ActionLink("你好，" + WorkContext.NickName + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
         </li>
-        <li><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">注销</a></li>
+        <li><a class="nav-link" href="@Url.Action("logout", "account")">[退出]</a></li>
+        @*<a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">注销</a>*@
     </ul>
     }
 }

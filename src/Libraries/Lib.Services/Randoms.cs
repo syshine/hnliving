@@ -15,7 +15,7 @@ namespace Lib.Services
 
         static Randoms()
         {
-            _irandomstrategy = BMARandom.Instance;
+            _irandomstrategy = MngRandom.Instance;
             if (!string.IsNullOrWhiteSpace(MngConfig.SiteConfig.RandomLibrary))
             {
                 _irandomstrategy.RandomLibrary = MngConfig.SiteConfig.RandomLibrary.ToCharArray();

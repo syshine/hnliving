@@ -28,11 +28,8 @@ namespace Lib.Data
             partUserInfo.Mobile = reader["mobile"].ToString();
             partUserInfo.Password = reader["password"].ToString();
             partUserInfo.UserRid = TypeHelper.ObjectToInt(reader["userrid"]);
-            partUserInfo.StoreId = TypeHelper.ObjectToInt(reader["storeid"]);
-            partUserInfo.MallAGid = TypeHelper.ObjectToInt(reader["mallagid"]);
             partUserInfo.NickName = reader["nickname"].ToString();
             partUserInfo.Avatar = reader["avatar"].ToString();
-            partUserInfo.PayCredits = TypeHelper.ObjectToInt(reader["paycredits"]);
             partUserInfo.RankCredits = TypeHelper.ObjectToInt(reader["rankcredits"]);
             partUserInfo.VerifyEmail = TypeHelper.ObjectToInt(reader["verifyemail"]);
             partUserInfo.VerifyMobile = TypeHelper.ObjectToInt(reader["verifymobile"]);
@@ -55,11 +52,8 @@ namespace Lib.Data
             userInfo.Mobile = reader["mobile"].ToString();
             userInfo.Password = reader["password"].ToString();
             userInfo.UserRid = TypeHelper.ObjectToInt(reader["userrid"]);
-            userInfo.StoreId = TypeHelper.ObjectToInt(reader["storeid"]);
-            userInfo.MallAGid = TypeHelper.ObjectToInt(reader["mallagid"]);
             userInfo.NickName = reader["nickname"].ToString();
             userInfo.Avatar = reader["avatar"].ToString();
-            userInfo.PayCredits = TypeHelper.ObjectToInt(reader["paycredits"]);
             userInfo.RankCredits = TypeHelper.ObjectToInt(reader["rankcredits"]);
             userInfo.VerifyEmail = TypeHelper.ObjectToInt(reader["verifyemail"]);
             userInfo.VerifyMobile = TypeHelper.ObjectToInt(reader["verifymobile"]);

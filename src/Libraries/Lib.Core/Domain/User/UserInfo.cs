@@ -13,11 +13,8 @@ namespace Lib.Core
         private string _mobile = "";//用户手机
         private string _password = "";//用户密码
         private int _userrid;//用户等级id
-        private int _storeid;//店铺id
-        private int _mallagid;//商城管理员组id
         private string _nickname = "";//用户昵称
         private string _avatar;//用户头像
-        private int _paycredits;//支付积分
         private int _rankcredits;//等级积分
         private int _verifyemail;//是否验证邮箱
         private int _verifymobile;//是否验证手机
@@ -73,22 +70,6 @@ namespace Lib.Core
             set { _userrid = value; }
         }
         /// <summary>
-        /// 店铺id
-        /// </summary>
-        public int StoreId
-        {
-            get { return _storeid; }
-            set { _storeid = value; }
-        }
-        ///<summary>
-        ///商城管理员组id
-        ///</summary>
-        public int MallAGid
-        {
-            get { return _mallagid; }
-            set { _mallagid = value; }
-        }
-        /// <summary>
         /// 用户昵称
         /// </summary>
         public string NickName
@@ -103,14 +84,6 @@ namespace Lib.Core
         {
             get { return _avatar; }
             set { _avatar = value.TrimEnd(); }
-        }
-        ///<summary>
-        ///支付积分
-        ///</summary>
-        public int PayCredits
-        {
-            get { return _paycredits; }
-            set { _paycredits = value; }
         }
         /// <summary>
         /// 等级积分

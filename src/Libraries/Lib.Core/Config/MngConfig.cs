@@ -20,13 +20,13 @@ namespace Lib.Core
         {
             try
             {
-                string[] fileNameList = Directory.GetFiles(System.Web.HttpRuntime.BinDirectory, "HNLiving.ConfigStrategy.*.dll", SearchOption.TopDirectoryOnly);
-                var obj = Type.GetType(string.Format("HNLiving.ConfigStrategy.{0}.ConfigStrategy, HNLiving.ConfigStrategy.{0}", fileNameList[0].Substring(fileNameList[0].LastIndexOf("ConfigStrategy.") + 15).Replace(".dll", "")), false, true);
+                string[] fileNameList = Directory.GetFiles(System.Web.HttpRuntime.BinDirectory, "hnliving.ConfigStrategy.*.dll", SearchOption.TopDirectoryOnly);
+                var obj = Type.GetType(string.Format("hnliving.ConfigStrategy.{0}.ConfigStrategy, hnliving.ConfigStrategy.{0}", fileNameList[0].Substring(fileNameList[0].LastIndexOf("ConfigStrategy.") + 15).Replace(".dll", "")), false, true);
                 _iconfigstrategy = (IConfigStrategy)Activator.CreateInstance(obj);
             }
             catch
             {
-                throw new BaseException("创建'配置策略对象'失败,可能存在的原因:未将'配置策略程序集'添加到bin目录中;'配置策略程序集'文件名不符合'HNLiving.ConfigStrategy.{策略名称}.dll'格式");
+                throw new BaseException("创建'配置策略对象'失败,可能存在的原因:未将'配置策略程序集'添加到bin目录中;'配置策略程序集'文件名不符合'hnliving.ConfigStrategy.{策略名称}.dll'格式");
             }
             _rdbsconfiginfo = _iconfigstrategy.GetRDBSConfig();
             _siteconfiginfo = _iconfigstrategy.GetSiteConfig();

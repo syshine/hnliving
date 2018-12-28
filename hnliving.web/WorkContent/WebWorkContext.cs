@@ -10,7 +10,7 @@ namespace hnliving.web
     /// </summary>
     public class WebWorkContext
     {
-        //public MallConfigInfo MallConfig = BMAConfig.MallConfig;//商城配置信息
+       public SiteConfigInfo SiteConfig = MngConfig.SiteConfig;//站点配置信息
 
         public bool IsHttpAjax;//当前请求是否为ajax请求
 

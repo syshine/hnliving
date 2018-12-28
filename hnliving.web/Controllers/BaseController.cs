@@ -72,7 +72,7 @@ namespace hnliving.web
         /// <returns></returns>
         protected ViewResult PromptView(string backUrl, string message)
         {
-            return View("prompt", new PromptModel(backUrl, message));
+            return View("~/views/shared/prompt", new PromptModel(backUrl, message));
         }
 
         /// <summary>

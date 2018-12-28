@@ -1,5 +1,6 @@
 ﻿@using hnliving.web.Models
-@model LoginViewModel
+@*@model LoginViewModel*@
+@model LoginModel
 @{
     ViewBag.Title = "登录";
 }
@@ -16,19 +17,74 @@
     </style>
 }
 
-@*@section scriptHead{
+@section scriptHead{
     <script src="~/Scripts/account.js" type="text/javascript"></script>
     <script type="text/javascript">
-        returnUrl = "@ViewBag.ReturnUrl";
+        returnUrl = "@Model.ReturnUrl";
+        shadowName = "@Model.ShadowName";
     </script>
-}*@
+}
 
 <canvas id="bkg-cvs" class="bg-light-5"></canvas>
 <div class="row ml-0 mr-0 mt-5"> @* align-items-centerjustify-content-center login-center*@
     <div class="col-10 offset-1 col-sm-8 offset-sm-2 bg-teal-7">
-    <h4>使用本地帐户登录。</h4>
-    <hr />
-    <section id="loginForm" class="col-sm-8 offset-sm-2 col-xl-6 offset-xl-3">
+        <h4>使用本地帐户登录。</h4>
+        <hr />
+
+        <form name="loginForm" action="">
+
+            <div class="form-group">
+                <label class="control-label" for="user-name">账号</label>
+                <div class="col-md-10 p-0">
+                    <input type="text" id="user-name" name="@Model.ShadowName" class="form-control" value="" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label" for="user-pwd">密码</label>
+                <div class="col-md-10 p-0">
+                    <input type="password" id="user-pwd" name="password" class="form-control" value="" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label" for="verify_code">验证码</label>
+                <div class="col-md-10 p-0">
+                    <input type="text" name="verifyCode" autocomplete="off" class="YZM text left" />
+                    <img id="verifyImage" style="cursor:hand" title="点击刷新验证码" onclick="this.src='/tool/verifyimage?time=' + new Date()" src="/tool/verifyimage" height="64" class="left" />
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+            @if (Model.IsRemember)
+            {
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10 p-0">
+                        <div class="checkbox">
+                            <input name="isRemember" type="checkbox" style="vertical-align:-2px; margin-right:3px;" value="1" />记住我
+                            <label></label>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 p-0">
+                    <a href="javascript:void(0)" class="btn btn-default" onclick="login()">登 &nbsp; 陆</a>
+                </div>
+            </div>
+            @*<p>
+                @Html.ActionLink("注册为新用户", "Register")
+            </p>*@
+            @* 在为密码重置功能启用帐户确认后启用此项
+            <p>
+                <a href="@Url.Action("findpwd")">忘记密码?</a>
+                @Html.ActionLink("忘记了密码?", "ForgotPassword")
+            </p>*@
+        </form>
+
+
+    @*<section id="loginForm" class="col-sm-8 offset-sm-2 col-xl-6 offset-xl-3">
         @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
             @Html.AntiForgeryToken()
@@ -60,16 +116,17 @@
                     <input type="submit" value="登录" class="btn btn-default" />
                 </div>
             </div>
-            @*<p>
+                <p>
                     @Html.ActionLink("注册为新用户", "Register")
-                </p>*@
-            @* 在为密码重置功能启用帐户确认后启用此项
+                </p>
+            //在为密码重置功能启用帐户确认后启用此项
                 <p>
                     @Html.ActionLink("忘记了密码?", "ForgotPassword")
-                </p>*@
+                </p>
         }
-    </section>
-</div>
+    </section>*@
+
+    </div>
 
 </div>
 

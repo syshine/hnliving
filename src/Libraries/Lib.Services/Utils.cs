@@ -37,7 +37,7 @@ namespace Lib.Services
         /// <returns></returns>
         public static string GetSidCookie()
         {
-            return WebHelper.GetCookie("bmasid");
+            return WebHelper.GetCookie("hnlsid");
         }
 
         /// <summary>
@@ -45,9 +45,9 @@ namespace Lib.Services
         /// </summary>
         public static void SetSidCookie(string sid)
         {
-            HttpCookie cookie = HttpContext.Current.Request.Cookies["bmasid"];
+            HttpCookie cookie = HttpContext.Current.Request.Cookies["hnlsid"];
             if (cookie == null)
-                cookie = new HttpCookie("bmasid");
+                cookie = new HttpCookie("hnlsid");
 
             cookie.Value = sid;
             cookie.Expires = DateTime.Now.AddDays(15);
@@ -64,7 +64,7 @@ namespace Lib.Services
         /// <returns></returns>
         public static int GetUidCookie()
         {
-            return TypeHelper.StringToInt(GetBMACookie("uid"), -1);
+            return TypeHelper.StringToInt(GetHnlCookie("uid"), -1);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Lib.Services
         /// </summary>
         public static void SetUidCookie(int uid)
         {
-            SetBMACookie("uid", uid.ToString());
+            SetHnlCookie("uid", uid.ToString());
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Lib.Services
         /// <returns></returns>
         public static string GetCookiePassword()
         {
-            return WebHelper.UrlDecode(GetBMACookie("password"));
+            return WebHelper.UrlDecode(GetHnlCookie("password"));
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Lib.Services
         /// </summary>
         public static void SetCookiePassword(string password)
         {
-            SetBMACookie("password", WebHelper.UrlEncode(AESEncrypt(password)));
+            SetHnlCookie("password", WebHelper.UrlEncode(AESEncrypt(password)));
         }
 
         /// <summary>
@@ -111,9 +111,9 @@ namespace Lib.Services
         /// <param name="expires">过期时间</param>
         public static void SetUserCookie(PartUserInfo partUserInfo, int expires)
         {
-            HttpCookie cookie = HttpContext.Current.Request.Cookies["bma"];
+            HttpCookie cookie = HttpContext.Current.Request.Cookies["hnl"];
             if (cookie == null)
-                cookie = new HttpCookie("bma");
+                cookie = new HttpCookie("hnl");
 
             cookie.Values["uid"] = partUserInfo.Uid.ToString();
             cookie.Values["password"] = WebHelper.UrlEncode(AESEncrypt(partUserInfo.Password));
@@ -134,9 +134,9 @@ namespace Lib.Services
         /// </summary>
         /// <param name="key">键</param>
         /// <returns></returns>
-        public static string GetBMACookie(string key)
+        public static string GetHnlCookie(string key)
         {
-            return WebHelper.GetCookie("bma", key);
+            return WebHelper.GetCookie("hnl", key);
         }
 
         /// <summary>
@@ -144,11 +144,11 @@ namespace Lib.Services
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
-        public static void SetBMACookie(string key, string value)
+        public static void SetHnlCookie(string key, string value)
         {
-            HttpCookie cookie = HttpContext.Current.Request.Cookies["bma"];
+            HttpCookie cookie = HttpContext.Current.Request.Cookies["hnl"];
             if (cookie == null)
-                cookie = new HttpCookie("bma");
+                cookie = new HttpCookie("hnl");
 
             cookie[key] = value;
 

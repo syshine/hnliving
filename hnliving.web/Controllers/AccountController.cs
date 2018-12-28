@@ -29,110 +29,108 @@ namespace hnliving.web.Controllers
         {
             string returnUrl = WebHelper.GetQueryString("returnUrl");
             if (returnUrl.Length == 0)
-                ViewBag.ReturnUrl = "/";
-            else
-                ViewBag.ReturnUrl = returnUrl;
+                returnUrl = "/";
 
-            return View();
-        }
+            if (WorkContext.Uid > 0)
+                return PromptView(returnUrl, "您已经登录，无须重复登录!");
 
-        // 登陆
-        // POST: /Account/Login
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
-        {
-            if (!ModelState.IsValid)
+            //get请求
+            if (WebHelper.IsGet())
             {
+                LoginModel model = new LoginModel();
+
+                model.ReturnUrl = returnUrl;
+                model.ShadowName = WorkContext.SiteConfig.ShadowName;
+                model.IsRemember = WorkContext.SiteConfig.IsRemember == 1;
+                //model.IsVerifyCode = CommonHelper.IsInArray(WorkContext.PageKey, WorkContext.SiteConfig.VerifyPages);
+                //model.OAuthPluginList = Plugins.GetOAuthPluginList();
+
                 return View(model);
             }
 
-            //if (model.Email.Length == 0)
-            //    return View(model);
-            //else if (model.Email.Length > 10)
-            //    return RedirectToLocal(returnUrl);
-            //else
-            //    return View(model);
-
-            #region //  登陆
+            #region 登陆
             ////ajax请求
-            //string accountName = WebHelper.GetFormString("ShadowName");
-            //string password = WebHelper.GetFormString("password");
-            //string verifyCode = WebHelper.GetFormString("verifyCode");
-            //int isRemember = WebHelper.GetFormInt("isRemember");
+            string accountName = WebHelper.GetFormString(WorkContext.SiteConfig.ShadowName);
+            string password = WebHelper.GetFormString("password");
+            string verifyCode = WebHelper.GetFormString("verifyCode");
+            int isRemember = WebHelper.GetFormInt("isRemember");
 
             StringBuilder errorList = new StringBuilder("[");
             //验证账户名
-            if (string.IsNullOrWhiteSpace(model.Email))
+            if (string.IsNullOrWhiteSpace(accountName))
             {
                 errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "accountName", "账户名不能为空", "}");
             }
-            else if (model.Email.Length < 4 || model.Email.Length > 50)
+            else if (accountName.Length < 4 || accountName.Length > 50)
             {
                 errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "accountName", "账户名必须大于3且不大于50个字符", "}");
             }
-            else if ((!SecureHelper.IsSafeSqlString(model.Email, false)))
+            else if ((!SecureHelper.IsSafeSqlString(accountName, false)))
             {
                 errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "accountName", "账户名不存在", "}");
             }
 
             //验证密码
-            if (string.IsNullOrWhiteSpace(model.Password))
+            if (string.IsNullOrWhiteSpace(password))
             {
                 errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "password", "密码不能为空", "}");
             }
-            else if (model.Password.Length < 4 || model.Password.Length > 32)
+            else if (password.Length < 6 || password.Length > 32)
             {
-                errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "password", "密码必须大于3且不大于32个字符", "}");
+                errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "password", "密码必须大于5且不大于32个字符", "}");
             }
 
-            //////验证验证码
-            ////if (CommonHelper.IsInArray(WorkContext.PageKey, WorkContext.MallConfig.VerifyPages))
-            ////{
-            ////    if (string.IsNullOrWhiteSpace(verifyCode))
-            ////    {
-            ////        errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "verifyCode", "验证码不能为空", "}");
-            ////    }
-            ////    else if (verifyCode.ToLower() != Sessions.GetValueString(WorkContext.Sid, "verifyCode"))
-            ////    {
-            ////        errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "verifyCode", "验证码不正确", "}");
-            ////    }
-            ////}
+            //验证验证码
+            if (CommonHelper.IsInArray(WorkContext.PageKey, WorkContext.SiteConfig.VerifyPages))
+            {
+                if (string.IsNullOrWhiteSpace(verifyCode))
+                {
+                    errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "verifyCode", "验证码不能为空", "}");
+                }
+                else if (verifyCode.ToLower() != Sessions.GetValueString(WorkContext.Sid, "verifyCode"))
+                {
+                    errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "verifyCode", "验证码不正确", "}");
+                }
+            }
 
-            ////当以上验证全部通过时
-            //PartUserInfo partUserInfo = null;
-            //if (errorList.Length == 1)
-            //{
-            //    partUserInfo = Users.GetPartUserByName(accountName);
-            //    if (partUserInfo == null)
-            //        errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "accountName", "用户名不存在", "}");
+            //当以上验证全部通过时
+            PartUserInfo partUserInfo = null;
+            if (errorList.Length == 1)
+            {
+                partUserInfo = Users.GetPartUserByName(accountName);
+                if (partUserInfo == null)
+                    errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "accountName", "用户名不存在", "}");
 
-            //    if (partUserInfo != null)
-            //    {
-            //        if (Users.CreateUserPassword(password, partUserInfo.Salt) != partUserInfo.Password)//判断密码是否正确
-            //        {
-            //            //LoginFailLogs.AddLoginFailTimes(WorkContext.IP, DateTime.Now);//增加登录失败次数
-            //            errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "password", "密码不正确", "}");
-            //        }
-            //        else if (partUserInfo.UserRid == 1)//当用户等级是禁止访问等级时
-            //        {
-            //            if (partUserInfo.LiftBanTime > DateTime.Now)//达到解禁时间
-            //            {
-            //                UserRankInfo userRankInfo = UserRanks.GetUserRankByCredits(partUserInfo.PayCredits);
-            //                Users.UpdateUserRankByUid(partUserInfo.Uid, userRankInfo.UserRid);
-            //                partUserInfo.UserRid = userRankInfo.UserRid;
-            //            }
-            //            else
-            //            {
-            //                errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "accountName", "您的账号当前被锁定,不能访问", "}");
-            //            }
-            //        }
-            //    }
-            //}
+                if (partUserInfo != null)
+                {
+                    if (Users.CreateUserPassword(password, partUserInfo.Salt) != partUserInfo.Password)//判断密码是否正确
+                    {
+                        //LoginFailLogs.AddLoginFailTimes(WorkContext.IP, DateTime.Now);//增加登录失败次数
+                        errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "password", "密码不正确", "}");
+                    }
+                    else if (partUserInfo.UserRid == 1)//当用户等级是禁止访问等级时
+                    {
+                        if (partUserInfo.LiftBanTime > DateTime.Now)//达到解禁时间
+                        {
+                            //UserRankInfo userRankInfo = UserRanks.GetUserRankByCredits(partUserInfo.PayCredits);
+                            //Users.UpdateUserRankByUid(partUserInfo.Uid, userRankInfo.UserRid);
+                            //partUserInfo.UserRid = userRankInfo.UserRid;
+                        }
+                        else
+                        {
+                            errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "accountName", "您的账号当前被锁定,不能访问", "}");
+                        }
+                    }
+                }
+            }
 
-            if(model.Email == "admin@qq.com" && model.Password == "admin")
-                return RedirectToLocal(returnUrl);
+            if (/*accountName == "admin@qq.com" && password == "admin" && */errorList.Length <= 1)
+            {
+                //将用户信息写入cookie中
+                Utils.SetUserCookie(partUserInfo, (WorkContext.SiteConfig.IsRemember == 1 && isRemember == 1) ? 30 : -1);
+
+                return AjaxResult("success", "登录成功"); //RedirectToLocal(returnUrl);
+            }
             else
                 return AjaxResult("error", "登录失败");
 
@@ -163,6 +161,19 @@ namespace hnliving.web.Controllers
             //        ModelState.AddModelError("", "无效的登录尝试。");
             //        return View(model);
             //}
+        }
+
+        /// <summary>
+        /// 退出
+        /// </summary>
+        public ActionResult Logout()
+        {
+            if (WorkContext.Uid > 0)
+            {
+                WebHelper.DeleteCookie("hnl");
+                Sessions.RemoverSession(WorkContext.Sid);
+            }
+            return Redirect("/");
         }
 
         /// <summary>

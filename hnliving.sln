@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hnliving.web", "hnliving.web\hnliving.web.csproj", "{B42D871A-91D6-4354-B6CC-98C951B50FED}"
 EndProject
@@ -28,6 +28,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hnliving.ConfigStrategy.File", "src\Strategies\hnliving.ConfigStrategy.File\hnliving.ConfigStrategy.File.csproj", "{927BBBF7-C890-450B-B0F5-8EBAF7D3B232}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hnliving.RDBSStrategy.SqlServer", "src\Strategies\hnliving.RDBSStrategy.SqlServer\hnliving.RDBSStrategy.SqlServer.csproj", "{22FA5F65-78FC-42EB-97E0-DEFFAFA21B19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hnliving.SessionStrategy.AspNetCache", "src\Strategies\hnliving.SessionStrategy.AspNetCache\hnliving.SessionStrategy.AspNetCache.csproj", "{4253357E-0A40-49DA-8D8F-AABE5EE80B95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hnliving.RandomStrategy.hnliving", "src\Strategies\hnliving.RandomStrategy.hnliving\hnliving.RandomStrategy.hnliving.csproj", "{B05EB326-227C-4F5D-A890-EDFEB35F96BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +75,14 @@ Global
 		{22FA5F65-78FC-42EB-97E0-DEFFAFA21B19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22FA5F65-78FC-42EB-97E0-DEFFAFA21B19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22FA5F65-78FC-42EB-97E0-DEFFAFA21B19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4253357E-0A40-49DA-8D8F-AABE5EE80B95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4253357E-0A40-49DA-8D8F-AABE5EE80B95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4253357E-0A40-49DA-8D8F-AABE5EE80B95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4253357E-0A40-49DA-8D8F-AABE5EE80B95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B05EB326-227C-4F5D-A890-EDFEB35F96BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B05EB326-227C-4F5D-A890-EDFEB35F96BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B05EB326-227C-4F5D-A890-EDFEB35F96BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B05EB326-227C-4F5D-A890-EDFEB35F96BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,5 +97,7 @@ Global
 		{2DD12C45-7846-48E2-80FC-8AF76AE3A226} = {F4E47AEE-62F9-4003-A3EA-0E86E062187F}
 		{927BBBF7-C890-450B-B0F5-8EBAF7D3B232} = {F4E47AEE-62F9-4003-A3EA-0E86E062187F}
 		{22FA5F65-78FC-42EB-97E0-DEFFAFA21B19} = {F4E47AEE-62F9-4003-A3EA-0E86E062187F}
+		{4253357E-0A40-49DA-8D8F-AABE5EE80B95} = {F4E47AEE-62F9-4003-A3EA-0E86E062187F}
+		{B05EB326-227C-4F5D-A890-EDFEB35F96BE} = {F4E47AEE-62F9-4003-A3EA-0E86E062187F}
 	EndGlobalSection
 EndGlobal
