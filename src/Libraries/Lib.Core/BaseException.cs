@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace Lib.Core
 {
     /// <summary>
-    /// HNLiving异常类
+    /// hnliving异常类
     /// </summary>
     [Serializable]
     public class BaseException : ApplicationException

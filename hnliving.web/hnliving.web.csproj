@@ -355,6 +355,7 @@
     <Content Include="Views\Assistant\NotFound.cshtml" />
     <Content Include="Views\Assistant\Building.cshtml" />
     <Content Include="Views\Shared\prompt.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

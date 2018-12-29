@@ -104,21 +104,6 @@ namespace Lib.Services
         }
 
         /// <summary>
-        /// 获得积分对应的用户等级
-        /// </summary>
-        /// <param name="credits">积分</param>
-        /// <returns></returns>
-        public static UserRankInfo GetUserRankByCredits(int credits)
-        {
-            foreach (UserRankInfo item in GetUserRankList())
-            {
-                if (item.System == 0 && item.CreditsLower <= credits && (item.CreditsUpper > credits || item.CreditsUpper == -1))
-                    return item;
-            }
-            return null;
-        }
-
-        /// <summary>
         /// 获得最低用户等级
         /// </summary>
         /// <returns></returns>
@@ -126,7 +111,7 @@ namespace Lib.Services
         {
             foreach (UserRankInfo userRankInfo in GetUserRankList())
             {
-                if (userRankInfo.System == 0 && userRankInfo.CreditsLower == 0)
+                if (userRankInfo.System == 0)
                     return userRankInfo;
             }
             return null;

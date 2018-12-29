@@ -100,6 +100,6 @@ namespace hnliving.RDBSStrategy.SqlServer
         /// <summary>
         /// 用户等级表
         /// </summary>
-        public const string USER_RANKS = "[userrid],[system],[title],[avatar],[creditslower],[creditsupper],[limitdays]";
+        public const string USER_RANKS = "[userrid],[system],[title],[avatar],[limitdays]";
     }
 }

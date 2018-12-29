@@ -436,11 +436,8 @@ namespace hnliving.RDBSStrategy.SqlServer
                                        GenerateInParam("@mobile",SqlDbType.Char,15,userInfo.Mobile),
 									   GenerateInParam("@password",SqlDbType.Char,32,userInfo.Password),
 									   GenerateInParam("@userrid",SqlDbType.SmallInt,2,userInfo.UserRid),
-									   GenerateInParam("@storeid",SqlDbType.Int,4,userInfo.StoreId),
-                                       GenerateInParam("@mallagid",SqlDbType.SmallInt,2,userInfo.MallAGid),
 									   GenerateInParam("@nickname",SqlDbType.NChar,20,userInfo.NickName),
 									   GenerateInParam("@avatar",SqlDbType.Char,40,userInfo.Avatar),
-									   GenerateInParam("@paycredits",SqlDbType.Int,4,userInfo.PayCredits),
 									   GenerateInParam("@rankcredits",SqlDbType.Int,4,userInfo.RankCredits),
 									   GenerateInParam("@verifyemail",SqlDbType.TinyInt,1,userInfo.VerifyEmail),
 									   GenerateInParam("@verifymobile",SqlDbType.TinyInt,1,userInfo.VerifyMobile),
@@ -835,11 +832,9 @@ namespace hnliving.RDBSStrategy.SqlServer
                                         GenerateInParam("@system", SqlDbType.Int, 4, userRankInfo.System),
                                         GenerateInParam("@title", SqlDbType.NChar,50,userRankInfo.Title),
                                         GenerateInParam("@avatar", SqlDbType.Char,50,userRankInfo.Avatar),
-                                        GenerateInParam("@creditslower", SqlDbType.Int, 4, userRankInfo.CreditsLower),
-                                        GenerateInParam("@creditsupper", SqlDbType.Int,4,userRankInfo.CreditsUpper),
                                         GenerateInParam("@limitdays", SqlDbType.Int,4,userRankInfo.LimitDays)
                                     };
-            string commandText = string.Format("INSERT INTO [{0}userranks]([system],[title],[avatar],[creditslower],[creditsupper],[limitdays]) VALUES(@system,@title,@avatar,@creditslower,@creditsupper,@limitdays)",
+            string commandText = string.Format("INSERT INTO [{0}userranks]([system],[title],[avatar],[limitdays]) VALUES(@system,@title,@avatar,@creditslower,@creditsupper,@limitdays)",
                                                 RDBSHelper.RDBSTablePre);
             RDBSHelper.ExecuteNonQuery(CommandType.Text, commandText, parms);
         }
@@ -867,13 +862,11 @@ namespace hnliving.RDBSStrategy.SqlServer
                                         GenerateInParam("@system", SqlDbType.Int, 4, userRankInfo.System),
                                         GenerateInParam("@title", SqlDbType.NChar,50,userRankInfo.Title),
                                         GenerateInParam("@avatar", SqlDbType.Char,50,userRankInfo.Avatar),
-                                        GenerateInParam("@creditslower", SqlDbType.Int, 4, userRankInfo.CreditsLower),
-                                        GenerateInParam("@creditsupper", SqlDbType.Int,4,userRankInfo.CreditsUpper),
                                         GenerateInParam("@limitdays", SqlDbType.Int,4,userRankInfo.LimitDays),
                                         GenerateInParam("@userrid", SqlDbType.SmallInt, 2, userRankInfo.UserRid)    
                                     };
 
-            string commandText = string.Format("UPDATE [{0}userranks] SET [system]=@system,[title]=@title,[avatar]=@avatar,[creditslower]=@creditslower,[creditsupper]=@creditsupper,[limitdays]=@limitdays WHERE [userrid]=@userrid",
+            string commandText = string.Format("UPDATE [{0}userranks] SET [system]=@system,[title]=@title,[avatar]=@avatar,[limitdays]=@limitdays WHERE [userrid]=@userrid",
                                                 RDBSHelper.RDBSTablePre);
             RDBSHelper.ExecuteNonQuery(CommandType.Text, commandText, parms);
         }

@@ -1,0 +1,120 @@
+﻿@model hnliving.web.Models.RegisterModel
+@{
+    ViewBag.Title = "注册";
+}
+
+@section csses{
+    <style>
+        #bkg-cvs {
+            z-index: -100;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            /*background-color: rgba(243, 91, 226, 0.56);*/
+        }
+    </style>
+}
+
+
+@section scriptHead{
+    <script src="~/Scripts/account.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        returnUrl = "@Model.ReturnUrl";
+        shadowName = "@Model.ShadowName";
+    </script>
+}
+
+
+@*<div id="loginTop" class="box">
+        <a href="/" class="left"><img src="@{@WorkContext.ImageCDN}/images/logo.png" width="186" height="42" /></a>
+        <h2>欢迎注册</h2>
+        <div class="clear"></div>
+    </div>*@
+<canvas id="bkg-cvs" class="bg-light-5"></canvas>
+
+<div class="row ml-0 mr-0 mt-5">
+    @* align-items-centerjustify-content-center login-center*@
+    <div class="col-10 offset-1 col-sm-8 offset-sm-2 bg-teal-7">
+        <h4>欢迎注册！</h4>
+        <hr />
+
+        <div class="">
+            <form name="registerForm" action="">
+                <div class="form-group">
+                    @*<div class="col-md-10 p-0">*@
+                        <label class="control-label col-md-4 text-md-right p-0" for="user-name"><span class="text-danger">*</span>&nbsp;用户名：</label>
+                        <input type="text" id="user-name" name="@Model.ShadowName" class="form-control col-md-6 d-md-inline" value="" />
+                    @*</div>*@
+                </div>
+
+                <div class="form-group">
+                    @*<div class="col-md-10 p-0">*@
+                        <label class="control-labe col-md-4 text-md-right p-0" for="user-pwd"><span class="text-danger">*</span>&nbsp;密码：</label>
+                        <input type="password" id="user-pwd" name="password" class="form-control col-md-6 d-md-inline" value="" />
+                    @*</div>*@
+                </div>
+
+                <div class="form-group">
+                    @*<div class="col-md-10 p-0">*@
+                        <label class="control-label col-md-4 text-md-right p-0" for="user-confirmPwd"><span class="text-danger">*</span>&nbsp;确认密码：</label>
+                        <input type="password" id="user-confirmPwd" name="confirmPwd" class="form-control col-md-6 d-md-inline" value="" />
+                    @*</div>*@
+                </div>
+
+                <div class="form-group">
+                    @*<div class="col-md-10 p-0">*@
+                        <label class="control-label col-md-4 text-md-right p-0" for="verify_code"><span class="text-danger">*</span>&nbsp;验证码：</label>
+                        <input type="text" name="verifyCode" autocomplete="off" class="form-control col-6 col-md-3 d-inline" />
+                        <img id="verifyImage" class="" style="cursor:hand" title="点击刷新验证码" onclick="this.src='/tool/verifyimage?time=' + new Date()" src="/tool/verifyimage" height="48" />
+                    @*</div>*@
+                </div>
+
+                <div class="form-group">
+                    @*<div class="col-md-offset-4 col-md-10 p-0">*@
+                        <label class="control-label col-md-4"></label>
+                        <a href="#" class="btn btn-primary" role="button" onclick="register()">注册</a>
+                    @*</div>*@
+                </div>
+
+                @*<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <th width="30%"><label class="control-label" for="user-name"><span class="text-muted display-4">*</span>用户名：</label></th>
+                        <td width="70%"><input type="text" id="user-name" name="@Model.ShadowName" class="form-control" value="" /></td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr class="succ_on">
+                        <th><em>*</em>请设置密码：</th>
+                        <td><input type="password" name="password" value="" class="text passWord" /></td>
+                        <td></td>
+                    </tr>
+                    <tr class="succ_on">
+                        <th><em>*</em>请确认密码：</th>
+                        <td><input type="password" name="confirmPwd" value="" class="text passWord" /></td>
+                        <td></td>
+                    </tr>
+                    @if (Model.IsVerifyCode)
+                    {
+                        <tr class="succ_on">
+                            <th width="190"><em>*</em>验证码：</th>
+                            <td width="275"><input type="text" name="verifyCode" autocomplete="off" value="" class="text userName" /></td>
+                            <td><img id="verifyImage" style="cursor:hand" height="34" title="点击刷新验证码" onclick="this.src='/tool/verifyimage?time=' + new Date()" src="/tool/verifyimage" /></td>
+                        </tr>
+                    }
+                    <tr>
+                        <td align="right">&nbsp;</td>
+                        <td><a href="#" class="regBt redBT" onclick="register()">立即注册</a></td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>*@
+            </form>
+
+            <div class="">我已经注册，现在就 <a href="@Url.Action("login")" class="text-primary">登录</a></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="~/Canvas/DotLineBkg.js"></script>
+}

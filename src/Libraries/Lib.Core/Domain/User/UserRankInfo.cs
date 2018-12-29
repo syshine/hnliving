@@ -11,8 +11,6 @@ namespace Lib.Core
         private int _system;//是否是系统等级
         private string _title;//用户等级标题
         private string _avatar;//用户等级头像
-        private int _creditsupper;//用户等级积分上限
-        private int _creditslower;//用户等级积分下限
         private int _limitdays;//限制天数
 
         ///<summary>
@@ -46,22 +44,6 @@ namespace Lib.Core
         {
             get { return _avatar; }
             set { _avatar = value.TrimEnd(); }
-        }
-        ///<summary>
-        ///用户等级积分上限
-        ///</summary>
-        public int CreditsUpper
-        {
-            get { return _creditsupper; }
-            set { _creditsupper = value; }
-        }
-        ///<summary>
-        ///用户等级积分下限
-        ///</summary>
-        public int CreditsLower
-        {
-            get { return _creditslower; }
-            set { _creditslower = value; }
         }
         /// <summary>
         /// 限制天数

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Lib.Core
 {
     /// <summary>
-    /// HNLiving非关系型数据库策略之用户接口
+    /// hnliving非关系型数据库策略之用户接口
     /// </summary>
     public partial interface IUserNOSQLStrategy
     {

@@ -3,7 +3,7 @@
 namespace Lib.Core
 {
     /// <summary>
-    /// HNLiving配置策略接口
+    /// hnliving配置策略接口
     /// </summary>
     public partial interface IConfigStrategy
     {

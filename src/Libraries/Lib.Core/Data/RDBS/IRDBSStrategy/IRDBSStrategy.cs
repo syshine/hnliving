@@ -4,7 +4,7 @@ using System.Data.Common;
 namespace Lib.Core
 {
     /// <summary>
-    /// HNLiving关系数据库策略之数据库分部接口
+    /// hnliving关系数据库策略之数据库分部接口
     /// </summary>
     public partial interface IRDBSStrategy
     {

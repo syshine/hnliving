@@ -50,7 +50,7 @@
             <div class="form-group">
                 <label class="control-label" for="verify_code">验证码</label>
                 <div class="col-md-10 p-0">
-                    <input type="text" name="verifyCode" autocomplete="off" class="YZM text left" />
+                    <input type="text" name="verifyCode" autocomplete="off" class="form-control" />
                     <img id="verifyImage" style="cursor:hand" title="点击刷新验证码" onclick="this.src='/tool/verifyimage?time=' + new Date()" src="/tool/verifyimage" height="64" class="left" />
                     <div class="clear"></div>
                 </div>
@@ -70,7 +70,7 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10 p-0">
-                    <a href="javascript:void(0)" class="btn btn-default" onclick="login()">登 &nbsp; 陆</a>
+                    <a href="javascript:void(0)" class="btn btn-primary" role="button" onclick="login()">登 &nbsp; 陆</a>
                 </div>
             </div>
             @*<p>

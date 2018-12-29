@@ -43,6 +43,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseException.cs" />
+    <Compile Include="Cache\CacheKeys.cs" />
+    <Compile Include="Cache\CacheManager\CacheByRegex.cs" />
+    <Compile Include="Cache\CacheManager\ICacheManager.cs" />
+    <Compile Include="Cache\ICacheStrategy.cs" />
+    <Compile Include="Cache\MngCache.cs" />
     <Compile Include="Config\Info\SiteConfigInfo.cs" />
     <Compile Include="Config\MngConfig.cs" />
     <Compile Include="Config\IConfigStrategy.cs" />
@@ -53,8 +58,10 @@
     <Compile Include="Data\DbException.cs" />
     <Compile Include="Data\NOSQL\INOSQLStrategy\IUserStrategy.cs" />
     <Compile Include="Data\RDBS\IRDBSStrategy\IRDBSStrategy.cs" />
+    <Compile Include="Data\RDBS\IRDBSStrategy\ISiteStrategy.cs" />
     <Compile Include="Data\RDBS\IRDBSStrategy\IUserStrategy.cs" />
     <Compile Include="Data\RDBS\RDBSHelper.cs" />
+    <Compile Include="Domain\Site\FilterWordInfo.cs" />
     <Compile Include="Domain\User\OnlineUserInfo.cs" />
     <Compile Include="Domain\User\UserInfo.cs" />
     <Compile Include="Domain\User\UserRankInfo.cs" />

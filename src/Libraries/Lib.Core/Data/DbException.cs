@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace Lib.Core
 {
     /// <summary>
-    /// HNLiving数据库异常
+    /// hnliving数据库异常
     /// </summary>
     [Serializable]
     public class DbException : BaseException

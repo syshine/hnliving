@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5965E7D1-84D3-4D64-9CD6-9586BDE15984}</ProjectGuid>
+    <ProjectGuid>{DD9B53A5-CED7-4E27-AC28-2F7BF037B3D6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lib.Services</RootNamespace>
-    <AssemblyName>Lib.Services</AssemblyName>
+    <RootNamespace>hnliving.CacheStrategy.AspNet</RootNamespace>
+    <AssemblyName>hnliving.CacheStrategy.AspNet</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\..\hnliving.web\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -31,35 +31,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FilterWords.cs" />
-    <Compile Include="LoginFailLogs.cs" />
-    <Compile Include="Logs.cs" />
+    <Compile Include="CacheStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Randoms.cs" />
-    <Compile Include="Sessions.cs" />
-    <Compile Include="UserRanks.cs" />
-    <Compile Include="Users.cs" />
-    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Lib.Core\Lib.Core.csproj">
+    <ProjectReference Include="..\..\Libraries\Lib.Core\Lib.Core.csproj">
       <Project>{1717afaf-8ee1-4d46-a9ab-2f0c33ef6f67}</Project>
       <Name>Lib.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Lib.Data\Lib.Data.csproj">
-      <Project>{e8d92531-ae61-4882-bcb8-8bf1e470373c}</Project>
-      <Name>Lib.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

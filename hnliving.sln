@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hnliving.SessionStrategy.As
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hnliving.RandomStrategy.hnliving", "src\Strategies\hnliving.RandomStrategy.hnliving\hnliving.RandomStrategy.hnliving.csproj", "{B05EB326-227C-4F5D-A890-EDFEB35F96BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hnliving.CacheStrategy.AspNet", "src\Strategies\hnliving.CacheStrategy.AspNet\hnliving.CacheStrategy.AspNet.csproj", "{DD9B53A5-CED7-4E27-AC28-2F7BF037B3D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,10 @@ Global
 		{B05EB326-227C-4F5D-A890-EDFEB35F96BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B05EB326-227C-4F5D-A890-EDFEB35F96BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B05EB326-227C-4F5D-A890-EDFEB35F96BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD9B53A5-CED7-4E27-AC28-2F7BF037B3D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD9B53A5-CED7-4E27-AC28-2F7BF037B3D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD9B53A5-CED7-4E27-AC28-2F7BF037B3D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD9B53A5-CED7-4E27-AC28-2F7BF037B3D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,5 +105,6 @@ Global
 		{22FA5F65-78FC-42EB-97E0-DEFFAFA21B19} = {F4E47AEE-62F9-4003-A3EA-0E86E062187F}
 		{4253357E-0A40-49DA-8D8F-AABE5EE80B95} = {F4E47AEE-62F9-4003-A3EA-0E86E062187F}
 		{B05EB326-227C-4F5D-A890-EDFEB35F96BE} = {F4E47AEE-62F9-4003-A3EA-0E86E062187F}
+		{DD9B53A5-CED7-4E27-AC28-2F7BF037B3D6} = {F4E47AEE-62F9-4003-A3EA-0E86E062187F}
 	EndGlobalSection
 EndGlobal

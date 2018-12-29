@@ -26,8 +26,6 @@ namespace Lib.Data
                 userRankInfo.System = TypeHelper.ObjectToInt(reader["system"]);
                 userRankInfo.Title = reader["title"].ToString();
                 userRankInfo.Avatar = reader["avatar"].ToString();
-                userRankInfo.CreditsLower = TypeHelper.ObjectToInt(reader["creditslower"]);
-                userRankInfo.CreditsUpper = TypeHelper.ObjectToInt(reader["creditsupper"]);
                 userRankInfo.LimitDays = TypeHelper.ObjectToInt(reader["limitdays"]);
                 userRankList.Add(userRankInfo);
             }
