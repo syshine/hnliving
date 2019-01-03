@@ -10,7 +10,10 @@
   </PropertyGroup>
   <ItemGroup>
     <File Include="App_Data/rdbs.config">
-      <publishTime>11/28/2018 19:14:43</publishTime>
+      <publishTime>12/30/2018 12:11:20</publishTime>
+    </File>
+    <File Include="App_Data/site.config">
+      <publishTime>12/28/2018 19:55:15</publishTime>
     </File>
     <File Include="Areas/Cate/Views/Home/Index.cshtml">
       <publishTime>12/01/2018 20:50:39</publishTime>
@@ -23,6 +26,75 @@
     </File>
     <File Include="Areas/Cate/Views/_ViewStart.cshtml">
       <publishTime>11/27/2018 22:26:54</publishTime>
+    </File>
+    <File Include="Areas/H5/Images/001.jpg">
+      <publishTime>12/28/2018 19:55:15</publishTime>
+    </File>
+    <File Include="Areas/H5/Images/002.jpg">
+      <publishTime>12/28/2018 19:55:15</publishTime>
+    </File>
+    <File Include="Areas/H5/Images/003.jpg">
+      <publishTime>12/28/2018 19:55:15</publishTime>
+    </File>
+    <File Include="Areas/H5/Images/004.jpg">
+      <publishTime>12/28/2018 19:55:15</publishTime>
+    </File>
+    <File Include="Areas/H5/Images/005.jpg">
+      <publishTime>12/28/2018 19:55:15</publishTime>
+    </File>
+    <File Include="Areas/H5/Images/006.jpg">
+      <publishTime>12/28/2018 19:55:15</publishTime>
+    </File>
+    <File Include="Areas/H5/Images/007.jpeg">
+      <publishTime>12/28/2018 19:55:15</publishTime>
+    </File>
+    <File Include="Areas/H5/Images/008.jpg">
+      <publishTime>12/28/2018 19:55:15</publishTime>
+    </File>
+    <File Include="Areas/H5/Images/009.jpg">
+      <publishTime>12/28/2018 19:55:15</publishTime>
+    </File>
+    <File Include="Areas/H5/Images/010.jpg">
+      <publishTime>12/28/2018 19:55:15</publishTime>
+    </File>
+    <File Include="Areas/H5/Images/101.jpg">
+      <publishTime>12/28/2018 19:55:15</publishTime>
+    </File>
+    <File Include="Areas/H5/Images/101.png">
+      <publishTime>12/28/2018 19:55:15</publishTime>
+    </File>
+    <File Include="Areas/H5/Images/102.png">
+      <publishTime>12/28/2018 19:55:15</publishTime>
+    </File>
+    <File Include="Areas/H5/Images/103.png">
+      <publishTime>12/28/2018 19:55:15</publishTime>
+    </File>
+    <File Include="Areas/H5/Images/2019.png">
+      <publishTime>12/28/2018 19:55:15</publishTime>
+    </File>
+    <File Include="Areas/H5/Views/Demo/Svg/Test1.cshtml">
+      <publishTime>12/28/2018 19:55:15</publishTime>
+    </File>
+    <File Include="Areas/H5/Views/Festival/Shared/_Layout.cshtml">
+      <publishTime>12/28/2018 19:55:15</publishTime>
+    </File>
+    <File Include="Areas/H5/Views/Festival/Spring/Y2019.cshtml">
+      <publishTime>12/28/2018 19:55:15</publishTime>
+    </File>
+    <File Include="Areas/H5/Views/Festival/_ViewStart.cshtml">
+      <publishTime>12/28/2018 19:55:15</publishTime>
+    </File>
+    <File Include="Areas/H5/Views/Home/Index.cshtml">
+      <publishTime>12/28/2018 19:55:15</publishTime>
+    </File>
+    <File Include="Areas/H5/Views/Shared/_Layout.cshtml">
+      <publishTime>12/28/2018 19:55:15</publishTime>
+    </File>
+    <File Include="Areas/H5/Views/web.config">
+      <publishTime>12/28/2018 19:55:15</publishTime>
+    </File>
+    <File Include="Areas/H5/Views/_ViewStart.cshtml">
+      <publishTime>12/28/2018 19:55:15</publishTime>
     </File>
     <File Include="Areas/Study/Images/bootstrap.jpg">
       <publishTime>11/22/2018 22:31:19</publishTime>
@@ -48,11 +120,107 @@
     <File Include="Areas/Study/Views/Bootstrap/Collapse.cshtml">
       <publishTime>11/27/2018 19:50:43</publishTime>
     </File>
+    <File Include="Areas/Study/Views/CivilServant/Analysis/Index.cshtml">
+      <publishTime>12/05/2018 19:20:28</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/CivilServant/Home/Index.cshtml">
+      <publishTime>12/05/2018 21:07:40</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/CivilServant/Shared/_Layout.cshtml">
+      <publishTime>12/05/2018 21:09:43</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/CivilServant/_ViewStart.cshtml">
+      <publishTime>12/05/2018 19:20:28</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Education/Home/Index.cshtml">
+      <publishTime>12/05/2018 21:06:39</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Education/Shared/_Layout.cshtml">
+      <publishTime>12/05/2018 21:09:24</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Education/_ViewStart.cshtml">
+      <publishTime>12/05/2018 21:08:34</publishTime>
+    </File>
     <File Include="Areas/Study/Views/Home/Index.cshtml">
-      <publishTime>12/01/2018 17:53:16</publishTime>
+      <publishTime>12/05/2018 21:52:03</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Program/AnimeJs/Assign.cshtml">
+      <publishTime>12/15/2018 18:01:13</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Program/AnimeJs/Async.cshtml">
+      <publishTime>12/15/2018 18:15:36</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Program/AnimeJs/Attribute.cshtml">
+      <publishTime>12/15/2018 20:26:16</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Program/AnimeJs/Callbacks.cshtml">
+      <publishTime>12/15/2018 18:16:34</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Program/AnimeJs/Control.cshtml">
+      <publishTime>12/15/2018 18:16:16</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Program/AnimeJs/DirAndLoop.cshtml">
+      <publishTime>12/15/2018 18:01:35</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Program/AnimeJs/Easing.cshtml">
+      <publishTime>12/15/2018 20:05:32</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Program/AnimeJs/FuncRetPar.cshtml">
+      <publishTime>12/15/2018 18:01:39</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Program/AnimeJs/Index.cshtml">
+      <publishTime>12/15/2018 16:41:27</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Program/AnimeJs/Parameter.cshtml">
+      <publishTime>12/15/2018 18:01:47</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Program/AnimeJs/SVG.cshtml">
+      <publishTime>12/15/2018 18:17:03</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Program/AnimeJs/Targets.cshtml">
+      <publishTime>12/15/2018 18:01:51</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Program/AnimeJs/TimeLine.cshtml">
+      <publishTime>12/15/2018 18:01:55</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Program/Bootstrap/ButtonGroup.cshtml">
+      <publishTime>12/05/2018 22:45:46</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Program/Bootstrap/Buttons.cshtml">
+      <publishTime>12/05/2018 22:43:53</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Program/Bootstrap/Card.cshtml">
+      <publishTime>12/05/2018 22:45:49</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Program/Bootstrap/Collapse.cshtml">
+      <publishTime>12/05/2018 22:45:52</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Program/Bootstrap/TabPane.cshtml">
+      <publishTime>12/07/2018 22:10:59</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Program/Home/About.cshtml">
+      <publishTime>12/05/2018 19:20:28</publishTime>
     </File>
     <File Include="Areas/Study/Views/Program/Home/Index.cshtml">
-      <publishTime>12/01/2018 19:55:29</publishTime>
+      <publishTime>12/12/2018 21:23:57</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Program/Shared/_Layout.cshtml">
+      <publishTime>12/07/2018 19:15:02</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Program/Shared/_LayoutAnimeJs.cshtml">
+      <publishTime>12/15/2018 18:29:05</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Program/Shared/_LayoutBootstrap.cshtml">
+      <publishTime>12/07/2018 22:05:10</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Program/Swiper/Index.cshtml">
+      <publishTime>12/05/2018 19:20:28</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Program/Swiper/Test.cshtml">
+      <publishTime>12/05/2018 19:20:28</publishTime>
+    </File>
+    <File Include="Areas/Study/Views/Program/_ViewStart.cshtml">
+      <publishTime>12/05/2018 22:32:48</publishTime>
     </File>
     <File Include="Areas/Study/Views/Shared/_Layout.cshtml">
       <publishTime>11/27/2018 19:50:43</publishTime>
@@ -65,6 +233,33 @@
     </File>
     <File Include="Areas/Study/Views/_ViewStart.cshtml">
       <publishTime>11/23/2018 23:48:06</publishTime>
+    </File>
+    <File Include="Areas/Travel/HaiKou/Views/Home/Index.cshtml">
+      <publishTime>12/04/2018 21:30:17</publishTime>
+    </File>
+    <File Include="Areas/Travel/HaiKou/Views/Shared/_Layout.cshtml">
+      <publishTime>12/04/2018 21:05:23</publishTime>
+    </File>
+    <File Include="Areas/Travel/HaiKou/Views/Test/Index.cshtml">
+      <publishTime>12/05/2018 19:20:28</publishTime>
+    </File>
+    <File Include="Areas/Travel/HaiKou/Views/web.config">
+      <publishTime>12/04/2018 22:15:00</publishTime>
+    </File>
+    <File Include="Areas/Travel/HaiKou/Views/_ViewStart.cshtml">
+      <publishTime>12/04/2018 21:24:46</publishTime>
+    </File>
+    <File Include="Areas/Travel/SanYa/Views/Home/Index.cshtml">
+      <publishTime>12/04/2018 21:07:26</publishTime>
+    </File>
+    <File Include="Areas/Travel/SanYa/Views/Shared/_Layout.cshtml">
+      <publishTime>12/04/2018 21:06:34</publishTime>
+    </File>
+    <File Include="Areas/Travel/SanYa/Views/web.config">
+      <publishTime>12/04/2018 21:06:34</publishTime>
+    </File>
+    <File Include="Areas/Travel/SanYa/Views/_ViewStart.cshtml">
+      <publishTime>12/04/2018 21:25:07</publishTime>
     </File>
     <File Include="Areas/Travel/Views/Home/Index.cshtml">
       <publishTime>11/27/2018 22:27:47</publishTime>
@@ -82,10 +277,10 @@
       <publishTime>11/23/2018 23:48:06</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>12/03/2018 22:06:03</publishTime>
+      <publishTime>12/31/2018 17:32:08</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>12/03/2018 22:06:03</publishTime>
+      <publishTime>12/31/2018 17:32:08</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>11/03/2015 17:43:42</publishTime>
@@ -94,16 +289,16 @@
       <publishTime>11/03/2015 17:43:42</publishTime>
     </File>
     <File Include="bin/hnliving.web.dll">
-      <publishTime>12/03/2018 22:05:46</publishTime>
+      <publishTime>12/31/2018 11:39:00</publishTime>
     </File>
     <File Include="bin/Lib.Core.dll">
-      <publishTime>12/02/2018 17:06:09</publishTime>
+      <publishTime>12/31/2018 11:38:54</publishTime>
     </File>
     <File Include="bin/Lib.Data.dll">
-      <publishTime>12/02/2018 17:06:09</publishTime>
+      <publishTime>12/31/2018 11:38:54</publishTime>
     </File>
     <File Include="bin/Lib.Services.dll">
-      <publishTime>12/02/2018 17:06:09</publishTime>
+      <publishTime>12/31/2018 11:38:54</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>11/23/2018 23:48:06</publishTime>
@@ -202,7 +397,7 @@
       <publishTime>11/30/2018 22:01:47</publishTime>
     </File>
     <File Include="Content/Animate.css">
-      <publishTime>11/30/2018 23:08:17</publishTime>
+      <publishTime>12/04/2018 19:16:20</publishTime>
     </File>
     <File Include="Content/bootstrap-3.3.7.css">
       <publishTime>11/23/2018 23:48:06</publishTime>
@@ -247,7 +442,7 @@
       <publishTime>11/26/2018 19:18:21</publishTime>
     </File>
     <File Include="Content/Color.css">
-      <publishTime>12/01/2018 17:35:04</publishTime>
+      <publishTime>12/28/2018 19:55:15</publishTime>
     </File>
     <File Include="Content/Site.css">
       <publishTime>11/25/2018 22:05:33</publishTime>
@@ -279,11 +474,20 @@
     <File Include="Images/字体图标对照表.jpg">
       <publishTime>11/27/2018 19:50:43</publishTime>
     </File>
+    <File Include="Navigate/AnimeJsNav.js">
+      <publishTime>12/12/2018 21:25:00</publishTime>
+    </File>
     <File Include="Navigate/BootstrapNav.js">
-      <publishTime>11/26/2018 19:05:24</publishTime>
+      <publishTime>12/07/2018 22:12:09</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>11/28/2018 21:04:15</publishTime>
+      <publishTime>12/04/2018 22:12:18</publishTime>
+    </File>
+    <File Include="Plugins/Anime/anime.js">
+      <publishTime>04/22/2018 04:08:58</publishTime>
+    </File>
+    <File Include="Plugins/Anime/anime.min.js">
+      <publishTime>04/22/2018 04:08:58</publishTime>
     </File>
     <File Include="Plugins/Swiper/css/animate.css">
       <publishTime>11/12/2018 17:54:11</publishTime>
@@ -307,7 +511,10 @@
       <publishTime>11/01/2018 03:58:10</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>12/03/2018 22:05:53</publishTime>
+      <publishTime>12/31/2018 17:32:03</publishTime>
+    </File>
+    <File Include="Scripts/account.js">
+      <publishTime>12/28/2018 19:55:15</publishTime>
     </File>
     <File Include="Scripts/bootstrap-3.3.7.js">
       <publishTime>11/23/2018 23:48:06</publishTime>
@@ -448,7 +655,10 @@
       <publishTime>11/26/2018 19:05:24</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
-      <publishTime>11/30/2018 22:01:47</publishTime>
+      <publishTime>12/29/2018 22:22:04</publishTime>
+    </File>
+    <File Include="Views/Account/Register.cshtml">
+      <publishTime>12/29/2018 22:22:04</publishTime>
     </File>
     <File Include="Views/Assistant/Building.cshtml">
       <publishTime>12/02/2018 19:48:37</publishTime>
@@ -457,25 +667,28 @@
       <publishTime>12/01/2018 16:37:15</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
-      <publishTime>12/03/2018 22:04:38</publishTime>
+      <publishTime>12/04/2018 19:16:20</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>12/02/2018 22:32:48</publishTime>
+      <publishTime>12/05/2018 22:48:25</publishTime>
+    </File>
+    <File Include="Views/Shared/prompt.cshtml">
+      <publishTime>12/28/2018 19:55:15</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutMain.cshtml">
-      <publishTime>12/03/2018 21:39:51</publishTime>
+      <publishTime>12/28/2018 19:55:15</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
-      <publishTime>11/29/2018 20:44:05</publishTime>
+      <publishTime>12/28/2018 19:55:15</publishTime>
     </File>
     <File Include="Views/web.config">
-      <publishTime>12/01/2018 11:34:16</publishTime>
+      <publishTime>12/28/2018 19:55:15</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>11/23/2018 23:48:06</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/02/2018 17:06:13</publishTime>
+      <publishTime>12/31/2018 11:39:01</publishTime>
     </File>
   </ItemGroup>
 </Project>
