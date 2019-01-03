@@ -7,6 +7,7 @@
     @*<link rel="shortcut icon" href="~/Images/Icons/lg.ico" />*@
     @*<link rel="bookmark" href="~/Images/Icons/lg.ico" type="image/x-icon"/>*@ 
     @Styles.Render("~/Content/css")
+    <link href="~/Content/prism/prismBasic-Night.css" rel="stylesheet" />
     @*@Scripts.Render("~/bundles/modernizr")*@
     @RenderSection("csses", required: false)
     @RenderSection("scriptsHead", required: false)
@@ -14,7 +15,7 @@
     <style>
         /*固定到底部*/
         .bottom-fixed {
-            position: fixed;
+            position: fixed !important;
             z-index: 100;
             bottom: 0;
             left: 0;
@@ -116,8 +117,8 @@
         <br />
         @*显示html代码的div参考位置*@
         <div id="ref-loc"></div>
-        <pre id="show-code" class="alert alert-info pl-3 pr-3 m-0 show-code-height">点击实例可查看代码</pre>
-        <hr />
+        <pre id="show-code" class="m-0 show-code-height line-numbers language-html">点击实例可查看代码</pre>
+        <hr />@* line-numbers language-html*@
     </div>
     <footer>
         <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
@@ -128,6 +129,8 @@
     @RenderSection("scripts", required: false)
 
     <script src="~/Navigate/BootstrapNav.js"></script>
+    <script src="~/Scripts/prism/prismBasic-Night.js"></script>
+    <script src="~/Scripts/Tools/HtmlUtil.js"></script>
 
     <script type="text/javascript">
 
@@ -151,18 +154,37 @@
             // 页面显示时先执行一次
             fixBottom();
 
+            //var class_val = $("#show-code").attr('class');
+            //var class_arr = new Array();
+            //class_arr = class_val.split(';');
+            //class_arr = class_arr['0'].split(':');
+            //var lan_class = 'language-' + class_arr['1'];
+            //var pre_content = '<code class="' + lan_class + '">' + $("#show-code").html() + '</code>';
+            //$("#show-code").html(pre_content);
+            //$("#show-code").attr("class", 'line-numbers ' + lan_class);
+
             // 设置show-code代码
             $(".code-div").click(function () {
                 // 获取和显示当前按钮的html
-                var formattedHtml = HTMLFormat($(this).html());
-                $("#show-code").text(formattedHtml);
+                //var formattedHtml = HTMLFormat($(this).html());
+                //$("#show-code").text(formattedHtml);
 
 
                 // 获取和显示当前按钮的html
-                $("#show-code").text($(this).html());
+                //$("#show-code").text($(this).html());
 
-                // 内容变化时引起高度变化
-                code_height = $("#show-code").height();
+                // 获取和显示当前按钮的html
+                var htmlCode = HtmlUtil.htmlEncode($(this).html());
+                
+                var pre_content = '<code class="language-html">' + htmlCode + '</code>';
+                $("#show-code").html(pre_content);
+                $("#show-code").attr("class", 'm-0 line-numbers language-html show-code-height');
+
+                // 固定底部代码
+                fixBottom();
+
+                // 如果你不想让Prism再次查找新增的DOM节点内容，你可以使用highlightElement()函数来指定需要高亮的DOM节点内容。
+                Prism.highlightAll();
             });
 
             // 左侧导航栏开关
@@ -238,12 +260,27 @@
         // 设置show-code代码
         function setShowCode(ctrl) {
             // 获取和显示当前按钮的html
-            var formattedHtml = HTMLFormat($(ctrl).prop("outerHTML"));
+            //var formattedHtml = HTMLFormat($(ctrl).prop("outerHTML"));
             //console.log(formattedHtml1);
-            $("#show-code").text(formattedHtml);
+            //$("#show-code").text(formattedHtml);
 
             // 获取和显示当前按钮的html
             //$("#show-code").text($(ctrl).prop("outerHTML"));
+
+
+
+            // 获取和显示当前按钮的html
+            var htmlCode = HtmlUtil.htmlEncode($(ctrl).prop("outerHTML"));
+
+            var pre_content = '<code class="language-html">' + htmlCode + '</code>';
+            $("#show-code").html(pre_content);
+            $("#show-code").attr("class", 'm-0 line-numbers language-html show-code-height');
+
+            // 固定底部代码
+            fixBottom();
+
+            // 如果你不想让Prism再次查找新增的DOM节点内容，你可以使用highlightElement()函数来指定需要高亮的DOM节点内容。
+            Prism.highlightAll();
 
             // 内容变化时引起高度变化
             code_height = $("#show-code").height();

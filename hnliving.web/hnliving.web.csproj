@@ -147,6 +147,10 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Color.css" />
+    <Content Include="Content\prism\prism-Night.css" />
+    <Content Include="Content\prism\prism.css" />
+    <Content Include="Content\prism\prismBasic-Night.css" />
+    <Content Include="Content\prism\prismBasic.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -166,6 +170,10 @@
     <Content Include="Plugins\Swiper\js\swiper.animate.min.js" />
     <Content Include="Plugins\Swiper\js\swiper.js" />
     <Content Include="Plugins\Swiper\js\swiper.min.js" />
+    <Content Include="Scripts\prism\prism-Night.js" />
+    <Content Include="Scripts\prism\prism.js" />
+    <Content Include="Scripts\prism\prismBasic-Night.js" />
+    <Content Include="Scripts\prism\prismBasic.js" />
     <Content Include="Scripts\Site\account.js" />
     <Content Include="Scripts\bootstrap-3.3.7.js" />
     <Content Include="Scripts\bootstrap-3.3.7.min.js" />
@@ -276,6 +284,7 @@
     <Content Include="Scripts\Site\common.js" />
     <Content Include="Scripts\Site\ucenter.safe.js" />
     <Content Include="Scripts\Site\ucenter.user.js" />
+    <Content Include="Scripts\Tools\HtmlUtil.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
