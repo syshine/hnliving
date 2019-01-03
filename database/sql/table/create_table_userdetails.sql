@@ -58,7 +58,7 @@ GO
 ALTER TABLE [dbo].[hnl_userdetails] ADD  CONSTRAINT [DF_hnl_userdetails_registerrgid]  DEFAULT ((-1)) FOR [registerrgid]
 GO
 
-ALTER TABLE [dbo].[hnl_userdetails] ADD  CONSTRAINT [DF_hnl_userdetails_gender]  DEFAULT ((0)) FOR [gender]
+ALTER TABLE [dbo].[hnl_userdetails] ADD  CONSTRAINT [DF_hnl_userdetails_gender]  DEFAULT ((1)) FOR [gender]
 GO
 
 ALTER TABLE [dbo].[hnl_userdetails] ADD  CONSTRAINT [DF_hnl_userdetails_realname]  DEFAULT ('') FOR [realname]

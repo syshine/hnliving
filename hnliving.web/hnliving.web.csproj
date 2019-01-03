@@ -166,7 +166,7 @@
     <Content Include="Plugins\Swiper\js\swiper.animate.min.js" />
     <Content Include="Plugins\Swiper\js\swiper.js" />
     <Content Include="Plugins\Swiper\js\swiper.min.js" />
-    <Content Include="Scripts\account.js" />
+    <Content Include="Scripts\Site\account.js" />
     <Content Include="Scripts\bootstrap-3.3.7.js" />
     <Content Include="Scripts\bootstrap-3.3.7.min.js" />
     <Content Include="Areas\Study\Views\Program\Bootstrap\Buttons.cshtml" />
@@ -273,6 +273,9 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\Site\common.js" />
+    <Content Include="Scripts\Site\ucenter.safe.js" />
+    <Content Include="Scripts\Site\ucenter.user.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -356,6 +359,7 @@
     <Content Include="Views\Assistant\Building.cshtml" />
     <Content Include="Views\Shared\prompt.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\UserInfo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

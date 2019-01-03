@@ -81,4 +81,20 @@ namespace hnliving.web.Models
     {
         public string V { get; set; }
     }
+
+
+    /// <summary>
+    /// 用户信息模型类
+    /// </summary>
+    public class UserInfoModel
+    {
+        /// <summary>
+        /// 用户信息
+        /// </summary>
+        public UserInfo UserInfo { get; set; }
+        /// <summary>
+        /// 用户等级信息
+        /// </summary>
+        public UserRankInfo UserRankInfo { get; set; }
+    }
 }

@@ -132,7 +132,9 @@ namespace hnliving.web.Controllers
                 return AjaxResult("success", "登录成功"); //RedirectToLocal(returnUrl);
             }
             else
-                return AjaxResult("error", "登录失败");
+            {
+                return AjaxResult("error", errorList.Remove(errorList.Length - 1, 1).Append("]").ToString(), true);
+            }
 
             //if (errorList.Length > 1)//验证失败时
             //{
@@ -472,6 +474,154 @@ namespace hnliving.web.Controllers
                 return AjaxResult("success", "注册成功");
             }
         }
+
+
+
+        #region 用户信息
+
+        /// <summary>
+        /// 用户信息
+        /// </summary>
+        public ActionResult UserInfo()
+        {
+            UserInfoModel model = new UserInfoModel();
+
+            model.UserInfo = Users.GetUserById(WorkContext.Uid);
+            model.UserRankInfo = WorkContext.UserRankInfo;
+
+            return View(model);
+        }
+
+        /// <summary>
+        /// 编辑用户信息
+        /// </summary>
+        public ActionResult EditUser()
+        {
+            string userName = WebHelper.GetFormString("userName");
+            string nickName = WebHelper.GetFormString("nickName");
+            string avatar = WebHelper.GetFormString("avatar");
+            string realName = WebHelper.GetFormString("realName");
+            int gender = WebHelper.GetFormInt("gender");
+            string idCard = WebHelper.GetFormString("idCard");
+            string bday = WebHelper.GetFormString("bday");
+            int regionId = WebHelper.GetFormInt("regionId");
+            string address = WebHelper.GetFormString("address");
+            string bio = WebHelper.GetFormString("bio");
+
+            StringBuilder errorList = new StringBuilder("[");
+            //验证用户名
+            if (WorkContext.UserName.Length == 0 && userName.Length > 0)
+            {
+                if (userName.Length < 4 || userName.Length > 10)
+                {
+                    errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "userName", "用户名必须大于3且不大于10个字符", "}");
+                }
+                else if (userName.Contains(" "))
+                {
+                    errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "userName", "用户名中不允许包含空格", "}");
+                }
+                else if (userName.Contains(":"))
+                {
+                    errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "userName", "用户名中不允许包含冒号", "}");
+                }
+                else if (userName.Contains("<"))
+                {
+                    errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "userName", "用户名中不允许包含'<'符号", "}");
+                }
+                else if (userName.Contains(">"))
+                {
+                    errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "userName", "用户名中不允许包含'>'符号", "}");
+                }
+                else if ((!SecureHelper.IsSafeSqlString(userName)))
+                {
+                    errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "userName", "账户名不符合系统要求", "}");
+                }
+                else if (CommonHelper.IsInArray(userName, WorkContext.SiteConfig.ReservedName, "\n"))
+                {
+                    errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "userName", "用户名已经存在", "}");
+                }
+                else if (FilterWords.IsContainWords(userName))
+                {
+                    errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "userName", "用户名包含禁止单词", "}");
+                }
+                else if (Users.IsExistUserName(userName))
+                {
+                    errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "userName", "用户名已经存在", "}");
+                }
+            }
+            else
+            {
+                userName = WorkContext.UserName;
+            }
+
+            //验证昵称
+            if (nickName.Length > 10)
+            {
+                errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "nickName", "昵称的长度不能大于10", "}");
+            }
+            else if (FilterWords.IsContainWords(nickName))
+            {
+                errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "nickName", "昵称中包含禁止单词", "}");
+            }
+
+            //验证真实姓名
+            if (realName.Length > 5)
+            {
+                errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "realName", "真实姓名的长度不能大于5", "}");
+            }
+
+            //验证性别
+            if (gender < 0 || gender > 2)
+                errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "gender", "请选择正确的性别", "}");
+
+            //验证身份证号
+            if (idCard.Length > 0 && !ValidateHelper.IsIdCard(idCard))
+            {
+                errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "idCard", "请输入正确的身份证号", "}");
+            }
+
+            //验证出生日期
+            if (bday.Length == 0)
+            {
+                string bdayY = WebHelper.GetFormString("bdayY");
+                string bdayM = WebHelper.GetFormString("bdayM");
+                string bdayD = WebHelper.GetFormString("bdayD");
+                bday = string.Format("{0}-{1}-{2}", bdayY, bdayM, bdayD);
+            }
+            if (bday.Length > 0 && bday != "--" && !ValidateHelper.IsDate(bday))
+                errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "bday", "请选择正确的日期", "}");
+
+            //验证详细地址
+            if (address.Length > 75)
+            {
+                errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "address", "详细地址的长度不能大于75", "}");
+            }
+
+            //验证简介
+            if (bio.Length > 150)
+            {
+                errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "bio", "简介的长度不能大于150", "}");
+            }
+
+            if (errorList.Length == 1)
+            {
+                if (bday.Length == 0 || bday == "--")
+                    bday = "1900-1-1";
+
+                if (regionId < 1)
+                    regionId = 0;
+
+                Users.UpdateUser(WorkContext.Uid, userName, WebHelper.HtmlEncode(nickName), WebHelper.HtmlEncode(avatar), gender, WebHelper.HtmlEncode(realName), TypeHelper.StringToDateTime(bday), idCard, regionId, WebHelper.HtmlEncode(address), WebHelper.HtmlEncode(bio));
+                return AjaxResult("success", "信息更新成功");
+            }
+            else
+            {
+                return AjaxResult("error", errorList.Remove(errorList.Length - 1, 1).Append("]").ToString(), true);
+            }
+        }
+
+        #endregion
+
 
         /// <summary>
         /// 重定向到本网站页面，如果不是本网站，则返回主页，用于避免跳转攻击
