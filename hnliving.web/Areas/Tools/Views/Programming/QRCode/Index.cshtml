@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "生成二维码";
+}
+
+<div class="row ml-0 mr-0 mt-5"> @* align-items-centerjustify-content-center login-center*@
+    <div class="col-10 offset-1 col-sm-8 offset-sm-2 bg-teal-7">
+        <h4>欢迎使用二维码生成器！</h4>
+        <hr />
+
+
+        <div class="form-group">
+            <label class="control-label" for="content">内容：</label>
+            <div class="col-md-10 p-0">
+                <input type="text" id="content" class="form-control" value="" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10 p-0">
+                <a href="javascript:void(0)" class="btn btn-primary" role="button" onclick="getQRCode()">生成二维码</a>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10 p-0">
+                <img id="QRCodeImage" style="cursor:hand" title="二维码" onclick="this.src = '/tools/programming/qrcode/GetQRCode?content=' + $('#content').val()" src="" height="200" width="200"/>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <script>
+
+        function getQRCode() {
+            var content = $('#content').val();
+            $('#QRCodeImage').attr("src", '/tools/programming/qrcode/GetQRCode?content=' + $('#content').val());
+        }
+    </script>
+}
