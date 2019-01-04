@@ -7,6 +7,7 @@
     @*<link rel="shortcut icon" href="~/Images/Icons/lg.ico" />*@
     @*<link rel="bookmark" href="~/Images/Icons/lg.ico" type="image/x-icon"/>*@ 
     @Styles.Render("~/Content/css")
+    <link href="~/Content/prism/prismBasic.css" rel="stylesheet" />
     @*@Scripts.Render("~/bundles/modernizr")*@
     @RenderSection("csses", required: false)
     @RenderSection("scriptsHead", required: false)
@@ -324,10 +325,10 @@
             </ul>
             <div id="tabCodeContent" class="tab-content">
                 <div class="tab-pane fade active show" id="html-code">
-                    <pre id="show-code" class="alert-info m-0 show-code-height">点击实例可查看代码</pre>
+                    <pre id="show-code" class="m-0 show-code-height line-numbers language-html">点击实例可查看代码</pre>
                 </div>
                 <div class="tab-pane fade" id="js-code">
-                    <pre id="show-js" class="alert-info m-0 show-code-height">点击实例可查看JavaScript代码</pre>
+                    <pre id="show-js" class="m-0 show-code-height line-numbers language-javascript">点击实例可查看JavaScript代码</pre>
                 </div>
             </div>
         </div>
@@ -347,6 +348,8 @@
     @RenderSection("scripts", required: false)
 
     <script src="~/Navigate/AnimeJsNav.js"></script>
+    <script src="~/Scripts/prism/prismBasic.js"></script>
+    <script src="~/Scripts/Tools/HtmlUtil.js"></script>
 
     <script type="text/javascript">
         var enableFixBtm = true;
@@ -375,18 +378,40 @@
 
             // 设置show-code代码
             $(".code-div").click(function () {
-                // 获取和显示当前按钮的html
-                var formattedHtml = HTMLFormat($(this).html());
-                $("#show-code").text(formattedHtml);
+                //// 获取和显示当前按钮的html
+                //var formattedHtml = HTMLFormat($(this).html());
+                //$("#show-code").text(formattedHtml);
 
 
+                //// 获取和显示当前按钮的html
+                //$("#show-code").text($(this).html());
+
+                //// 获取和显示当前按钮的jscode
+                //var jsId = $(this).children("div").eq(0).attr("id");
+                //var jscode = $("#js-code-wrap .js-code[data-id=" + jsId + "]").html();
+                //$("#show-js").text(jscode);
+
                 // 获取和显示当前按钮的html
-                $("#show-code").text($(this).html());
+                var htmlEncode = HtmlUtil.htmlEncode($(this).html());
+
+                var pre_content = '<code class="language-html">' + htmlEncode + '</code>';
+                $("#show-code").html(pre_content);
+                $("#show-code").attr("class", 'm-0 line-numbers language-html show-code-height');
 
                 // 获取和显示当前按钮的jscode
                 var jsId = $(this).children("div").eq(0).attr("id");
-                var jscode = $("#js-code-wrap .js-code[data-id=" + jsId + "]").html();
-                $("#show-js").text(jscode);
+                var jsCode = $("#js-code-wrap .js-code[data-id=" + jsId + "]").html();
+                var jsEncode = HtmlUtil.htmlEncode(jsCode);
+
+                var pre_js_content = '<code class="language-javascript">' + jsEncode + '</code>';
+                $("#show-js").html(pre_js_content);
+                $("#show-js").attr("class", 'm-0 line-numbers language-javascript show-code-height');
+
+                // 固定底部代码
+                fixBottom();
+
+                // 如果你不想让Prism再次查找新增的DOM节点内容，你可以使用highlightElement()函数来指定需要高亮的DOM节点内容。
+                Prism.highlightAll();
 
                 // 内容变化时引起高度变化
                 code_height = $("#code-wrap").height();
