@@ -15,3 +15,5 @@ ehthumbs.db
 #
 applicationhost.config
 *.suo
+.vs/config/applicationhost.config
+.vs/hnliving/v14/.suo
