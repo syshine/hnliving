@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace hnliving.web.Areas.H5.Controllers.Festival
 {
-    public class SpringController : Controller
+    public class SpringController : BaseWebController
     {
         // GET: H5/Festival/Spring
         public ActionResult Index()

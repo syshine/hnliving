@@ -30,6 +30,9 @@ namespace hnliving.web
                       "~/Content/site.css",
                       "~/Content/animate.css"));
 
+            bundles.Add(new StyleBundle("~/Content/bootstrap").Include(
+                      "~/Content/bootstrap.css"));
+
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/umd/popper.js",    // popper.js需要放在bootstrap.js前面
                       "~/Scripts/bootstrap.js",

@@ -23,7 +23,7 @@
 
         <div class="form-group">
             <div class="col-md-10 p-0">
-                <img id="QRCodeImage" height="300" width="300"/>
+                <img id="js_qr_code_img" height="300" width="300"/>
             </div>
         </div>
 
@@ -36,8 +36,8 @@
         getQRCode("@WorkContext.Url");
 
         function getQRCode(content) {
-            $('#QRCodeImage').attr("src", '/tools/program/qrcode/GetQRCode?content=' + $('#content').val());
-            $('#QRCodeImage').attr("title", content);
+            $('#js_qr_code_img').attr("src", '/tools/program/qrcode/GetQRCode?content=' + content);
+            $('#js_qr_code_img').attr("title", content);
         }
     </script>
 }

@@ -8,10 +8,10 @@
     @RenderSection("csses", required: false)
 
     <style>
-        /** {
+        *, p {
 	        margin: 0;
 	        padding: 0;
-        }*/
+        }
 
         html, body, #banner, #banner .swiper-slide {
 	        height: 100%;
@@ -27,6 +27,25 @@
         .ani{
 	        position:absolute;
 	    }
+
+        .qr_code_pc{
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            width: 130px;
+            padding: 16px;
+            border: 1px solid #d9dadc;
+            background-color: #fff;
+            word-wrap: break-word;
+            word-break: break-all;
+            color: #717375;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .qr_code_img{
+            width:102px;
+        }
     </style>
 </head>
 <body>
@@ -35,8 +54,25 @@
         @RenderBody()
     </div>
 
+
+    <div class="qr_code_pc d-sm-none d-lg-block">
+        <img id="js_qr_code_img" class="qr_code_img" src="/tools/program/qrcode/GetQRCode?content=@WorkContext.Url">
+        <p class="mt-2">手机查看</p>
+    </div>
+
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/H5")
     @RenderSection("scripts", required: false)
+
+
+    @*<script>
+        getQRCode("@WorkContext.Url");
+
+        function getQRCode(content) {
+            $('#js_qr_code_img').attr("src", '/tools/program/qrcode/GetQRCode?content=' + content);
+            $('#js_qr_code_img').attr("title", content);
+        }
+    </script>*@
 </body>
 </html>
