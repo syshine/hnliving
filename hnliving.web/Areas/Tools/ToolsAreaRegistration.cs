@@ -20,10 +20,10 @@ namespace hnliving.web.Areas.Tools
         {
             
             context.MapRoute(
-                name: "Tools_Programming",
-                url: "Tools/Programming/{controller}/{action}/{id}",
+                name: "Tools_Program",
+                url: "Tools/Program/{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces: new[] { "hnliving.web.Areas.Tools.Controllers.Programming" }
+                namespaces: new[] { "hnliving.web.Areas.Tools.Controllers.Program" }
             );
 
             //此路由不能删除

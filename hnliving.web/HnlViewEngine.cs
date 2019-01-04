@@ -27,13 +27,11 @@ namespace hnliving.web
                 "~/Areas/{2}/Views/Education/{1}/{0}.cshtml",
                 "~/Areas/{2}/Views/Festival/{1}/{0}.cshtml",
                 "~/Areas/{2}/Views/Program/{1}/{0}.cshtml",
-                "~/Areas/{2}/Views/Programming/{1}/{0}.cshtml",
 
                 "~/Areas/{2}/Views/CivilServant/Shared/{0}.cshtml",
                 "~/Areas/{2}/Views/Education/Shared/{0}.cshtml",
                 "~/Areas/{2}/Views/Festival/Shared/{0}.cshtml",
                 "~/Areas/{2}/Views/Program/Shared/{0}.cshtml",
-                "~/Areas/{2}/Views/Programming/Shared/{0}.cshtml",
                 
             };
         }

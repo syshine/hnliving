@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "生成二维码";
+    ViewBag.Title = "二维码生成器";
 }
 
 <div class="row ml-0 mr-0 mt-5"> @* align-items-centerjustify-content-center login-center*@
@@ -11,19 +11,19 @@
         <div class="form-group">
             <label class="control-label" for="content">内容：</label>
             <div class="col-md-10 p-0">
-                <input type="text" id="content" class="form-control" value="" />
+                <input type="text" id="content" class="form-control"/>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10 p-0">
-                <a href="javascript:void(0)" class="btn btn-primary" role="button" onclick="getQRCode()">生成二维码</a>
+                <a href="javascript:void(0)" class="btn btn-primary" role="button" onclick="getQRCode($('#content').val())">生成二维码</a>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-10 p-0">
-                <img id="QRCodeImage" style="cursor:hand" title="二维码" onclick="this.src = '/tools/programming/qrcode/GetQRCode?content=' + $('#content').val()" src="" height="200" width="200"/>
+                <img id="QRCodeImage" height="300" width="300"/>
             </div>
         </div>
 
@@ -33,10 +33,11 @@
 
 @section Scripts {
     <script>
+        getQRCode("@WorkContext.Url");
 
-        function getQRCode() {
-            var content = $('#content').val();
-            $('#QRCodeImage').attr("src", '/tools/programming/qrcode/GetQRCode?content=' + $('#content').val());
+        function getQRCode(content) {
+            $('#QRCodeImage').attr("src", '/tools/program/qrcode/GetQRCode?content=' + $('#content').val());
+            $('#QRCodeImage').attr("title", content);
         }
     </script>
 }

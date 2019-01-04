@@ -274,7 +274,7 @@
     <Content Include="Areas\Tools\Views\web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Areas\Tools\Views\Programming\QRCode\Index.cshtml" />
+    <Content Include="Areas\Tools\Views\Program\QRCode\Index.cshtml" />
     <Content Include="Areas\Tools\Views\Home\Index.cshtml" />
     <None Include="Properties\PublishProfiles\hnl-c.pubxml" />
     <None Include="Properties\PublishProfiles\hnl.pubxml" />
@@ -324,7 +324,7 @@
     <Compile Include="Areas\Study\Controllers\Program\SwiperController.cs" />
     <Compile Include="Areas\Study\StudyAreaRegistration.cs" />
     <Compile Include="Areas\Tools\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Tools\Controllers\Programming\QRCodeController.cs" />
+    <Compile Include="Areas\Tools\Controllers\Program\QRCodeController.cs" />
     <Compile Include="Areas\Tools\ToolsAreaRegistration.cs" />
     <Compile Include="Areas\Travel\HaiKou\Controllers\HomeController.cs" />
     <Compile Include="Areas\Travel\HaiKou\Controllers\TestController.cs" />
