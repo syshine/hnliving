@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "DES算法";
+}
+
+@section csses{
+    <style>
+        textarea.form-control {
+            height: 100px;
+            max-width:100% !important;
+        }
+
+        /*razor语法和媒体查询符号冲突，需使用两个at*/
+        @@media screen and (max-width: 767.98px) {
+            textarea.form-control {
+                height: 100px;
+            }
+        }
+    </style>
+}
+
+<div class="row ml-0 mr-0 mt-5">
+    @* align-items-centerjustify-content-center login-center*@
+    <div class="col-10 offset-1 bg-teal-7">
+        <h4>欢迎使用DES算法！</h4>
+        <hr />
+        <div class="row">
+
+            <div class="form-group col-12">
+                <input type="radio" name="method" id="encrypt" value="0" class="" checked="checked" />
+                <label class="control-label" for="encrypt">加密</label>
+                <input type="radio" name="method" id="decrypt" value="1" class="" />
+                <label class="control-label" for="decrypt">解密</label>
+                <a href="javascript:void(0)" class="btn btn-primary ml-3" role="button" onclick="produce()">加(解)密</a>
+                <a href="javascript:void(0)" class="btn btn-primary" role="button" onclick="exchange()">互换</a>
+            </div>
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label" for="key">密钥：</label>
+                <div class="p-0">
+                    <input type="text" id="key" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="control-label" for="iv">初始化向量：</label>
+                <div class="p-0">
+                    <input type="text" id="iv" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group col-12">
+                <label class="control-label" for="content">内容：</label>
+                <div class="p-0">
+                    <textarea id="content" class="form-control"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group col-12">
+                <label class="control-label" for="result">结果：</label>
+                <div class="p-0">
+                    <textarea id="result" class="form-control"></textarea>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // 加密/解密
+        function produce() {
+            // 构建参数
+            var param = '?content=' + $('#content').val() + '&key=' + $('#key').val();
+
+            if ($('#iv').val() != '') { // 是否有iv参数
+                param += '&iv=' + $('#iv').val();
+            }
+
+            // 构建地址
+            var url = '/tools/program/encrypt/';
+            var c = $("input[name='method']:checked").val();
+            if (c == "0") {
+                url += 'DesEncrypt' + param;
+            } else {
+                url += 'DesDecrypt' + param;
+            }
+
+            // 调用
+            $.get(url, function (data) {
+                $('#result').val(data);
+            })
+        }
+
+        // 交换内容
+        function exchange() {
+            var temp = $('#result').val();
+            $('#result').val($('#content').val());
+            $('#content').val(temp);
+        }
+    </script>
+}

@@ -66,6 +66,7 @@
     <Compile Include="Domain\User\UserInfo.cs" />
     <Compile Include="Domain\User\UserRankInfo.cs" />
     <Compile Include="Helper\CommonHelper.cs" />
+    <Compile Include="Helper\EncryptHelper.cs" />
     <Compile Include="Helper\IOHelper.cs" />
     <Compile Include="Helper\SecureHelper.cs" />
     <Compile Include="Helper\StringHelper.cs" />

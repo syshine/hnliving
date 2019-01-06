@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "异或加密";
+}
+
+@section csses{
+    <style>
+        textarea.form-control {
+            height:300px;
+            max-width:100% !important;
+        }
+
+        /*razor语法和媒体查询符号冲突，需使用两个at*/
+        @@media screen and (max-width: 767.98px) {
+            textarea.form-control {
+                height:200px;
+            }
+        }
+    </style>
+}
+
+<div class="row ml-0 mr-0 mt-5">
+    @* align-items-centerjustify-content-center login-center*@
+    <div class="col-10 offset-1 bg-teal-7">
+        <h4>欢迎使用异或加密！</h4>
+        <hr />
+
+        <div class="row">
+
+            <div class="form-group col-12">
+                <div class="col-md-10 p-0">
+                    <a href="javascript:void(0)" class="btn btn-primary" role="button" onclick="produce()">加密</a>
+                    <a href="javascript:void(0)" class="btn btn-primary" role="button" onclick="exchange()">互换</a>
+                </div>
+            </div>
+
+            <div class="form-group col-12">
+                <label class="control-label" for="key">异或键：</label>
+                <div class="p-0">
+                    <input type="text" id="key" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="control-label" for="content">内容：</label>
+                <div class="p-0">
+                    <textarea id="content" class="form-control"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="control-label" for="result">结果：</label>
+                <div class="p-0">
+                    <textarea id="result" class="form-control"></textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <script>
+        // 加密/解密
+        function produce() {
+            var regex = /^[\d|\.]+$/;
+            if (!regex.test($("#key").val())) {
+                alert('异或键请输入数字！');
+                return;
+            }
+
+            // 构建参数
+            var param = '?content=' + $('#content').val() + '&key=' + $("#key").val();
+
+            // 构建地址
+            var url = '/tools/program/encrypt/XorEncrypt' + param;
+
+            // 调用
+            $.get(url, function (data) {
+                $('#result').val(data);
+            })
+        }
+
+        // 交换内容
+        function exchange() {
+            var temp = $('#result').val();
+            $('#result').val($('#content').val());
+            $('#content').val(temp);
+        }
+    </script>
+}

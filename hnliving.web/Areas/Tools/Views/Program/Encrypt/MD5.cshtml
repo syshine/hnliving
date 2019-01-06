@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "MD5加密";
+}
+
+@section csses{
+    <style>
+        textarea.form-control {
+            height:300px;
+            max-width:100% !important;
+        }
+
+        /*razor语法和媒体查询符号冲突，需使用两个at*/
+        @@media screen and (max-width: 767.98px) {
+            textarea.form-control {
+                height:200px;
+            }
+        }
+    </style>
+}
+
+<div class="row ml-0 mr-0 mt-5">
+    @* align-items-centerjustify-content-center login-center*@
+    <div class="col-10 offset-1 bg-teal-7">
+        <h4>欢迎使用MD5加密！</h4>
+        <hr />
+
+        <div class="row">
+
+            <div class="form-group col-12">
+                <div class="col-md-10 p-0">
+                    <input type="radio" name="flag" id="bit-16" value="0" class="" />
+                    <label class="control-label" for="bit-16">16位</label>
+                    <input type="radio" name="flag" id="bit-32" value="1" class="" checked="checked" />
+                    <label class="control-label" for="bit-32">32位</label>
+                    <a href="javascript:void(0)" class="btn btn-primary ml-3" role="button" onclick="produce()">加密</a>
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="control-label" for="content">内容：</label>
+                <div class="p-0">
+                    <textarea id="content" class="form-control"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="control-label" for="result">结果：</label>
+                <div class="p-0">
+                    <textarea id="result" class="form-control"></textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <script>
+        // 加密
+        function produce() {
+            // 构建参数
+            var param = '?content=' + $('#content').val() + '&flag=' + $("input[name='flag']:checked").val();
+
+            // 构建地址
+            var url = '/tools/program/encrypt/Md5Encrypt' + param;
+
+            // 调用
+            $.get(url, function (data) {
+                $('#result').val(data);
+            })
+        }
+    </script>
+}

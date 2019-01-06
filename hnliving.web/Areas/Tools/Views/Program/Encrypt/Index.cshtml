@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "加密解密";
+}
+
+@section csses{
+    <style>
+        .card-width {
+            width: 300px;
+            min-width: 200px;
+        }
+
+        /*razor语法和媒体查询符号冲突，需使用两个at*/
+        @@media screen and (max-width: 575.98px) {
+            .card-width {
+                width: 200px;
+            }
+        }
+    </style>
+}
+
+<div class="center-block">
+    <h2>欢迎使用加密解密工具！</h2>
+</div>
+<div class="container-fluid">
+    <div class="row col-12 col-xl-10 offset-lg-1">
+        <div class="card m-2 m-md-4 card-width">
+            <img class="card-img-top" src="~/Areas/Study/Images/csharp.jpg" alt="DES" style="width:100%;height:200px;">
+            <div class="card-body">
+                <h4 class="card-title">DES算法</h4>
+                <p class="card-text">DES全称为Data Encryption Standard，即数据加密标准，是一种使用密钥加密的块算法。
+                DES算法的入口参数有三个：Key、Data、Mode。其中Key为7个字节共56位，是DES算法的工作密钥；
+                Data为8个字节64位，是要被加密或被解密的数据；Mode为DES的工作方式,有两种:加密或解密。</p>
+                <a class="btn btn-primary" href="/Tools/Program/Encrypt/DES">查看更多</a>
+                @*@Html.ActionLink("查看更多", "Index", "Program/Home", new { area = "Study" }, new { @class = "btn btn-primary" })*@
+            </div>
+        </div>
+
+        <div class="card m-2 m-md-4 card-width">
+            <img class="card-img-top" src="~/Areas/Study/Images/mvc.jpg" alt="MD5" style="width:100%;height:200px;">
+            <div class="card-body">
+                <h4 class="card-title">MD5</h4>
+                <p class="card-text">MD5消息摘要算法（英语：MD5 Message-Digest Algorithm），一种被广泛使用的密码散列函数，可以产生出一个128位（16字节）的散列值（hash value），用于确保信息传输完整一致。</p>
+                <a class="btn btn-primary" href="/Tools/Program/Encrypt/MD5">查看更多</a>
+                @*@Html.ActionLink("查看更多", "Index", "CivilServant/Home", new { area = "Study" }, new { @class = "btn btn-primary" })*@
+            </div>
+        </div>
+
+        <div class="card m-2 m-md-4 card-width">
+            <img class="card-img-top" src="~/Areas/Study/Images/bootstrap.jpg" alt="compress" style="width:100%;height:200px;">
+            <div class="card-body">
+                <h4 class="card-title">压缩算法</h4>
+                <p class="card-text">教师资格证，各门学科学习资料。</p>
+                <a class="btn btn-primary" href="#">查看更多</a>
+                @*@Html.ActionLink("查看更多", "Index", "Education/Home", new { area = "Study" }, new { @class = "btn btn-primary" })*@
+            </div>
+        </div>
+
+        <div class="card m-2 m-md-4 card-width">
+            <img class="card-img-top" src="~/Areas/Study/Images/h5.jpg" alt="Xor" style="width:100%;height:200px;">
+            <div class="card-body">
+                <h4 class="card-title">异或加密</h4>
+                <p class="card-text">异或是对两个运算元的一种逻辑分析类型，符号为XOR或EOR。与一般的逻辑或OR不同，当两两数值相同为否，而数值不同时为真。
+                异或密码（simple XOR cipher）是密码学中一种简单的加密算法，是指对信息进行异或操作来达到加密和解密目的。
+                按这种逻辑，文本串行的每个字符可以通过与给定的密钥进行按位异或运算来加密。
+                如果要解密，只需要将加密后的结果与密钥再次进行按位异或运算即可。</p>
+                <a class="btn btn-primary" href="/Tools/Program/Encrypt/Xor">查看更多</a>
+            </div>
+        </div>
+    </div>
+</div>
