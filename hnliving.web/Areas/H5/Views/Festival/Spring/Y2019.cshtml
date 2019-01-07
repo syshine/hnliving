@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "Y2019";
+    ViewBag.Name += "祝您和家人春节快乐，阖家欢乐";
 }
 
 @section csses {
@@ -21,8 +22,8 @@
         <div class="swiper-slide">
             <p>Animate.css2</p>
             <div class="ani display-3 text-v-lgdt-btg" swiper-animate-effect="rubberBand" swiper-animate-duration="1s" swiper-animate-delay="0.3s">Animate.css</div>
-            <div class="ani text-center" style="left:300px;top:650px;z-index:3;" swiper-animate-effect="rubberBand" swiper-animate-duration="1s" swiper-animate-delay="0.3s">
-                Animate.css
+            <div class="ani display-2 text-v-lgdt-btg" style="left:100px;top:350px;z-index:3;" swiper-animate-effect="rubberBand" swiper-animate-duration="1s" swiper-animate-delay="0.3s">
+                @ViewBag.Name
             </div>
         </div>
         <div class="swiper-slide">
