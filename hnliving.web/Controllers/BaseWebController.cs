@@ -104,6 +104,7 @@ namespace hnliving.web
             WorkContext.Password = partUserInfo.Password;
             WorkContext.NickName = partUserInfo.NickName;
             WorkContext.Avatar = partUserInfo.Avatar;
+            WorkContext.ModulesId = new List<string>(partUserInfo.Modules_id.Split(','));
 
             WorkContext.UserRid = partUserInfo.UserRid;
             //WorkContext.UserRankInfo = UserRanks.GetUserRankById(partUserInfo.UserRid);
@@ -126,6 +127,34 @@ namespace hnliving.web
             //不能应用在子方法上
             if (filterContext.IsChildAction)
                 return;
+
+            var controllerName = (filterContext.RouteData.Values["controller"]).ToString().ToLower();
+            var actionName = (filterContext.RouteData.Values["action"]).ToString().ToLower();
+            var areaName = (filterContext.RouteData.DataTokens["area"] == null ? "" : filterContext.RouteData.DataTokens["area"]).ToString().ToLower();
+
+            if (areaName != "")
+            {
+                // 没有权限访问
+                if (!WorkContext.ModulesId.Contains("0") && !WorkContext.ModulesId.Contains(controllerName) && !WorkContext.ModulesId.Contains(areaName))
+                {
+                    if (filterContext.HttpContext.Request.IsAjaxRequest())
+                    {
+                        //Ajax 输出错误信息给脚本吧
+                        if (WorkContext.Uid > 0)
+                            filterContext.Result = AjaxResult("error", "未找到");
+                        else
+                            filterContext.Result = AjaxResult("error", "请登录");
+                    }
+                    else
+                    {
+                        if (WorkContext.Uid > 0)
+                            filterContext.Result = new RedirectResult("/"); // 跳转到首页
+                        else
+                            filterContext.Result = new RedirectResult("/account/login?returnUrl=" + filterContext.HttpContext.Request.RawUrl); // 跳转到登录页面
+                    }
+                    return;
+                }
+            }
         }
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)

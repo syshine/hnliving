@@ -35,6 +35,7 @@ namespace Lib.Data
             partUserInfo.VerifyMobile = TypeHelper.ObjectToInt(reader["verifymobile"]);
             partUserInfo.LiftBanTime = TypeHelper.ObjectToDateTime(reader["liftbantime"]);
             partUserInfo.Salt = reader["salt"].ToString();
+            partUserInfo.Modules_id = reader["modules_id"].ToString();
 
             return partUserInfo;
         }
@@ -59,6 +60,7 @@ namespace Lib.Data
             userInfo.VerifyMobile = TypeHelper.ObjectToInt(reader["verifymobile"]);
             userInfo.LiftBanTime = TypeHelper.ObjectToDateTime(reader["liftbantime"]);
             userInfo.Salt = reader["salt"].ToString();
+            userInfo.Modules_id = reader["modules_id"].ToString();
             userInfo.LastVisitTime = TypeHelper.ObjectToDateTime(reader["lastvisittime"]);
             userInfo.LastVisitIP = reader["lastvisitip"].ToString();
             userInfo.LastVisitRgId = TypeHelper.ObjectToInt(reader["lastvisitrgid"]);

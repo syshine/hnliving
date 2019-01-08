@@ -163,6 +163,7 @@
     <Content Include="Images\banner03.jpg" />
     <Content Include="Images\Icons\lg.ico" />
     <Content Include="Images\Icons\logo16.ico" />
+    <Content Include="Images\Icons\logo32.ico" />
     <Content Include="Images\字体图标对照表.jpg" />
     <Content Include="Navigate\AnimeJsNav.js" />
     <Content Include="Navigate\BootstrapNav.js" />

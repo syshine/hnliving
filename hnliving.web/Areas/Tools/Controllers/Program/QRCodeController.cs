@@ -30,7 +30,7 @@ namespace hnliving.web.Areas.Tools.Controllers.Program
             QRCodeGenerator qrGenerator = new QRCoder.QRCodeGenerator();
             QRCodeData qrCodeData = qrGenerator.CreateQrCode(content, QRCodeGenerator.ECCLevel.Q);
             QRCode qrcode = new QRCode(qrCodeData);
-            Bitmap icon = new Bitmap(Server.MapPath("~/Images/Icons/logo16.ico"));
+            Bitmap icon = new Bitmap(Server.MapPath("~/Images/Icons/logo32.ico"));
             
 
             // qrcode.GetGraphic 方法可参考最下发“补充说明”

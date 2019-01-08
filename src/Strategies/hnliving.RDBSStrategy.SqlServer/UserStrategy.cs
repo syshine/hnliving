@@ -404,7 +404,8 @@ namespace hnliving.RDBSStrategy.SqlServer
 									   GenerateInParam("@verifymobile",SqlDbType.TinyInt,1,userInfo.VerifyMobile),
 									   GenerateInParam("@liftbantime",SqlDbType.DateTime,8,userInfo.LiftBanTime),
                                        GenerateInParam("@salt",SqlDbType.NChar,6,userInfo.Salt),
-									   GenerateInParam("@lastvisittime",SqlDbType.DateTime,8,userInfo.LastVisitTime),
+                                       GenerateInParam("@modules_id",SqlDbType.NChar,userInfo.Modules_id.Length,userInfo.Modules_id),
+                                       GenerateInParam("@lastvisittime",SqlDbType.DateTime,8,userInfo.LastVisitTime),
                                        GenerateInParam("@lastvisitip",SqlDbType.Char,15,userInfo.LastVisitIP),
                                        GenerateInParam("@lastvisitrgid",SqlDbType.SmallInt,2,userInfo.LastVisitRgId),
 									   GenerateInParam("@registertime",SqlDbType.DateTime,8,userInfo.RegisterTime),
@@ -443,6 +444,7 @@ namespace hnliving.RDBSStrategy.SqlServer
 									   GenerateInParam("@verifymobile",SqlDbType.TinyInt,1,userInfo.VerifyMobile),
 									   GenerateInParam("@liftbantime",SqlDbType.DateTime,8,userInfo.LiftBanTime),
                                        GenerateInParam("@salt",SqlDbType.NChar,6,userInfo.Salt),
+                                       GenerateInParam("@modules_id",SqlDbType.NChar,userInfo.Modules_id.Length,userInfo.Modules_id),
                                        GenerateInParam("@lastvisittime",SqlDbType.DateTime,8,userInfo.LastVisitTime),
                                        GenerateInParam("@lastvisitip",SqlDbType.Char,15,userInfo.LastVisitIP),
                                        GenerateInParam("@lastvisitrgid",SqlDbType.SmallInt,2,userInfo.LastVisitRgId),
@@ -483,7 +485,8 @@ namespace hnliving.RDBSStrategy.SqlServer
 									   GenerateInParam("@verifymobile",SqlDbType.TinyInt,1,partUserInfo.VerifyMobile),
 									   GenerateInParam("@liftbantime",SqlDbType.DateTime,8,partUserInfo.LiftBanTime),
                                        GenerateInParam("@salt",SqlDbType.NChar,6,partUserInfo.Salt),
-									   GenerateInParam("@uid",SqlDbType.Int,4,partUserInfo.Uid)
+                                       GenerateInParam("@modules_id",SqlDbType.NChar,partUserInfo.Modules_id.Length,partUserInfo.Modules_id),
+                                       GenerateInParam("@uid",SqlDbType.Int,4,partUserInfo.Uid)
 								   };
 
             RDBSHelper.ExecuteScalar(CommandType.StoredProcedure,

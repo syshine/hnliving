@@ -42,6 +42,8 @@ namespace hnliving.web
 
         public string EncryptPwd;//加密密码
 
+        public List<string> ModulesId;//模块id
+
         public PartUserInfo PartUserInfo;//用户信息
 
         public int UserRid = -1;//用户等级id

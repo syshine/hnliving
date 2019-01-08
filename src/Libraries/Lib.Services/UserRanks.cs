@@ -100,7 +100,7 @@ namespace Lib.Services
         /// <returns></returns>
         public static bool IsBanUserRank(int userRid)
         {
-            return userRid > 5 ? false : true;
+            return userRid == 1 ? true : false;
         }
 
         /// <summary>

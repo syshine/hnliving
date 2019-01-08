@@ -20,6 +20,7 @@ namespace Lib.Core
         private int _verifymobile;//是否验证手机
         private DateTime _liftbantime = new DateTime(1900, 1, 1);//解禁时间
         private string _salt;//盐值
+        private string _modules_id;//模块id
 
         /// <summary>
         ///用户id
@@ -124,6 +125,14 @@ namespace Lib.Core
         {
             get { return _salt; }
             set { _salt = value; }
+        }
+        ///<summary>
+        ///模块id
+        ///</summary>
+        public string Modules_id
+        {
+            get { return _modules_id; }
+            set { _modules_id = value; }
         }
     }
 

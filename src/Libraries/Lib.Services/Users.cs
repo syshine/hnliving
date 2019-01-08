@@ -185,7 +185,8 @@ namespace Lib.Services
                 VerifyEmail = 0,
                 VerifyMobile = 0,
                 LiftBanTime = new DateTime(1900, 1, 1),
-                Salt = ""
+                Salt = "",
+                Modules_id = ","
             };
         }
 
