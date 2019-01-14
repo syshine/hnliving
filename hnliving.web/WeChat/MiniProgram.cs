@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -21,9 +22,10 @@ namespace hnliving.web.WeChat
             var str = GetFunction(url);
             try
             {
-                JsonData jo = JsonMapper.ToObject(str);
-                string access_token = jo["access_token"].ToString();
-                return access_token;
+                //JsonData jo = JsonMapper.ToObject(str);
+                //string access_token = jo["access_token"].ToString();
+                //return access_token;
+                return "";
             }
             catch (Exception ex)
             {
@@ -48,7 +50,6 @@ namespace hnliving.web.WeChat
             string retString = myStreamReader.ReadToEnd();
             myStreamReader.Close();
             myResponseStream.Close();
-            //Response.Write(retString);
             return retString;
         }
     }
