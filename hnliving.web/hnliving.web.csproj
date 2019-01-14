@@ -353,6 +353,7 @@
     <Compile Include="PromptModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewPages\WebViewPage.cs" />
+    <Compile Include="WeChat\MiniProgram.cs" />
     <Compile Include="WorkContent\WebWorkContext.cs" />
   </ItemGroup>
   <ItemGroup>
