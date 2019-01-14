@@ -1,0 +1,9 @@
+.webp文件使用需
+
+1.) 使用IIS express
+在.vs\config\applicationhost.config文件staticContent节点下添加
+<mimeMap fileExtension=".webp" mimeType="text/html" />
+
+2.) 使用IIS
+在IIS配置里添加MIME类型（文件扩展名：.webp , MIME类型：text/html）
+

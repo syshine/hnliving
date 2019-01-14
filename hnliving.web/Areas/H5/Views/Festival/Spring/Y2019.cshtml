@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "Y2019";
-    ViewBag.Name += "祝您和家人春节快乐，阖家欢乐";
+    ViewBag.Name += "给您拜年！";//"祝您和家人春节快乐，阖家欢乐";
 }
 
 @section csses {
@@ -9,15 +9,327 @@
         /*div, p {
             color:#ffc107;
         }*/
+
+        .swiper-slide {
+            overflow: hidden;
+        }
+
+        @@-webkit-keyframes zoomSmallLeave {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                -webkit-transform: scale3d(.3,.3,.3);
+                transform: scale3d(.3,.3,.3);
+                opacity: 0;
+            }
+
+            to {
+                -webkit-transform: none;
+                transform: none;
+                opacity: 0;
+            }
+        }
+
+        @@keyframes zoomSmallLeave {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                -webkit-transform: scale3d(.3,.3,.3);
+                transform: scale3d(.3,.3,.3);
+                opacity: 0;
+            }
+
+            to {
+                -webkit-transform: none;
+                transform: none;
+                opacity: 0;
+            }
+        }
+
+        .zoomSmallLeave {
+            -webkit-animation-name: zoomSmallLeave;
+            animation-name: zoomSmallLeave;
+        }
+
+        .bounceOut {
+            -webkit-animation-name: bounceOut;
+            animation-name: bounceOut;
+        }
+
+        @@-webkit-keyframes bounceOut {
+            0%,20%,40%,60%,80%,to {
+                -webkit-transition-timing-function: cubic-bezier(.215,.61,.355,1);
+                transition-timing-function: cubic-bezier(.215,.61,.355,1);
+            }
+
+            0% {
+                -webkit-transform: scale3d(.3,.3,.3);
+                transform: scale3d(.3,.3,.3);
+                opacity: 0;
+            }
+
+            30% {
+                -webkit-transform: scale3d(1.5,1.5,1.5);
+                transform: scale3d(1.5,1.5,1.5);
+            }
+
+            40% {
+                -webkit-transform: scale3d(.9,.9,.9);
+                transform: scale3d(.9,.9,.9);
+            }
+
+            60% {
+                -webkit-transform: scale3d(1.03,1.03,1.03);
+                transform: scale3d(1.03,1.03,1.03);
+                opacity: 1;
+            }
+
+            80% {
+                -webkit-transform: scale3d(.97,.97,.97);
+                transform: scale3d(.97,.97,.97);
+            }
+
+            to {
+                -webkit-transform: scaleX(1);
+                transform: scaleX(1);
+                opacity: 1;
+            }
+        }
+
+        @@keyframes bounceOut {
+            0%,20%,40%,60%,80%,to {
+                -webkit-transition-timing-function: cubic-bezier(.215,.61,.355,1);
+                transition-timing-function: cubic-bezier(.215,.61,.355,1);
+            }
+
+            0% {
+                -webkit-transform: scale3d(.3,.3,.3);
+                transform: scale3d(.3,.3,.3);
+                opacity: 0;
+            }
+
+            30% {
+                -webkit-transform: scale3d(1.5,1.5,1.5);
+                transform: scale3d(1.5,1.5,1.5);
+            }
+
+            40% {
+                -webkit-transform: scale3d(.9,.9,.9);
+                transform: scale3d(.9,.9,.9);
+            }
+
+            60% {
+                -webkit-transform: scale3d(1.03,1.03,1.03);
+                transform: scale3d(1.03,1.03,1.03);
+                opacity: 1;
+            }
+
+            80% {
+                -webkit-transform: scale3d(.97,.97,.97);
+                transform: scale3d(.97,.97,.97);
+            }
+
+            to {
+                -webkit-transform: scaleX(1);
+                transform: scaleX(1);
+                opacity: 1;
+            }
+        }
+
+        .switch-guide {
+            position: absolute;
+            z-index: 10;
+            right: 0;
+            bottom: 1rem;
+            left: 0;
+            width: 2rem;
+            margin: 0 auto;
+            -webkit-animation: webSwipeTipAfter 1.5s infinite ease-in-out;
+            animation: webSwipeTipAfter 1.5s infinite ease-in-out;
+        }
+
+        @@-webkit-keyframes webSwipeTipAfter {
+            0% {
+                opacity: 1;
+            }
+
+            to {
+                -webkit-transform: translate3d(0,-100%,0);
+                transform: translate3d(0,-100%,0);
+                opacity: 0;
+            }
+        }
+
+        @@keyframes webSwipeTipAfter {
+            0% {
+                opacity: 1;
+            }
+
+            to {
+                -webkit-transform: translate3d(0,-100%,0);
+                transform: translate3d(0,-100%,0);
+                opacity: 0;
+            }
+        }
     </style>
 }
 
-<div class="swiper-container" id="banner" style="background-image: url('/Areas/H5/Images/101.jpg');">
+<div class="swiper-container" id="banner" >@*style="background-image: url('/Areas/H5/Images/101.jpg');"*@
     <div class="swiper-wrapper">
         <div class="swiper-slide">
+            <div class="e-page-bg-image" style="opacity: 1; height: 100%;">
+                <img src="~/Areas/H5/Images/red.webp" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <div class="page-content" style="width: 3.2rem; height: 5.04rem;">
+                <div class="cmp cmp-image" data-type="image" style="width: 44.6rem; height: 15.5rem; top: 47.5rem; left: -7.6rem; position: absolute;">
+                    <div class="animate-wrapper" data-id="154711286526829" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem;">
+                        <div class="image" style="opacity: 0.501961; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                            <img class="inner-image" src="~/Areas/H5/Images/花纹.webp">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cmp cmp-image" data-id="154711290955856" data-type="image" style="width: 54.8rem; height: 54.8rem; top: -1.2rem; left: -11.4rem; position: absolute;">
+                    <div class="animate-wrapper" data-id="154711290955856" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: translate; animation-iteration-count: 1; animation-delay: 0.2s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154711290955856">
+                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                            <img class="inner-image" src="~/Areas/H5/Images/菱形.webp">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cmp cmp-image" data-id="154711290955857" data-type="image" style="width: 5.04rem; height: 50.4rem; top: 1rem; left: -9.2rem; position: absolute;">
+                    <div class="animate-wrapper" data-id="154711290955857" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: translateReverse; animation-iteration-count: 1; animation-delay: 0.2s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154711290955857">
+                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                            <img class="inner-image" src="~/Areas/H5/Images/菱形边框.webp">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cmp cmp-image" data-id="154717286653431" data-type="image" style="width: 29rem; height: 18.2rem; top: -6.9rem; left: 1.5rem; position: absolute;">
+                    <div class="animate-wrapper" data-id="154717286653431" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: translate; animation-iteration-count: 1; animation-delay: 0.8s; animation-duration: 1.5s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154717286653431">
+                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                            <img class="inner-image" src="~/Areas/H5/Images/扇子.webp">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cmp cmp-image" data-id="154717281281629" data-type="image" style="width: 1.33rem; height: 21.5rem; top: -3.9rem; left: -2.45rem; position: absolute;">
+                    <div class="animate-wrapper" data-id="154717281281629" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: swing; animation-iteration-count: 1; animation-delay: 1s; animation-duration: 3s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154717281281629">
+                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                            <img class="inner-image" src="~/Areas/H5/Images/灯笼.webp">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cmp cmp-image" data-id="154717284881630" data-type="image" style="width: 1.33rem; height: 2.15rem; top: -3.9rem; left: 21.2rem; position: absolute;">
+                    <div class="animate-wrapper" data-id="154717284881630" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: swing; animation-iteration-count: 1; animation-delay: 1s; animation-duration: 3s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154717284881630">
+                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                            <img class="inner-image" src="~/Areas/H5/Images/灯笼.webp">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cmp cmp-image" data-id="154717290214332" data-type="image" style="width: 32.8rem; height: 10.5rem; top: 40.55rem; left: -0.4rem; position: absolute;">
+                    <div class="animate-wrapper" data-id="154717290214332" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: zoomIn; animation-iteration-count: 1; animation-delay: 3.7s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154717290214332">
+                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                            <img class="inner-image" src="~/Areas/H5/Images/底部横幅.webp">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cmp cmp-image" data-id="154717460564370" data-type="image" style="width: 24.4rem; height: 13.9rem; top: 26rem; left: 4.2rem; position: absolute;">
+                    <div class="animate-wrapper" data-id="154717460564370" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: zoomSmallLeave; animation-iteration-count: 1; animation-delay: 0.1s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154717460564370">
+                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                            <img class="inner-image" src="~/Areas/H5/Images/意black.webp">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cmp cmp-image" data-id="154717460564371" data-type="image" style="width: 15.3rem; height: 13rem; top: 23.45rem; left: 1.5rem; position: absolute;">
+                    <div class="animate-wrapper" data-id="154717460564371" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: zoomSmallLeave; animation-iteration-count: 1; animation-delay: 0.2s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154717460564371">
+                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                            <img class="inner-image" src="~/Areas/H5/Images/春black.webp">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cmp cmp-image" data-id="154717460564372" data-type="image" style="width: 9.7rem; height: 9rem; top: 17.15rem; left: 17.9rem; position: absolute;">
+                    <div class="animate-wrapper" data-id="154717460564372" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: zoomSmallLeave; animation-iteration-count: 1; animation-delay: 0.3s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154717460564372">
+                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                            <img class="inner-image" src="~/Areas/H5/Images/如black.webp">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cmp cmp-image" data-id="154717460564473" data-type="image" style="width: 12.4rem; height: 14.1rem; top: 11.3rem; left: 4.2rem; position: absolute;">
+                    <div class="animate-wrapper" data-id="154717460564473" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: zoomSmallLeave; animation-iteration-count: 1; animation-delay: 0.4s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154717460564473">
+                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                            <img class="inner-image" src="~/Areas/H5/Images/新black.webp">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cmp cmp-image" data-id="1547177587865106" data-type="image" style="width: 10.8rem; height: 12.7rem; top: 11.975rem; left: 7.2rem; position: absolute;">
+                    <div class="animate-wrapper" data-id="1547177587865106" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: bounceIn; animation-iteration-count: 1; animation-delay: 4.7s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_1547177587865106">
+                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                            <img class="inner-image" src="~/Areas/H5/Images/贺.webp">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cmp cmp-image" data-id="1547177587865107" data-type="image" style="width: 11.8rem; height: 12.7rem; top: 17.85rem; left: 14.55rem; position: absolute;">
+                    <div class="animate-wrapper" data-id="1547177587865107" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: bounceIn; animation-iteration-count: 1; animation-delay: 4.9s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_1547177587865107">
+                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                            <img class="inner-image" src="~/Areas/H5/Images/新.webp">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cmp cmp-image" data-id="1547177672524109" data-type="image" style="width: 9rem; height: 8.7rem; top: 21.4019rem; left: 0.2rem; position: absolute;">
+                    <div class="animate-wrapper" data-id="1547177672524109" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: zoomIn; animation-iteration-count: 1; animation-delay: 0.5s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_1547177672524109">
+                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                            <img class="inner-image" src="~/Areas/H5/Images/烟花.webp">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cmp cmp-image" data-id="1547177680589110" data-type="image" style="width: 9.2rem; height: 8.8rem; top: 31.7971rem; left: 21.7246rem; position: absolute;">
+                    <div class="animate-wrapper" data-id="1547177680589110" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: zoomIn; animation-iteration-count: 1; animation-delay: 0.5s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_1547177680589110">
+                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                            <img class="inner-image" src="~/Areas/H5/Images/烟花.webp">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cmp cmp-image" data-id="154718913455433" data-type="image" style="width: 11.7rem; height: 11.9rem; top: 26.6rem; left: 7.4rem; position: absolute;">
+                    <div class="animate-wrapper" data-id="154718913455433" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: bounceIn; animation-iteration-count: 1; animation-delay: 5.1s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154718913455433">
+                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                            <img class="inner-image" src="~/Areas/H5/Images/春.webp">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cmp cmp-image" data-id="154711331662667" data-type="image" style="width: 70rem; height: 120rem; top: -8.84249rem; left: -1.9rem; position: absolute;">
+                    <div class="animate-wrapper" data-id="154711331662667" style="border-radius: 0rem; animation-name: fadeIn; animation-iteration-count: 1; animation-delay: 2.8s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154711331662667">
+                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0px; color: rgb(103, 103, 103); padding-bottom: 0px; padding-top: 0px; text-align: left; line-height: 0.01rem;">
+                            <img class="inner-image" src="~/Areas/H5/Images/106.webp" style="filter: saturate(1.2);">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cmp cmp-text" data-id="154711386111870" data-type="text" style="width: 269px; height: auto; left: 3.2rem; top: 43.45rem; position: absolute; transform-origin: left top 0px; transform: scale(1);">
+                    <div class="animate-wrapper" data-id="154711386111870" style="border-radius: 0px; animation-name: zoomIn; animation-iteration-count: 1; animation-delay: 3.9s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154711386111870">
+                        <div class="text" data-page-idx="0" style="opacity: 1; border-style: solid; border-width: 0px; border-color: rgb(0, 0, 0); color: rgb(184, 35, 18); font-size: 22px; font-family: normal; font-style: normal; font-weight: normal; text-align: center; text-decoration: none; line-height: 24px; letter-spacing: 0px; border-radius: 0px; background-color: transparent;">@ViewBag.Name</div>
+                    </div>
+                </div>
+            </div>
             @*<p>Animate.css1</p>*@
             @*<div class="ani display-3 text-black-50" swiper-animate-effect="rotateIn" swiper-animate-duration="1s" swiper-animate-delay="0.3s">Animate.css</div>*@
-            <img class="ani" src="~/Areas/H5/Images/2019.png" style="left:200px;top:188px;z-index:3;" swiper-animate-effect="bounceInUp" swiper-animate-duration="1s" swiper-animate-delay="0.3s"/>
+            @*<img class="ani" src="~/Areas/H5/Images/2019.png" style="left:200px;top:188px;z-index:3;" swiper-animate-effect="bounceInUp" swiper-animate-duration="1s" swiper-animate-delay="0.3s"/>*@
         </div>
         <div class="swiper-slide">
             <p>Animate.css2</p>
@@ -51,6 +363,8 @@
 
     <!-- 如果需要分页器 -->
     <div class="swiper-pagination"></div>
+
+    <img src="~/Areas/H5/Images/uparrows.png" class="switch-guide">
 </div>
 
 
