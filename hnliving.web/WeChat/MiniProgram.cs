@@ -46,7 +46,7 @@ namespace hnliving.web.WeChat
             request.ContentType = "textml;charset=UTF-8";
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             Stream myResponseStream = response.GetResponseStream();
-            StreamReader myStreamReader = new StreamReader(myResponseStream, Encoding.UTF8);
+            StreamReader myStreamReader = new StreamReader(myResponseStream, System.Text.Encoding.UTF8);
             string retString = myStreamReader.ReadToEnd();
             myStreamReader.Close();
             myResponseStream.Close();

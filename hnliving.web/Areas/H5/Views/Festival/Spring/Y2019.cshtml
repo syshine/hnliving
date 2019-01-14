@@ -333,17 +333,40 @@
         </div>
         <div class="swiper-slide">
             <p>Animate.css2</p>
+            <div id="restartAnim">
+                <div class="el"  style="top: 16.6rem; left: 7.4rem; position: absolute;">Animate.css222</div>
+                <div class="line player"> <button class="restart">Restart</button> </div>
+            </div>
+            <script>
+                var restartAnim = anime({
+                    targets: '#restartAnim .el',
+                    scale: 2,
+                    translateX: 150,
+                    easing: 'easeInQuad',
+                    loop: false,
+                    elasticity: 1000,
+                });
+
+            </script>
             <div class="ani display-3 text-v-lgdt-btg" swiper-animate-effect="rubberBand" swiper-animate-duration="1s" swiper-animate-delay="0.3s">Animate.css</div>
+            <div class="ani display-3 text-v-lgdt-btg" style="left:100px;top:150px;z-index:3;"swiper-animate-effect="fadeOut" swiper-animate-duration="1s" swiper-animate-delay="0.3s">Animate.css</div>
             <div class="ani display-2 text-v-lgdt-btg" style="left:100px;top:350px;z-index:3;" swiper-animate-effect="rubberBand" swiper-animate-duration="1s" swiper-animate-delay="0.3s">
                 @ViewBag.Name
             </div>
+
+            <div class="" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: bounceOut; animation-iteration-count: 1; animation-delay: 0.2s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154711290955857">
+                <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                    dfgsdfgsgfhfgdhd
+                </div>
+            </div>
         </div>
-        <div class="swiper-slide">
-            <p>Animate.css3</p>
+        <div class="swiper-slide bg-gray-5">
             <div class="ani display-3 text-white" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s" swiper-animate-delay="0.3s">Animate.css</div>
-            <div class="ani text-center" style="left:0px;top:0px;z-index:3;" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s" swiper-animate-delay="1.3s">
+            <div class="ani display-3 text-danger" swiper-animate-effect="fadeOutDown" swiper-animate-duration="1s" swiper-animate-delay="0.3s">Animate.css333</div>
+            <div class="ani text-center" style="left:0px;top:100px;z-index:3;" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s" swiper-animate-delay="1.3s">
                 Animate.css
             </div>
+            <p>Animate.css3</p>
         </div>
         <div class="swiper-slide">
             <p>Animate.css4</p>
@@ -387,9 +410,25 @@
                     swiperAnimateCache(this); //隐藏动画元素
                     swiperAnimate(this); //初始化完成开始动画
                 },
+                slideChangeTransitionStart: function () {
+                    console.log(this.activeIndex + '-00');//切换开始时，记录现在是第几个slide
+                    if (this.activeIndex == 1) {
+                        restartAnim.seek(0);
+                    }
+                    console.log(this.activeIndex + '-0');//切换开始时，记录现在是第几个slide
+                },
                 slideChangeTransitionEnd: function () {
                     swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
                     //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); //动画只展现一次，去除ani类名
+
+
+                    console.log(this.activeIndex + '-1');//切换结束时，记录现在是第几个slide
+
+                    if (this.activeIndex == 1) {
+                        restartAnim.restart();
+                    }
+
+                    console.log(this.activeIndex + '-2');//切换结束时，记录现在是第几个slide
                 }
             }
         })
