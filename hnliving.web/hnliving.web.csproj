@@ -139,7 +139,9 @@
     <Content Include="Areas\H5\Images\106.webp" />
     <Content Include="Areas\H5\Images\2019.png" />
     <Content Include="Areas\H5\Images\uparrows.png" />
+    <Content Include="Areas\H5\Images\右灯笼.webp" />
     <Content Include="Areas\H5\Images\如black.webp" />
+    <Content Include="Areas\H5\Images\左灯笼.webp" />
     <Content Include="Areas\H5\Images\底部横幅.webp" />
     <Content Include="Areas\H5\Images\意black.webp" />
     <Content Include="Areas\H5\Images\扇子.webp" />
@@ -147,7 +149,6 @@
     <Content Include="Areas\H5\Images\新black.webp" />
     <Content Include="Areas\H5\Images\春.webp" />
     <Content Include="Areas\H5\Images\春black.webp" />
-    <Content Include="Areas\H5\Images\灯笼.webp" />
     <Content Include="Areas\H5\Images\烟花.webp" />
     <Content Include="Areas\H5\Images\red.webp" />
     <Content Include="Areas\H5\Images\花纹.webp" />
@@ -190,6 +191,7 @@
     <Content Include="Plugins\Swiper\css\animate.min.css" />
     <Content Include="Plugins\Swiper\css\swiper.css" />
     <Content Include="Plugins\Swiper\css\swiper.min.css" />
+    <Content Include="Plugins\Swiper\js\swiper.animate.mul.js" />
     <Content Include="Plugins\Swiper\js\swiper.animate.min.js" />
     <Content Include="Plugins\Swiper\js\swiper.js" />
     <Content Include="Plugins\Swiper\js\swiper.min.js" />

@@ -74,7 +74,8 @@ namespace hnliving.web
 
             bundles.Add(new ScriptBundle("~/bundles/H5").Include(
                       "~/Plugins/Swiper/js/swiper.min.js",
-                      "~/Plugins/Swiper/js/swiper.animate.min.js"));
+                      "~/Plugins/Swiper/js/swiper.animate.min.js",
+                      "~/Plugins/Swiper/js/swiper.animate.mul.js"));
 
             bundles.Add(new StyleBundle("~/Content/H5").Include(
                       "~/Content/bootstrap.css",
