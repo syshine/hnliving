@@ -78,7 +78,7 @@ function listenerAniMul() {
     // 设置下一个动画的序号
     index++;
     if (index >= count) {
-        index = 0;
+        index = this.attributes['swiper-ani-repeart-ind'] ? Number(this.attributes['swiper-ani-repeart-ind'].value) : 0;;
         if(!this.attributes['swiper-ani-repeat'] || this.attributes['swiper-ani-repeat'].value != '1') {
             return;
         }

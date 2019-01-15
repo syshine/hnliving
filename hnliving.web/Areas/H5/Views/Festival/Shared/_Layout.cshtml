@@ -25,7 +25,7 @@
             position:relative;
         }
 
-        .ani{
+        .ani, .ani-mul{
 	        position:absolute;
 	    }
 
@@ -47,6 +47,21 @@
         .qr_code_img{
             width:102px;
         }
+
+        .emptyAni {
+            -webkit-animation-name: emptyAni;
+            animation-name: emptyAni;
+        }
+
+        @@-webkit-keyframes emptyAni {
+            from {}
+            to {}
+        }
+
+        @@keyframes emptyAni {
+            from {}
+            to {}
+        }
     </style>
 
     <script src="~/Plugins/Anime/anime.min.js"></script>
@@ -58,7 +73,7 @@
     </div>
 
 
-    <div class="qr_code_pc d-sm-none d-lg-block">
+    <div class="qr_code_pc d-none d-lg-block">
         <img id="js_qr_code_img" class="qr_code_img" src="/tools/program/qrcode/GetQRCode?content=@WorkContext.Url">
         <p class="mt-2">手机查看</p>
     </div>
