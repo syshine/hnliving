@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html style="font-size: 5px;">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,6 +16,11 @@
 
         html, body, #banner, #banner .swiper-slide {
 	        height:100%;
+        }
+
+        .phone-text {
+            font-size:.2rem;
+            margin-top: .1rem;
         }
 
         .h5-container {
@@ -92,10 +97,50 @@
             from {}
             to {}
         }
+
+        .emptyAniHide {
+            -webkit-animation-name:emptyAniHide;
+            animation-name:emptyAniHide;
+        }
+
+        @@-webkit-keyframes emptyAniHide {
+            from {opacity:0}
+            to {opacity:0}
+        }
+
+        @@keyframes emptyAniHide {
+            from {opacity:0}
+            to {opacity:0}
+        }
     </style>
 
     <script src="~/Plugins/Anime/anime.min.js"></script>
 
+
+    <script>
+        // 获取浏览器长宽
+        var h = document.documentElement.clientHeight;
+        var w = document.documentElement.clientWidth;
+
+        // 设计长宽比
+        var rate = 0.64777; // = 640 / 988; 988 = 1136 - 48 - 100 Android系统可以更改状态栏和导航栏的高度，这里可以取默认值为48px和100px（这些尺寸网上均可查）
+
+        // 初始化
+        init();
+
+        function init() {
+            // 如果浏览器高度不够，则以高度为准设置宽度
+            if (w / h > rate) {
+                w = h * rate;
+            }
+
+            // 宽度最大为640
+            w = Math.min(w, 640);
+
+            // 设置rem字体大小
+            document.documentElement.style.fontSize = w * 160 / 640  + 'px';
+        }
+    </script>
 </head>
 <body>
 
@@ -106,7 +151,7 @@
 
     <div class="qr_code_pc d-none d-lg-block">
         <img id="js_qr_code_img" class="qr_code_img" src="/tools/program/qrcode/GetQRCode?content=@WorkContext.Url">
-        <p class="mt-2">手机查看</p>
+        <p class="phone-text">手机查看</p>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
@@ -115,17 +160,15 @@
     @RenderSection("scripts", required: false)
 
     <script>
-        // 初始化
-        init();
+        // 设置
+        setting();
 
-        function init() {
+        function setting() {
             // 设置宽度
-            var w = document.documentElement.clientWidth;
-            w = Math.min(w, 640);
             $("#container").css('width', w);
 
-            // 设置rem字体大小
-            document.documentElement.style.fontSize = w / 640 * 16 + 'px';
+            // 设置高度
+            $(".page-content").css('height', w / rate);
         }
     </script>
 

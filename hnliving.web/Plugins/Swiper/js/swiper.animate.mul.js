@@ -1,4 +1,4 @@
-﻿//本插件由www.swiper.com.cn提供,修改成可以执行多个动画
+﻿//本插件由www.swiper.com.cn提供,修改成可以执行多个动画(注意连续的两个动画不能同名)
 //版本1.03
 function swiperAnimateMulCache(a) {
     for (j = 0; j < a.slides.length; j++) {

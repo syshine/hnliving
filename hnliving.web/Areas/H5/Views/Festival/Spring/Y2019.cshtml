@@ -14,6 +14,25 @@
             overflow: hidden;
         }
 
+        .scroll-wrapper {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            /*overflow: hidden;*/
+            width: 100%;
+            height: 100%;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+        }
+
+        .page-content, .scroll-wrapper {
+            position: relative;
+        }
+
         @@-webkit-keyframes zoomSmallLeave {
             0% {
                 opacity: 1;
@@ -144,9 +163,9 @@
             position: absolute;
             z-index: 10;
             right: 0;
-            bottom: 1rem;
+            bottom: .1rem;
             left: 0;
-            width: 2rem;
+            width: .2rem;
             margin: 0 auto;
             -webkit-animation: webSwipeTipAfter 1.5s infinite ease-in-out;
             animation: webSwipeTipAfter 1.5s infinite ease-in-out;
@@ -187,208 +206,145 @@
 <div class="swiper-container" id="banner" >@*style="background-image: url('/Areas/H5/Images/101.jpg');"*@
     <div class="swiper-wrapper">
         <div class="swiper-slide">
-            <div class="e-page-bg-image" style="opacity: 1; height: 100%;">
-                <img src="~/Areas/H5/Images/red.webp" style="width: 100%; height: 100%; object-fit: cover;" />
-            </div>
-            <div class="page-content" style="width:inherit; height:inherit;">
-                @*<div class="cmp cmp-image" data-type="image" style="width: 44.6rem; height: 15.5rem; top: 47.5rem; left: -7.6rem; position: absolute;">
-                    <div class="animate-wrapper" data-id="154711286526829" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem;">
-                        <div class="image" style="opacity: 0.501961; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+            <div class="scroll-wrapper">
+                <div class="e-page-bg-image" style="opacity: 1; height: 100%;">
+                    <img src="~/Areas/H5/Images/red.webp" style="width: 100%; height: 100%; object-fit: cover;" />
+                </div>
+                <div class="page-content" style="width:100%;">
+                    <div class="cmp cmp-image" data-type="image" style="width: 4.46rem; height: 1.55rem; top: 5.3rem; left: -0.26rem; position: absolute;">
+                        <div class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration=".3s">
                             <img class="inner-image" src="~/Areas/H5/Images/花纹.webp">
                         </div>
                     </div>
-                </div>*@
 
-                <div class="cmp cmp-image" data-type="image" style="width: 44.6rem; height: 15.5rem; top: 53rem; left: -2.6rem; position: absolute;">
-                    <div class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration=".3s">
-                        <img class="inner-image" src="~/Areas/H5/Images/花纹.webp">
-                    </div>
-                </div>
-
-                @*<div class="cmp cmp-image" data-id="154711290955856" data-type="image" style="width: 54.8rem; height: 54.8rem; top: -5rem; left: -14rem; position: absolute;">
-                    <div class="animate-wrapper" data-id="154711290955856" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: translate; animation-iteration-count: 1; animation-delay: 0.2s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154711290955856">
-                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                    <div class="cmp cmp-image" data-id="154711290955856" data-type="image" style="width: 6.5rem; height: 6.5rem; top: -0.3rem; left: -1.3rem; position: absolute;">
+                        <div class="ani" swiper-animate-effect="rotateIn" swiper-animate-duration="1s" swiper-animate-delay="0.3s">
                             <img class="inner-image" src="~/Areas/H5/Images/菱形.webp">
                         </div>
                     </div>
-                </div>
 
-                <div class="cmp cmp-image" data-id="154711290955857" data-type="image" style="width: 5.04rem; height: 50.4rem; top: -2.2rem; left: -11rem; position: absolute;">
-                    <div class="animate-wrapper" data-id="154711290955857" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: translateReverse; animation-iteration-count: 1; animation-delay: 0.2s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154711290955857">
-                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                    <div class="cmp cmp-image" data-id="154711290955857" data-type="image" style="width: 5.8rem; height: 5.8rem; top: -0.05rem; left: -0.95rem; position: absolute;">
+                        <div class="ani" swiper-animate-effect="rotateIn" swiper-animate-duration=".5s" swiper-animate-delay="1.3s">
                             <img class="inner-image" src="~/Areas/H5/Images/菱形边框.webp">
                         </div>
                     </div>
-                </div>*@
 
-                <div class="cmp cmp-image" data-id="154711290955856" data-type="image" style="width: 65rem; height: 65rem; top: -3rem; left: -13rem; position: absolute;">
-                    <div class="ani" swiper-animate-effect="rotateIn" swiper-animate-duration="1s" swiper-animate-delay="0.3s" >
-                        <img class="inner-image" src="~/Areas/H5/Images/菱形.webp">
-                    </div>
-                </div>
-
-                <div class="cmp cmp-image" data-id="154711290955857" data-type="image" style="width: 58rem; height: 58rem; top: -.5rem; left: -9.5rem; position: absolute;">
-                    <div class="ani" swiper-animate-effect="rotateIn" swiper-animate-duration=".5s" swiper-animate-delay="1.3s">
-                        <img class="inner-image" src="~/Areas/H5/Images/菱形边框.webp">
-                    </div>
-                </div>
-
-                @*<div class="cmp cmp-image" data-id="154717286653431" data-type="image" style="width: 29rem; height: 18.2rem; top: -12rem; left: 2rem; position: absolute;">
-                    <div class="animate-wrapper" data-id="154717286653431" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: translate; animation-iteration-count: 1; animation-delay: 0.8s; animation-duration: 1.5s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154717286653431">
-                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                    <div class="cmp cmp-image" data-id="154717286653431" data-type="image" style="width: 3.5rem; height: 2.1rem; top: -0.9rem; left: 0.3rem; position: absolute;">
+                        <div class="ani" swiper-animate-effect="rotateIn" swiper-animate-duration=".5s" swiper-animate-delay=".3s">
                             <img class="inner-image" src="~/Areas/H5/Images/扇子.webp">
                         </div>
                     </div>
-                </div>*@
 
-                <div class="cmp cmp-image" data-id="154717286653431" data-type="image" style="width: 35rem; height: 21rem; top: -9rem; left: 3rem; position: absolute;">
-                    <div class="ani" swiper-animate-effect="rotateIn" swiper-animate-duration=".5s" swiper-animate-delay=".3s">
-                        <img class="inner-image" src="~/Areas/H5/Images/扇子.webp">
-                    </div>
-                </div>
-
-                @*<div class="cmp cmp-image" data-id="154717281281629" data-type="image" style="width: 1.33rem; height: 21.5rem; top: -3rem; left: -1rem; position: absolute;">
-                    <div class="animate-wrapper" data-id="154717281281629" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: swing; animation-iteration-count: 1; animation-delay: 1s; animation-duration: 3s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154717281281629">
-                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                    <div class="cmp cmp-image" data-id="154717281281629" data-type="image" style="width: 1.1rem; height: 1.8rem; top: -0.3rem; left: -0.1rem; position: absolute;">
+                        <div class="ani-mul" swiper-ani-cnt="3" swiper-ani-repeat="1" swiper-ani-repeart-ind="1"
+                             swiper-animate-effect-1="rotateInDownRight" swiper-animate-duration-1="1s" swiper-animate-delay-1="0.3s"
+                             swiper-animate-effect-2="emptyAni" swiper-animate-duration-2="1s" swiper-animate-delay-2="0s"
+                             swiper-animate-effect-3="swing" swiper-animate-duration-3="2s" swiper-animate-delay-3="0s">
                             <img class="inner-image" src="~/Areas/H5/Images/左灯笼.webp">
                         </div>
                     </div>
-                </div>
 
-                <div class="cmp cmp-image" data-id="154717284881630" data-type="image" style="width: 1.33rem; height: 2.15rem; top: -3rem; left: 31rem; position: absolute;">
-                    <div class="animate-wrapper" data-id="154717284881630" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: swing; animation-iteration-count: 1; animation-delay: 1s; animation-duration: 3s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154717284881630">
-                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                    <div class="cmp cmp-image" data-id="154717284881630" data-type="image" style="width: 1.1rem; height: 1.8rem; top: -0.3rem; left: 3.1rem; position: absolute;">
+                        <div class="ani-mul" swiper-ani-cnt="3" swiper-ani-repeat="1" swiper-ani-repeart-ind="1"
+                             swiper-animate-effect-1="rotateInDownLeft" swiper-animate-duration-1="1s" swiper-animate-delay-1="0.3s"
+                             swiper-animate-effect-2="emptyAni" swiper-animate-duration-2="1s" swiper-animate-delay-2="0s"
+                             swiper-animate-effect-3="swing" swiper-animate-duration-3="2s" swiper-animate-delay-3="0s">
                             <img class="inner-image" src="~/Areas/H5/Images/右灯笼.webp">
                         </div>
                     </div>
-                </div>*@
 
-                <div class="cmp cmp-image" data-id="154717281281629" data-type="image" style="width: 11rem; height: 18rem; top: -3rem; left: -1rem; position: absolute;">
-                    <div class="ani-mul" swiper-ani-cnt="3" swiper-ani-repeat="1" swiper-ani-repeart-ind="1"
-                         swiper-animate-effect-1="rotateInDownRight" swiper-animate-duration-1="1s" swiper-animate-delay-1="0.3s"
-                         swiper-animate-effect-2="emptyAni" swiper-animate-duration-2="1s" swiper-animate-delay-2="0s"
-                         swiper-animate-effect-3="swing" swiper-animate-duration-3="2s" swiper-animate-delay-3="0s">
-                        <img class="inner-image" src="~/Areas/H5/Images/左灯笼.webp">
-                    </div>
-                </div>
-
-                <div class="cmp cmp-image" data-id="154717284881630" data-type="image" style="width: 11rem; height: 18rem; top: -3rem; left: 31rem; position: absolute;">
-                    <div class="ani-mul" swiper-ani-cnt="3" swiper-ani-repeat="1" swiper-ani-repeart-ind="1"
-                         swiper-animate-effect-1="rotateInDownLeft" swiper-animate-duration-1="1s" swiper-animate-delay-1="0.3s"
-                         swiper-animate-effect-2="emptyAni" swiper-animate-duration-2="1s" swiper-animate-delay-2="0s"
-                         swiper-animate-effect-3="swing" swiper-animate-duration-3="2s" swiper-animate-delay-3="0s">
-                        <img class="inner-image" src="~/Areas/H5/Images/右灯笼.webp">
-                    </div>
-                </div>
-
-                @*<div class="cmp cmp-image" data-id="154717290214332" data-type="image" style="width: 32.8rem; height: 10.5rem; top: 45rem; left: -0.45rem; position: absolute;">
-                    <div class="animate-wrapper" data-id="154717290214332" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: zoomIn; animation-iteration-count: 1; animation-delay: 3.7s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154717290214332">
-                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                    <div class="cmp cmp-image" data-id="154717290214332" data-type="image" style="width:4.0rem; height:1.3rem; top:4.5rem; left:0rem; position: absolute;">
+                        <div class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration=".5s" swiper-animate-delay="1.3s">
                             <img class="inner-image" src="~/Areas/H5/Images/底部横幅.webp">
                         </div>
                     </div>
-                </div>*@
 
-                <div class="cmp cmp-image" data-id="154717290214332" data-type="image" style="width:40rem; height:13rem; top:45rem; left:0rem; position: absolute;">
-                    <div class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration=".5s" swiper-animate-delay="1.3s">
-                        <img class="inner-image" src="~/Areas/H5/Images/底部横幅.webp">
-                    </div>
-                </div>
-
-                <div class="cmp cmp-image" data-id="154717460564370" data-type="image" style="width: 24.4rem; height: 13.9rem; top: 26rem; left: 4.2rem; position: absolute;">
-                    <div class="animate-wrapper" data-id="154717460564370" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: zoomSmallLeave; animation-iteration-count: 1; animation-delay: 0.1s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154717460564370">
-                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                    <div class="cmp cmp-image" data-id="154717460564370" data-type="image" style="width: 2.44rem; height: 1.39rem; top: 2.6rem; left: 0.92rem; position: absolute;">
+                        <div class="ani-mul" swiper-ani-cnt="3"
+                             swiper-animate-effect-1="emptyAniHide" swiper-animate-duration-1="1.5s" swiper-animate-delay-1="0s"
+                             swiper-animate-effect-2="zoomIn" swiper-animate-duration-2="1.3s" swiper-animate-delay-2="0s"
+                             swiper-animate-effect-3="fadeOut" swiper-animate-duration-3=".3s" swiper-animate-delay-3="0s">
                             <img class="inner-image" src="~/Areas/H5/Images/意black.webp">
                         </div>
                     </div>
-                </div>
 
-                <div class="cmp cmp-image" data-id="154717460564371" data-type="image" style="width: 15.3rem; height: 13rem; top: 23.45rem; left: 1.5rem; position: absolute;">
-                    <div class="animate-wrapper" data-id="154717460564371" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: zoomSmallLeave; animation-iteration-count: 1; animation-delay: 0.2s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154717460564371">
-                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                    <div class="cmp cmp-image" data-id="154717460564371" data-type="image" style="width: 1.53rem; height: 1.3rem; top: 2.345rem; left: 0.65rem; position: absolute;">
+                        <div class="ani-mul" swiper-ani-cnt="3"
+                             swiper-animate-effect-1="emptyAniHide" swiper-animate-duration-1="1.1s" swiper-animate-delay-1="0s"
+                             swiper-animate-effect-2="zoomIn" swiper-animate-duration-2="1.3s" swiper-animate-delay-2="0s"
+                             swiper-animate-effect-3="fadeOut" swiper-animate-duration-3=".3s" swiper-animate-delay-3="0s">
                             <img class="inner-image" src="~/Areas/H5/Images/春black.webp">
                         </div>
                     </div>
-                </div>
 
-                <div class="cmp cmp-image" data-id="154717460564372" data-type="image" style="width: 9.7rem; height: 9rem; top: 17.15rem; left: 17.9rem; position: absolute;">
-                    <div class="animate-wrapper" data-id="154717460564372" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: zoomSmallLeave; animation-iteration-count: 1; animation-delay: 0.3s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154717460564372">
-                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                    <div class="cmp cmp-image" data-id="154717460564372" data-type="image" style="width: 0.97rem; height: 0.9rem; top: 1.715rem; left: 2.29rem; position: absolute;">
+                        <div class="ani-mul" swiper-ani-cnt="3"
+                             swiper-animate-effect-1="emptyAniHide" swiper-animate-duration-1="1.3s" swiper-animate-delay-1="0s"
+                             swiper-animate-effect-2="zoomIn" swiper-animate-duration-2="1.3s" swiper-animate-delay-2="0s"
+                             swiper-animate-effect-3="fadeOut" swiper-animate-duration-3=".3s" swiper-animate-delay-3="0s">
                             <img class="inner-image" src="~/Areas/H5/Images/如black.webp">
                         </div>
                     </div>
-                </div>
 
-                <div class="cmp cmp-image" data-id="154717460564473" data-type="image" style="width: 12.4rem; height: 14.1rem; top: 11.3rem; left: 4.2rem; position: absolute;">
-                    <div class="animate-wrapper" data-id="154717460564473" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: zoomSmallLeave; animation-iteration-count: 1; animation-delay: 0.4s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154717460564473">
-                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                    <div class="cmp cmp-image" data-id="154717460564473" data-type="image" style="width: 1.24rem; height: 1.41rem; top: 1.13rem; left: 0.92rem; position: absolute;">
+                        <div class="ani-mul" swiper-ani-cnt="3"
+                             swiper-animate-effect-1="emptyAniHide" swiper-animate-duration-1="0.9s" swiper-animate-delay-1="0s"
+                             swiper-animate-effect-2="zoomIn" swiper-animate-duration-2="1.3s" swiper-animate-delay-2="0s"
+                             swiper-animate-effect-3="fadeOut" swiper-animate-duration-3=".3s" swiper-animate-delay-3="0s">
                             <img class="inner-image" src="~/Areas/H5/Images/新black.webp">
                         </div>
                     </div>
-                </div>
 
-                <div class="cmp cmp-image" data-id="1547177587865106" data-type="image" style="width: 10.8rem; height: 12.7rem; top: 12rem; left: 8rem; position: absolute;">
-                    <div class="animate-wrapper" data-id="1547177587865106" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: bounceIn; animation-iteration-count: 1; animation-delay: 4.7s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_1547177587865106">
-                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                    <div class="cmp cmp-image" data-id="1547177587865106" data-type="image" style="width:1.2rem; height: 1.42rem; top: 1.4rem; left: 1rem; position: absolute;">
+                        <div class="ani" swiper-animate-effect="bounceIn" swiper-animate-duration=".7s" swiper-animate-delay="3.1s">
                             <img class="inner-image" src="~/Areas/H5/Images/贺.webp">
                         </div>
                     </div>
-                </div>
 
-                <div class="cmp cmp-image" data-id="1547177587865107" data-type="image" style="width: 11.8rem; height: 12.7rem; top: 19rem; left: 18rem; position: absolute;">
-                    <div class="animate-wrapper" data-id="1547177587865107" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: bounceIn; animation-iteration-count: 1; animation-delay: 4.9s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_1547177587865107">
-                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                    <div class="cmp cmp-image" data-id="1547177587865107" data-type="image" style="width: 1.3rem; height: 1.41rem; top: 2rem; left: 1.9rem; position: absolute;">
+                        <div class="ani" swiper-animate-effect="bounceIn" swiper-animate-duration=".7s" swiper-animate-delay="3.3s">
                             <img class="inner-image" src="~/Areas/H5/Images/新.webp">
                         </div>
                     </div>
-                </div>
 
-                @*<div class="cmp cmp-image" data-id="1547177672524109" data-type="image" style="width: 9rem; height: 8.7rem; top: 25rem; left: 2rem; position: absolute;">
-                    <div class="animate-wrapper" data-id="1547177672524109" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: zoomIn; animation-iteration-count: infinite; animation-delay: 0.5s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_1547177672524109">
-                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                    <div class="cmp cmp-image" data-id="1547177672524109" data-type="image" style="width:0.85rem;height:0.82rem;top:2.5rem;left:0.2rem;position:absolute;">
+                        <div class="ani-mul" swiper-ani-cnt="4" swiper-ani-repeat="1" swiper-ani-repeart-ind="1"
+                             swiper-animate-effect-1="emptyAniHide" swiper-animate-duration-1="3.1s" swiper-animate-delay-1="0s"
+                             swiper-animate-effect-2="zoomIn" swiper-animate-duration-2="1s" swiper-animate-delay-2="0s"
+                             swiper-animate-effect-3="fadeOut" swiper-animate-duration-3=".5s" swiper-animate-delay-3="0s"
+                             swiper-animate-effect-4="emptyAniHide" swiper-animate-duration-4="1s" swiper-animate-delay-4="0s">
                             <img class="inner-image" src="~/Areas/H5/Images/烟花.webp">
                         </div>
                     </div>
-                </div>*@
 
-                <div class="cmp cmp-image" data-id="1547177672524109" data-type="image" style="width: 9rem; height: 8.7rem; top: 25rem; left: 2rem; position: absolute;">
-                    <div class="ani-mul" swiper-ani-cnt="3" swiper-ani-repeat="1"
-                         swiper-animate-effect-1="emptyAni" swiper-animate-duration-1="2s" swiper-animate-delay-1="0s"
-                         swiper-animate-effect-2="zoomIn" swiper-animate-duration-2="1s" swiper-animate-delay-2="0s"
-                         swiper-animate-effect-3="fadeOut" swiper-animate-duration-3=".5s" swiper-animate-delay-3="0s">
-                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                    <div class="cmp cmp-image" data-id="1547177680589110" data-type="image" style="width:0.85rem;height:0.82rem;top:3.6rem;left:2.6rem; position:absolute;">
+                        <div class="ani-mul" swiper-ani-cnt="4" swiper-ani-repeat="1" swiper-ani-repeart-ind="1"
+                             swiper-animate-effect-1="emptyAniHide" swiper-animate-duration-1="3.5s" swiper-animate-delay-1="0s"
+                             swiper-animate-effect-2="zoomIn" swiper-animate-duration-2="1s" swiper-animate-delay-2="0s"
+                             swiper-animate-effect-3="fadeOut" swiper-animate-duration-3=".5s" swiper-animate-delay-3="0s"
+                             swiper-animate-effect-4="emptyAniHide" swiper-animate-duration-4="1s" swiper-animate-delay-4="0s">
                             <img class="inner-image" src="~/Areas/H5/Images/烟花.webp">
                         </div>
                     </div>
-                </div>
 
-                <div class="cmp cmp-image" data-id="1547177680589110" data-type="image" style="width: 9.2rem; height: 8.8rem; top: 36rem; left: 30rem; position: absolute;">
-                    <div class="animate-wrapper" data-id="1547177680589110" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: zoomIn; animation-iteration-count: infinite; animation-delay: 0.5s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_1547177680589110">
-                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
-                            <img class="inner-image" src="~/Areas/H5/Images/烟花.webp">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="cmp cmp-image" data-id="154718913455433" data-type="image" style="width: 11.7rem; height: 11.9rem; top: 30rem; left: 8rem; position: absolute;">
-                    <div class="animate-wrapper" data-id="154718913455433" style="box-shadow: transparent 0rem 0rem 0.1rem; border-radius: 0rem; animation-name: bounceIn; animation-iteration-count: 1; animation-delay: 5.1s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154718913455433">
-                        <div class="image" style="opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0rem;">
+                    <div class="cmp cmp-image" data-id="154718913455433" data-type="image" style="width: 1.3rem; height: 1.3rem; top: 3rem; left: 1.1rem; position: absolute;">
+                        <div class="ani" swiper-animate-effect="bounceIn" swiper-animate-duration=".7s" swiper-animate-delay="3.5s">
                             <img class="inner-image" src="~/Areas/H5/Images/春.webp">
                         </div>
                     </div>
-                </div>
 
-                <div class="cmp cmp-image" data-id="154711331662667" data-type="image" style="width:inherit; height:inherit; top: 0; left:0; position: absolute;">
-                    <div class="animate-wrapper" data-id="154711331662667" style="width:inherit; height:inherit;border-radius: 0rem; animation-name: fadeIn; animation-iteration-count: 1; animation-delay: 2.8s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154711331662667">
-                        <div class="image" style="width:inherit; height:inherit;opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0px; color: rgb(103, 103, 103); padding-bottom: 0px; padding-top: 0px; text-align: left; line-height: 0.01rem;">
-                            <img class="inner-image" src="~/Areas/H5/Images/106.webp" style="width:inherit; height:inherit;filter: saturate(1.2);">
+                    <div class="cmp cmp-image" data-id="154711331662667" data-type="image" style="width:inherit; height:inherit; top: 0; left:0; position: absolute;">
+                        <div class="animate-wrapper" data-id="154711331662667" style="width:inherit; height:inherit;border-radius: 0rem; animation-name: fadeIn; animation-iteration-count: 1; animation-delay: 2.8s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154711331662667">
+                            <div class="image" style="width:inherit; height:inherit;opacity: 1; border-style: solid; border-width: 0rem; border-color: rgb(0, 0, 0); border-radius: 0px; color: rgb(103, 103, 103); padding-bottom: 0px; padding-top: 0px; text-align: left; line-height: 0.01rem;">
+                                <img class="inner-image" src="~/Areas/H5/Images/106.webp" style="width:inherit; height:inherit;filter: saturate(1.2);">
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="cmp cmp-text" data-id="154711386111870" data-type="text" style="width: 269px; height: auto; left: 13rem; top: 49rem; position: absolute; transform-origin: left top 0px; transform: scale(1);">
-                    <div class="animate-wrapper" data-id="154711386111870" style="border-radius: 0px; animation-name: zoomIn; animation-iteration-count: 1; animation-delay: 3.9s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154711386111870">
-                        <div class="text" data-page-idx="0" style="opacity: 1; border-style: solid; border-width: 0px; border-color: rgb(0, 0, 0); color: rgb(184, 35, 18); font-size: 22px; font-family: normal; font-style: normal; font-weight: normal; text-align: center; text-decoration: none; line-height: 24px; letter-spacing: 0px; border-radius: 0px; background-color: transparent;">@ViewBag.Name</div>
+                    <div class="cmp cmp-text" data-id="154711386111870" data-type="text" style="height: auto; left: 1.3rem; top: 4.75rem; position: absolute;">
+                        <div class="animate-wrapper" data-id="154711386111870" style="border-radius: 0px; animation-name: zoomIn; animation-iteration-count: 1; animation-delay: 3.9s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154711386111870">
+                            <div class="text" data-page-idx="0" style="opacity: 1; border-style: solid; border-width: 0px; border-color: rgb(0, 0, 0); color: rgb(184, 35, 18); font-size: 22px; font-family: normal; font-style: normal; font-weight: normal; text-align: center; text-decoration: none; line-height: 24px; letter-spacing: 0px; border-radius: 0px; background-color: transparent;">@ViewBag.Name</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -398,7 +354,7 @@
         </div>
         <div class="swiper-slide">
             <p>Animate.css2</p>
-            <div class="el" id="restartAnim"style="top: 16.6rem; left: 7.4rem; position: absolute;">Animate.css222</div>
+            <div class="el" id="restartAnim"style="top: 1.66rem; left: .74rem; position: absolute;">Animate.css222</div>
             @*<div id="restartAnim">
                 <div class="el"  style="top: 16.6rem; left: 7.4rem; position: absolute;">Animate.css222</div>
                 <div class="line player"> <button class="restart">Restart</button> </div>
@@ -447,11 +403,7 @@
             <p>Animate.css3</p>*@
         </div>
         <div class="swiper-slide">
-            <p>Animate.css4</p>
-            <div class="ani display-3 text-v-lgdt-vtb" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="0.3s">Animate.css</div>
-            <div class="ani text-center" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="1.3s">
-                Animate.css
-            </div>
+            ddd
         </div>
 
         <div class="swiper-slide">
