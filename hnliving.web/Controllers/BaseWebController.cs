@@ -28,6 +28,7 @@ namespace hnliving.web
             WorkContext.Url = WebHelper.GetUrl();
             WorkContext.RawUrl = WebHelper.GetRawUrl();
             WorkContext.UrlReferrer = WebHelper.GetUrlReferrer();
+            WorkContext.IsSupportWebp = WebHelper.IsSupportFileType("image/webp");
 
             //获得用户唯一标示符sid
             WorkContext.Sid = Utils.GetSidCookie();

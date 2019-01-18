@@ -398,6 +398,25 @@ namespace Lib.Core
         }
 
         /// <summary>
+        /// 是否支持文件类型
+        /// </summary>
+        /// <param name="typeName">类型名称（如：image/webp）</param>
+        /// <returns></returns>
+        public static bool IsSupportFileType(string typeName)
+        {
+            if (HttpContext.Current.Request.AcceptTypes == null)
+                return false;
+
+            foreach(string type in HttpContext.Current.Request.AcceptTypes)
+            {
+                if (typeName == type)
+                    return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// 获得请求的ip
         /// </summary>
         /// <returns></returns>
