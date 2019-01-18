@@ -195,6 +195,24 @@
     -webkit-text-fill-color: transparent;
 }
 
+.text-v-lgdt-ryr {
+    background-image: -webkit-linear-gradient(0deg,#c2382a, #f7c76b, #c2382a); /* Safari 5.1 - 6.0 */
+    background-image: -o-linear-gradient(0deg,#c2382a, #f7c76b, #c2382a); /* Opera 11.1 - 12.0 */
+    background-image: -moz-linear-gradient(0deg,#c2382a, #f7c76b, #c2382a); /* Firefox 3.6 - 15 */
+    background-image: linear-gradient(0deg,#c2382a, #f7c76b, #c2382a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-h-lgdt-ryr {
+    background-image: -webkit-linear-gradient(90deg,#c2382a, #f7c76b, #c2382a); /* Safari 5.1 - 6.0 */
+    background-image: -o-linear-gradient(90deg,#c2382a, #f7c76b, #c2382a); /* Opera 11.1 - 12.0 */
+    background-image: -moz-linear-gradient(90deg,#c2382a, #f7c76b, #c2382a); /* Firefox 3.6 - 15 */
+    background-image: linear-gradient(90deg,#c2382a, #f7c76b, #c2382a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 /*渐变文字颜色结束*/
 
 
@@ -214,5 +232,12 @@
 
 .bg-lgdt-btv {
     background-image: linear-gradient(0deg,rgb(100, 80, 142),rgb(178, 203, 238));
+}
+
+.bg-lgdt-ryr {
+    background: -webkit-linear-gradient(#c2382a, #f7c76b, #c2382a); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#c2382a, #f7c76b, #c2382a); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#c2382a, #f7c76b, #c2382a); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#c2382a, #f7c76b, #c2382a); /* 标准的语法 */
 }
 /*渐变背景颜色结束*/

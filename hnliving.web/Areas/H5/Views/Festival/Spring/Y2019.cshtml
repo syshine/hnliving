@@ -197,16 +197,71 @@
                 opacity: 0;
             }
         }
+
+        .component-audio {
+            position: absolute;
+            left: 3.4rem;
+            top: .2rem;
+            width: .4rem;
+            height: .4rem;
+            z-index: 200;
+        }
+
+        .component-audio-play {
+            width:inherit;
+            height:inherit;
+            display: block;
+            background-image: url(/Images/component/audio-off.jpg);
+            -moz-background-size: 100% 100%;
+            -webkit-background-size: 100% 100%;
+            background-size: 100% 100%;
+        }
+
+        .component-audio-pause {
+            width:inherit;
+            height:inherit;
+            display: none;
+            background-image: url(/Images/component/audio-on.jpg);
+            background-size: 100% 100%;
+            -moz-background-size: 100% 100%;
+            -webkit-background-size: 100% 100%;
+            -webkit-animation:rotate2d 1s linear infinite;
+            animation:rotate2d 1s linear infinite;
+        }
+
+        .component-audio-contorl {
+            width:inherit;
+            height:inherit;
+            -moz-background-size: 100% 100%;
+            -webkit-background-size: 100% 100%;
+            background-size: 100% 100%;
+        }
+
+        .component-audio .pause {
+            background-image: url(/Images/component/audio-off.jpg);
+        }
+
+        .component-audio .play {
+            background-image: url(/Images/component/audio-on.jpg);
+            -webkit-animation:rotate2d 1s linear infinite;
+            animation:rotate2d 1s linear infinite;
+        }
     </style>
 }
 
 @section scriptHead {
-    <script>
+    @*<script>
         var aniArr = new Array();
-    </script>
+    </script>*@
 }
 
-<div class="swiper-container" id="main" >
+<div class="swiper-container" id="main" style="display:none;">
+    <div class="component-audio" onclick="bgmToggle()">
+        @*<div id="play" class="component-audio-play"></div>
+        <div id="pause" class="component-audio-pause"></div>*@
+        <div id="audio-contorl" class="component-audio-contorl play"></div>
+    </div>
+
     <div class="swiper-wrapper">
         <div class="swiper-slide">
             <div class="scroll-wrapper"> @*这个DIV起到让page-content居中的作用，不能删*@
@@ -238,7 +293,7 @@
                         </div>
                     </div>
 
-                    <div class="cmp cmp-image" data-id="154717281281629" data-type="image" style="width: 1.1rem; height: 1.8rem; top: -0.3rem; left: -0.1rem; position: absolute;">
+                    <div class="cmp cmp-image" data-id="154717281281629" data-type="image" style="width: 1.5rem; height: 2.5rem; top: -0.45rem; left: -0.1rem; position: absolute;">
                         <div class="ani-mul" swiper-ani-cnt="3" swiper-ani-repeat="1" swiper-ani-repeart-ind="1"
                              swiper-animate-effect-1="rotateInDownRight" swiper-animate-duration-1="1s" swiper-animate-delay-1="0.3s"
                              swiper-animate-effect-2="emptyAni" swiper-animate-duration-2="1s" swiper-animate-delay-2="0s"
@@ -247,7 +302,7 @@
                         </div>
                     </div>
 
-                    <div class="cmp cmp-image" data-id="154717284881630" data-type="image" style="width: 1.1rem; height: 1.8rem; top: -0.3rem; left: 3.1rem; position: absolute;">
+                    <div class="cmp cmp-image" data-id="154717284881630" data-type="image" style="width: 1.5rem; height: 2.5rem; top: -0.45rem; left:2.7rem; position: absolute;">
                         <div class="ani-mul" swiper-ani-cnt="3" swiper-ani-repeat="1" swiper-ani-repeart-ind="1"
                              swiper-animate-effect-1="rotateInDownLeft" swiper-animate-duration-1="1s" swiper-animate-delay-1="0.3s"
                              swiper-animate-effect-2="emptyAni" swiper-animate-duration-2="1s" swiper-animate-delay-2="0s"
@@ -366,9 +421,9 @@
                     easing: 'easeInQuad',
                 });
             </script>
-            <div class="ani display-3 text-v-lgdt-btg" swiper-animate-effect="rubberBand" swiper-animate-duration="1s" swiper-animate-delay="0.3s">Animate.css</div>
-            <div class="ani display-3 text-v-lgdt-btg" style="left:100px;top:150px;z-index:3;"swiper-animate-effect="fadeOut" swiper-animate-duration="1s" swiper-animate-delay="0.3s">Animate.css</div>
-            <div class="ani display-2 text-v-lgdt-btg" style="left:100px;top:350px;z-index:3;" swiper-animate-effect="rubberBand" swiper-animate-duration="1s" swiper-animate-delay="0.3s">
+            <div class="ani text-v-lgdt-btg" swiper-animate-effect="rubberBand" swiper-animate-duration="1s" swiper-animate-delay="0.3s">Animate.css</div>
+            <div class="ani text-v-lgdt-btg" style="left:100px;top:150px;z-index:3;"swiper-animate-effect="fadeOut" swiper-animate-duration="1s" swiper-animate-delay="0.3s">Animate.css</div>
+            <div class="ani text-v-lgdt-btg" style="left:100px;top:350px;z-index:3;" swiper-animate-effect="rubberBand" swiper-animate-duration="1s" swiper-animate-delay="0.3s">
                 @ViewBag.Name
             </div>
 
@@ -381,12 +436,12 @@
         <div class="swiper-slide bg-gray-5">
             @*<div class="ani display-3 text-white" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s" swiper-animate-delay="0.3s">Animate.css</div>
             <div class="ani display-3 text-danger" swiper-animate-effect="fadeOutDown" swiper-animate-duration="1s" swiper-animate-delay="0.3s">Animate.css333</div>*@
-            <div class="ani-mul display-3 text-danger" swiper-ani-cnt="3" swiper-ani-index="0" swiper-ani-repeat="0" swiper-animate-effect-1="fadeInDown" swiper-animate-duration-1="1s" swiper-animate-delay-1="0.3s" swiper-animate-iteration-count-1="2"
+            <div class="ani-mul text-danger" swiper-ani-cnt="3" swiper-ani-index="0" swiper-ani-repeat="0" swiper-animate-effect-1="fadeInDown" swiper-animate-duration-1="1s" swiper-animate-delay-1="0.3s" swiper-animate-iteration-count-1="2"
                  swiper-animate-effect-2="shake" swiper-animate-duration-2="1s" swiper-animate-delay-2="1.3s" swiper-animate-iteration-count-2="1"
                   swiper-animate-effect-3="fadeOutDown" swiper-animate-duration-3="1s" swiper-animate-delay-3="0.3s">Animate.css</div>
 
 
-            <div class="ani-mul display-3 text-v-lgdt-btg" swiper-ani-cnt="4" swiper-ani-index="0" swiper-ani-repeat="1" swiper-animate-effect-1="rollIn" swiper-animate-duration-1="1s" swiper-animate-delay-1="0.3s"
+            <div class="ani-mul text-v-lgdt-btg" swiper-ani-cnt="4" swiper-ani-index="0" swiper-ani-repeat="1" swiper-animate-effect-1="rollIn" swiper-animate-duration-1="1s" swiper-animate-delay-1="0.3s"
                  swiper-animate-effect-2="bounce" swiper-animate-duration-2="2s" swiper-animate-delay-2="0.3s"
                  swiper-animate-effect-3="tada" swiper-animate-duration-3="2s" swiper-animate-delay-3="0.3s"
                  swiper-animate-effect-4="hinge" swiper-animate-duration-4="2s" swiper-animate-delay-4="1.3s">
@@ -394,7 +449,7 @@
             </div>
 
 
-            <div class="ani-mul display-3 text-danger" swiper-ani-cnt="3" swiper-ani-index="0" swiper-animate-effect-1="fadeInDown" swiper-animate-duration-1="1s" swiper-animate-iteration-count-1="2"
+            <div class="ani-mul text-danger" swiper-ani-cnt="3" swiper-ani-index="0" swiper-animate-effect-1="fadeInDown" swiper-animate-duration-1="1s" swiper-animate-iteration-count-1="2"
                  swiper-animate-effect-2="bounce" swiper-animate-duration-2="2s" swiper-animate-delay-2="0.3s"
                  swiper-animate-effect-3="tada" swiper-animate-duration-3="2s" swiper-animate-iteration-count-3="infinite">
                 Animate.css3
@@ -406,62 +461,112 @@
     <div class="swiper-pagination"></div>
 
     <img src="~/Areas/H5/Images/uparrows.png" class="switch-guide">
+
+    <audio id="bgm-audio" class="component-audio-core" autoplay="autoplay" loop="">
+        <source src="http://boscdn.bpc.baidu.com/v1/legend/84bcd63e48cdbb1e094db584b0cd765d1458209258613.mp3">
+    </audio>
 </div>
 
 
-
-
 @section scripts {
-
     <script>
-        var mainSwiper = new Swiper('#main', {
-            direction: 'vertical',  // 竖向切换
-            mousewheel: true,       // 鼠标滚轮
+        imgArr = ['/Images/component/audio-off.jpg',
+                '/Images/component/audio-on.jpg',
+                '/Areas/H5/Images/red.webp',
+                '/Areas/H5/Images/花纹.webp',
+                '/Areas/H5/Images/菱形.webp',
+                '/Areas/H5/Images/菱形边框.webp',
+                '/Areas/H5/Images/扇子.webp',
+                '/Areas/H5/Images/左灯笼.webp',
+                '/Areas/H5/Images/右灯笼.webp',
+                '/Areas/H5/Images/底部横幅.webp',
+                '/Areas/H5/Images/意black.webp',
+                '/Areas/H5/Images/春black.webp',
+                '/Areas/H5/Images/如black.webp',
+                '/Areas/H5/Images/新black.webp',
+                '/Areas/H5/Images/贺.webp',
+                '/Areas/H5/Images/新.webp',
+                '/Areas/H5/Images/烟花.webp',
+                '/Areas/H5/Images/春.webp',
+                '/Areas/H5/Images/106.webp',
 
-            // 如果需要分页器
-            pagination: {
-                el: '.swiper-pagination',
-            },
+                '/Areas/H5/Images/uparrows.png',
+                'http://boscdn.bpc.baidu.com/v1/legend/84bcd63e48cdbb1e094db584b0cd765d1458209258613.mp3'];
 
-            on: {
-                init: function () {
-                    swiperAnimateCache(this); //隐藏动画元素
-                    swiperAnimate(this); //初始化完成开始动画
+        var mainSwiper;
+        function swiperInit() {
+            $('#main').fadeIn();
 
-                    bindEvent();
-                    swiperAnimateMulCache(this); //隐藏动画元素
-                    swiperAnimateMul(this); //初始化完成开始动画
+            mainSwiper = new Swiper('#main', {
+                direction: 'vertical',  // 竖向切换
+                mousewheel: true,       // 鼠标滚轮
+
+                // 如果需要分页器
+                pagination: {
+                    el: '.swiper-pagination',
                 },
-                slideChangeTransitionStart: function () {
-                    //console.log(this.activeIndex + '-00');//切换开始时，记录现在是第几个slide
-                    //if (this.activeIndex == 1) {
-                    //    restartAnim.seek(0);
-                    //}
-                    //console.log(this.activeIndex + '-0');//切换开始时，记录现在是第几个slide
-                },
-                slideChangeTransitionEnd: function () {
-                    swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
-                    //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); //动画只展现一次，去除ani类名
 
-                    swiperAnimateMul(this); //初始化完成开始动画
-                    //this.slides.eq(this.activeIndex).find('.ani-mul').removeClass('ani-mul'); //动画只展现一次，去除ani-mul类名
+                on: {
+                    init: function () {
+                        swiperAnimateCache(this); //隐藏动画元素
+                        swiperAnimate(this); //初始化完成开始动画
 
-                    //console.log(this.activeIndex + '-1');//切换结束时，记录现在是第几个slide
+                        bindEvent();
+                        swiperAnimateMulCache(this); //隐藏动画元素
+                        swiperAnimateMul(this); //初始化完成开始动画
+                    },
+                    slideChangeTransitionStart: function () {
+                        //console.log(this.activeIndex + '-00');//切换开始时，记录现在是第几个slide
+                        //if (this.activeIndex == 1) {
+                        //    restartAnim.seek(0);
+                        //}
+                        //console.log(this.activeIndex + '-0');//切换开始时，记录现在是第几个slide
+                    },
+                    slideChangeTransitionEnd: function () {
+                        swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+                        //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); //动画只展现一次，去除ani类名
 
-                    if (this.activeIndex == 1) { // 切换到activeIndex等于1页
-                        restartAnim.restart();
-                    } else {
-                        restartAnim.seek(0);
+                        swiperAnimateMul(this); //初始化完成开始动画
+                        //this.slides.eq(this.activeIndex).find('.ani-mul').removeClass('ani-mul'); //动画只展现一次，去除ani-mul类名
+
+                        //console.log(this.activeIndex + '-1');//切换结束时，记录现在是第几个slide
+
+                        if (this.activeIndex == 1) { // 切换到activeIndex等于1页
+                            restartAnim.restart();
+                        } else {
+                            restartAnim.seek(0);
+                        }
+
+                        //console.log(this.activeIndex + '-2');//切换结束时，记录现在是第几个slide
                     }
+                }
+            })
+        }
 
-                    //console.log(this.activeIndex + '-2');//切换结束时，记录现在是第几个slide
+        function bgmToggle() {
+            var audio = document.getElementById('bgm-audio');
+            //var play = document.getElementById('play');
+            //var pause = document.getElementById('pause');
+            $('#audio-contorl').toggleClass("play");
+            $('#audio-contorl').toggleClass("pause");
+            if (audio !== null) {
+                //检测播放是否已暂停.audio.paused 在播放器播放时返回false.
+                //if (audio.paused) {
+                if ($('#audio-contorl').hasClass("play")) {
+                    audio.play();// 这个就是播放
+                    //play.style.display = 'none';
+                    //pause.style.display = 'block';
+                } else {
+                    audio.pause();// 这个就是暂停
+                    //play.style.display = 'block';
+                    //pause.style.display = 'none';
                 }
             }
-        })
-
-        // 初始化数组
-        for(var i=0;i<mainSwiper.length;i++){
-            aniArr[i] = new Array();
         }
+
+        //// 初始化数组
+        //for(var i=0;i<mainSwiper.length;i++){
+        //    aniArr[i] = new Array();
+        //}
     </script>
 }

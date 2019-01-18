@@ -179,6 +179,8 @@
     <Content Include="Images\banner01.jpg" />
     <Content Include="Images\banner02.jpg" />
     <Content Include="Images\banner03.jpg" />
+    <Content Include="Images\component\audio-off.jpg" />
+    <Content Include="Images\component\audio-on.jpg" />
     <Content Include="Images\Icons\lg.ico" />
     <Content Include="Images\Icons\logo16.ico" />
     <Content Include="Images\Icons\logo32.ico" />
@@ -195,6 +197,7 @@
     <Content Include="Plugins\Swiper\js\swiper.animate.min.js" />
     <Content Include="Plugins\Swiper\js\swiper.js" />
     <Content Include="Plugins\Swiper\js\swiper.min.js" />
+    <Content Include="Scripts\imgLoader.js" />
     <Content Include="Scripts\prism\prism-Night.js" />
     <Content Include="Scripts\prism\prism.js" />
     <Content Include="Scripts\prism\prismBasic-Night.js" />

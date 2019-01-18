@@ -12,6 +12,7 @@
         *, p {
 	        margin:0;
 	        padding:0;
+            font-size:.1rem;
         }
 
         html, body, #main, #main .swiper-slide {
@@ -19,7 +20,7 @@
         }
 
         .phone-text {
-            font-size:.2rem;
+            font-size:.15rem;
             margin-top: .1rem;
         }
 
@@ -112,6 +113,117 @@
             from {opacity:0}
             to {opacity:0}
         }
+
+        .loader-info {
+            font-size:.4rem;
+            color:lightseagreen;
+        }
+
+        .circle {
+            width: .125rem;
+            height: .125rem;
+            background-color: #FFF;
+            position: absolute;
+            -moz-border-radius: 50% 50% 50% 50%;
+            -webkit-border-radius: 50% 50% 50% 50%;
+            border-radius: 50% 50% 50% 50%;
+            -webkit-animation: scale15 0.8s infinite;
+            animation: scale15 0.8s infinite;
+        }
+
+        .round-circle-1 {
+            top: .119rem;
+            left: .119rem;
+        }
+
+        .round-circle-2 {
+            top: 0;
+            left: .406rem;
+            -webkit-animation-delay: 0.1s;
+            animation-delay: 0.1s;
+        }
+
+        .round-circle-3 {
+            top: .119rem;
+            left: .694rem;
+            -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s;
+        }
+
+        .round-circle-4 {
+            top: .406rem;
+            left: .813rem;
+            -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s;
+        }
+
+        .round-circle-5 {
+            top: .694rem;
+            left: .694rem;
+            -webkit-animation-delay: 0.4s;
+            animation-delay: 0.4s;
+        }
+
+        .round-circle-6 {
+            top: .813rem;
+            left: .406rem;
+            -webkit-animation-delay: 0.5s;
+            animation-delay: 0.5s;
+        }
+
+        .round-circle-7 {
+            top: .694rem;
+            left: .119rem;
+            -webkit-animation-delay: 0.6s;
+            animation-delay: 0.6s;
+        }
+
+        .round-circle-8 {
+            top: .406rem;
+            left: 0;
+            -webkit-animation-delay: 0.7s;
+            animation-delay: 0.7s;
+        }
+
+        .loader-progress-round {
+            position: absolute;
+            left: calc(50% - 0.938rem/2);
+            top: calc(50% - 0.938rem/2);
+            width: .938rem;
+            height: .938rem;
+            -ms-transform: scale(2);
+            -webkit-transform: scale(2);
+            transform: scale(2);
+        }
+
+        @@-webkit-keyframes scale15 {
+
+            25% {
+                -ms-transform: scale(1.5);
+                -webkit-transform: scale(1.5);
+                transform: scale(1.5);
+            }
+
+            75% {
+                -ms-transform: scale(0);
+                -webkit-transform: scale(0);
+                transform: scale(0);
+            }
+        }
+
+        @@keyframes scale15 {
+            50% {
+                -ms-transform: scale(1.5,1.5);
+                -webkit-transform: scale(1.5,1.5);
+                transform: scale(1.5,1.5);
+            }
+
+            100% {
+                -ms-transform: scale(1,1);
+                -webkit-transform: scale(1,1);
+                transform: scale(1,1);
+            }
+        }
     </style>
 
     <script src="~/Plugins/Anime/anime.min.js"></script>
@@ -140,16 +252,34 @@
             // 设置rem字体大小
             document.documentElement.style.fontSize = w * 160 / 640  + 'px';
         }
+
+        // 预加载图片列表
+        var imgArr = new Array();
     </script>
 </head>
 <body>
 
     <div class="h5-container" id="container">@*container body-content*@
+        <div class="loader-bar scroll-wrapper bg-lgdt-ryr" id="loader">
+            <div class="loader-progress-round">
+                <div class="circle round-circle-1"></div>
+                <div class="circle round-circle-2"></div>
+                <div class="circle round-circle-3"></div>
+                <div class="circle round-circle-4"></div>
+                <div class="circle round-circle-5"></div>
+                <div class="circle round-circle-6"></div>
+                <div class="circle round-circle-7"></div>
+                <div class="circle round-circle-8"></div>
+            </div>
+
+            <div id="loader-info" class="loader-info">0%</div>
+        </div>
+
         @RenderBody()
     </div>
 
 
-    <div class="qr_code_pc d-none d-lg-block">
+    <div class="qr_code_pc d-none d-lg-block" id="qr-code-warp">
         <img id="js_qr_code_img" class="qr_code_img" src="/tools/program/qrcode/GetQRCode?content=@WorkContext.Url">
         <p class="phone-text">手机查看</p>
     </div>
@@ -170,15 +300,45 @@
             // 设置高度
             $(".page-content").css('height', w / rate);
         }
+
+        // 预加载
+        //// 模拟加载慢的效果
+        //var callbacks = [];
+        //imgLoader(imgArr, function (percentage) {
+        //    callbacks.push((function (percent, i) {
+        //        return function () {
+        //            setTimeout(function () {
+        //                var percentT = percent * 100;
+        //                $('#loader-info').html((parseInt(percentT)) + '%');
+        //                if (percent == 1) {
+        //                    setTimeout(function () {
+        //                        $('#loader').remove();
+        //                        swiperInit();
+        //                    }, 600);
+        //                }
+        //                callbacks[i + 1] && callbacks[i + 1]();
+        //            }, 100);
+        //        }
+        //    })(percentage, callbacks.length));
+
+        //    if (percentage == 1) {
+        //        callbacks[0]();
+        //    }
+        //});
+
+        //=================================================
+        //* 以上代码为模拟网速慢的情况，特意对进度处理的回调做了延迟
+        //* 真实环境，应该使用下面注释的代码
+        //=================================================
+
+        imgLoader(imgArr, function (percentage) {
+            var percentT = percentage * 100;
+            $('#loader-info').html((parseInt(percentT)) + '%');
+            if (percentage == 1) {
+                $('#loader').remove();
+                swiperInit();
+            }
+        });
     </script>
-
-    @*<script>
-        getQRCode("@WorkContext.Url");
-
-        function getQRCode(content) {
-            $('#js_qr_code_img').attr("src", '/tools/program/qrcode/GetQRCode?content=' + content);
-            $('#js_qr_code_img').attr("title", content);
-        }
-    </script>*@
 </body>
 </html>
