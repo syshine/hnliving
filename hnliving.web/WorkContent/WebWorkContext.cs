@@ -67,6 +67,7 @@ namespace hnliving.web
         public string SearchWord;//搜索词
 
         public string WebpSuffix = "png"; // webp格式后缀，默认"png"，如果IsSupportWebp为真，则是"webp"
+        public string WebpGifSuffix = "gif"; // webp格式后缀，默认"gif"，如果IsSupportWebp为真，则是"webp"
 
         private bool _isSupportWebp = false;//是否支持webp格式
 
@@ -81,9 +82,15 @@ namespace hnliving.web
             {
                 _isSupportWebp = value;
                 if (_isSupportWebp)
+                {
                     WebpSuffix = "webp";
+                    WebpGifSuffix = "webp";
+                }
                 else
+                {
                     WebpSuffix = "png";
+                    WebpGifSuffix = "gif";
+                }
             }
         }
     }
