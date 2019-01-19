@@ -32,6 +32,10 @@
             justify-content: center;
         }
 
+        .page-content {
+            width:100%;
+        }
+
         .page-content, .scroll-wrapper {
             position: relative;
         }
@@ -264,11 +268,12 @@
 
     <div class="swiper-wrapper">
         <div class="swiper-slide">
-            <div class="scroll-wrapper"> @*这个DIV起到让page-content居中的作用，不能删*@
-                <div class="e-page-bg-image" style="opacity: 1; height: 100%;">
+            <div class="scroll-wrapper">
+                @*这个DIV起到让page-content居中的作用，不能删*@
+                <div class="e-page-bg-image">
                     <img src="~/Areas/H5/Images/Festival/Spring/Y2019/红底.@WorkContext.WebpSuffix" style="width: 100%; height: 100%; object-fit: cover;" />
                 </div>
-                <div class="page-content" style="width:100%;">
+                <div class="page-content">
                     <div class="cmp cmp-image" data-type="image" style="width: 4.46rem; height: 1.55rem; top: 5.3rem; left: -0.26rem; position: absolute;">
                         <div class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration=".3s">
                             <img class="inner-image" src="~/Areas/H5/Images/Festival/Spring/Y2019/花纹.@WorkContext.WebpSuffix">
@@ -299,6 +304,7 @@
                              swiper-animate-effect-2="emptyAni" swiper-animate-duration-2="1s" swiper-animate-delay-2="0s"
                              swiper-animate-effect-3="swing" swiper-animate-duration-3="2s" swiper-animate-delay-3="0s">
                             <img class="inner-image" src="~/Areas/H5/Images/Festival/Spring/Y2019/小左灯笼.@WorkContext.WebpSuffix">
+                            <img class="inner-image" src="~/Areas/H5/Images/Festival/Spring/Y2019/小左福.@WorkContext.WebpSuffix" style="height:0.3rem;width:0.3rem;left:.6rem;top:.93rem;">
                         </div>
                     </div>
 
@@ -308,6 +314,7 @@
                              swiper-animate-effect-2="emptyAni" swiper-animate-duration-2="1s" swiper-animate-delay-2="0s"
                              swiper-animate-effect-3="swing" swiper-animate-duration-3="2s" swiper-animate-delay-3="0s">
                             <img class="inner-image" src="~/Areas/H5/Images/Festival/Spring/Y2019/小右灯笼.@WorkContext.WebpSuffix">
+                            <img class="inner-image" src="~/Areas/H5/Images/Festival/Spring/Y2019/小右福.@WorkContext.WebpSuffix" style="height:0.3rem;width:0.3rem;left:.6rem;top:.93rem;">
                         </div>
                     </div>
 
@@ -405,13 +412,147 @@
                 </div>
             </div>
         </div>
+
+        <div class="swiper-slide">
+            <div class="scroll-wrapper">
+                <div class="e-page-bg-image" style="opacity: 1; height: 100%;">
+                    <img src="~/Areas/H5/Images/Festival/Spring/Y2019/红底.@WorkContext.WebpSuffix" style="width: 100%; height: 100%; object-fit: cover;" />
+                </div>
+                <div class="page-content">
+                    <div class="cmp cmp-image" data-type="image" style="width: 4.46rem; height: 1.55rem; top: 5.3rem; left: -0.26rem; position: absolute;">
+                        <div class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration=".3s">
+                            <img class="inner-image" src="~/Areas/H5/Images/Festival/Spring/Y2019/花纹.@WorkContext.WebpSuffix">
+                        </div>
+                    </div>
+
+                    <div class="cmp cmp-image" data-id="1547099165302153" data-type="image" style="width:3.4rem;height:4.8rem;top:1rem;left:.3rem; position: absolute;">
+                        <div class="ani" swiper-animate-effect="translate" swiper-animate-duration=".7s" swiper-animate-delay="0s">
+                            <img class="inner-image" src="~/Areas/H5/Images/Festival/Spring/Y2019/黄底.@WorkContext.WebpSuffix">
+                        </div>
+                    </div>
+
+                    <div class="cmp cmp-image" data-id="1547099165302154" data-type="image" style="width: 3.2rem; height: 4.6rem; top:1.1rem; left:.4rem; position: absolute;">
+                        <div class="ani" swiper-animate-effect="translateReverse" swiper-animate-duration=".5s" swiper-animate-delay=".3s">
+                            <img class="inner-image" src="~/Areas/H5/Images/Festival/Spring/Y2019/红边框.@WorkContext.WebpSuffix">
+                        </div>
+                    </div>
+                    
+                    <div class="cmp cmp-image" data-id="1547099165302155" data-type="image" style="width:.5rem;height:3.5rem;top:1.5rem;left:.1rem; position: absolute;">
+                        <div class="ani-mul" swiper-ani-cnt="3" swiper-ani-repeat="1" swiper-ani-repeart-ind="1"
+                             swiper-animate-effect-1="slideInUp" swiper-animate-duration-1="1s" swiper-animate-delay-1="0.3s"
+                             swiper-animate-effect-2="emptyAni" swiper-animate-duration-2="1s" swiper-animate-delay-2="0s"
+                             swiper-animate-effect-3="tada" swiper-animate-duration-3="2s" swiper-animate-delay-3="0s">
+                            <img class="inner-image" src="~/Areas/H5/Images/Festival/Spring/Y2019/春联侧边.@WorkContext.WebpSuffix">
+                        </div>
+                    </div>
+
+                    <div class="cmp cmp-image" data-id="1547099165302156" data-type="image" style="width:.37rem;height:3.2rem;top:1.65rem;left:0.17rem; position: absolute;">
+                        <div class="ani-mul" swiper-ani-cnt="3" swiper-ani-repeat="1" swiper-ani-repeart-ind="1"
+                             swiper-animate-effect-1="slideInUp" swiper-animate-duration-1="1s" swiper-animate-delay-1="0.3s"
+                             swiper-animate-effect-2="emptyAni" swiper-animate-duration-2="1s" swiper-animate-delay-2="0s"
+                             swiper-animate-effect-3="tada" swiper-animate-duration-3="2s" swiper-animate-delay-3="0s">
+                            <img class="inner-image" src="~/Areas/H5/Images/Festival/Spring/Y2019/黄框.@WorkContext.WebpSuffix">
+                        </div>
+                    </div>
+
+                    <div class="cmp cmp-image" data-id="1547099165302157" data-type="image" style="width:.5rem;height:3.5rem;top:1.5rem;left:3.4rem; position: absolute;">
+                        <div class="ani-mul" swiper-ani-cnt="3" swiper-ani-repeat="1" swiper-ani-repeart-ind="1"
+                             swiper-animate-effect-1="slideInUp" swiper-animate-duration-1="1s" swiper-animate-delay-1="0.3s"
+                             swiper-animate-effect-2="emptyAni" swiper-animate-duration-2="1s" swiper-animate-delay-2="0s"
+                             swiper-animate-effect-3="tada" swiper-animate-duration-3="2s" swiper-animate-delay-3="0s">
+                            <img class="inner-image" src="~/Areas/H5/Images/Festival/Spring/Y2019/春联侧边.@WorkContext.WebpSuffix">
+                        </div>
+                    </div>
+
+                    <div class="cmp cmp-image" data-id="1547099165303158" data-type="image" style="width:.37rem;height:3.2rem;top:1.65rem;left:3.47rem; position: absolute;">
+                        <div class="ani-mul" swiper-ani-cnt="3" swiper-ani-repeat="1" swiper-ani-repeart-ind="1"
+                             swiper-animate-effect-1="slideInUp" swiper-animate-duration-1="1s" swiper-animate-delay-1="0.3s"
+                             swiper-animate-effect-2="emptyAni" swiper-animate-duration-2="1s" swiper-animate-delay-2="0s"
+                             swiper-animate-effect-3="tada" swiper-animate-duration-3="2s" swiper-animate-delay-3="0s">
+                            <img class="inner-image" src="~/Areas/H5/Images/Festival/Spring/Y2019/黄框.@WorkContext.WebpSuffix">
+                        </div>
+                    </div>
+                    
+                    <div class="cmp cmp-image" data-id="1547099165304159" data-type="image" style="width:1rem; height:1.66rem; top: -0.15rem; left: -0.1rem; position: absolute;">
+                        <div class="ani-mul" swiper-ani-cnt="3" swiper-ani-repeat="1" swiper-ani-repeart-ind="1"
+                             swiper-animate-effect-1="rotateInDownRight" swiper-animate-duration-1="1s" swiper-animate-delay-1="0.3s"
+                             swiper-animate-effect-2="emptyAni" swiper-animate-duration-2="1s" swiper-animate-delay-2="0s"
+                             swiper-animate-effect-3="swing" swiper-animate-duration-3="2s" swiper-animate-delay-3="0s">
+                            <img class="inner-image" src="~/Areas/H5/Images/Festival/Spring/Y2019/小左灯笼.@WorkContext.WebpSuffix">
+                            <img class="inner-image" src="~/Areas/H5/Images/Festival/Spring/Y2019/小左福.@WorkContext.WebpSuffix" style="height:0.2rem;width:0.2rem;left:.4rem;top:.62rem;">
+                        </div>
+                    </div>
+
+                    <div class="cmp cmp-image" data-id="1547099165304160" data-type="image" style="width:1rem; height:1.66rem; top: -0.15rem; left:3.1rem; position: absolute;">
+                        <div class="ani-mul" swiper-ani-cnt="3" swiper-ani-repeat="1" swiper-ani-repeart-ind="1"
+                             swiper-animate-effect-1="rotateInDownLeft" swiper-animate-duration-1="1s" swiper-animate-delay-1="0.3s"
+                             swiper-animate-effect-2="emptyAni" swiper-animate-duration-2="1s" swiper-animate-delay-2="0s"
+                             swiper-animate-effect-3="swing" swiper-animate-duration-3="2s" swiper-animate-delay-3="0s">
+                            <img class="inner-image" src="~/Areas/H5/Images/Festival/Spring/Y2019/小右灯笼.@WorkContext.WebpSuffix">
+                            <img class="inner-image" src="~/Areas/H5/Images/Festival/Spring/Y2019/小右福.@WorkContext.WebpSuffix" style="height:0.2rem;width:0.2rem;left:.4rem;top:.62rem;">
+                        </div>
+                    </div>
+
+                    <div class="cmp cmp-image" data-id="1547099165304163" data-type="image" style="width:2.3rem;height:.66rem;top:.17rem;left:.85rem; position: absolute;">
+                        <div class="ani-mul" swiper-ani-cnt="3" swiper-ani-repeat="1" swiper-ani-repeart-ind="1"
+                             swiper-animate-effect-1="slideInUp" swiper-animate-duration-1="1s" swiper-animate-delay-1="0.3s"
+                             swiper-animate-effect-2="emptyAni" swiper-animate-duration-2="1s" swiper-animate-delay-2="0s"
+                             swiper-animate-effect-3="tada" swiper-animate-duration-3="2s" swiper-animate-delay-3="0s">
+                            <img class="inner-image" src="~/Areas/H5/Images/Festival/Spring/Y2019/春联横批底.@WorkContext.WebpSuffix">
+                        </div>
+                    </div>
+                    
+                    <div class="cmp cmp-image" data-id="1547099165304164" data-type="image" style="width:1.9rem; height:.5rem; top:.25rem; left:1.05rem; position: absolute;">
+                        <div class="ani-mul" swiper-ani-cnt="3" swiper-ani-repeat="1" swiper-ani-repeart-ind="1"
+                             swiper-animate-effect-1="slideInUp" swiper-animate-duration-1="1s" swiper-animate-delay-1="0.3s"
+                             swiper-animate-effect-2="emptyAni" swiper-animate-duration-2="1s" swiper-animate-delay-2="0s"
+                             swiper-animate-effect-3="tada" swiper-animate-duration-3="2s" swiper-animate-delay-3="0s">
+                            <img class="inner-image" src="~/Areas/H5/Images/Festival/Spring/Y2019/春联横批黄框.@WorkContext.WebpSuffix">
+                        </div>
+                    </div>
+
+                    <div class="cmp cmp-image" data-id="1547099165304165" data-type="image" style="width:.5rem; height:.48rem;top:.45rem;left:.6rem; position: absolute;">
+                        <div class="ani-mul" swiper-ani-cnt="4" swiper-ani-repeat="1" swiper-ani-repeart-ind="1"
+                             swiper-animate-effect-1="emptyAniHide" swiper-animate-duration-1="3.1s" swiper-animate-delay-1="0s"
+                             swiper-animate-effect-2="zoomIn" swiper-animate-duration-2="1s" swiper-animate-delay-2="0s"
+                             swiper-animate-effect-3="fadeOut" swiper-animate-duration-3=".5s" swiper-animate-delay-3="0s"
+                             swiper-animate-effect-4="emptyAniHide" swiper-animate-duration-4="1s" swiper-animate-delay-4="0s">
+                            <img class="inner-image" src="~/Areas/H5/Images/Festival/Spring/Y2019/烟花.@WorkContext.WebpSuffix">
+                        </div>
+                    </div>
+
+                    <div class="cmp cmp-image" data-id="1547099165304166" data-type="image" style="width:.5rem; height:.48rem;top:0rem;left:2.9rem; position: absolute;">
+                        <div class="ani-mul" swiper-ani-cnt="4" swiper-ani-repeat="1" swiper-ani-repeart-ind="1"
+                             swiper-animate-effect-1="emptyAniHide" swiper-animate-duration-1="3.5s" swiper-animate-delay-1="0s"
+                             swiper-animate-effect-2="zoomIn" swiper-animate-duration-2="1s" swiper-animate-delay-2="0s"
+                             swiper-animate-effect-3="fadeOut" swiper-animate-duration-3=".5s" swiper-animate-delay-3="0s"
+                             swiper-animate-effect-4="emptyAniHide" swiper-animate-duration-4="1s" swiper-animate-delay-4="0s">
+                            <img class="inner-image" src="~/Areas/H5/Images/Festival/Spring/Y2019/烟花.@WorkContext.WebpSuffix">
+                        </div>
+                    </div>
+
+                    <div class="cmp cmp-image" data-id="154711102256392" data-type="image" style="width:inherit; height:inherit; top: 0; left:0; position: absolute;">
+                        <div class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration=".7s" swiper-animate-delay="3.5s">
+                            <img class="inner-image" src="~/Areas/H5/Images/Festival/Spring/Y2019/飞扬碎屑.@WorkContext.WebpGifSuffix">
+                        </div>
+                    </div>
+
+                    <div class="cmp cmp-text" data-id="1547099165304169" data-type="text" style="width: 132px; height: auto; left: 1.2rem; top: 0.27rem; position: absolute; transform-origin: left top 0px; transform: scale(1.24206);"><div class="animate-wrapper" data-id="1547099165304169" style="border-radius: 0px; animation-name: pulse; animation-iteration-count: 1; animation-delay: 0s; animation-duration: 3s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_1547099165304169"><div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px; border-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-size: 24px; font-family: FZXKJW_3631353604; font-style: normal; font-weight: normal; text-align: center; text-decoration: none; line-height: 35px; letter-spacing: 6px; border-radius: 0px; background-color: transparent;">领导祝福</div></div></div>
+                    <div class="cmp cmp-text" data-id="1547099165304167" data-type="text" style="width: 22px; height: auto; left:.2rem; top:1.68rem; position: absolute; transform-origin: left top 0px; transform: scale(1.24206);"><div class="animate-wrapper" data-id="1547099165304167" style="border-radius: 0px; animation-name: pulse; animation-iteration-count: 1; animation-delay: 0s; animation-duration: 3s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_1547099165304167"><div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px; border-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-size: 24px; font-family: FZXKJW_3631353604; font-style: normal; font-weight: normal; text-align: left; text-decoration: none; line-height: 35px; letter-spacing: 0px; border-radius: 0px; background-color: transparent;">福禄祥兆天天有</div></div></div>
+                    <div class="cmp cmp-text" data-id="1547099165304168"d data-type="text" style="width: 22px; height: auto; left: 3.51rem; top: 1.68rem; position: absolute; transform-origin: left top 0px; transform: scale(1.24206);"><div class="animate-wrapper" data-id="1547099165304168" style="border-radius: 0px; animation-name: pulse; animation-iteration-count: 1; animation-delay: 0s; animation-duration: 3s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_1547099165304168"><div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px; border-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-size: 24px; font-family: FZXKJW_3631353604; font-style: normal; font-weight: normal; text-align: left; text-decoration: none; line-height: 35px; letter-spacing: 0px; border-radius: 0px; background-color: transparent;">财源喜气年年来</div></div></div>
+                    <div class="cmp cmp-text" data-id="154711051216954" data-type="text" style="width: 207px; height: auto; left: 0.565rem; top:1.15rem; position: absolute; transform-origin: left top 0px; transform: scale(1.24206);"><div class="animate-wrapper" data-id="154711051216954" style="border-radius: 0px; animation-name: zoomIn; animation-iteration-count: 1; animation-delay: 1.2s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154711051216954"><div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px; border-color: rgb(0, 0, 0); color: rgb(184, 35, 18); font-size: 12px; font-family: normal; font-style: normal; font-weight: normal; text-align: center; text-decoration: none; line-height: 14px; letter-spacing: 0px; border-radius: 0px; background-color: transparent;">HAPPY&nbsp; NEW&nbsp; YEAR&nbsp; !</div></div></div>
+                    <div class="cmp cmp-text" data-id="1547102129074343" data-type="text" style="width:2rem; height: auto; left:.75rem; top: 2.79rem; position: absolute; transform-origin: left top 0px; transform: scale(1.24206);"><div class="animate-wrapper" data-id="1547102129074343" style="border-radius: 0px; animation-name: zoomIn; animation-iteration-count: 1; animation-delay: 3.5s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_1547102129074343"><div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px; border-color: rgb(0, 0, 0); color: rgb(131, 86, 65); font-size: 12px; font-family: normal; font-style: normal; font-weight: normal; text-align: center; text-decoration: none; line-height: 20px; letter-spacing: 0px; border-radius: 0px; background-color: transparent;">新年伊始万象更新，新年的曙光已经扑面而来！无论明天路上多少荆棘坎坷，让我们伴随悠扬的新年钟声，携起手来少一些埋怨多一些行动，坚定信心奋进精神扎实苦干，发挥我们所有的智慧和能量，奉献我们所有的激情和才华，再谱公司和个人发展的崭新篇章！</div></div></div>
+                    
+                </div>
+            </div>
+        </div>
         <div class="swiper-slide">
             <p>Animate.css2</p>
-            <div class="el" id="restartAnim"style="top: 1.66rem; left: .74rem; position: absolute;">Animate.css222</div>
+            <div class="el" id="restartAnim" style="top: 1.66rem; left: .74rem; position: absolute;">Animate.css222</div>
             @*<div id="restartAnim">
-                <div class="el"  style="top: 16.6rem; left: 7.4rem; position: absolute;">Animate.css222</div>
-                <div class="line player"> <button class="restart">Restart</button> </div>
-            </div>*@
+                    <div class="el"  style="top: 16.6rem; left: 7.4rem; position: absolute;">Animate.css222</div>
+                    <div class="line player"> <button class="restart">Restart</button> </div>
+                </div>*@
             <script>
                 var restartAnim = anime({
                     targets: '#restartAnim',
@@ -422,7 +563,7 @@
                 });
             </script>
             <div class="ani text-v-lgdt-btg" swiper-animate-effect="rubberBand" swiper-animate-duration="1s" swiper-animate-delay="0.3s">Animate.css</div>
-            <div class="ani text-v-lgdt-btg" style="left:100px;top:150px;z-index:3;"swiper-animate-effect="fadeOut" swiper-animate-duration="1s" swiper-animate-delay="0.3s">Animate.css</div>
+            <div class="ani text-v-lgdt-btg" style="left:100px;top:150px;z-index:3;" swiper-animate-effect="fadeOut" swiper-animate-duration="1s" swiper-animate-delay="0.3s">Animate.css</div>
             <div class="ani text-v-lgdt-btg" style="left:100px;top:350px;z-index:3;" swiper-animate-effect="rubberBand" swiper-animate-duration="1s" swiper-animate-delay="0.3s">
                 @ViewBag.Name
             </div>
@@ -435,10 +576,10 @@
         </div>
         <div class="swiper-slide bg-gray-5">
             @*<div class="ani display-3 text-white" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s" swiper-animate-delay="0.3s">Animate.css</div>
-            <div class="ani display-3 text-danger" swiper-animate-effect="fadeOutDown" swiper-animate-duration="1s" swiper-animate-delay="0.3s">Animate.css333</div>*@
+                <div class="ani display-3 text-danger" swiper-animate-effect="fadeOutDown" swiper-animate-duration="1s" swiper-animate-delay="0.3s">Animate.css333</div>*@
             <div class="ani-mul text-danger" swiper-ani-cnt="3" swiper-ani-index="0" swiper-ani-repeat="0" swiper-animate-effect-1="fadeInDown" swiper-animate-duration-1="1s" swiper-animate-delay-1="0.3s" swiper-animate-iteration-count-1="2"
                  swiper-animate-effect-2="shake" swiper-animate-duration-2="1s" swiper-animate-delay-2="1.3s" swiper-animate-iteration-count-2="1"
-                  swiper-animate-effect-3="fadeOutDown" swiper-animate-duration-3="1s" swiper-animate-delay-3="0.3s">Animate.css</div>
+                 swiper-animate-effect-3="fadeOutDown" swiper-animate-duration-3="1s" swiper-animate-delay-3="0.3s">Animate.css</div>
 
 
             <div class="ani-mul text-v-lgdt-btg" swiper-ani-cnt="4" swiper-ani-index="0" swiper-ani-repeat="1" swiper-animate-effect-1="rollIn" swiper-animate-duration-1="1s" swiper-animate-delay-1="0.3s"
@@ -465,6 +606,10 @@
     <audio id="bgm-audio" class="component-audio-core" autoplay="autoplay" loop="">
         <source src="http://boscdn.bpc.baidu.com/v1/legend/84bcd63e48cdbb1e094db584b0cd765d1458209258613.mp3">
     </audio>
+    <script>
+        // 一半音量
+        document.getElementById("bgm-audio").volume = 0.5;
+    </script>
 </div>
 
 
@@ -495,9 +640,11 @@
                 ];
 
         var mainSwiper;
-        function swiperInit() {
+        function pageInit() {
+            // 显示主页面
             $('#main').fadeIn();
 
+            // 初始化Swiper
             mainSwiper = new Swiper('#main', {
                 direction: 'vertical',  // 竖向切换
                 mousewheel: true,       // 鼠标滚轮
@@ -531,6 +678,9 @@
                         //this.slides.eq(this.activeIndex).find('.ani-mul').removeClass('ani-mul'); //动画只展现一次，去除ani-mul类名
 
                         //console.log(this.activeIndex + '-1');//切换结束时，记录现在是第几个slide
+                        //var audio = document.getElementById('bgm-audio');
+                        //console.log('audio.paused:' + audio.paused);
+                        //console.log('audio.volume:' + audio.volume);
 
                         if (this.activeIndex == 1) { // 切换到activeIndex等于1页
                             restartAnim.restart();
@@ -541,7 +691,23 @@
                         //console.log(this.activeIndex + '-2');//切换结束时，记录现在是第几个slide
                     }
                 }
-            })
+            });
+
+            var audio = document.getElementById('bgm-audio');
+            console.log('audio.paused1:' + audio.paused);
+            console.log('audio.canPlayType:');
+            console.log(audio.canPlayType);
+            //if (audio.paused) {
+                audio.play();
+            //}
+            console.log('audio.paused2:' + audio.paused);
+            if (audio.paused) {
+                $('#audio-contorl').addClass("pause");
+                $('#audio-contorl').removeClass("play");
+            } else {
+                $('#audio-contorl').addClass("play");
+                $('#audio-contorl').removeClass("pause");
+            }
         }
 
         function bgmToggle() {

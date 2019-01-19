@@ -234,7 +234,7 @@
         var h = document.documentElement.clientHeight;
         var w = document.documentElement.clientWidth;
 
-        // 设计长宽比
+        // 设计宽高比
         var rate = 0.64777; // = 640 / 988; 988 = 1136 - 48 - 100 Android系统可以更改状态栏和导航栏的高度，这里可以取默认值为48px和100px（这些尺寸网上均可查）
 
         // 初始化
@@ -257,7 +257,7 @@
         var imgArr = new Array();
     </script>
 </head>
-<body>
+<body class="bg-teal-8">
 
     <div class="h5-container" id="container">@*container body-content*@
         <div class="loader-bar scroll-wrapper bg-lgdt-ryr" id="loader">
@@ -313,7 +313,7 @@
         //                if (percent == 1) {
         //                    setTimeout(function () {
         //                        $('#loader').remove();
-        //                        swiperInit();
+        //                        pageInit();
         //                    }, 600);
         //                }
         //                callbacks[i + 1] && callbacks[i + 1]();
@@ -336,7 +336,7 @@
             $('#loader-info').html((parseInt(percentT)) + '%');
             if (percentage == 1) {
                 $('#loader').remove();
-                swiperInit();
+                pageInit();
             }
         });
     </script>
