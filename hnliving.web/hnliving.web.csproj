@@ -175,6 +175,7 @@
     <Content Include="Areas\Study\Images\csharp.jpg" />
     <Content Include="Areas\Study\Images\h5.jpg" />
     <Content Include="Areas\Study\Images\mvc.jpg" />
+    <Content Include="Content\ani-tzh.css" />
     <Content Include="Content\Animate.css" />
     <Content Include="Content\bootstrap-3.3.7.css" />
     <Content Include="Content\bootstrap-3.3.7.min.css" />
