@@ -32,6 +32,7 @@
                 <label class="control-label" for="decrypt">解密</label>
                 <a href="javascript:void(0)" class="btn btn-primary ml-3" role="button" onclick="produce()">加(解)密</a>
                 <a href="javascript:void(0)" class="btn btn-primary" role="button" onclick="exchange()">互换</a>
+                <a href="javascript:void(0)" class="btn btn-primary" role="button" onclick="replacePlus()">转换加号</a>
             </div>
 
 
@@ -72,8 +73,11 @@
     <script>
         // 加密/解密
         function produce() {
+            // 替换加号
+            var content = $('#content').val().replace(/\+/g, '%2B');
+
             // 构建参数
-            var param = '?content=' + $('#content').val() + '&key=' + $('#key').val();
+            var param = '?content=' + content + '&key=' + $('#key').val();
 
             if ($('#iv').val() != '') { // 是否有iv参数
                 param += '&iv=' + $('#iv').val();
@@ -99,6 +103,12 @@
             var temp = $('#result').val();
             $('#result').val($('#content').val());
             $('#content').val(temp);
+        }
+
+        // 替换加号
+        function replacePlus() {
+            var temp = $('#result').val().replace(/\+/g, '%2B');
+            $('#result').val(temp);
         }
     </script>
 }

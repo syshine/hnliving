@@ -69,8 +69,11 @@
                 return;
             }
 
+            // 替换加号
+            var content = $('#content').val().replace(/\+/g, '%2B');
+
             // 构建参数
-            var param = '?content=' + $('#content').val() + '&key=' + $("#key").val();
+            var param = '?content=' + content + '&key=' + $("#key").val();
 
             // 构建地址
             var url = '/tools/program/encrypt/XorEncrypt' + param;

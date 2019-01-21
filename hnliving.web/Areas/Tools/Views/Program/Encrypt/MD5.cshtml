@@ -59,8 +59,11 @@
     <script>
         // 加密
         function produce() {
+            // 替换加号
+            var content = $('#content').val().replace(/\+/g, '%2B');
+
             // 构建参数
-            var param = '?content=' + $('#content').val() + '&flag=' + $("input[name='flag']:checked").val();
+            var param = '?content=' + content + '&flag=' + $("input[name='flag']:checked").val();
 
             // 构建地址
             var url = '/tools/program/encrypt/Md5Encrypt' + param;
