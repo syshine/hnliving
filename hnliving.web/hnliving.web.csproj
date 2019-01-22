@@ -216,6 +216,21 @@
     <Content Include="Images\Icons\lg.ico" />
     <Content Include="Images\Icons\logo16.ico" />
     <Content Include="Images\Icons\logo32.ico" />
+    <Content Include="Images\Icons\Spring\firecracker 16x16.ico" />
+    <Content Include="Images\Icons\Spring\firecracker 32x32.ico" />
+    <Content Include="Images\Icons\Spring\firecracker 64x64.ico" />
+    <Content Include="Images\Icons\Spring\fudao 16x16.ico" />
+    <Content Include="Images\Icons\Spring\fudao 32x32.ico" />
+    <Content Include="Images\Icons\Spring\fudao 64x64.ico" />
+    <Content Include="Images\Icons\Spring\lantern 16x16.ico" />
+    <Content Include="Images\Icons\Spring\lantern 32x32.ico" />
+    <Content Include="Images\Icons\Spring\lantern 64x64.ico" />
+    <Content Include="Images\Icons\Spring\pig 16x16.ico" />
+    <Content Include="Images\Icons\Spring\pig 32x32.ico" />
+    <Content Include="Images\Icons\Spring\pig 64x64.ico" />
+    <Content Include="Images\Icons\Spring\red envelope 16x16.ico" />
+    <Content Include="Images\Icons\Spring\red envelope 32x32.ico" />
+    <Content Include="Images\Icons\Spring\red envelope 64x64.ico" />
     <Content Include="Images\字体图标对照表.jpg" />
     <Content Include="Navigate\AnimeJsNav.js" />
     <Content Include="Navigate\BootstrapNav.js" />
@@ -323,7 +338,9 @@
     </Content>
     <Content Include="Areas\H5\Views\Home\Index.cshtml" />
     <Content Include="Areas\H5\Views\Demo\Svg\Test1.cshtml" />
-    <Content Include="App_Data\site.config" />
+    <Content Include="App_Data\site.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Areas\Tools\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Tools\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Tools\Views\web.config">

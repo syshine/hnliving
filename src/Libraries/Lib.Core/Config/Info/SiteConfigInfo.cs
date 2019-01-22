@@ -3,7 +3,7 @@
 namespace Lib.Core
 {
     /// <summary>
-    /// 商城配置信息类
+    /// 配置信息类
     /// </summary>
     [Serializable]
     public class SiteConfigInfo : IConfigInfo
@@ -18,6 +18,11 @@ namespace Lib.Core
         private string _icp = "ICP00000";//备案编号
         private string _script = "";//脚本
         private int _islicensed = 1;//是否显示版权(0代表不显示，1代表显示)
+
+        private string _wxgzhappid = "";// 公众号开发者ID
+        private string _wxgzhappsecret = "";// 公众号开发者密码
+        private string _wxmpappid = "";//小程序开发者ID
+        private string _wxmpappsecret = "";//小程序开发者密码
 
         /// <summary>
         /// 商城名称
@@ -82,6 +87,38 @@ namespace Lib.Core
         {
             get { return _islicensed; }
             set { _islicensed = value; }
+        }
+        /// <summary>
+        /// 公众号开发者ID
+        /// </summary>
+        public string WxGzhAppId
+        {
+            get { return _wxgzhappid; }
+            set { _wxgzhappid = value; }
+        }
+        /// <summary>
+        /// 公众号开发者密码
+        /// </summary>
+        public string WxGzhAppSecret
+        {
+            get { return _wxgzhappsecret; }
+            set { _wxgzhappsecret = value; }
+        }
+        /// <summary>
+        /// 小程序开发者ID
+        /// </summary>
+        public string WxMpAppId
+        {
+            get { return _wxmpappid; }
+            set { _wxmpappid = value; }
+        }
+        /// <summary>
+        /// 小程序开发者密码
+        /// </summary>
+        public string WxMpAppSecret
+        {
+            get { return _wxmpappsecret; }
+            set { _wxmpappsecret = value; }
         }
 
         #endregion

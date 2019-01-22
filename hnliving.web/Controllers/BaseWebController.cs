@@ -30,6 +30,9 @@ namespace hnliving.web
             WorkContext.UrlReferrer = WebHelper.GetUrlReferrer();
             WorkContext.IsSupportWebp = WebHelper.IsSupportFileType("image/webp");
 
+            WorkContext.AccessTokenForGzh = "";
+            WorkContext.AccessTokenForMp = "";
+
             //获得用户唯一标示符sid
             WorkContext.Sid = Utils.GetSidCookie();
             if (WorkContext.Sid.Length == 0)

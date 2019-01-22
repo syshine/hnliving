@@ -26,6 +26,11 @@
     }
 }
 
+@section head {
+    <meta name="description" content="description-拜年啦！">
+    <link rel="icon" href="~/Images/Icons/Spring/firecracker 16x16.ico" type="img/x-icon">
+}
+
 @section csses {
     <style>
         /*div, p {
@@ -279,6 +284,10 @@
     @*<script>
         var aniArr = new Array();
     </script>*@
+
+    <script nonce>
+        var msg_desc = "描述-拜年啦！";
+    </script>
 }
 
 <div class="swiper-container" id="main" style="display:none;">
@@ -801,7 +810,7 @@
 
                 '/Areas/H5/Images/Festival/Spring/Y2019/switch-guide.png',
                 '/Audio/@ViewBag.bgm'
-                ];
+        ];
 
 
         var mainSwiper;
@@ -863,7 +872,7 @@
             console.log('audio.canPlayType:');
             console.log(audio.canPlayType);
             //if (audio.paused) {
-                audio.play();
+            audio.play();
             //}
             console.log('audio.paused2:' + audio.paused);
             if (audio.paused) {
@@ -900,5 +909,53 @@
         //for(var i=0;i<mainSwiper.length;i++){
         //    aniArr[i] = new Array();
         //}
+
+
+    </script>
+
+    @*微信开发*@
+
+    @*<script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>*@
+    @*如需进一步提升服务稳定性，当上述资源不可访问时，可改访问：http://res2.wx.qq.com/open/js/jweixin-1.4.0.js （支持https）。*@
+
+    <script>
+        /*
+         * 注意：
+         * 1. 所有的JS接口只能在公众号绑定的域名下调用，公众号开发者需要先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
+         * 2. 如果发现在 Android 不能分享自定义内容，请到官网下载最新的包覆盖安装，Android 自定义分享接口需升级至 6.0.2.58 版本及以上。
+         * 3. 常见问题及完整 JS-SDK 文档地址：http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html
+         *
+         * 开发中遇到问题详见文档“附录5-常见错误及解决办法”解决，如仍未能解决可通过以下渠道反馈：
+         * 邮箱地址：weixin-open@qq.com
+         * 邮件主题：【微信JS-SDK反馈】具体问题
+         * 邮件内容说明：用简明的语言描述问题所在，并交代清楚遇到该问题的场景，可附上截屏图片，微信团队会尽快处理你的反馈。
+         */
+        @*wx.config({
+            debug: true,
+            appId: @WorkContext.SiteConfig.WxGzhAppId,//'wxf8b4f85f3a794e77',
+            timestamp: 1548144597,
+            nonceStr: 'AWDW6qI9sqoIDTmj',
+            signature: '602f79ffcc1c516b0baedf260ee1dc5fb4856601',
+            jsApiList: [
+              'checkJsApi',
+              'onMenuShareTimeline',
+              'onMenuShareAppMessage',
+              'onMenuShareQQ',
+              'onMenuShareWeibo',
+              'onMenuShareQZone'
+            ]
+        });
+
+        wx.ready(function(){
+            wx.updateAppMessageShareData({ 
+                title: '@ViewBag.Title', // 分享标题
+                desc: '描述-给您拜年', // 分享描述
+                link: '@WorkContext.Url', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: 'http://hn-living.com/Images/Icons/Spring/firecracker 16x16.ico', // 分享图标
+                success: function () {
+                    // 设置成功
+                }
+            });
+        });*@
     </script>
 }

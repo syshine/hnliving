@@ -66,6 +66,10 @@ namespace hnliving.web
 
         public string SearchWord;//搜索词
 
+        public string AccessTokenForGzh;//公众号令牌
+
+        public string AccessTokenForMp;//小程序令牌
+
         public string WebpSuffix = "png"; // webp格式后缀，默认"png"，如果IsSupportWebp为真，则是"webp"
         public string WebpGifSuffix = "gif"; // webp格式后缀，默认"gif"，如果IsSupportWebp为真，则是"webp"
 
