@@ -1,7 +1,17 @@
 ﻿
 @{
-    ViewBag.NameFrom += "给您拜年！";//"祝您和家人春节快乐，阖家欢乐";
-    ViewBag.Title = ViewBag.NameFrom;
+    //ViewBag.NameFrom += "给您拜年！";//"祝您和家人春节快乐，阖家欢乐";
+    ViewBag.Blessing = ViewBag.NameFrom + "给您拜年！";//"祝您和家人春节快乐，阖家欢乐";
+    ViewBag.Title = ViewBag.Blessing;
+
+    if(string.IsNullOrWhiteSpace(ViewBag.NameTo))
+    {
+        ViewBag.NameWish = "祝您：";
+    }
+    else
+    {
+        ViewBag.NameWish = "祝" + ViewBag.NameTo + "：";
+    }
 
     // 默认背景音乐为恭喜发财
     if (string.IsNullOrWhiteSpace(ViewBag.bgm))
@@ -593,23 +603,100 @@
                         </div>
                     </div>
 
-                    <div class="cmp cmp-text" data-id="154711051216954" data-type="text" style="width: 207px; height: auto; left: 0.565rem; top:1.15rem; position: absolute; transform-origin: left top 0px; transform: scale(1.24206);">
-                        <div class="animate-wrapper" data-id="154711051216954" style="border-radius: 0px; animation-name: zoomIn; animation-iteration-count: 1; animation-delay: 1.2s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_154711051216954">
-                            <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px; border-color: rgb(0, 0, 0); color: rgb(184, 35, 18); font-size: 12px; font-family: normal; font-style: normal; font-weight: normal; text-align: center; text-decoration: none; line-height: 14px; letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
-                                HAPPY&nbsp; NEW&nbsp; YEAR&nbsp; !@ViewBag.NameTo
+                    <div class="cmp cmp-text" data-id="154711051216954" data-type="text" style="width: 207px; height: auto; left: 0.75rem; top:1.35rem; position: absolute; transform-origin: left top 0px;">
+                        <div class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration=".7s" swiper-animate-delay="1.1s">
+                            <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px; border-color: rgb(184, 35, 18); color: rgb(0, 0, 0); font-size:.3rem; font-family:'华文行楷'; font-style: normal; font-weight: normal; text-align: left; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
+                                @ViewBag.NameWish
                             </div>
                         </div>
                     </div>
 
-                    @*<div class="cmp cmp-text" data-id="1547102129074343" data-type="text" style="width:2rem; height: auto; left:.75rem; top: 1.79rem; position: absolute; transform-origin: left top 0px; transform: scale(1.24206);">
-                        <div class="animate-wrapper" data-id="1547102129074343" style="border-radius: 0px; animation-name: zoomIn; animation-iteration-count: 1; animation-delay: 3.5s; animation-duration: 1s; animation-timing-function: ease; animation-fill-mode: both; animation-play-state: running;" data-animation-actorid="actor_1547102129074343">
-                            <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px; border-color: rgb(0, 0, 0); color: rgb(131, 86, 65); font-size: 12px; font-family: normal; font-style: normal; font-weight: normal; text-align: center; text-decoration: none; line-height: 20px; letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
-                                福气多多，快乐连连，万事圆圆，微笑甜甜，一帆风顺，二猴腾飞，三阳开泰，四季平安，五福临门，六六大顺，七星高照，八方来财，九九同心，十全十美！春节愉快！
+                    @*一帆风顺 两全其美 三羊开泰 四季平安 五福临门 六六大顺 七星高照 八方来财 九九归一 十全十美 百事亨通 千事吉祥  万事如意*@
+
+
+                    <div class="cmp cmp-image" style="width:1.3rem; height: auto; left:.8rem; top: 2rem; position: absolute;">
+                        <div class="ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration=".7s" swiper-animate-delay="1.3s">
+                            <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px; border-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-size:.27rem; font-family:'华文行楷'; font-style: normal; font-weight: normal; text-align: left; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
+                                一帆风顺
                             </div>
                         </div>
-                    </div>*@
+                    </div>
 
-                    <div class="cmp cmp-text" data-id="1547099165304168" data-type="text" style="width:2.3rem; height: auto; left:1rem; top: 2.3rem; position: absolute; transform-origin: left top 0px;">
+                    <div class="cmp cmp-image" style="width:1.3rem; height: auto; left:.8rem; top: 2.5rem; position: absolute;">
+                        <div class="ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration=".7s" swiper-animate-delay="1.4s">
+                            <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px; border-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-size:.27rem; font-family:'华文行楷'; font-style: normal; font-weight: normal; text-align: left; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
+                                两全其美
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cmp cmp-image" style="width:1.3rem; height: auto; left:.8rem; top: 3rem; position: absolute;">
+                        <div class="ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration=".8s" swiper-animate-delay="1.5s">
+                            <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px; border-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-size:.27rem; font-family:'华文行楷'; font-style: normal; font-weight: normal; text-align: left; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
+                                三羊开泰
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cmp cmp-image" style="width:1.3rem; height: auto; left:.8rem; top: 3.5rem; position: absolute;">
+                        <div class="ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration=".7s" swiper-animate-delay="1.6s">
+                            <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px; border-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-size:.27rem; font-family:'华文行楷'; font-style: normal; font-weight: normal; text-align: left; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
+                                四季平安
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cmp cmp-image" style="width:1.3rem; height: auto; left:.8rem; top: 4rem; position: absolute;">
+                        <div class="ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration=".7s" swiper-animate-delay="1.7s">
+                            <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px; border-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-size:.27rem; font-family:'华文行楷'; font-style: normal; font-weight: normal; text-align: left; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
+                                五福临门
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="cmp cmp-image" style="width:1.3rem; height: auto; left:2.15rem; top: 2rem; position: absolute;">
+                        <div class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration=".7s" swiper-animate-delay="1.8s">
+                            <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px; border-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-size:.27rem; font-family:'华文行楷'; font-style: normal; font-weight: normal; text-align: left; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
+                                六六大顺
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cmp cmp-image" style="width:1.3rem; height: auto; left:2.15rem; top: 2.5rem; position: absolute;">
+                        <div class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration=".7s" swiper-animate-delay="1.9s">
+                            <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px; border-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-size:.27rem; font-family:'华文行楷'; font-style: normal; font-weight: normal; text-align: left; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
+                                七星高照
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cmp cmp-image" style="width:1.3rem; height: auto; left:2.15rem; top: 3rem; position: absolute;">
+                        <div class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration=".8s" swiper-animate-delay="2.0s">
+                            <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px; border-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-size:.27rem; font-family:'华文行楷'; font-style: normal; font-weight: normal; text-align: left; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
+                                八方来财
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cmp cmp-image" style="width:1.3rem; height: auto; left:2.15rem; top: 3.5rem; position: absolute;">
+                        <div class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration=".7s" swiper-animate-delay="2.1s">
+                            <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px; border-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-size:.27rem; font-family:'华文行楷'; font-style: normal; font-weight: normal; text-align: left; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
+                                九九归一
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cmp cmp-image" style="width:1.3rem; height: auto; left:2.15rem; top: 4rem; position: absolute;">
+                        <div class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration=".7s" swiper-animate-delay="2.2s">
+                            <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px; border-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-size:.27rem; font-family:'华文行楷'; font-style: normal; font-weight: normal; text-align: left; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
+                                十全十美
+                            </div>
+                        </div>
+                    </div>
+
+
+                    @*<div class="cmp cmp-text" data-id="1547099165304168" data-type="text" style="width:2.3rem; height: auto; left:1rem; top: 2.3rem; position: absolute; transform-origin: left top 0px;">
                         <div class="ani-mul" swiper-ani-cnt="3" swiper-ani-repeat="1" swiper-ani-repeart-ind="1"
                              swiper-animate-effect-1="zoomIn" swiper-animate-duration-1="1s" swiper-animate-delay-1="0.3s"
                              swiper-animate-effect-2="emptyAni" swiper-animate-duration-2="1s" swiper-animate-delay-2="0s"
@@ -618,7 +705,7 @@
                                 锣鼓声声喜报多，财源滚滚钞票多，身体朗朗健康多，合家团圆亲情多；铃声叮叮问候多，包裹鼓鼓礼物多，笑声阵阵朋友多，新春送你祝福多多。
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>
