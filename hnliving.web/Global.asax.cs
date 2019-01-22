@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Optimization;
+using Lib.Core;
 
 namespace hnliving.web
 {
@@ -17,6 +18,8 @@ namespace hnliving.web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             HnlViewEngine.RegisterView();//注册多级目录扩展
+            
+            Monitor.Init(); //初始化监控
         }
     }
 }
