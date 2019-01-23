@@ -28,6 +28,11 @@
 
 @section head {
     <meta name="description" content="description-拜年啦！">
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="页面标题">
+    <meta property="og:description" content="页面描述">
+    <meta property="og:image" content="http://www.hn-living.top/img/Images/Icons/Spring/firecracker 64x64.ico">
+    <meta property="og:url" content="@WorkContext.Url">
     <link rel="icon" href="~/Images/Icons/Spring/firecracker 16x16.ico" type="img/x-icon">
 }
 
@@ -448,9 +453,14 @@
 
                     <div class="cmp cmp-text" data-id="154711386111870" data-type="text" style="height: .3rem;width: inherit;left: 0rem;top: 4.8rem;position: absolute;">
                         <div class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration=".7s" swiper-animate-delay="3.5s">
-                            @*<div class="text" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.1rem;text-align: center; line-height: 24px;">s:@ViewBag.srcStr</div>
+                            @*<div class="text" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.1rem;text-align: center; line-height: 24px;">m:@ViewBag.msg</div>
+                            <div class="text" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.1rem;text-align: center; line-height: 24px;">r:@ViewBag.ret</div>
+                            <div class="text" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.1rem;text-align: center; line-height: 24px;">ra:@ViewBag.retA</div>
+                            <div class="text" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.1rem;text-align: center; line-height: 24px;">i:@ViewBag.index</div>
+                            <div class="text" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.1rem;text-align: center; line-height: 24px;">ia:@ViewBag.indexA</div>
                             <div class="text" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.1rem;text-align: center; line-height: 24px;">t:@ViewBag.apiTicket</div>
-                            <div class="text" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.1rem;text-align: center; line-height: 24px;">at:@ViewBag.AccessToken</div>*@
+                            <div class="text" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.1rem;text-align: center; line-height: 24px;">at:@ViewBag.AccessToken</div>
+                            <div class="text" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.1rem;text-align: center; line-height: 24px;">s:@ViewBag.srcStr</div>*@
                             <div class="text" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.3rem;text-align: center; line-height: 24px;">@ViewBag.NameFrom</div>
                         </div>
                     </div>
@@ -875,7 +885,7 @@
             console.log('audio.canPlayType:');
             console.log(audio.canPlayType);
             //if (audio.paused) {
-            audio.play();
+            //audio.play();
             //}
             console.log('audio.paused2:' + audio.paused);
             if (audio.paused) {
@@ -962,7 +972,7 @@
                 success: function (res) {
                     // 以键值对的形式返回，可用的api值true，不可用为false
                     // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
-                    console.log(res);
+                    console.log('checkJsApi:' + res);
                 }
             });
 
@@ -973,7 +983,7 @@
                 imgUrl: 'http://hn-living.com/Images/Icons/Spring/firecracker 16x16.ico', // 分享图标
                 success: function () {
                     // 设置成功
-                    console.log('分享给朋友及分享到QQ');
+                    console.log('updateAppMessageShareData分享给朋友及分享到QQ');
                 }
             });
             @*wx.updateTimelineShareData({

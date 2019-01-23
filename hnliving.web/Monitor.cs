@@ -21,6 +21,12 @@ namespace hnliving.web
         private static string _jt_expires_in = ""; // access_token有效时间(秒)
         private static string _jt_timeout_time = "";   // access_token超时时间
 
+        public static string index = "-111";   // 执行次序
+        public static string indexA = "-111";   // 执行次序
+        public static string msg = "-";   // 
+        public static string ret = "-";   // 
+        public static string retA = "-";   // 
+
         public static string AccessToken
         {
             get
@@ -91,13 +97,14 @@ namespace hnliving.web
 
         public static void Init()
         {
+            index = "-2";
             if (mntTimer == null)
             {
-                mntTimer = new Timer(30000);//实例化Timer类，设置时间间隔为一分钟
+                index = "-1";
+                mntTimer = new Timer(10000);//实例化Timer类，设置时间间隔为一分钟
                 mntTimer.Elapsed += new ElapsedEventHandler(OnElapsedEvent);//到达时间的时候执行事件
                 mntTimer.AutoReset = true;//设置是执行一次（false）还是一直执行(true)
                 mntTimer.Enabled = true;//是否执行System.Timers.Timer.Elapsed事件
-                mntTimer.Start();
             }
         }
 
@@ -110,10 +117,12 @@ namespace hnliving.web
         {
             try
             {
+                index = "0";
                 #region 获取access_token
                 bool bGetAccessToken = true;
                 if (_at_timeout_time != "")
                 {
+                    index = "0.5";
                     DateTime dt = DateTime.Parse(_at_timeout_time);
                     // 现在离超时时间3分钟内才获取access_token
                     if (DateTime.Now < dt.AddMinutes(-3))
@@ -122,13 +131,20 @@ namespace hnliving.web
                     }
                 }
 
+                index = "1";
+                indexA = "1";
                 if (bGetAccessToken)
                 {
+                    index = "2";
+                    indexA = "2";
                     string result = HttpGet(GetRequestString("access_token"));
+                    retA = result;
                     System.Diagnostics.Debug.WriteLine(result);
                     EntityAccessToken eat = DeserializeAccessToken(result);
                     if (string.IsNullOrWhiteSpace(eat.errcode))
                     {
+                        index = "3";
+                        indexA = "3";
                         _access_token = eat.access_token;
                         _at_expires_in = eat.expires_in;
                         double expires_in = double.Parse(eat.expires_in);
@@ -136,15 +152,20 @@ namespace hnliving.web
                     }
                     else
                     {
+                        index = "3.1";
+                        indexA = "3.1";
+                        msg = eat.errmsg;
                         System.Diagnostics.Debug.WriteLine(eat.errmsg);
                     }
                 }
                 #endregion
 
                 #region 获取jsapi_ticket
+                index = "20";
                 bool bGetTicket = true;
                 if (_jt_timeout_time != "")
                 {
+                    index = "20.5";
                     DateTime dt = DateTime.Parse(_jt_timeout_time);
                     // 现在离超时时间3分钟内才获取jsapi_ticket
                     if (DateTime.Now < dt.AddMinutes(-3))
@@ -153,13 +174,17 @@ namespace hnliving.web
                     }
                 }
 
-                if (bGetTicket)
+                index = "21";
+                if (bGetTicket && _access_token != "")
                 {
+                    index = "22";
                     string result = HttpGet(GetRequestString("jsapi_ticket"));
+                    ret = result;
                     System.Diagnostics.Debug.WriteLine(result);
                     Hashtable ht = DeserializeToHashtable(result);
                     if (ht["errcode"].ToString() == "0")
                     {
+                        index = "23";
                         _jsapi_ticket = ht["ticket"].ToString();
                         _jt_expires_in = ht["expires_in"].ToString();
                         double expires_in = double.Parse(_jt_expires_in);
@@ -167,6 +192,8 @@ namespace hnliving.web
                     }
                     else
                     {
+                        index = "23.2";
+                        msg = "errcode:" + ht["errcode"].ToString() + ";errmsg:" + ht["errmsg"].ToString();
                         System.Diagnostics.Debug.WriteLine(ht["errmsg"].ToString());
                     }
                 }
@@ -174,6 +201,8 @@ namespace hnliving.web
             }
             catch (Exception ex)
             {
+                index = "999";
+                msg = ex.Message;
                 System.Diagnostics.Debug.WriteLine(ex.Message);
             }
         }
