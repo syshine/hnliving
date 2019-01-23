@@ -3,7 +3,7 @@ using System.Text;
 using System.Security.Cryptography;
 using System.IO;
 
-namespace Lib.Core.Helper
+namespace Lib.Core
 {
     public class EncryptHelper
     {
@@ -404,6 +404,50 @@ namespace Lib.Core.Helper
                 return ex.Message;
             }
         }
+        #endregion
+
+        #region SHA1加密
+        /// <summary>
+        /// 安全哈希算法（Secure Hash Algorithm）主要适用于数字签名标准 （Digital Signature Standard DSS）里面定义的数字签名算法（Digital Signature Algorithm DSA）。
+        /// 对于长度小于2^64位的消息，SHA1会产生一个160位的消息摘要。当接收到消息的时候，这个消息摘要可以用来验证数据的完整性。在传输的过程中，数据很可能会发生变化，那么这时候就会产生不同的消息摘要。
+        /// SHA1有如下特性：不可以从消息摘要中复原信息；两个不同的消息不会产生同样的消息摘要,(但会有1x10 ^ 48分之一的机率出现相同的消息摘要,一般使用时忽略)。
+        /// </summary>
+        /// <param name="destString"></param>
+        /// <param name="encryptString"></param>
+        /// <returns></returns>
+        public static string SHA1Encrypt(out string destString, string encryptString)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(encryptString))
+                {
+                    destString = "";
+                    return "";
+                }
+
+                SHA1 sha1 = new SHA1CryptoServiceProvider();
+                byte[] bytes_in = Encoding.Default.GetBytes(encryptString);
+                byte[] bytes_out = sha1.ComputeHash(bytes_in);
+                sha1.Dispose();
+                string result = BitConverter.ToString(bytes_out);
+                destString = result.Replace("-", "");
+                return "";
+
+                //SHA1CryptoServiceProvider sha1 = new SHA1CryptoServiceProvider();
+                //byte[] bytes_in = Encoding.UTF8.GetBytes(encryptString);
+                //byte[] bytes_out = sha1.ComputeHash(bytes_in);
+                //sha1.Clear();
+                //(sha1 as IDisposable).Dispose();
+                //destString = Convert.ToBase64String(bytes_out);
+                //return "";
+            }
+            catch (System.Exception ex)
+            {
+                destString = "";
+                return ex.Message;
+            }
+        }
+
         #endregion
     }
 }

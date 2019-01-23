@@ -448,6 +448,9 @@
 
                     <div class="cmp cmp-text" data-id="154711386111870" data-type="text" style="height: .3rem;width: inherit;left: 0rem;top: 4.8rem;position: absolute;">
                         <div class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration=".7s" swiper-animate-delay="3.5s">
+                            @*<div class="text" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.1rem;text-align: center; line-height: 24px;">s:@ViewBag.srcStr</div>
+                            <div class="text" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.1rem;text-align: center; line-height: 24px;">t:@ViewBag.apiTicket</div>
+                            <div class="text" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.1rem;text-align: center; line-height: 24px;">at:@ViewBag.AccessToken</div>*@
                             <div class="text" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.3rem;text-align: center; line-height: 24px;">@ViewBag.NameFrom</div>
                         </div>
                     </div>
@@ -915,10 +918,14 @@
 
     @*微信开发*@
 
-    @*<script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>*@
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
     @*如需进一步提升服务稳定性，当上述资源不可访问时，可改访问：http://res2.wx.qq.com/open/js/jweixin-1.4.0.js （支持https）。*@
 
     <script>
+
+        var ddd = 't:' + '@ViewBag.apiTicket';
+        console.log(ddd);
+
         /*
          * 注意：
          * 1. 所有的JS接口只能在公众号绑定的域名下调用，公众号开发者需要先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
@@ -930,32 +937,66 @@
          * 邮件主题：【微信JS-SDK反馈】具体问题
          * 邮件内容说明：用简明的语言描述问题所在，并交代清楚遇到该问题的场景，可附上截屏图片，微信团队会尽快处理你的反馈。
          */
-        @*wx.config({
+        wx.config({
             debug: true,
-            appId: @WorkContext.SiteConfig.WxGzhAppId,//'wxf8b4f85f3a794e77',
-            timestamp: 1548144597,
-            nonceStr: 'AWDW6qI9sqoIDTmj',
-            signature: '602f79ffcc1c516b0baedf260ee1dc5fb4856601',
+            appId: '@WorkContext.SiteConfig.WxGzhAppId',//'wxf8b4f85f3a794e77',
+            timestamp: '@ViewBag.timestamp',//1548144597,
+            nonceStr: '@ViewBag.nonceStr',//'AWDW6qI9sqoIDTmj',
+            signature: '@ViewBag.signature',//'602f79ffcc1c516b0baedf260ee1dc5fb4856601',
             jsApiList: [
               'checkJsApi',
-              'onMenuShareTimeline',
-              'onMenuShareAppMessage',
-              'onMenuShareQQ',
-              'onMenuShareWeibo',
-              'onMenuShareQZone'
+              'updateAppMessageShareData'
+              //'updateTimelineShareData',
+              //'onMenuShareTimeline',
+              //'onMenuShareAppMessage',
+              //'onMenuShareQQ',
+              //'onMenuShareWeibo',
+              //'onMenuShareQZone'
             ]
         });
 
-        wx.ready(function(){
-            wx.updateAppMessageShareData({ 
+        wx.ready(function () {
+            wx.checkJsApi({
+                jsApiList: ['updateAppMessageShareData',
+                            'updateTimelineShareData',], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+                success: function (res) {
+                    // 以键值对的形式返回，可用的api值true，不可用为false
+                    // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+                    console.log(res);
+                }
+            });
+
+            wx.updateAppMessageShareData({
                 title: '@ViewBag.Title', // 分享标题
                 desc: '描述-给您拜年', // 分享描述
                 link: '@WorkContext.Url', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                 imgUrl: 'http://hn-living.com/Images/Icons/Spring/firecracker 16x16.ico', // 分享图标
                 success: function () {
                     // 设置成功
+                    console.log('分享给朋友及分享到QQ');
                 }
             });
-        });*@
+            @*wx.updateTimelineShareData({
+                title: '@ViewBag.Title', // 分享标题
+                desc: '描述-给您拜年', // 分享描述
+                link: '@WorkContext.Url', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: 'http://hn-living.com/Images/Icons/Spring/firecracker 16x16.ico', // 分享图标
+                success: function () {
+                    // 设置成功
+                    console.log('分享到朋友圈及分享到QQ空间');
+                }
+            });*@
+            wx.onMenuShareAppMessage({
+                title: '@ViewBag.Title', // 分享标题
+                desc: '描述-给您拜年', // 分享描述
+                link: '@WorkContext.Url', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: 'http://hn-living.com/Images/Icons/Spring/firecracker 16x16.ico', // 分享图标
+                type: '', // 分享类型,music、video或link，不填默认为link
+                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                success: function () {
+                    console.log('onMenuShareAppMessage分享给朋友及分享到QQ');
+                }
+            });
+        });
     </script>
 }

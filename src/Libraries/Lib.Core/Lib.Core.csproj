@@ -69,6 +69,7 @@
     <Compile Include="Helper\EncryptHelper.cs" />
     <Compile Include="Helper\IOHelper.cs" />
     <Compile Include="Helper\SecureHelper.cs" />
+    <Compile Include="Helper\TimeHelper.cs" />
     <Compile Include="Helper\StringHelper.cs" />
     <Compile Include="Helper\TypeHelper.cs" />
     <Compile Include="Helper\ValidateHelper.cs" />

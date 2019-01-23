@@ -22,6 +22,14 @@ namespace Lib.Core
         string CreateRandomValue(int length, bool onlyNumber);
 
         /// <summary>
+        /// 获取随机值(10个数字和26个小写字母和26个大写字母)
+        /// </summary>
+        /// <param name="length">长度</param>
+        /// <param name="onlyNumber">是否只包含数字</param>
+        /// <returns>随机值</returns>
+        string GetRandomValue(int length, bool onlyNumber);
+
+        /// <summary>
         /// 创建随机对
         /// </summary>
         /// <param name="length">长度</param>

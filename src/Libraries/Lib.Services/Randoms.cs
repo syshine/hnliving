@@ -58,6 +58,27 @@ namespace Lib.Services
         }
 
         /// <summary>
+        /// 获取随机值(10个数字和26个小写字母和26个大写字母)
+        /// </summary>
+        /// <param name="length">长度</param>
+        /// <param name="onlyNumber">是否只包含数字</param>
+        /// <returns>随机值</returns>
+        public static string GetRandomValue(int length, bool onlyNumber)
+        {
+            return _irandomstrategy.GetRandomValue(length, onlyNumber);
+        }
+
+        /// <summary>
+        /// 获取数字随机值(10个数字)
+        /// </summary>
+        /// <param name="length">随机值长度</param>
+        /// <returns>随机值</returns>
+        public static string GetRandomValue(int length)
+        {
+            return GetRandomValue(length, true);
+        }
+
+        /// <summary>
         /// 创建随机对
         /// </summary>
         /// <param name="length">长度</param>

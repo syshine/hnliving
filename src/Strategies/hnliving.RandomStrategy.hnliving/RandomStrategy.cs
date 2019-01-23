@@ -51,6 +51,31 @@ namespace hnliving.RandomStrategy.hnliving
         }
 
         /// <summary>
+        /// 获取随机值(10个数字和26个小写字母和26个大写字母)
+        /// </summary>
+        /// <param name="length">长度</param>
+        /// <param name="onlyNumber">是否只包含数字</param>
+        /// <returns>随机值</returns>
+        public string GetRandomValue(int length, bool onlyNumber)
+        {
+            int index;
+            StringBuilder randomValue = new StringBuilder();
+            string randomLib = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";//62个字符
+
+            for (int i = 0; i < length; i++)
+            {
+                if (onlyNumber)
+                    index = _random.Next(0, 9);
+                else
+                    index = _random.Next(0, randomLib.Length);
+
+                randomValue.Append(randomLib[index]);
+            }
+
+            return randomValue.ToString();
+        }
+
+        /// <summary>
         /// 创建随机对
         /// </summary>
         /// <param name="length">长度</param>
