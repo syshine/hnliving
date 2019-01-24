@@ -161,6 +161,8 @@
     <Content Include="Areas\H5\Images\Festival\Spring\Y2019\红边框.png" />
     <Content Include="Areas\H5\Images\Festival\Spring\Y2019\花纹.png" />
     <Content Include="Areas\H5\Images\Festival\Spring\Y2019\菱形.png" />
+    <Content Include="Areas\H5\Images\Festival\Spring\Y2019\菱形福.png" />
+    <Content Include="Areas\H5\Images\Festival\Spring\Y2019\菱形福到.png" />
     <Content Include="Areas\H5\Images\Festival\Spring\Y2019\菱形边框.png" />
     <Content Include="Areas\H5\Images\Festival\Spring\Y2019\贺.png" />
     <Content Include="Areas\H5\Images\Festival\Spring\Y2019\飞扬碎屑.gif" />
@@ -389,6 +391,8 @@
     <Content Include="Areas\H5\Images\Festival\Spring\Y2019\黑新.webp" />
     <Content Include="Areas\H5\Images\Festival\Spring\Y2019\黑春.webp" />
     <Content Include="Areas\H5\Images\Festival\Spring\Y2019\飞扬碎屑.webp" />
+    <Content Include="Areas\H5\Views\Wx\Gzh\Index.cshtml" />
+    <Content Include="Areas\H5\Views\Wx\_ViewStart.cshtml" />
     <None Include="Properties\PublishProfiles\hnl-c.pubxml" />
     <None Include="Properties\PublishProfiles\hnl.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -426,6 +430,7 @@
     <Compile Include="Areas\H5\Controllers\Demo\SvgController.cs" />
     <Compile Include="Areas\H5\Controllers\HomeController.cs" />
     <Compile Include="Areas\H5\Controllers\Festival\SpringController.cs" />
+    <Compile Include="Areas\H5\Controllers\Wx\GzhController.cs" />
     <Compile Include="Areas\H5\H5AreaRegistration.cs" />
     <Compile Include="Areas\Study\Controllers\Program\AnimeJsController.cs" />
     <Compile Include="Areas\Study\Controllers\Program\BootstrapController.cs" />

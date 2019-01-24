@@ -19,7 +19,7 @@ namespace hnliving.web
 
             HnlViewEngine.RegisterView();//注册多级目录扩展
             
-            Monitor.Init(); //初始化监控
+            //Monitor.Init(); //初始化监控
         }
     }
 }

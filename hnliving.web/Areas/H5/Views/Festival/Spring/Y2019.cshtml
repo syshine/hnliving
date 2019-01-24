@@ -28,11 +28,6 @@
 
 @section head {
     <meta name="description" content="description-拜年啦！">
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="页面标题">
-    <meta property="og:description" content="页面描述">
-    <meta property="og:image" content="http://www.hn-living.top/img/Images/Icons/Spring/firecracker 64x64.ico">
-    <meta property="og:url" content="@WorkContext.Url">
     <link rel="icon" href="~/Images/Icons/Spring/firecracker 16x16.ico" type="img/x-icon">
 }
 
@@ -295,6 +290,9 @@
     </script>
 }
 
+@*分享抓取缩略图，不显示*@
+<img style="display:none" src="~/Areas/H5/Images/Festival/Spring/Y2019/菱形福.png">
+
 <div class="swiper-container" id="main" style="display:none;">
     <div class="component-audio" onclick="bgmToggle()">
         @*<div id="play" class="component-audio-play"></div>
@@ -453,15 +451,7 @@
 
                     <div class="cmp cmp-text" data-id="154711386111870" data-type="text" style="height: .3rem;width: inherit;left: 0rem;top: 4.8rem;position: absolute;">
                         <div class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration=".7s" swiper-animate-delay="3.5s">
-                            @*<div class="text" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.1rem;text-align: center; line-height: 24px;">m:@ViewBag.msg</div>
-                            <div class="text" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.1rem;text-align: center; line-height: 24px;">r:@ViewBag.ret</div>
-                            <div class="text" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.1rem;text-align: center; line-height: 24px;">ra:@ViewBag.retA</div>
-                            <div class="text" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.1rem;text-align: center; line-height: 24px;">i:@ViewBag.index</div>
-                            <div class="text" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.1rem;text-align: center; line-height: 24px;">ia:@ViewBag.indexA</div>
-                            <div class="text" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.1rem;text-align: center; line-height: 24px;">t:@ViewBag.apiTicket</div>
-                            <div class="text" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.1rem;text-align: center; line-height: 24px;">at:@ViewBag.AccessToken</div>
-                            <div class="text" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.1rem;text-align: center; line-height: 24px;">s:@ViewBag.srcStr</div>*@
-                            <div class="text" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.3rem;text-align: center; line-height: 24px;">@ViewBag.NameFrom</div>
+                            <div class="text" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.3rem;text-align: center; line-height: 24px;">@ViewBag.Blessing</div>
                         </div>
                     </div>
                 </div>
@@ -924,89 +914,5 @@
         //}
 
 
-    </script>
-
-    @*微信开发*@
-
-    <script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
-    @*如需进一步提升服务稳定性，当上述资源不可访问时，可改访问：http://res2.wx.qq.com/open/js/jweixin-1.4.0.js （支持https）。*@
-
-    <script>
-
-        var ddd = 't:' + '@ViewBag.apiTicket';
-        console.log(ddd);
-
-        /*
-         * 注意：
-         * 1. 所有的JS接口只能在公众号绑定的域名下调用，公众号开发者需要先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
-         * 2. 如果发现在 Android 不能分享自定义内容，请到官网下载最新的包覆盖安装，Android 自定义分享接口需升级至 6.0.2.58 版本及以上。
-         * 3. 常见问题及完整 JS-SDK 文档地址：http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html
-         *
-         * 开发中遇到问题详见文档“附录5-常见错误及解决办法”解决，如仍未能解决可通过以下渠道反馈：
-         * 邮箱地址：weixin-open@qq.com
-         * 邮件主题：【微信JS-SDK反馈】具体问题
-         * 邮件内容说明：用简明的语言描述问题所在，并交代清楚遇到该问题的场景，可附上截屏图片，微信团队会尽快处理你的反馈。
-         */
-        wx.config({
-            debug: true,
-            appId: '@WorkContext.SiteConfig.WxGzhAppId',//'wxf8b4f85f3a794e77',
-            timestamp: '@ViewBag.timestamp',//1548144597,
-            nonceStr: '@ViewBag.nonceStr',//'AWDW6qI9sqoIDTmj',
-            signature: '@ViewBag.signature',//'602f79ffcc1c516b0baedf260ee1dc5fb4856601',
-            jsApiList: [
-              'checkJsApi',
-              'updateAppMessageShareData'
-              //'updateTimelineShareData',
-              //'onMenuShareTimeline',
-              //'onMenuShareAppMessage',
-              //'onMenuShareQQ',
-              //'onMenuShareWeibo',
-              //'onMenuShareQZone'
-            ]
-        });
-
-        wx.ready(function () {
-            wx.checkJsApi({
-                jsApiList: ['updateAppMessageShareData',
-                            'updateTimelineShareData',], // 需要检测的JS接口列表，所有JS接口列表见附录2,
-                success: function (res) {
-                    // 以键值对的形式返回，可用的api值true，不可用为false
-                    // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
-                    console.log('checkJsApi:' + res);
-                }
-            });
-
-            wx.updateAppMessageShareData({
-                title: '@ViewBag.Title', // 分享标题
-                desc: '描述-给您拜年', // 分享描述
-                link: '@WorkContext.Url', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                imgUrl: 'http://hn-living.com/Images/Icons/Spring/firecracker 16x16.ico', // 分享图标
-                success: function () {
-                    // 设置成功
-                    console.log('updateAppMessageShareData分享给朋友及分享到QQ');
-                }
-            });
-            @*wx.updateTimelineShareData({
-                title: '@ViewBag.Title', // 分享标题
-                desc: '描述-给您拜年', // 分享描述
-                link: '@WorkContext.Url', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                imgUrl: 'http://hn-living.com/Images/Icons/Spring/firecracker 16x16.ico', // 分享图标
-                success: function () {
-                    // 设置成功
-                    console.log('分享到朋友圈及分享到QQ空间');
-                }
-            });*@
-            wx.onMenuShareAppMessage({
-                title: '@ViewBag.Title', // 分享标题
-                desc: '描述-给您拜年', // 分享描述
-                link: '@WorkContext.Url', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                imgUrl: 'http://hn-living.com/Images/Icons/Spring/firecracker 16x16.ico', // 分享图标
-                type: '', // 分享类型,music、video或link，不填默认为link
-                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-                success: function () {
-                    console.log('onMenuShareAppMessage分享给朋友及分享到QQ');
-                }
-            });
-        });
     </script>
 }
