@@ -122,15 +122,15 @@
         }
 
         .circle {
-            width: .125rem;
-            height: .125rem;
+            width: .06rem;
+            height: .06rem;
             background-color: #FFF;
             position: absolute;
             -moz-border-radius: 50% 50% 50% 50%;
             -webkit-border-radius: 50% 50% 50% 50%;
             border-radius: 50% 50% 50% 50%;
-            -webkit-animation: scale15 0.8s infinite;
-            animation: scale15 0.8s infinite;
+            -webkit-animation: scale2 0.8s infinite;
+            animation: scale2 0.8s infinite;
         }
 
         .round-circle-1 {
@@ -198,12 +198,12 @@
             transform: scale(2);
         }
 
-        @@-webkit-keyframes scale15 {
+        @@-webkit-keyframes scale2 {
 
             25% {
-                -ms-transform: scale(1.5);
-                -webkit-transform: scale(1.5);
-                transform: scale(1.5);
+                -ms-transform: scale(2);
+                -webkit-transform: scale(2);
+                transform: scale(2);
             }
 
             75% {
@@ -213,11 +213,11 @@
             }
         }
 
-        @@keyframes scale15 {
+        @@keyframes scale2 {
             50% {
-                -ms-transform: scale(1.5,1.5);
-                -webkit-transform: scale(1.5,1.5);
-                transform: scale(1.5,1.5);
+                -ms-transform: scale(2,2);
+                -webkit-transform: scale(2,2);
+                transform: scale(2,2);
             }
 
             100% {
@@ -319,7 +319,7 @@
         //                    }, 600);
         //                }
         //                callbacks[i + 1] && callbacks[i + 1]();
-        //            }, 100);
+        //            }, 6000);
         //        }
         //    })(percentage, callbacks.length));
 
