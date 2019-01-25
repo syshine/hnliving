@@ -393,6 +393,7 @@
     <Content Include="Areas\H5\Images\Festival\Spring\Y2019\飞扬碎屑.webp" />
     <Content Include="Areas\H5\Views\Wx\Gzh\Index.cshtml" />
     <Content Include="Areas\H5\Views\Wx\_ViewStart.cshtml" />
+    <Content Include="fonts\stxingka.ttf" />
     <None Include="Properties\PublishProfiles\hnl-c.pubxml" />
     <None Include="Properties\PublishProfiles\hnl.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
