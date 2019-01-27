@@ -1,7 +1,7 @@
 ﻿
 @{
     //ViewBag.NameFrom += "给您拜年！";//"祝您和家人春节快乐，阖家欢乐";
-    ViewBag.Blessing = ViewBag.NameFrom + "给您拜年！";//"祝您和家人春节快乐，阖家欢乐";
+    ViewBag.Blessing = ViewBag.NameFrom + "给您拜年!";//"祝您和家人春节快乐，阖家欢乐";
     ViewBag.Title = ViewBag.Blessing;
 
     if(string.IsNullOrWhiteSpace(ViewBag.NameTo))
@@ -457,9 +457,9 @@
                         </div>
                     </div>
 
-                    <div class="cmp cmp-text" data-id="154711386111870" data-type="text" style="height: .3rem;width: inherit;left: 0rem;top: 4.8rem;position: absolute;">
+                    <div class="cmp cmp-text" data-id="154711386111870" data-type="text" style="height:.3rem;width:4rem;left: 0rem;top: 4.83rem;position: absolute;">
                         <div class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration=".7s" swiper-animate-delay="3.5s">
-                            <div class="text" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.3rem;text-align: center; line-height:.3rem;">@ViewBag.Blessing</div>
+                            <div class="text" id="blessing" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.3rem; font-family:stxingka;text-align: center; line-height:.3rem;">@ViewBag.Blessing</div>
                         </div>
                     </div>
                 </div>
@@ -624,7 +624,7 @@
                     </div>
 
                     <div class="cmp cmp-text" data-id="154711051216954" data-type="text" style="width:2.6rem; height: auto; left: 0.75rem; top:1.35rem; position: absolute; transform-origin: left top 0px;">
-                        <div class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration=".7s" swiper-animate-delay="2.5s">
+                        <div class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration=".7s" swiper-animate-delay="2.3s">
                             <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px; border-color: rgb(184, 35, 18); color: rgb(0, 0, 0); font-size:.3rem; font-family:stxingka; font-style: normal; font-weight: normal; text-align: left; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
                                 @ViewBag.NameWish
                             </div>
@@ -635,7 +635,7 @@
 
 
                     <div class="cmp cmp-image" style="width:1.3rem; height: auto; left:.8rem; top: 2rem; position: absolute;">
-                        <div class="ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration=".7s" swiper-animate-delay="2.8s">
+                        <div class="ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration=".7s" swiper-animate-delay="2.6s">
                             <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px;color: rgb(0, 0, 0); font-size:.27rem; font-family:stxingka; font-style: normal; font-weight: normal; text-align: left; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
                                 一帆风顺
                             </div>
@@ -643,7 +643,7 @@
                     </div>
 
                     <div class="cmp cmp-image" style="width:1.3rem; height: auto; left:.8rem; top: 2.5rem; position: absolute;">
-                        <div class="ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration=".7s" swiper-animate-delay="2.9s">
+                        <div class="ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration=".7s" swiper-animate-delay="2.7s">
                             <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px;color: rgb(0, 0, 0); font-size:.27rem; font-family:stxingka; font-style: normal; font-weight: normal; text-align: left; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
                                 两全其美
                             </div>
@@ -651,7 +651,7 @@
                     </div>
 
                     <div class="cmp cmp-image" style="width:1.3rem; height: auto; left:.8rem; top: 3rem; position: absolute;">
-                        <div class="ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration=".8s" swiper-animate-delay="3.0s">
+                        <div class="ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration=".8s" swiper-animate-delay="2.8s">
                             <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px;color: rgb(0, 0, 0); font-size:.27rem; font-family:stxingka; font-style: normal; font-weight: normal; text-align: left; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
                                 三羊开泰
                             </div>
@@ -659,7 +659,7 @@
                     </div>
 
                     <div class="cmp cmp-image" style="width:1.3rem; height: auto; left:.8rem; top: 3.5rem; position: absolute;">
-                        <div class="ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration=".7s" swiper-animate-delay="3.1s">
+                        <div class="ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration=".7s" swiper-animate-delay="2.9s">
                             <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px;color: rgb(0, 0, 0); font-size:.27rem; font-family:stxingka; font-style: normal; font-weight: normal; text-align: left; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
                                 四季平安
                             </div>
@@ -667,7 +667,7 @@
                     </div>
 
                     <div class="cmp cmp-image" style="width:1.3rem; height: auto; left:.8rem; top: 4rem; position: absolute;">
-                        <div class="ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration=".7s" swiper-animate-delay="3.2s">
+                        <div class="ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration=".7s" swiper-animate-delay="3.0s">
                             <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px;color: rgb(0, 0, 0); font-size:.27rem; font-family:stxingka; font-style: normal; font-weight: normal; text-align: left; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
                                 五福临门
                             </div>
@@ -676,7 +676,7 @@
 
 
                     <div class="cmp cmp-image" style="width:1.3rem; height: auto; left:2.15rem; top: 2rem; position: absolute;">
-                        <div class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration=".7s" swiper-animate-delay="3.3s">
+                        <div class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration=".7s" swiper-animate-delay="3.1s">
                             <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px;color: rgb(0, 0, 0); font-size:.27rem; font-family:stxingka; font-style: normal; font-weight: normal; text-align: left; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
                                 六六大顺
                             </div>
@@ -684,7 +684,7 @@
                     </div>
 
                     <div class="cmp cmp-image" style="width:1.3rem; height: auto; left:2.15rem; top: 2.5rem; position: absolute;">
-                        <div class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration=".7s" swiper-animate-delay="3.4s">
+                        <div class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration=".7s" swiper-animate-delay="3.2s">
                             <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px;color: rgb(0, 0, 0); font-size:.27rem; font-family:stxingka; font-style: normal; font-weight: normal; text-align: left; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
                                 七星高照
                             </div>
@@ -692,7 +692,7 @@
                     </div>
 
                     <div class="cmp cmp-image" style="width:1.3rem; height: auto; left:2.15rem; top: 3rem; position: absolute;">
-                        <div class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration=".8s" swiper-animate-delay="3.5s">
+                        <div class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration=".8s" swiper-animate-delay="3.3s">
                             <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px;color: rgb(0, 0, 0); font-size:.27rem; font-family:stxingka; font-style: normal; font-weight: normal; text-align: left; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
                                 八方来财
                             </div>
@@ -700,7 +700,7 @@
                     </div>
 
                     <div class="cmp cmp-image" style="width:1.3rem; height: auto; left:2.15rem; top: 3.5rem; position: absolute;">
-                        <div class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration=".7s" swiper-animate-delay="3.6s">
+                        <div class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration=".7s" swiper-animate-delay="3.4s">
                             <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px;color: rgb(0, 0, 0); font-size:.27rem; font-family:stxingka; font-style: normal; font-weight: normal; text-align: left; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
                                 九九归一
                             </div>
@@ -708,16 +708,16 @@
                     </div>
 
                     <div class="cmp cmp-image" style="width:1.3rem; height: auto; left:2.15rem; top: 4rem; position: absolute;">
-                        <div class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration=".7s" swiper-animate-delay="3.7s">
+                        <div class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration=".7s" swiper-animate-delay="3.5s">
                             <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px;color: rgb(0, 0, 0); font-size:.27rem; font-family:stxingka;font-style: normal; font-weight: normal; text-align: left; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
                                 十全十美
                             </div>
                         </div>
                     </div>
 
-                    <div class="cmp cmp-image" style="width:2rem; height: auto; left:1rem; top: 4.6rem; position: absolute;">
-                        <div class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration="1.2s" swiper-animate-delay="4.3s">
-                            <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px;color: rgb(184, 35, 18); font-size:.5rem; font-family:stxingka;font-style: normal; font-weight: normal; text-align: left; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
+                    <div class="cmp cmp-image" style="width:4rem; height: auto; left:0rem; top: 4.6rem; position: absolute;">
+                        <div class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration="1.2s" swiper-animate-delay="4.1s">
+                            <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px;color: rgb(184, 35, 18); font-size:.5rem; font-family:stxingka;font-style: normal; font-weight: normal; text-align: center; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
                                 万事如意
                             </div>
                         </div>
@@ -776,6 +776,9 @@
         function pageInit() {
             // 显示主页面
             $('#main').fadeIn();
+
+            // 文本弯曲效果
+            $('#blessing').arctext({ radius: 1000 });
 
             // 初始化Swiper
             mainSwiper = new Swiper('#main', {
@@ -837,5 +840,25 @@
             }
         }
 
+        $(document).ready(function () {
+            // 判断 WeixinJSBridge 是否存在
+            if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
+                $('bgm-audio').play();
+            } else {
+                //监听客户端抛出事件"WeixinJSBridgeReady"
+                if (document.addEventListener) {
+                    document.addEventListener("WeixinJSBridgeReady", function () {
+                        $('bgm-audio').play();
+                    }, false);
+                } else if (document.attachEvent) {
+                    document.attachEvent("WeixinJSBridgeReady", function () {
+                        $('bgm-audio').play();
+                    });
+                    document.attachEvent("onWeixinJSBridgeReady", function () {
+                        $('bgm-audio').play();
+                    });
+                }
+            }
+        });
     </script>
 }

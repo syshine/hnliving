@@ -238,6 +238,7 @@
     <Content Include="Navigate\BootstrapNav.js" />
     <Content Include="Plugins\Anime\anime.js" />
     <Content Include="Plugins\Anime\anime.min.js" />
+    <Content Include="Plugins\jquery.arctext.js" />
     <Content Include="Plugins\Swiper\css\animate.css" />
     <Content Include="Plugins\Swiper\css\animate.min.css" />
     <Content Include="Plugins\Swiper\css\swiper.css" />
