@@ -1,17 +1,17 @@
 ﻿
 @{
     //ViewBag.NameFrom += "给您拜年！";//"祝您和家人春节快乐，阖家欢乐";
-    ViewBag.Blessing = ViewBag.NameFrom + "给您拜年!";//"祝您和家人春节快乐，阖家欢乐";
+    ViewBag.Blessing = ViewBag.NameFrom + "给您拜年啦!";//"祝您和家人春节快乐，阖家欢乐";
     ViewBag.Title = ViewBag.Blessing;
 
-    if(string.IsNullOrWhiteSpace(ViewBag.NameTo))
-    {
-        ViewBag.NameWish = "祝您：";
-    }
-    else
-    {
-        ViewBag.NameWish = "祝" + ViewBag.NameTo + "：";
-    }
+    //if(string.IsNullOrWhiteSpace(ViewBag.NameTo))
+    //{
+    //    ViewBag.NameWish = "祝您：";
+    //}
+    //else
+    //{
+    //    ViewBag.NameWish = "祝" + ViewBag.NameTo + "：";
+    //}
 
     // 默认背景音乐为恭喜发财
     if (string.IsNullOrWhiteSpace(ViewBag.bgm))
@@ -27,7 +27,6 @@
 }
 
 @section head {
-    <meta name="description" content="description-拜年啦！">
     <link rel="icon" href="~/Images/Icons/Spring/lantern 16x16.ico" type="img/x-icon">
 }
 
@@ -459,7 +458,9 @@
 
                     <div class="cmp cmp-text" data-id="154711386111870" data-type="text" style="height:.3rem;width:4rem;left: 0rem;top: 4.83rem;position: absolute;">
                         <div class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration=".7s" swiper-animate-delay="3.5s">
-                            <div class="text" id="blessing" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.3rem; font-family:stxingka;text-align: center; line-height:.3rem;">@ViewBag.Blessing</div>
+                            <div class="text" id="blessing" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.3rem; font-family:stxingka;text-align: center; line-height:.3rem;">
+                                @ViewBag.Blessing
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -625,9 +626,23 @@
 
                     <div class="cmp cmp-text" data-id="154711051216954" data-type="text" style="width:2.6rem; height: auto; left: 0.75rem; top:1.35rem; position: absolute; transform-origin: left top 0px;">
                         <div class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration=".7s" swiper-animate-delay="2.3s">
-                            <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px; border-color: rgb(184, 35, 18); color: rgb(0, 0, 0); font-size:.3rem; font-family:stxingka; font-style: normal; font-weight: normal; text-align: left; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
-                                @ViewBag.NameWish
+                                <div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px; border-color: rgb(184, 35, 18); color: rgb(0, 0, 0); font-size:.3rem; font-family:stxingka; font-style: normal; font-weight: normal; text-align: left; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
+                                    祝
+                                    @if (string.IsNullOrWhiteSpace(ViewBag.NameTo))
+                                    {
+                                        <sapn>您</sapn>
+                                    }
+                                    else
+                                    {
+                                        <sapn class="text-v-lgdt-btg">
+                                            @ViewBag.NameTo
+                                        </sapn>
+                                    }
+                                    :
                             </div>
+                            @*<div class="text" data-page-idx="2" style="opacity: 1; border-style: solid; border-width: 0px; border-color: rgb(184, 35, 18); color: rgb(0, 0, 0); font-size:.3rem; font-family:stxingka; font-style: normal; font-weight: normal; text-align: left; text-decoration: none;letter-spacing: 0px; border-radius: 0px; background-color: transparent;">
+                                @ViewBag.NameWish
+                            </div>*@
                         </div>
                     </div>
 
