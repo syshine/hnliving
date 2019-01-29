@@ -1,8 +1,8 @@
 ﻿
 @{
     //ViewBag.NameFrom += "给您拜年！";//"祝您和家人春节快乐，阖家欢乐";
-    ViewBag.Blessing = ViewBag.NameFrom + "给您拜年啦!";//"祝您和家人春节快乐，阖家欢乐";
-    ViewBag.Title = ViewBag.Blessing;
+    ViewBag.Blessing = ViewBag.NameFrom + "给您拜年";//"祝您和家人春节快乐，阖家欢乐";
+    ViewBag.Title = ViewBag.NameFrom + "给您拜年啦！";
 
     //if(string.IsNullOrWhiteSpace(ViewBag.NameTo))
     //{
@@ -456,9 +456,9 @@
                         </div>
                     </div>
 
-                    <div class="cmp cmp-text" data-id="154711386111870" data-type="text" style="height:.3rem;width:4rem;left: 0rem;top: 4.83rem;position: absolute;">
+                    <div class="cmp cmp-text" data-id="154711386111870" data-type="text" style="height:0;width:4rem;left: 0rem;top: 4.98rem;position: absolute;">
                         <div class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration=".7s" swiper-animate-delay="3.5s">
-                            <div class="text" id="blessing" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.3rem; font-family:stxingka;text-align: center; line-height:.3rem;">
+                            <div class="text" id="blessing" data-page-idx="0" style="color: rgb(184, 35, 18); font-size:.3rem; font-family:stxingka;text-align: center; line-height:0;">
                                 @ViewBag.Blessing
                             </div>
                         </div>
@@ -793,7 +793,7 @@
             $('#main').fadeIn();
 
             // 文本弯曲效果
-            $('#blessing').arctext({ radius: 1000 });
+            //$('#blessing').arctext({ radius: 2500 });
 
             // 初始化Swiper
             mainSwiper = new Swiper('#main', {
@@ -856,21 +856,23 @@
         }
 
         $(document).ready(function () {
+            var voice = document.getElementById('bgm-audio');
             // 判断 WeixinJSBridge 是否存在
             if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
-                $('bgm-audio').play();
+                voice.play();
             } else {
                 //监听客户端抛出事件"WeixinJSBridgeReady"
                 if (document.addEventListener) {
                     document.addEventListener("WeixinJSBridgeReady", function () {
-                        $('bgm-audio').play();
+                        voice.play();
                     }, false);
                 } else if (document.attachEvent) {
+                    console.log('attachEvent');
                     document.attachEvent("WeixinJSBridgeReady", function () {
-                        $('bgm-audio').play();
+                        voice.play();
                     });
                     document.attachEvent("onWeixinJSBridgeReady", function () {
-                        $('bgm-audio').play();
+                        voice.play();
                     });
                 }
             }
