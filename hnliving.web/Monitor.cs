@@ -10,6 +10,9 @@ using System.Collections;
 
 namespace hnliving.web
 {
+    /// <summary>
+    /// 微信监控获取票据
+    /// </summary>
     public static class Monitor
     {
         static Timer mntTimer = null;

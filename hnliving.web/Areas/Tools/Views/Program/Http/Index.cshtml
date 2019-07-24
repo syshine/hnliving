@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "加密解密";
+}
+
+@section csses{
+    <style>
+        .card-width {
+            width: 300px;
+            min-width: 200px;
+        }
+
+        /*razor语法和媒体查询符号冲突，需使用两个at*/
+        @@media screen and (max-width: 575.98px) {
+            .card-width {
+                width: 200px;
+            }
+        }
+    </style>
+}
+
+<div class="center-block">
+    <h2>欢迎使用加密解密工具！</h2>
+</div>
+<div class="container-fluid">
+    <div class="row col-12 col-xl-10 offset-lg-1">
+        <div class="card m-2 m-md-4 card-width">
+            <img class="card-img-top" src="~/Areas/Study/Images/csharp.jpg" alt="DES" style="width:100%;height:200px;">
+            <div class="card-body">
+                <h4 class="card-title">ajax</h4>
+                <p class="card-text">Ajax 即“Asynchronous Javascript And XML”（异步 JavaScript 和 XML），是指一种创建交互式网页应用的网页开发技术。
+                Ajax = 异步 JavaScript 和 XML 或者是 HTML（标准通用标记语言的子集）。
+                Ajax 是一种用于创建快速动态网页的技术。
+                Ajax 是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术。
+                通过在后台与服务器进行少量数据交换，Ajax 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</p>
+                <a class="btn btn-primary" href="/Tools/Program/Http/Ajax">查看更多</a>
+                @*@Html.ActionLink("查看更多", "Index", "Program/Home", new { area = "Study" }, new { @class = "btn btn-primary" })*@
+            </div>
+        </div>
+
+        <div class="card m-2 m-md-4 card-width">
+            <img class="card-img-top" src="~/Areas/Study/Images/mvc.jpg" alt="MD5" style="width:100%;height:200px;">
+            <div class="card-body">
+                <h4 class="card-title">Web Service</h4>
+                <p class="card-text">Web service是一个平台独立的，低耦合的，自包含的、基于可编程的web的应用程序，可使用开放的XML（标准通用标记语言下的一个子集）标准来描述、发布、发现、协调和配置这些应用程序，用于开发分布式的互操作的应用程序。</p>
+                @*<a class="btn btn-primary" href="/Tools/Program/Encrypt/MD5">查看更多</a>*@
+                @*@Html.ActionLink("查看更多", "Index", "CivilServant/Home", new { area = "Study" }, new { @class = "btn btn-primary" })*@
+            </div>
+        </div>
+
+    </div>
+</div>

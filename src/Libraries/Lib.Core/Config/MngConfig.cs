@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Lib.Core
@@ -13,7 +14,8 @@ namespace Lib.Core
         private static IConfigStrategy _iconfigstrategy = null;//配置策略
 
         private static RDBSConfigInfo _rdbsconfiginfo = null;//关系数据库配置信息
-        private static SiteConfigInfo _siteconfiginfo = null;//商城基本配置信息
+        private static SiteConfigInfo _siteconfiginfo = null;//站点基本配置信息
+        private static List<AccessConfigInfo> _lstaccessconfiginfo = null;//站点权限配置信息
         private static RedisNOSQLConfigInfo _redisnosqlconfiginfo = null;//redis非关系数据库配置信息
 
         static MngConfig()
@@ -30,6 +32,7 @@ namespace Lib.Core
             }
             _rdbsconfiginfo = _iconfigstrategy.GetRDBSConfig();
             _siteconfiginfo = _iconfigstrategy.GetSiteConfig();
+            Lstaccessconfiginfo = _iconfigstrategy.GetAccessConfig();
         }
 
         /// <summary>
@@ -46,6 +49,22 @@ namespace Lib.Core
         public static SiteConfigInfo SiteConfig
         {
             get { return _siteconfiginfo; }
+        }
+
+        /// <summary>
+        /// 站点权限配置信息
+        /// </summary>
+        public static List<AccessConfigInfo> Lstaccessconfiginfo
+        {
+            get
+            {
+                return _lstaccessconfiginfo;
+            }
+
+            set
+            {
+                _lstaccessconfiginfo = value;
+            }
         }
 
         /// <summary>
@@ -72,12 +91,12 @@ namespace Lib.Core
         /// <summary>
         /// 保存站点配置信息
         /// </summary>
-        public static void SaveSiteConfig(SiteConfigInfo mallConfigInfo)
+        public static void SaveSiteConfig(SiteConfigInfo siteConfigInfo)
         {
             lock (_locker)
             {
-                if (_iconfigstrategy.SaveSiteConfig(mallConfigInfo))
-                    _siteconfiginfo = mallConfigInfo;
+                if (_iconfigstrategy.SaveSiteConfig(siteConfigInfo))
+                    _siteconfiginfo = siteConfigInfo;
             }
         }
     }

@@ -14,7 +14,7 @@ namespace hnliving.web
     {
         protected override void OnException(ExceptionContext filterContext)
         {
-            Console.Write(filterContext.Exception);
+            System.Diagnostics.Debug.WriteLine(filterContext.Exception);
             //Logs.Write(filterContext.Exception);
         }
 
@@ -72,7 +72,7 @@ namespace hnliving.web
         /// <returns></returns>
         protected ViewResult PromptView(string backUrl, string message)
         {
-            return View("~/views/shared/prompt", new PromptModel(backUrl, message));
+            return View("Prompt", new PromptModel(backUrl, message));
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace hnliving.web
         /// <returns></returns>
         protected ViewResult PromptView(string backUrl, string message, bool isAutoBack)
         {
-            return View("prompt", new PromptModel(backUrl, message, isAutoBack));
+            return View("Prompt", new PromptModel(backUrl, message, isAutoBack));
         }
 
         /// <summary>

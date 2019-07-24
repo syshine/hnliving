@@ -48,6 +48,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Randoms.cs" />
     <Compile Include="Sessions.cs" />
+    <Compile Include="UEditorSer.cs" />
     <Compile Include="UserRanks.cs" />
     <Compile Include="Users.cs" />
     <Compile Include="Utils.cs" />

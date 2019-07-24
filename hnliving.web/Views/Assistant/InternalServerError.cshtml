@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Internal Server Error";
+}
+
+<div class="row ml-0 mr-0 mt-5">
+    <div class="col-10 offset-1 col-sm-8 offset-sm-2 bg-secondary text-center">
+        <div class="display-1 font-weight-normal text-v-lgdt-btg">500</div>
+        <div class="display-4 font-weight-normal text-h-lgdt-btg" style="font-family: 华文彩云">
+            内部服务器错误:
+            <br /> @ViewBag.Description
+        </div>
+        <a href="@Url.Action("Index", "Home")" class="btn btn-primary btn-lg m-5" role="button">返回首页</a>
+
+    </div>
+</div>

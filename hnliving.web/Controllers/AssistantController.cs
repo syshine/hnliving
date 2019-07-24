@@ -24,5 +24,13 @@ namespace hnliving.web.Controllers
             Response.StatusCode = 404;
             return View();
         }
+
+        public ActionResult InternalServerError()
+        {
+            Response.Status = "500 Internal Server Error";
+            Response.StatusCode = 500;
+            ViewBag.Description = Response.StatusDescription;
+            return View();
+        }
     }
 }

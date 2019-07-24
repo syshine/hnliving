@@ -1,0 +1,107 @@
+﻿@model hnliving.web.Models.AddUEditorModel
+
+@{
+    ViewBag.Title = "UEditor编辑器";
+}
+
+@section csses{
+    <style>
+        .card-width {
+            width: 300px;
+            min-width: 200px;
+        }
+
+        /*razor语法和媒体查询符号冲突，需使用两个at*/
+        @@media screen and (max-width: 575.98px) {
+            .card-width {
+                width: 200px;
+            }
+        }
+    </style>
+}
+
+<div class="row ml-0 mr-0 mt-5"> @* align-items-centerjustify-content-center login-center*@
+    <div class="col-10 offset-1 col-sm-8 offset-sm-2 bg-teal-7">
+        <h4>欢迎使用UEditor编辑器！</h4>
+        <hr />
+
+        <div class="card m-2 m-md-4 card-width img-fluid">
+            <img class="card-img-top" src="~/Areas/Study/Images/csharp.jpg" alt="c# image" style="width:100%;height:200px;">
+            <div class="card-img-overlay">
+                <h4 class="card-title">新增</h4>
+                <p class="card-text">新增内容</p>
+                <a class="btn btn-primary" href="/Tools/Program/UEditor/Add">新增</a>
+            </div>
+        </div>
+
+        <div class="card m-2 m-md-4 card-width img-fluid">
+            <img class="card-img-top" src="~/Areas/Study/Images/mvc.jpg" alt="c# image" style="width:100%;height:200px;">
+            <div class="card-img-overlay">
+                <h4 class="card-title">列表</h4>
+                <p class="card-text">查看列表</p>
+                <a class="btn btn-primary" href="/Tools/Program/UEditor/List">查看</a>
+            </div>
+        </div>
+
+        <div class="card m-2 m-md-4 card-width img-fluid">
+            <img class="card-img-top" src="~/Areas/Study/Images/bootstrap.jpg" alt="c# image" style="width:100%;height:200px;">
+            <div class="card-img-overlay">
+                <h4 class="card-title">分类</h4>
+                <p class="card-text">查看分类</p>
+                <a class="btn btn-primary" href="/Tools/Program/UEditor/Sort">查看</a>
+            </div>
+        </div>
+
+        @*<div class="card img-fluid" style="width:500px">
+            <img class="card-img-top" src="http://static.runoob.com/images/mix/img_avatar.png" alt="Card image" style="width:100%">
+            <div class="card-img-overlay">
+                <h4 class="card-title">John Doe</h4>
+                <p class="card-text">Some example text some example text. Some example text some example text. Some example text some example text. Some example text some example text.</p>
+                <a href="#" class="btn btn-primary">See Profile</a>
+            </div>
+        </div>*@
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <script>
+        // 保存
+        function save() {
+            // 获取内容
+            var content = UE.getEditor('editor').getContent();
+
+            // 参数
+            var parms = new Object();
+            parms["content"] = content;
+            parms["type"] = 0;
+
+            // 调用
+            $.post("/Tools/Program/UEditor/Save", parms, saveResponse);
+            //$.post("/Ashx/UEditorUpload.ashx", parms, saveResponse);
+
+        }
+
+        //处理保存反馈信息
+        function saveResponse(data) {
+            var result = eval("(" + data + ")");
+            if (result.state == "success") {
+                alert("保存成功！");
+            }
+            else {
+                showVerifyError(result.content);
+            }
+        }
+    </script>
+
+
+    @*<script>
+        //实例化编辑器
+        //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+        window.UEDITOR_CONFIG.imageUrl = "/Tools/Program/UEditor";
+        var ue = UE.getEditor('editor');
+
+    </script>*@
+
+}

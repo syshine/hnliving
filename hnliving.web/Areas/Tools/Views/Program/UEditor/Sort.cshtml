@@ -1,0 +1,86 @@
+﻿@model System.Data.DataTable
+
+@{
+    ViewBag.Title = "UEditor分类列表";
+}
+
+@section scriptsHead{
+}
+
+<div class="row ml-0 mr-0 mt-5"> @* align-items-centerjustify-content-center login-center*@
+    <div class="col-10 offset-1 col-sm-8 offset-sm-2 bg-teal-7">
+        <h4>UEditor列表：</h4>
+        <hr />
+
+        <div class="form-group">
+            @using (Html.BeginForm("AddSort", "UEditor", FormMethod.Post))
+            {
+                <div class="form-group col-12">
+                    <label class="control-label" for="title">标题：</label>
+                    <div class="col-md-10 p-0">
+                        <input type="text" id="title" name="title" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group col-12">
+                    <input type="submit" class="btn btn-info mb-2" value="新增">
+                </div>
+            }
+        </div>
+
+
+        <div class="form-group">
+            <table class="table table-striped table-hover" id="tb_sort">
+                <thead>
+                    <tr>
+                        <th width="4"></th>
+                        <th width="100" align="center">序号</th>
+                        <th align="left">标题</th>
+                        <th width="56" align="center">编辑</th>
+                        <th width="56" align="center">删除</th>
+                        @*<th width="56" align="center"></th>*@
+                    </tr>
+                </thead>
+                <tbody>
+                    @*@foreach (System.Data.DataRow dr in Model.Rows)*@
+                     @for (int i = 0; i < Model.Rows.Count; i++) 
+                     {
+                        <tr>
+                            <td></td>
+                            <td>@(i + 1)</td>
+                            <td>@Model.Rows[i]["sname"].ToString()</td>
+                            <td>@Html.ActionLink("编辑", "editSort", new { sid = Model.Rows[i]["sid"].ToString() }, new { @class = "editOperate" })</td>
+                            <td>@Html.ActionLink("删除", "deleteSort", new { sid = Model.Rows[i]["sid"].ToString() }, new { @class = "deleteOperate" })</td>
+                            @*<td>
+                                @if (i == Model.Rows.Count - 1)
+                                {
+                                    <a href="javascript:void(0)" class="btn btn-primary" role="button" onclick="addSortButton()">添加</a>
+                                }
+                            </td>*@
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <script>
+
+        $().ready(function () {
+        });
+
+        //// 添加
+        //function addSortButton() {
+        //    $("#tb_sort tr:last td:eq(5)").html("");
+        //    var length = $("#tb_sort").find("tr").length;
+        //    var newRow = '<tr><td></td><td>' + length + '</td><td>新分类' + length + '</td><td>编辑</td><td>删除</td><td><a href="javascript:void(0)" class="btn btn-primary" role="button" onclick="addSort()">添加</a></td></tr>';
+        //    $("#tb_sort tr:last").after(newRow);
+        //    //alert(v);
+        //}
+    </script>
+
+}

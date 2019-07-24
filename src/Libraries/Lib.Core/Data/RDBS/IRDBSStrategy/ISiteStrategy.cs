@@ -34,5 +34,62 @@ namespace Lib.Core
         void DeleteFilterWordById(string idList);
 
         #endregion
+
+        #region UEditor富文本编辑器
+
+        IDataReader GetUEditorById(int ueid);
+
+        string GetUEditorContentById(int ueid);
+
+        IDataReader GetUEditorContentByType(int type);
+
+
+        IDataReader GetUEditorList(int uid, int typeid = -1);
+
+        /// <summary>
+        /// 新增
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        int UEditorAdd(UEditorEntity entity);
+
+        int SaveUEditorContent(string content, int type);
+
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        int UEditorUpdate(UEditorEntity uee);
+
+        int UpdateUEditorContent(int ueid, string content);
+
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="uid"></param>
+        /// <param name="ueid"></param>
+        /// <returns></returns>
+        int DeleteUEditorById(int uid, int ueid);
+
+        #region 分类
+
+        DataTable GetUEditorSort(int uid);
+
+        int UEditorAddSort(int uid, string name);
+
+        int UEditorDelSort(int sid);
+
+        /// <summary>
+        /// 删除分类
+        /// </summary>
+        /// <param name="uid"></param>
+        /// <param name="sid"></param>
+        /// <returns></returns>
+        int DeleteSortUEditorById(int uid, int sid);
+        #endregion
+        #endregion
     }
 }

@@ -48,6 +48,7 @@
     <Compile Include="Cache\CacheManager\ICacheManager.cs" />
     <Compile Include="Cache\ICacheStrategy.cs" />
     <Compile Include="Cache\MngCache.cs" />
+    <Compile Include="Config\Info\AccessConfigInfo.cs" />
     <Compile Include="Config\Info\SiteConfigInfo.cs" />
     <Compile Include="Config\MngConfig.cs" />
     <Compile Include="Config\IConfigStrategy.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Data\RDBS\IRDBSStrategy\IUserStrategy.cs" />
     <Compile Include="Data\RDBS\RDBSHelper.cs" />
     <Compile Include="Domain\Site\FilterWordInfo.cs" />
+    <Compile Include="Domain\UEditor\UEditorEntity.cs" />
     <Compile Include="Domain\User\OnlineUserInfo.cs" />
     <Compile Include="Domain\User\UserInfo.cs" />
     <Compile Include="Domain\User\UserRankInfo.cs" />

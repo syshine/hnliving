@@ -1,0 +1,204 @@
+﻿@{
+    ViewBag.Title = "Ajax测试";
+}
+
+@section csses{
+    <style>
+        textarea.form-control {
+            height: 100px;
+            max-width:100% !important;
+        }
+
+        /*razor语法和媒体查询符号冲突，需使用两个at*/
+        @@media screen and (max-width: 767.98px) {
+            textarea.form-control {
+                height: 100px;
+            }
+        }
+    </style>
+}
+
+<div class="row ml-0 mr-0 mt-5">
+    @* align-items-centerjustify-content-center login-center*@
+    <div class="col-10 offset-1 bg-teal-7">
+        <h4>欢迎使用Ajax测试！</h4>
+        <hr />
+        <div class="row">
+
+            <div class="form-group col-12">
+                <input type="radio" name="type" id="get" value="get" class="" checked="checked" />
+                <label class="control-label" for="get">Get</label>
+                <input type="radio" name="type" id="post" value="post" class="" />
+                <label class="control-label" for="post">Post</label>
+                <a href="javascript:void(0)" class="btn btn-primary ml-3" role="button" onclick="call()">调用</a>
+                @*<a href="javascript:void(0)" class="btn btn-primary" role="button" onclick="exchange()">互换</a>
+                <a href="javascript:void(0)" class="btn btn-primary" role="button" onclick="replaceUrl()">Url转义</a>*@
+            </div>
+
+            <div class="form-group col-12">
+                <label class="control-label" for="url">地址：</label>
+                <div class="p-0">
+                    <input type="text" id="url" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="control-label" for="par_name_0">参数名称1：</label>
+                <div class="p-0">
+                    <input type="text" id="par_name_0" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="control-label" for="par_key_0">参数值1：</label>
+                <div class="p-0">
+                    <input type="text" id="par_key_0" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="control-label" for="par_name_1">参数名称2：</label>
+                <div class="p-0">
+                    <input type="text" id="par_name_1" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="control-label" for="par_key_1">参数值2：</label>
+                <div class="p-0">
+                    <input type="text" id="par_key_1" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="control-label" for="par_name_2">参数名称3：</label>
+                <div class="p-0">
+                    <input type="text" id="par_name_2" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="control-label" for="par_key_2">参数值3：</label>
+                <div class="p-0">
+                    <input type="text" id="par_key_2" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group col-12">
+                @Html.DropDownList("dataType", new List<SelectListItem> {
+                    new SelectListItem { Text = "text", Value = "text",Selected = true},
+                    new SelectListItem { Text = "json", Value = "json" },
+                    new SelectListItem { Text = "html", Value = "html" },
+                    new SelectListItem { Text = "script", Value = "script" },
+                    new SelectListItem { Text = "xml", Value = "xml" },
+                    new SelectListItem { Text = "jsonp", Value = "jsonp" }
+                })
+            </div>
+
+            <div class="form-group col-12">
+                <label class="control-label" for="result">结果：</label>
+                <div class="p-0">
+                    <textarea id="result" class="form-control"></textarea>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // 调用Ajax
+        function call() {
+            $('#result').val('');
+
+
+            /// 准备参数
+            // 地址
+            var uri = $("#url").val();
+            if (uri == "") {
+                uri = "/Ashx/TestAshx.ashx";
+            }
+
+            // 类型
+            var tp = $("input[name='type']:checked").val();
+
+            // 参数
+            var params = '{';
+            if ($("#par_name_0").val() != "") {
+                params += "'" + $("#par_name_0").val() + "':'" + $("#par_key_0").val() + "'";
+            }
+            if ($("#par_name_1").val() != "") {
+                if (params != '{') {
+                    params += ',';
+                }
+                params += "'" + $("#par_name_1").val() + "':'" + $("#par_key_1").val() + "'";
+            }
+            if ($("#par_name_2").val() != "") {
+                if (params != '{') {
+                    params += ',';
+                }
+                params += "'" + $("#par_name_2").val() + "':'" + $("#par_key_2").val() + "'";
+            }
+            params += "}";
+
+            // 返回类型
+            var returnType = $('#dataType').val();
+
+            /// 调用
+            $.ajax({
+                type: tp,
+                url: uri,
+                data: params,
+                dataType: returnType,
+                success: function (ret) {
+                    $('#result').val(ret);
+                },
+                error: function (e) {
+                    $('#result').val("执行失败，返回结果：" + e.responseText);
+                }
+            })
+        }
+
+        // 加密/解密
+        function produce() {
+            // 替换加号
+            var content = $('#content').val().replace(/\+/g, '%2B');
+
+            // 构建参数
+            var param = '?content=' + content + '&key=' + $('#key').val();
+
+            if ($('#iv').val() != '') { // 是否有iv参数
+                param += '&iv=' + $('#iv').val();
+            }
+
+            // 构建地址
+            var url = '/tools/program/encrypt/';
+            var c = $("input[name='method']:checked").val();
+            if (c == "0") {
+                url += 'DesEncrypt' + param;
+            } else {
+                url += 'DesDecrypt' + param;
+            }
+
+            // 调用
+            $.get(url, function (data) {
+                $('#result').val(data);
+            })
+        }
+
+        // 交换内容
+        function exchange() {
+            var temp = $('#result').val();
+            $('#result').val($('#content').val());
+            $('#content').val(temp);
+        }
+
+        // url转义
+        function replaceUrl() {
+            var temp = encodeURIComponent($('#result').val());
+            $('#result').val(temp);
+        }
+    </script>
+}

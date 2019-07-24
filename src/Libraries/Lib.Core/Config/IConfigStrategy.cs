@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Lib.Core
 {
@@ -23,6 +24,11 @@ namespace Lib.Core
         /// 获得站点基本配置
         /// </summary>
         SiteConfigInfo GetSiteConfig();
+
+        /// <summary>
+        /// 获得站点权限配置
+        /// </summary>
+        List<AccessConfigInfo> GetAccessConfig();
 
         /// <summary>
         /// 获得Redis非关系型数据库配置

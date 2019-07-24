@@ -1,0 +1,96 @@
+﻿@model hnliving.web.Models.AddUEditorModel
+
+@{
+    ViewBag.Title = "UEditor编辑器";
+}
+
+@section scriptsHead{
+    <script type="text/javascript" charset="utf-8" src="~/Plugins/UEditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/Plugins/UEditor/ueditor.all.js"> </script>
+    <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+    <script type="text/javascript" charset="utf-8" src="~/Plugins/UEditor/lang/zh-cn/zh-cn.js"></script>
+    <style type="text/css">
+        div {
+            width: 100%;
+        }
+    </style>
+}
+
+<div class="row ml-0 mr-0 mt-5"> @* align-items-centerjustify-content-center login-center*@
+    <div class="col-10 offset-1 col-sm-8 offset-sm-2 bg-teal-7">
+        <h4>欢迎使用UEditor编辑器！</h4>
+        <hr />
+
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                @Html.LabelFor(x => x.TypeId)
+                @Html.DropDownListFor(x => x.TypeId, ViewData["slType"] as SelectList, null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.TypeId)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Title)
+                @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Title)
+            </div>
+
+            <div class="form-group">
+                <script name="Content" id="editor" type="text/plain">
+                    @Html.Raw(Model.Content)
+                </script>
+                <script type="text/javascript">
+                    UE.getEditor('editor');
+                </script>
+            </div>
+
+            <div class="form-group col-12">
+                <input type="submit" class="btn btn-info mb-2" value="保存">
+            </div>
+        }
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <script>
+        // 保存
+        function save() {
+            // 获取内容
+            var content = UE.getEditor('editor').getContent();
+
+            // 参数
+            var parms = new Object();
+            parms["content"] = content;
+            parms["type"] = 0;
+
+            // 调用
+            $.post("/Tools/Program/UEditor/Save", parms, saveResponse);
+            //$.post("/Ashx/UEditorUpload.ashx", parms, saveResponse);
+
+        }
+
+        //处理保存反馈信息
+        function saveResponse(data) {
+            var result = eval("(" + data + ")");
+            if (result.state == "success") {
+                alert("保存成功！");
+            }
+            else {
+                showVerifyError(result.content);
+            }
+        }
+    </script>
+
+
+    @*<script>
+        //实例化编辑器
+        //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+        window.UEDITOR_CONFIG.imageUrl = "/Tools/Program/UEditor";
+        var ue = UE.getEditor('editor');
+
+    </script>*@
+
+}

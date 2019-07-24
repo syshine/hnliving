@@ -1,6 +1,6 @@
 ﻿@model hnliving.web.PromptModel
 @{
-    Layout = null;
+    //Layout = null;
 }
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,20 +8,77 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="text/javascript">
         uid = @WorkContext.Uid;
-        isGuestSC = @WorkContext.SiteConfig.IsGuestSC;
-        scSubmitType = @WorkContext.SiteConfig.SCSubmitType;
+        @*isGuestSC = @WorkContext.SiteConfig.IsGuestSC;
+        scSubmitType = @WorkContext.SiteConfig.SCSubmitType;*@
     </script>
+    <title>消息提示</title>
+    @*<link href="/admin_mall/css/site.css" rel="stylesheet" type="text/css" />*@
+    @{
+        if (Model.IsAutoBack)
+        {
+            if (Model.CountdownModel == 0)
+            {
+                <meta http-equiv="refresh" content="@Model.CountdownTime;URL=@Model.BackUrl" />
+            }
+            else
+            {
+                <script type="text/javascript">
+                    window.onload = function () {
+                        var time = @Model.CountdownTime; //设置时间为几秒
+                        var timer = document.getElementById('timer'); //获取ID为timer的对象
+                        timer.innerHTML = time; //初始化显示秒数
+                        var g = window.setInterval(function(){
+                            if(time<=1){
+                                window.clearTimeout(g); //清除动画
+                                window.location.href = '@Model.BackUrl'; //跳转到指定地址
+                                //window.history.back(-1); //后退
+                            } else {
+                                showTime();
+                            }
+                        }, 1000);
+
+                        //显示函数
+                        function showTime(){
+                            time--;
+                            timer.innerHTML = time;
+                        }
+                    };
+                </script>
+            }
+        }
+    }   
 </head>
 
 <body>
-@*@Html.Partial("_header")*@
+    @*@Html.Partial("_header")*@
 
-<div class="box">
-<div class="prompt">
-    @Html.Raw(Model.Message)
-</div>
-</div>
+    <div class="row ml-0 mr-0 mt-5">
+        <div class="col-10 offset-1 col-sm-8 offset-sm-2 bg-thin-blue-7">
 
-@*@Html.Partial("_footer")*@
+            <h1 class="rightH1">后台操作 &gt;&gt; 操作提示</h1>
+            <div class="tip">
+                <h3>@Html.Raw(Model.Message)</h3>
+                <p>
+                    如果您不做出选择，将在
+                    @{
+                        if (Model.CountdownModel == 0)
+                        {
+                            @Model.CountdownTime
+                        }
+                        else
+                        {
+                            <span id="timer">@Model.CountdownTime</span>
+                        }
+                    }
+                    秒后自动返回
+                </p>
+                @if (Model.IsShowBackLink)
+                {
+                    <a href="@Model.BackUrl">←点击返回</a>
+                }
+            </div>
+        </div>
+    </div>
+    @*@Html.Partial("_footer")*@
 </body>
 </html>

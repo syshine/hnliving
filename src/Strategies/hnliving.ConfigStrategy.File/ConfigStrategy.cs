@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Lib.Core;
+using System.Collections.Generic;
 
 namespace hnliving.ConfigStrategy.File
 {
@@ -13,6 +14,7 @@ namespace hnliving.ConfigStrategy.File
 
         private readonly string _rdbsconfigfilepath = "/App_Data/rdbs.config";//关系数据库配置信息文件路径
         private readonly string _siteconfigfilepath = "/App_Data/site.config";//站点基本配置信息文件路径
+        private readonly string _accessconfigfilepath = "/App_Data/access.config";//站点权限配置信息文件路径
         private readonly string _redisnosqlconfigfilepath = "/App_Data/redisnosql.config";//redis非关系型数据库配置信息文件路径
 
         #endregion
@@ -28,6 +30,17 @@ namespace hnliving.ConfigStrategy.File
         private IConfigInfo LoadConfigInfo(Type configInfoType, string configInfoFile)
         {
             return (IConfigInfo)IOHelper.DeserializeFromXML(configInfoType, configInfoFile);
+        }
+
+        /// <summary>
+        /// 从文件中加载配置信息
+        /// </summary>
+        /// <param name="configInfoType">配置信息类型</param>
+        /// <param name="configInfoFile">配置信息文件路径</param>
+        /// <returns>配置信息</returns>
+        private List<AccessConfigInfo> LoadAccessConfigInfo(Type configInfoType, string configInfoFile)
+        {
+            return (List<AccessConfigInfo>)IOHelper.DeserializeFromXML(configInfoType, configInfoFile);
         }
 
         /// <summary>
@@ -67,6 +80,14 @@ namespace hnliving.ConfigStrategy.File
         public SiteConfigInfo GetSiteConfig()
         {
             return (SiteConfigInfo)LoadConfigInfo(typeof(SiteConfigInfo), IOHelper.GetMapPath(_siteconfigfilepath));
+        }
+
+        /// <summary>
+        /// 获得站点基本配置
+        /// </summary>
+        public List<AccessConfigInfo> GetAccessConfig()
+        {
+            return (List<AccessConfigInfo>)LoadAccessConfigInfo(typeof(List<AccessConfigInfo>), IOHelper.GetMapPath(_accessconfigfilepath));
         }
 
         /// <summary>

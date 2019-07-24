@@ -9,11 +9,14 @@
     <_PublishTargetUrl>E:\编程\Website\hnliving</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="App_Data/access.config">
+      <publishTime>07/22/2019 12:06:02</publishTime>
+    </File>
     <File Include="App_Data/rdbs.config">
       <publishTime>12/30/2018 12:11:20</publishTime>
     </File>
     <File Include="App_Data/site.config">
-      <publishTime>01/22/2019 19:27:16</publishTime>
+      <publishTime>01/23/2019 20:53:19</publishTime>
     </File>
     <File Include="Areas/Cate/Views/Home/Index.cshtml">
       <publishTime>12/01/2018 20:50:39</publishTime>
@@ -92,6 +95,9 @@
     </File>
     <File Include="Areas/H5/Images/Festival/Spring/Y2019/c91995e3-ce6e-4904-b07e-727727af6c6d.webp">
       <publishTime>01/19/2019 10:57:28</publishTime>
+    </File>
+    <File Include="Areas/H5/Images/Festival/Spring/Y2019/goldbkg.png">
+      <publishTime>01/29/2019 19:40:10</publishTime>
     </File>
     <File Include="Areas/H5/Images/Festival/Spring/Y2019/switch-guide.png">
       <publishTime>01/19/2019 10:51:18</publishTime>
@@ -231,6 +237,12 @@
     <File Include="Areas/H5/Images/Festival/Spring/Y2019/菱形.webp">
       <publishTime>01/19/2019 10:57:27</publishTime>
     </File>
+    <File Include="Areas/H5/Images/Festival/Spring/Y2019/菱形福.png">
+      <publishTime>01/24/2019 19:34:06</publishTime>
+    </File>
+    <File Include="Areas/H5/Images/Festival/Spring/Y2019/菱形福到.png">
+      <publishTime>01/24/2019 19:34:06</publishTime>
+    </File>
     <File Include="Areas/H5/Images/Festival/Spring/Y2019/菱形边框.png">
       <publishTime>01/19/2019 10:51:18</publishTime>
     </File>
@@ -340,13 +352,13 @@
       <publishTime>01/14/2019 19:21:53</publishTime>
     </File>
     <File Include="Areas/H5/Views/Demo/Svg/Test1.cshtml">
-      <publishTime>12/28/2018 19:55:15</publishTime>
+      <publishTime>01/24/2019 20:17:09</publishTime>
     </File>
     <File Include="Areas/H5/Views/Festival/Shared/_Layout.cshtml">
-      <publishTime>01/22/2019 19:27:16</publishTime>
+      <publishTime>01/26/2019 22:59:48</publishTime>
     </File>
     <File Include="Areas/H5/Views/Festival/Spring/Y2019.cshtml">
-      <publishTime>01/22/2019 19:27:16</publishTime>
+      <publishTime>01/29/2019 19:40:10</publishTime>
     </File>
     <File Include="Areas/H5/Views/Festival/_ViewStart.cshtml">
       <publishTime>12/28/2018 19:55:15</publishTime>
@@ -359,6 +371,12 @@
     </File>
     <File Include="Areas/H5/Views/web.config">
       <publishTime>01/04/2019 20:53:28</publishTime>
+    </File>
+    <File Include="Areas/H5/Views/Wx/Gzh/Index.cshtml">
+      <publishTime>01/24/2019 19:34:06</publishTime>
+    </File>
+    <File Include="Areas/H5/Views/Wx/_ViewStart.cshtml">
+      <publishTime>01/24/2019 19:34:06</publishTime>
     </File>
     <File Include="Areas/H5/Views/_ViewStart.cshtml">
       <publishTime>12/28/2018 19:55:15</publishTime>
@@ -505,7 +523,7 @@
       <publishTime>01/04/2019 19:15:24</publishTime>
     </File>
     <File Include="Areas/Tools/Views/Program/Encrypt/DES.cshtml">
-      <publishTime>01/21/2019 22:10:43</publishTime>
+      <publishTime>01/26/2019 23:54:10</publishTime>
     </File>
     <File Include="Areas/Tools/Views/Program/Encrypt/Index.cshtml">
       <publishTime>01/06/2019 15:26:28</publishTime>
@@ -516,8 +534,32 @@
     <File Include="Areas/Tools/Views/Program/Encrypt/Xor.cshtml">
       <publishTime>01/21/2019 22:11:33</publishTime>
     </File>
+    <File Include="Areas/Tools/Views/Program/Http/Ajax.cshtml">
+      <publishTime>07/07/2019 23:35:33</publishTime>
+    </File>
+    <File Include="Areas/Tools/Views/Program/Http/Index.cshtml">
+      <publishTime>07/07/2019 20:45:26</publishTime>
+    </File>
     <File Include="Areas/Tools/Views/Program/QRCode/Index.cshtml">
       <publishTime>01/04/2019 20:56:33</publishTime>
+    </File>
+    <File Include="Areas/Tools/Views/Program/UEditor/Add.cshtml">
+      <publishTime>07/19/2019 15:33:25</publishTime>
+    </File>
+    <File Include="Areas/Tools/Views/Program/UEditor/Detail.cshtml">
+      <publishTime>07/18/2019 17:20:28</publishTime>
+    </File>
+    <File Include="Areas/Tools/Views/Program/UEditor/Edit.cshtml">
+      <publishTime>07/19/2019 15:10:00</publishTime>
+    </File>
+    <File Include="Areas/Tools/Views/Program/UEditor/Index.cshtml">
+      <publishTime>07/18/2019 10:48:12</publishTime>
+    </File>
+    <File Include="Areas/Tools/Views/Program/UEditor/List.cshtml">
+      <publishTime>07/19/2019 15:59:01</publishTime>
+    </File>
+    <File Include="Areas/Tools/Views/Program/UEditor/Sort.cshtml">
+      <publishTime>07/21/2019 15:46:31</publishTime>
     </File>
     <File Include="Areas/Tools/Views/Shared/_Layout.cshtml">
       <publishTime>01/06/2019 18:34:29</publishTime>
@@ -566,6 +608,12 @@
     </File>
     <File Include="Areas/Travel/Views/_ViewStart.cshtml">
       <publishTime>11/27/2018 22:27:36</publishTime>
+    </File>
+    <File Include="Ashx/TestAshx.ashx">
+      <publishTime>07/07/2019 18:13:36</publishTime>
+    </File>
+    <File Include="Ashx/UEditorUpload.ashx">
+      <publishTime>07/11/2019 10:36:21</publishTime>
     </File>
     <File Include="Audio/女儿情.mp3">
       <publishTime>01/21/2019 20:02:14</publishTime>
@@ -616,10 +664,10 @@
       <publishTime>11/23/2018 23:48:06</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>01/22/2019 19:30:38</publishTime>
+      <publishTime>07/24/2019 18:49:23</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>01/22/2019 19:30:38</publishTime>
+      <publishTime>07/24/2019 18:49:23</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>11/03/2015 17:43:42</publishTime>
@@ -628,16 +676,16 @@
       <publishTime>11/03/2015 17:43:42</publishTime>
     </File>
     <File Include="bin/hnliving.web.dll">
-      <publishTime>01/22/2019 19:30:25</publishTime>
+      <publishTime>07/24/2019 18:49:15</publishTime>
     </File>
     <File Include="bin/Lib.Core.dll">
-      <publishTime>01/22/2019 19:30:20</publishTime>
+      <publishTime>07/22/2019 11:02:55</publishTime>
     </File>
     <File Include="bin/Lib.Data.dll">
-      <publishTime>01/22/2019 19:30:20</publishTime>
+      <publishTime>07/22/2019 11:02:55</publishTime>
     </File>
     <File Include="bin/Lib.Services.dll">
-      <publishTime>01/22/2019 19:30:20</publishTime>
+      <publishTime>07/22/2019 11:02:55</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>11/23/2018 23:48:06</publishTime>
@@ -816,6 +864,9 @@
     <File Include="fonts/glyphicons-halflings-regular.woff">
       <publishTime>11/23/2018 23:48:06</publishTime>
     </File>
+    <File Include="fonts/stxingka.ttf">
+      <publishTime>01/25/2019 22:21:41</publishTime>
+    </File>
     <File Include="Images/banner01.jpg">
       <publishTime>11/23/2018 23:48:06</publishTime>
     </File>
@@ -903,6 +954,9 @@
     <File Include="Plugins/Anime/anime.min.js">
       <publishTime>04/22/2018 04:08:58</publishTime>
     </File>
+    <File Include="Plugins/jquery.arctext.js">
+      <publishTime>01/24/2012 14:52:38</publishTime>
+    </File>
     <File Include="Plugins/Swiper/css/animate.css">
       <publishTime>11/12/2018 17:54:11</publishTime>
     </File>
@@ -927,8 +981,443 @@
     <File Include="Plugins/Swiper/js/swiper.min.js">
       <publishTime>11/01/2018 03:58:10</publishTime>
     </File>
+    <File Include="Plugins/UEditor/asp/action_config.asp">
+      <publishTime>07/08/2019 16:52:34</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/asp/action_crawler.asp">
+      <publishTime>07/08/2019 16:52:34</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/asp/action_list.asp">
+      <publishTime>07/08/2019 16:52:34</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/asp/action_upload.asp">
+      <publishTime>07/08/2019 16:52:34</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/asp/ASPJson.class.asp">
+      <publishTime>07/08/2019 16:52:34</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/asp/config.json">
+      <publishTime>07/11/2019 23:51:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/asp/config_loader.asp">
+      <publishTime>07/08/2019 16:52:34</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/asp/controller.asp">
+      <publishTime>07/08/2019 16:52:34</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/asp/MultiformProcessor.class.asp">
+      <publishTime>07/08/2019 16:52:34</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/asp/PathFormatter.class.asp">
+      <publishTime>07/08/2019 16:52:34</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/asp/README.md">
+      <publishTime>07/08/2019 16:52:34</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/asp/Uploader.Class.asp">
+      <publishTime>07/08/2019 16:52:34</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/lang/en/en.js">
+      <publishTime>07/08/2019 12:47:09</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/lang/en/images/addimage.png">
+      <publishTime>07/08/2019 12:47:09</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/lang/en/images/alldeletebtnhoverskin.png">
+      <publishTime>07/08/2019 12:47:09</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/lang/en/images/alldeletebtnupskin.png">
+      <publishTime>07/08/2019 12:47:09</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/lang/en/images/background.png">
+      <publishTime>07/08/2019 12:47:09</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/lang/en/images/button.png">
+      <publishTime>07/08/2019 12:47:09</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/lang/en/images/copy.png">
+      <publishTime>07/08/2019 12:47:09</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/lang/en/images/deletedisable.png">
+      <publishTime>07/08/2019 12:47:09</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/lang/en/images/deleteenable.png">
+      <publishTime>07/08/2019 12:47:09</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/lang/en/images/listbackground.png">
+      <publishTime>07/08/2019 12:47:09</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/lang/en/images/localimage.png">
+      <publishTime>07/08/2019 12:47:09</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/lang/en/images/music.png">
+      <publishTime>07/08/2019 12:47:09</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/lang/en/images/rotateleftdisable.png">
+      <publishTime>07/08/2019 12:47:09</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/lang/en/images/rotateleftenable.png">
+      <publishTime>07/08/2019 12:47:09</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/lang/en/images/rotaterightdisable.png">
+      <publishTime>07/08/2019 12:47:09</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/lang/en/images/rotaterightenable.png">
+      <publishTime>07/08/2019 12:47:09</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/lang/en/images/upload.png">
+      <publishTime>07/08/2019 12:47:09</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/lang/zh-cn/images/copy.png">
+      <publishTime>07/08/2019 12:47:09</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/lang/zh-cn/images/localimage.png">
+      <publishTime>07/08/2019 12:47:09</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/lang/zh-cn/images/music.png">
+      <publishTime>07/08/2019 12:47:09</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/lang/zh-cn/images/upload.png">
+      <publishTime>07/08/2019 12:47:09</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/lang/zh-cn/zh-cn.js">
+      <publishTime>07/08/2019 12:47:09</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/net/config.json">
+      <publishTime>07/22/2019 15:33:29</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/net/controller.ashx">
+      <publishTime>07/16/2019 10:37:58</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/net/README.md">
+      <publishTime>07/16/2019 10:37:58</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/net/Web.config">
+      <publishTime>07/16/2019 10:37:58</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/css/ueditor.css">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/css/ueditor.min.css">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/dialogbase.css">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/anchor.gif">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/arrow.png">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/arrow_down.png">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/arrow_up.png">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/button-bg.gif">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/cancelbutton.gif">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/charts.png">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/cursor_h.gif">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/cursor_h.png">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/cursor_v.gif">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/cursor_v.png">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/dialog-title-bg.png">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/filescan.png">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/highlighted.gif">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/icons-all.gif">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/icons.gif">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/icons.png">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/loaderror.png">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/loading.gif">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/lock.gif">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/neweditor-tab-bg.png">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/pagebreak.gif">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/scale.png">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/sortable.png">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/spacer.gif">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/sparator_v.png">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/table-cell-align.png">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/tangram-colorpicker.png">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/toolbar_bg.png">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/unhighlighted.gif">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/upload.png">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/videologo.gif">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/word.gif">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/default/images/wordpaste.png">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/themes/iframe.css">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/codemirror/codemirror.css">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/codemirror/codemirror.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/adapters/mootools-adapter.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/adapters/mootools-adapter.src.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/adapters/prototype-adapter.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/adapters/prototype-adapter.src.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/adapters/standalone-framework.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/adapters/standalone-framework.src.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/highcharts-more.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/highcharts-more.src.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/highcharts.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/highcharts.src.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/modules/annotations.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/modules/annotations.src.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/modules/canvas-tools.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/modules/canvas-tools.src.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/modules/data.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/modules/data.src.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/modules/drilldown.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/modules/drilldown.src.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/modules/exporting.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/modules/exporting.src.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/modules/funnel.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/modules/funnel.src.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/modules/heatmap.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/modules/heatmap.src.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/modules/map.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/modules/map.src.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/modules/no-data-to-display.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/modules/no-data-to-display.src.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/themes/dark-blue.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/themes/dark-green.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/themes/gray.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/themes/grid.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/highcharts/themes/skies.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/jquery-1.10.2.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/jquery-1.10.2.min.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/jquery-1.10.2.min.map">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/snapscreen/UEditorSnapscreen.exe">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/SyntaxHighlighter/shCore.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/SyntaxHighlighter/shCoreDefault.css">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/video-js/font/vjs.eot">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/video-js/font/vjs.svg">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/video-js/font/vjs.ttf">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/video-js/font/vjs.woff">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/video-js/video-js.css">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/video-js/video-js.min.css">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/video-js/video-js.swf">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/video-js/video.dev.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/video-js/video.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/webuploader/Uploader.swf">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/webuploader/webuploader.css">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/webuploader/webuploader.custom.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/webuploader/webuploader.custom.min.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/webuploader/webuploader.flashonly.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/webuploader/webuploader.flashonly.min.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/webuploader/webuploader.html5only.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/webuploader/webuploader.html5only.min.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/webuploader/webuploader.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/webuploader/webuploader.min.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/webuploader/webuploader.withoutimage.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/webuploader/webuploader.withoutimage.min.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/xss.min.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/zeroclipboard/ZeroClipboard.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/zeroclipboard/ZeroClipboard.min.js">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/third-party/zeroclipboard/ZeroClipboard.swf">
+      <publishTime>07/08/2019 15:02:52</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/ueditor.all.js">
+      <publishTime>07/12/2019 11:32:04</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/ueditor.all.min.js">
+      <publishTime>07/08/2019 11:56:54</publishTime>
+    </File>
+    <File Include="Plugins/UEditor/ueditor.config.js">
+      <publishTime>07/17/2019 16:06:54</publishTime>
+    </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>01/22/2019 19:30:31</publishTime>
+      <publishTime>07/24/2019 18:49:17</publishTime>
     </File>
     <File Include="Scripts/account.js">
       <publishTime>12/28/2018 19:55:15</publishTime>
@@ -1101,6 +1590,12 @@
     <File Include="Scripts/umd/popper.min.js.map">
       <publishTime>11/26/2018 19:05:24</publishTime>
     </File>
+    <File Include="Service References/ServiceReferenceJava/hnliving.web.ServiceReferenceJava.saveResponse.datasource">
+      <publishTime>05/23/2019 16:20:25</publishTime>
+    </File>
+    <File Include="Service References/ServiceReferenceJava/hnliving.web.ServiceReferenceJava.sayHelloResponse.datasource">
+      <publishTime>05/23/2019 16:20:25</publishTime>
+    </File>
     <File Include="Views/Account/Login.cshtml">
       <publishTime>01/03/2019 19:34:55</publishTime>
     </File>
@@ -1108,22 +1603,25 @@
       <publishTime>01/03/2019 19:34:55</publishTime>
     </File>
     <File Include="Views/Account/UserInfo.cshtml">
-      <publishTime>01/03/2019 19:34:55</publishTime>
+      <publishTime>07/07/2019 18:20:15</publishTime>
     </File>
     <File Include="Views/Assistant/Building.cshtml">
       <publishTime>12/02/2018 19:48:37</publishTime>
     </File>
+    <File Include="Views/Assistant/InternalServerError.cshtml">
+      <publishTime>07/24/2019 18:48:38</publishTime>
+    </File>
     <File Include="Views/Assistant/NotFound.cshtml">
-      <publishTime>12/01/2018 16:37:15</publishTime>
+      <publishTime>07/24/2019 17:45:46</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
-      <publishTime>12/04/2018 19:16:20</publishTime>
+      <publishTime>07/07/2019 23:36:14</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>12/05/2018 22:48:25</publishTime>
+      <publishTime>07/22/2019 11:02:14</publishTime>
     </File>
     <File Include="Views/Shared/prompt.cshtml">
-      <publishTime>12/28/2018 19:55:15</publishTime>
+      <publishTime>07/18/2019 21:05:56</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutMain.cshtml">
       <publishTime>12/28/2018 19:55:15</publishTime>
@@ -1138,7 +1636,10 @@
       <publishTime>11/23/2018 23:48:06</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/31/2018 11:39:01</publishTime>
+      <publishTime>07/24/2019 18:49:16</publishTime>
+    </File>
+    <File Include="WebServices/WebService1.asmx">
+      <publishTime>05/23/2019 09:44:46</publishTime>
     </File>
   </ItemGroup>
 </Project>

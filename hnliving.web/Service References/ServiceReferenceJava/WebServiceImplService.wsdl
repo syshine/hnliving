@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://ws.ss.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="WebServiceImplService" targetNamespace="http://ws.ss.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://127.0.0.1:9292/WS_Server/Webservice?xsd=1" namespace="http://ws.ss.org/" />
+    </xsd:schema>
+  </types>
+  <message name="save">
+    <part name="parameters" element="tns:save" />
+  </message>
+  <message name="saveResponse">
+    <part name="parameters" element="tns:saveResponse" />
+  </message>
+  <message name="sayHello">
+    <part name="parameters" element="tns:sayHello" />
+  </message>
+  <message name="sayHelloResponse">
+    <part name="parameters" element="tns:sayHelloResponse" />
+  </message>
+  <portType name="WebServiceImpl">
+    <operation name="save">
+      <input wsam:Action="http://ws.ss.org/WebServiceImpl/saveRequest" message="tns:save" />
+      <output wsam:Action="http://ws.ss.org/WebServiceImpl/saveResponse" message="tns:saveResponse" />
+    </operation>
+    <operation name="sayHello">
+      <input wsam:Action="http://ws.ss.org/WebServiceImpl/sayHelloRequest" message="tns:sayHello" />
+      <output wsam:Action="http://ws.ss.org/WebServiceImpl/sayHelloResponse" message="tns:sayHelloResponse" />
+    </operation>
+  </portType>
+  <binding name="WebServiceImplPortBinding" type="tns:WebServiceImpl">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="save">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="sayHello">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="WebServiceImplService">
+    <port name="WebServiceImplPort" binding="tns:WebServiceImplPortBinding">
+      <soap:address location="http://127.0.0.1:9292/WS_Server/Webservice" />
+    </port>
+  </service>
+</definitions>

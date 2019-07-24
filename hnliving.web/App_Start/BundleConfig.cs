@@ -86,6 +86,14 @@ namespace hnliving.web
                       "~/Plugins/Swiper/css/swiper.min.css",
                       "~/Plugins/Swiper/css/animate.min.css"));
             #endregion
+
+            #region UEditor
+
+            bundles.Add(new ScriptBundle("~/bundles/UEditor").Include(
+                      "~/Plugins/UEditor/ueditor.config.js",
+                      "~/Plugins/UEditor/ueditor.all.min.js",
+                      "~/Plugins/UEditor/lang/zh-cn/zh-cn.js"));
+            #endregion
         }
     }
 }
