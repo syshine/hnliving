@@ -8,7 +8,7 @@ namespace hnliving.web.Areas.Study.Controllers.Program
 {
     public class SwiperController : Controller
     {
-        // GET: Study/Swiper
+        // GET: Study/Program/Swiper
         public ActionResult Index()
         {
             return View();

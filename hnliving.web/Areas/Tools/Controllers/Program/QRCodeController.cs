@@ -13,7 +13,7 @@ namespace hnliving.web.Areas.Tools.Controllers.Program
 {
     public class QRCodeController : BaseWebController
     {
-        // GET: Tools/Programming/QRCode
+        // GET: Tools/Program/QRCode
         public ActionResult Index()
         {
             return View();

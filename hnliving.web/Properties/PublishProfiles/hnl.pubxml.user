@@ -535,7 +535,7 @@
       <publishTime>01/21/2019 22:11:33</publishTime>
     </File>
     <File Include="Areas/Tools/Views/Program/Http/Ajax.cshtml">
-      <publishTime>07/07/2019 23:35:33</publishTime>
+      <publishTime>07/26/2019 16:07:51</publishTime>
     </File>
     <File Include="Areas/Tools/Views/Program/Http/Index.cshtml">
       <publishTime>07/07/2019 20:45:26</publishTime>
@@ -664,10 +664,10 @@
       <publishTime>11/23/2018 23:48:06</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>07/24/2019 18:49:23</publishTime>
+      <publishTime>07/26/2019 16:15:29</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>07/24/2019 18:49:23</publishTime>
+      <publishTime>07/26/2019 16:15:29</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>11/03/2015 17:43:42</publishTime>
@@ -676,16 +676,16 @@
       <publishTime>11/03/2015 17:43:42</publishTime>
     </File>
     <File Include="bin/hnliving.web.dll">
-      <publishTime>07/24/2019 18:49:15</publishTime>
+      <publishTime>07/26/2019 16:15:19</publishTime>
     </File>
     <File Include="bin/Lib.Core.dll">
-      <publishTime>07/22/2019 11:02:55</publishTime>
+      <publishTime>07/26/2019 16:15:12</publishTime>
     </File>
     <File Include="bin/Lib.Data.dll">
-      <publishTime>07/22/2019 11:02:55</publishTime>
+      <publishTime>07/26/2019 16:15:12</publishTime>
     </File>
     <File Include="bin/Lib.Services.dll">
-      <publishTime>07/22/2019 11:02:55</publishTime>
+      <publishTime>07/26/2019 16:15:12</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>11/23/2018 23:48:06</publishTime>
@@ -946,7 +946,7 @@
       <publishTime>12/07/2018 22:12:09</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>01/04/2019 19:15:24</publishTime>
+      <publishTime>07/25/2019 15:07:26</publishTime>
     </File>
     <File Include="Plugins/Anime/anime.js">
       <publishTime>04/22/2018 04:08:58</publishTime>
@@ -1417,7 +1417,7 @@
       <publishTime>07/17/2019 16:06:54</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>07/24/2019 18:49:17</publishTime>
+      <publishTime>07/26/2019 16:15:23</publishTime>
     </File>
     <File Include="Scripts/account.js">
       <publishTime>12/28/2018 19:55:15</publishTime>
@@ -1615,7 +1615,10 @@
       <publishTime>07/24/2019 17:45:46</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
-      <publishTime>07/07/2019 23:36:14</publishTime>
+      <publishTime>07/26/2019 15:23:28</publishTime>
+    </File>
+    <File Include="Views/Home/Contact.cshtml">
+      <publishTime>07/25/2019 16:00:36</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>07/22/2019 11:02:14</publishTime>
@@ -1636,7 +1639,7 @@
       <publishTime>11/23/2018 23:48:06</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/24/2019 18:49:16</publishTime>
+      <publishTime>07/25/2019 15:07:57</publishTime>
     </File>
     <File Include="WebServices/WebService1.asmx">
       <publishTime>05/23/2019 09:44:46</publishTime>

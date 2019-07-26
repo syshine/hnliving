@@ -8,7 +8,7 @@ namespace hnliving.web.Areas.Tools.Controllers.Program
 {
     public class HttpController : BaseWebController
     {
-        // GET: Tools/Http
+        // GET: Tools/Program/Http
         public ActionResult Index()
         {
             return View();

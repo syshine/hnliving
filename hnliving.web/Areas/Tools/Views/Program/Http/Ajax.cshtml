@@ -85,6 +85,7 @@
             </div>
 
             <div class="form-group col-12">
+                <label class="control-label">返回类型：</label>
                 @Html.DropDownList("dataType", new List<SelectListItem> {
                     new SelectListItem { Text = "text", Value = "text",Selected = true},
                     new SelectListItem { Text = "json", Value = "json" },
@@ -125,23 +126,41 @@
             var tp = $("input[name='type']:checked").val();
 
             // 参数
-            var params = '{';
+            var params = '';
             if ($("#par_name_0").val() != "") {
-                params += "'" + $("#par_name_0").val() + "':'" + $("#par_key_0").val() + "'";
+                params += $("#par_name_0").val() + "=" + $("#par_key_0").val();
             }
             if ($("#par_name_1").val() != "") {
-                if (params != '{') {
-                    params += ',';
+                if (params != '') {
+                    params += '&';
                 }
-                params += "'" + $("#par_name_1").val() + "':'" + $("#par_key_1").val() + "'";
+                params += $("#par_name_1").val() + "=" + $("#par_key_1").val();
             }
             if ($("#par_name_2").val() != "") {
-                if (params != '{') {
-                    params += ',';
+                if (params != '') {
+                    params += '&';
                 }
-                params += "'" + $("#par_name_2").val() + "':'" + $("#par_key_2").val() + "'";
+                params += $("#par_name_2").val() + "=" + $("#par_key_2").val();
             }
-            params += "}";
+            
+            // 参数(json格式)
+            //var params = '{';
+            //if ($("#par_name_0").val() != "") {
+            //    params += "'" + $("#par_name_0").val() + "':'" + $("#par_key_0").val() + "'";
+            //}
+            //if ($("#par_name_1").val() != "") {
+            //    if (params != '{') {
+            //        params += ',';
+            //    }
+            //    params += "'" + $("#par_name_1").val() + "':'" + $("#par_key_1").val() + "'";
+            //}
+            //if ($("#par_name_2").val() != "") {
+            //    if (params != '{') {
+            //        params += ',';
+            //    }
+            //    params += "'" + $("#par_name_2").val() + "':'" + $("#par_key_2").val() + "'";
+            //}
+            //params += "}";
 
             // 返回类型
             var returnType = $('#dataType').val();

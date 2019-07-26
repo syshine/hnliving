@@ -13,7 +13,7 @@ namespace hnliving.web.Areas.Tools.Controllers.Program
 {
     public class UEditorController : BaseWebController
     {
-        // GET: Tools/Http
+        // GET: Tools/Program/UEditor
         public ActionResult Index()
         {
             return View();

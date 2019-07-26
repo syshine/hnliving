@@ -36,12 +36,7 @@
     </a>
 </div>
 
-<div >
-    <input class="col-12" id="url" type="text" />
-</div>
-<div style="text-align:center">
-    <button class="center-block" id="btn">test ajax</button>
-</div>
+
 
 @*<div class="swiper-container" id="anim">
     <div class="swiper-wrapper">
@@ -81,38 +76,6 @@
 @section scripts {
 
     <script>
-        $(document).ready(function () {
-            $("#btn").click(function () {
-                var uri = $("#url").val();
-                alert("uri=" + uri);
-                if (uri == "") {
-                    uri = "/Ashx/TestAshx.ashx";
-                }
-                $.ajax({
-                    type: "post",
-                    url: uri,
-                    success: function(ret){
-                        alert("执行成功，返回结果：" +ret);
-                    },
-                    error:function(e){
-                        alert(e.responseText);
-                    }
-                })
-            });
-        });
-
-        //function testajax() {
-        //    $.ajax({
-        //        type: "get",
-        //        url: "../Ashx/TestAshx.ashx",
-        //        success: function(ret){
-        //            alert("执行成功，返回结果：" +ret);
-        //        },
-        //        error:function(e){
-        //            alert(e.responseText);
-        //        }
-        //    })
-        //}
     
     </script>
 }

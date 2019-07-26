@@ -23,7 +23,7 @@ namespace hnliving.web.Ashx
                 StringBuilder sbForm = new StringBuilder();
                 foreach (string key in context.Request.Form.Keys)
                 {
-                    sbForm.Append("key=" + key + ",value=" + context.Request.Form[key].ToString());
+                    sbForm.Append(" key=" + key + ",value=" + context.Request.Form[key].ToString());
                 }
                 string strForm = sbForm.ToString();
                 if (!string.IsNullOrEmpty(strForm))
