@@ -34,5 +34,21 @@ namespace Lib.Core
         /// 获得Redis非关系型数据库配置
         /// </summary>
         RedisNOSQLConfigInfo GetRedisNOSQLConfig();
+
+        /// <summary>
+        /// 获得RedisCache缓存配置
+        /// </summary>
+        /// <returns></returns>
+        RedisCacheConfigInfo GetRedisCacheConfig();
+
+        /// <summary>
+        /// 获得Memcached缓存配置
+        /// </summary>
+        MemcachedCacheConfigInfo GetMemcachedCacheConfig();
+
+        /// <summary>
+        /// 获得Memcached会话状态配置
+        /// </summary>
+        MemcachedSessionConfigInfo GetMemcachedSessionConfig();
     }
 }

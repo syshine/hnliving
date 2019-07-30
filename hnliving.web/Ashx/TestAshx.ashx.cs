@@ -23,24 +23,24 @@ namespace hnliving.web.Ashx
                 StringBuilder sbForm = new StringBuilder();
                 foreach (string key in context.Request.Form.Keys)
                 {
-                    sbForm.Append(" key=" + key + ",value=" + context.Request.Form[key].ToString());
+                    sbForm.Append("\r\n key=" + key + ",value=" + context.Request.Form[key].ToString());
                 }
                 string strForm = sbForm.ToString();
                 if (!string.IsNullOrEmpty(strForm))
                 {
-                    result += "\r\n Form:" + strForm;
+                    result += "Form:" + strForm;
                 }
             } else if ("GET" == context.Request.HttpMethod)
             {
                 StringBuilder sbQuery = new StringBuilder();
                 foreach (string key in context.Request.QueryString.Keys)
                 {
-                    sbQuery.Append("key=" + key + ",value=" + context.Request.QueryString[key].ToString());
+                    sbQuery.Append("\r\n key=" + key + ",value=" + context.Request.QueryString[key].ToString());
                 }
                 string strQuery = sbQuery.ToString();
                 if (!string.IsNullOrEmpty(strQuery))
                 {
-                    result += "\r\n QueryString:" + strQuery;
+                    result += "QueryString:" + strQuery;
                 }
             }
 

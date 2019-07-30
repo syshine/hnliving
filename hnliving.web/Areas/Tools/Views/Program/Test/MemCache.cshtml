@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "MemCache缓存";
+}
+
+@section csses{
+    <style>
+        textarea.form-control {
+            height: 100px;
+            max-width:100% !important;
+        }
+
+        /*razor语法和媒体查询符号冲突，需使用两个at*/
+        @@media screen and (max-width: 767.98px) {
+            textarea.form-control {
+                height: 100px;
+            }
+        }
+    </style>
+}
+
+<div class="row ml-0 mr-0 mt-5">
+    @* align-items-centerjustify-content-center login-center*@
+    <div class="col-10 offset-1 bg-teal-7">
+        <h4>欢迎使用MemCache缓存！</h4>
+        <hr />
+        <div class="row">
+
+            <div class="form-group col-md-6">
+                <label class="control-label" for="key">键：</label>
+                <div class="p-0">
+                    <input type="text" id="key" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="control-label" for="value">值：</label>
+                <div class="p-0">
+                    <input type="text" id="value" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group col-md-12">
+                <a href="javascript:void(0)" class="btn btn-primary mr-5" role="button" onclick="setValue()">设置</a>
+                <a href="javascript:void(0)" class="btn btn-primary mr-5" role="button" onclick="getValue()">获取</a>
+            </div>
+
+            <div class="form-group col-12">
+                <label class="control-label" for="result">结果：</label>
+                <div class="p-0">
+                    <textarea id="result" class="form-control"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group col-12">
+                <div class="p-0">
+                    <textarea id="tips" class="form-control" readonly="readonly">
+提示：
+Memcached.ClientLibrary.dll和log4net.dll有版本对应关系
+需要在Properties/AssemblyInfo.cs里添加配置[assembly: log4net.Config.XmlConfigurator(ConfigFile = "App_Data/log4net.config", Watch = true)]
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="form-group col-12">
+                链接：
+                <a href="https://www.cnblogs.com/caokai520/p/4390646.html" class="ml-3">教程</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // 设置
+        function setValue() {
+            var key = $("#key").val();
+            var value = $("#value").val();
+            var params = 'key=' + key + '&value=' + value;
+            $.ajax({
+                type: 'get',
+                url: '/tools/program/test/setmemcache',
+                data: params,
+                success: function (ret) {
+                    $('#result').val(ret);
+                },
+                error: function (e) {
+                    $('#result').val("执行失败，返回结果：" + e.responseText);
+                }
+            })
+        }
+
+        // 获取
+        function getValue() {
+            var key = $("#key").val();
+            var params = 'key=' + key;
+            $.ajax({
+                type: 'get',
+                url: '/tools/program/test/getmemcache',
+                data: params,
+                success: function (ret) {
+                    $('#result').val(ret);
+                },
+                error: function (e) {
+                    $('#result').val("执行失败，返回结果：" + e.responseText);
+                }
+            })
+        }
+
+        // 清空
+        function clearAll() {
+            $.ajax({
+                type: 'get',
+                url: '/tools/program/test/clearmemcache',
+                data: null,
+                success: function (ret) {
+                    $('#result').val(ret);
+                },
+                error: function (e) {
+                    $('#result').val("执行失败，返回结果：" + e.responseText);
+                }
+            })
+        }
+    </script>
+}

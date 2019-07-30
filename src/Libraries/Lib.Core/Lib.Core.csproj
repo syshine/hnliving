@@ -30,6 +30,39 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\..\..\..\C#\DLL\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\..\..\..\C#\DLL\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Memcached.ClientLibrary">
+      <HintPath>..\..\..\..\..\C#\DLL\Memcached.ClientLibrary.DLL</HintPath>
+    </Reference>
+    <Reference Include="PubComp.NoSql.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\PubComp.NoSql.Core.2.0.0\lib\net45\PubComp.NoSql.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PubComp.NoSql.ServiceStackRedis, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\PubComp.NoSql.ServiceStackRedis.2.0.0\lib\net45\PubComp.NoSql.ServiceStackRedis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Common, Version=3.9.70.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\ServiceStack.Common.3.9.70\lib\net35\ServiceStack.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\ServiceStack.Common.3.9.70\lib\net35\ServiceStack.Interfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Redis, Version=3.9.71.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\ServiceStack.Redis.3.9.71\lib\net35\ServiceStack.Redis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=3.9.70.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\ServiceStack.Text.3.9.70\lib\net35\ServiceStack.Text.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -49,6 +82,9 @@
     <Compile Include="Cache\ICacheStrategy.cs" />
     <Compile Include="Cache\MngCache.cs" />
     <Compile Include="Config\Info\AccessConfigInfo.cs" />
+    <Compile Include="Config\Info\RedisCacheConfigInfo.cs" />
+    <Compile Include="Config\Info\MemcachedCacheConfigInfo.cs" />
+    <Compile Include="Config\Info\MemcachedSessionConfigInfo.cs" />
     <Compile Include="Config\Info\SiteConfigInfo.cs" />
     <Compile Include="Config\MngConfig.cs" />
     <Compile Include="Config\IConfigStrategy.cs" />
@@ -70,6 +106,8 @@
     <Compile Include="Helper\CommonHelper.cs" />
     <Compile Include="Helper\EncryptHelper.cs" />
     <Compile Include="Helper\IOHelper.cs" />
+    <Compile Include="Helper\RedisHelper.cs" />
+    <Compile Include="Helper\MemCachedHelper.cs" />
     <Compile Include="Helper\SecureHelper.cs" />
     <Compile Include="Helper\TimeHelper.cs" />
     <Compile Include="Helper\StringHelper.cs" />
@@ -85,6 +123,9 @@
     <Compile Include="Random\RandomImage.cs" />
     <Compile Include="Session\MngSession.cs" />
     <Compile Include="Session\ISessionStrategy.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

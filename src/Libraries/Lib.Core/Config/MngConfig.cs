@@ -17,6 +17,9 @@ namespace Lib.Core
         private static SiteConfigInfo _siteconfiginfo = null;//站点基本配置信息
         private static List<AccessConfigInfo> _lstaccessconfiginfo = null;//站点权限配置信息
         private static RedisNOSQLConfigInfo _redisnosqlconfiginfo = null;//redis非关系数据库配置信息
+        private static RedisCacheConfigInfo _rediscacheconfiginfo = null;//redis缓存配置信息
+        private static MemcachedCacheConfigInfo _memcachedcacheconfiginfo = null;//Memcached缓存配置信息
+        private static MemcachedSessionConfigInfo _memcachedsessionconfiginfo = null;//Memcached会话状态配置信息
 
         static MngConfig()
         {
@@ -85,6 +88,69 @@ namespace Lib.Core
                     }
                 }
                 return _redisnosqlconfiginfo;
+            }
+        }
+
+        /// <summary>
+        /// Redis缓存配置信息
+        /// </summary>
+        public static RedisCacheConfigInfo RedisCacheConfig
+        {
+            get
+            {
+                if (_rediscacheconfiginfo == null)
+                {
+                    lock (_locker)
+                    {
+                        if (_rediscacheconfiginfo == null)
+                        {
+                            _rediscacheconfiginfo = _iconfigstrategy.GetRedisCacheConfig();
+                        }
+                    }
+                }
+                return _rediscacheconfiginfo;
+            }
+        }
+
+        /// <summary>
+        /// Memcached缓存配置信息
+        /// </summary>
+        public static MemcachedCacheConfigInfo MemcachedCacheConfig
+        {
+            get
+            {
+                if (_memcachedcacheconfiginfo == null)
+                {
+                    lock (_locker)
+                    {
+                        if (_memcachedcacheconfiginfo == null)
+                        {
+                            _memcachedcacheconfiginfo = _iconfigstrategy.GetMemcachedCacheConfig();
+                        }
+                    }
+                }
+                return _memcachedcacheconfiginfo;
+            }
+        }
+
+        /// <summary>
+        /// Memcached会话状态配置信息
+        /// </summary>
+        public static MemcachedSessionConfigInfo MemcachedSessionConfig
+        {
+            get
+            {
+                if (_memcachedsessionconfiginfo == null)
+                {
+                    lock (_locker)
+                    {
+                        if (_memcachedsessionconfiginfo == null)
+                        {
+                            _memcachedsessionconfiginfo = _iconfigstrategy.GetMemcachedSessionConfig();
+                        }
+                    }
+                }
+                return _memcachedsessionconfiginfo;
             }
         }
 

@@ -18,8 +18,19 @@ namespace hnliving.web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             HnlViewEngine.RegisterView();//注册多级目录扩展
-            
+
             //Monitor.Init(); //初始化监控
+
+            log4net.Config.XmlConfigurator.Configure();
+            //打开缓存服务连接
+            //MemCachedHelper.Stop();
+            MemCachedHelper.Open(MngConfig.MemcachedCacheConfig, "hnl");
+        }
+
+        protected void Application_End(object sender, EventArgs e)
+        {
+            //关闭缓存服务连接
+            MemCachedHelper.Stop();
         }
     }
 }

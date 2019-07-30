@@ -16,6 +16,9 @@ namespace hnliving.ConfigStrategy.File
         private readonly string _siteconfigfilepath = "/App_Data/site.config";//站点基本配置信息文件路径
         private readonly string _accessconfigfilepath = "/App_Data/access.config";//站点权限配置信息文件路径
         private readonly string _redisnosqlconfigfilepath = "/App_Data/redisnosql.config";//redis非关系型数据库配置信息文件路径
+        private readonly string _rediscacheconfigfilepath = "/App_Data/redis.config";//Redis缓存配置信息文件路径
+        private readonly string _memcachedcacheconfigfilepath = "/App_Data/memcachedcache.config";//Memcached缓存配置信息文件路径
+        private readonly string _memcachedsessionconfigfilepath = "/App_Data/memcachedsession.config";//Memcached会话状态配置信息文件路径
 
         #endregion
 
@@ -96,6 +99,30 @@ namespace hnliving.ConfigStrategy.File
         public RedisNOSQLConfigInfo GetRedisNOSQLConfig()
         {
             return (RedisNOSQLConfigInfo)LoadConfigInfo(typeof(RedisNOSQLConfigInfo), IOHelper.GetMapPath(_redisnosqlconfigfilepath));
+        }
+
+        /// <summary>
+        /// 获得Redis缓存配置
+        /// </summary>
+        public RedisCacheConfigInfo GetRedisCacheConfig()
+        {
+            return (RedisCacheConfigInfo)LoadConfigInfo(typeof(RedisCacheConfigInfo), IOHelper.GetMapPath(_rediscacheconfigfilepath));
+        }
+
+        /// <summary>
+        /// 获得Memcached缓存配置
+        /// </summary>
+        public MemcachedCacheConfigInfo GetMemcachedCacheConfig()
+        {
+            return (MemcachedCacheConfigInfo)LoadConfigInfo(typeof(MemcachedCacheConfigInfo), IOHelper.GetMapPath(_memcachedcacheconfigfilepath));
+        }
+
+        /// <summary>
+        /// 获得Memcached会话状态配置
+        /// </summary>
+        public MemcachedSessionConfigInfo GetMemcachedSessionConfig()
+        {
+            return (MemcachedSessionConfigInfo)LoadConfigInfo(typeof(MemcachedSessionConfigInfo), IOHelper.GetMapPath(_memcachedsessionconfigfilepath));
         }
     }
 }

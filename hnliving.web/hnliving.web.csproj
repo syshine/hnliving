@@ -57,6 +57,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\C#\DLL\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -539,8 +543,17 @@
     <Content Include="Areas\Tools\Views\Program\UEditor\Edit.cshtml" />
     <Content Include="App_Data\access.config">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="WebServices\WebService1.asmx" />
+    <Content Include="App_Data\memcachedcache.config" />
+    <Content Include="Areas\Tools\Views\Program\Test\MemCache.cshtml" />
+    <Content Include="App_Data\memcachedsession.config" />
+    <Content Include="App_Data\log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\redis.config" />
+    <Content Include="Areas\Tools\Views\Program\Test\Redis.cshtml" />
     <None Include="Service References\ServiceReferenceJava\configuration91.svcinfo" />
     <None Include="Service References\ServiceReferenceJava\configuration.svcinfo" />
     <Content Include="Service References\ServiceReferenceJava\hnliving.web.ServiceReferenceJava.saveResponse.datasource">
@@ -712,9 +725,7 @@
     <Folder Include="Areas\H5\Models\" />
     <Folder Include="Areas\H5\Views\Default\" />
     <Folder Include="Areas\Study\Models\" />
-    <Folder Include="Areas\Study\Views\Test\" />
     <Folder Include="Areas\Tools\Views\Encrypt\" />
-    <Folder Include="Areas\Tools\Views\Program\Test\" />
     <Folder Include="Areas\Travel\HaiKou\Models\" />
     <Folder Include="Areas\Travel\SanYa\Models\" />
     <Folder Include="Areas\Travel\WenChang\" />
