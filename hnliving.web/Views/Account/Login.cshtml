@@ -134,4 +134,12 @@
     @Scripts.Render("~/bundles/jqueryval")
 
     <script src="~/Canvas/DotLineBkg.js"></script>
+
+    <script>
+        $("input").keydown(function (e) {
+            if (e.keyCode == 13) {
+                login();
+            }
+        });
+    </script>
 }

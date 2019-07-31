@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace hnliving.web.Areas.Study.Controllers.Program
 {
-    public class HomeController : Controller
+    public class HomeController : BaseWebController
     {
         const string path = "~/Areas/Study/Views/Program/Home/{0}.cshtml";
 

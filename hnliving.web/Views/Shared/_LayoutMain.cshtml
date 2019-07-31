@@ -11,36 +11,21 @@
     @RenderSection("csses", required: false)
     @RenderSection("scriptHead", required: false)
 
+    @Scripts.Render("~/bundles/jquery")
+
     <script type="text/javascript">
         // 字体适配不同屏幕大小
         document.documentElement.style.fontSize = document.documentElement.clientWidth / 640 * 10 + 'px';// * 100
     </script>
 </head>
 <body>
-    <div class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
-        @Html.ActionLink("琼游记", "Index", "Home", new { area = "" }, new { @class = "navbar-brand text-v-lgdt-btg hub" })
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#collapsibleNavbarMain">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-        <div class="collapse navbar-collapse" id="collapsibleNavbarMain">
-            <ul class="navbar-nav">
-                <li class="nav-item">@Html.ActionLink("主页", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("关于", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("联系方式", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-            </ul>
-            @Html.Partial("_LoginPartial")
-        </div>
-    </div>
 
-    @*<div style="margin-top:56px;"></div>   设置margin-top是为了不让固定的导航栏遮挡住内容*@
+    @Html.Partial("_LayoutHead")
 
     <div class="" id="render-body">
         @RenderBody()
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")@*-3.3.7*@
     @Scripts.Render("~/bundles/Swiper-min")
     @RenderSection("scripts", required: false)

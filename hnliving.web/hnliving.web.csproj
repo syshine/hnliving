@@ -554,6 +554,9 @@
     </Content>
     <Content Include="App_Data\redis.config" />
     <Content Include="Areas\Tools\Views\Program\Test\Redis.cshtml" />
+    <Content Include="Areas\Study\Views\Program\Bootstrap\Index.cshtml" />
+    <Content Include="Areas\Study\Views\Program\Bootstrap\Modal.cshtml" />
+    <Content Include="Areas\Study\Views\Program\Bootstrap\ToolTip.cshtml" />
     <None Include="Service References\ServiceReferenceJava\configuration91.svcinfo" />
     <None Include="Service References\ServiceReferenceJava\configuration.svcinfo" />
     <Content Include="Service References\ServiceReferenceJava\hnliving.web.ServiceReferenceJava.saveResponse.datasource">
@@ -712,6 +715,7 @@
     <None Include="Service References\ServiceReferenceJava\WebServiceImplService.wsdl" />
     <Content Include="Views\Assistant\InternalServerError.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Shared\_LayoutHead.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

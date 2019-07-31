@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+    //Layout = "~/Areas/Study/Views/Shared/_LayoutDefault.cshtml";
+}
+
+@section csses{
+    <style>
+        .card-width {
+            width: 300px;
+            min-width: 200px;
+        }
+
+        /*razor语法和媒体查询符号冲突，需使用两个at*/
+        @@media screen and (max-width: 575.98px) {
+            .card-width {
+                width: 200px;
+            }
+        }
+    </style>
+}
+
+<div class="center-block mt-5">
+    <h2>Bootstrap Index（本文以Bootstrap4为基础）</h2>
+</div>
+<div class="container-fluid col-12 col-md-6">
+    <div class="p-0 scroll-y-auto" id="nav">
+        正在加载...
+    </div>
+
+    <div class="form-group mt-3">
+        链接：
+        <a href="https://www.runoob.com/bootstrap4/bootstrap4-tutorial.html" class="ml-3">Bootstrap4 教程</a>
+        <a href="https://www.runoob.com/bootstrap/bootstrap-tutorial.html" class="ml-3">Bootstrap3 教程</a>
+        <a href="https://www.runoob.com/try/bootstrap/layoutit/" class="ml-3">Bootstrap可视化布局</a>
+    </div>
+</div>
+
+
+@section Scripts {
+
+    <script src="~/Navigate/BootstrapNav.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            // 绑定导航栏菜单
+            bindNav("nav", navBs);
+
+        });
+
+        // 绑定导航栏
+        function bindNav(id, navParam) {
+            var htmlCode = "";
+            if (navParam != undefined && navParam != null) {
+                for (var j = 0; j < navParam.navList.length; j++) {
+                    if (navParam.navList[j].hide === true) {
+                        continue;
+                    }
+
+                    htmlCode += "<a href='" + navParam.navList[j].url + "' class='list-group-item'>" + navParam.navList[j].title + "</a>";
+                }
+            }
+            if (htmlCode != "") {
+                $("#" + id).html(htmlCode);
+            }
+        }
+    </script>
+
+}

@@ -31,7 +31,7 @@
         <form name="userInfoForm" action="">
             <table width="100%" border="0" cellpadding="0" cellspacing="0" class="memberTable">
                 <tr>
-                    <th width="100" align="right">用户名：</th>
+                    <th width="30%" align="right">用户名：</th>
                     <td>
                         @if (Model.UserInfo.UserName.Length > 0)
                         {
@@ -46,45 +46,45 @@
                 </tr>
 
                 <tr>
-                    <th width="100" align="right">昵称：</th>
-                    <td><input type="text" name="nickName" value="@Model.UserInfo.NickName" class="text" maxlength="15" style="width:200px" />@*<span class="tip">这里是提示信息</span>*@</td>
+                    <th width="" align="right">昵称：</th>
+                    <td><input class="form-control" type="text" name="nickName" value="@Model.UserInfo.NickName" maxlength="15" style="width:200px" />@*<span class="tip">这里是提示信息</span>*@</td>
                 </tr>
 
                 <tr>
-                    <th width="100" align="right">真实姓名：</th>
-                    <td><input type="text" name="realName" value="@Model.UserInfo.RealName" class="text" maxlength="15" style="width:200px" />@*<span class="tip">这里是提示信息</span>*@</td>
+                    <th width="" align="right">真实姓名：</th>
+                    <td><input class="form-control" type="text" name="realName" value="@Model.UserInfo.RealName" maxlength="15" style="width:200px" />@*<span class="tip">这里是提示信息</span>*@</td>
                 </tr>
 
                 <tr>
-                    <th width="100" align="right">性别：</th>
+                    <th width="" align="right">性别：</th>
                     <td>
-                        <label class="radio"><input type="radio" name="gender" value="1" @{if (Model.UserInfo.Gender == 1) { <text> checked="checked" </text>  }} />男</label>
-                        <label class="radio"><input type="radio" name="gender" value="2" @{if (Model.UserInfo.Gender == 2) { <text> checked="checked" </text>  }} />女</label>
+                        <label class="radio mr-3" for="male"><input class="text" id="male" type="radio" name="gender" value="1" @{if (Model.UserInfo.Gender == 1) { <text> checked="checked" </text>  }} />男</label>
+                        <label class="radio mr-3" for="female"><input class="text" id="female" type="radio" name="gender" value="2" @{if (Model.UserInfo.Gender == 2) { <text> checked="checked" </text>  }} />女</label>
                     </td>
                 </tr>
 
                 <tr>
-                    <th width="100" align="right">身份证号码：</th>
-                    <td><input type="text" name="idCard" value="@Model.UserInfo.IdCard" class="text" maxlength="18" style="width:200px" />@*<span class="tip">这里是提示信息</span>*@</td>
+                    <th width="" align="right">身份证号码：</th>
+                    <td><input class="form-control" type="text" name="idCard" value="@Model.UserInfo.IdCard" maxlength="18" style="width:200px" />@*<span class="tip">这里是提示信息</span>*@</td>
                 </tr>
 
                 <tr>
-                    <th width="100" align="right">出生日期：</th>
-                    <td><input type="text" name="bday" value="@Model.UserInfo.Bday.ToString("yyyy-MM-dd")" class="text" maxlength="15" style="width:200px" />@*<span class="tip">这里是提示信息</span>*@</td>
+                    <th width="" align="right">出生日期：</th>
+                    <td><input class="form-control" type="text" name="bday" value="@Model.UserInfo.Bday.ToString("yyyy-MM-dd")" maxlength="15" style="width:200px" />@*<span class="tip">这里是提示信息</span>*@</td>
                 </tr>
 
                 <tr>
-                    <th width="100" align="right">详细地址：</th>
-                    <td><input type="text" name="address" value="@Model.UserInfo.Address" class="text" maxlength="15" />@*<span class="tip">这里是提示信息</span>*@</td>
+                    <th width="" align="right">详细地址：</th>
+                    <td><input class="form-control" type="text" name="address" value="@Model.UserInfo.Address" maxlength="15" />@*<span class="tip">这里是提示信息</span>*@</td>
                 </tr>
 
                 <tr>
-                    <th width="100" align="right">@*<em>*</em>*@个人简介：</th>
-                    <td><textarea rows="5" cols="40" name="bio" class="text" style=" height:100px;">@Model.UserInfo.Bio</textarea>@*<span class="tip">这里是提示信息</span>*@</td>
+                    <th width="" align="right">@*<em>*</em>*@个人简介：</th>
+                    <td><textarea rows="5" cols="40" name="bio" class="text" style="height:100px;">@Model.UserInfo.Bio</textarea>@*<span class="tip">这里是提示信息</span>*@</td>
                 </tr>
 
                 <tr>
-                    <th width="100" align="right">&nbsp;</th>
+                    <th width="" align="right">&nbsp;</th>
                     <td><a href="javascript:void(0)" class="btn btn-primary" role="button" onclick="editUser()">提交</a></td>
                 </tr>
             </table>
@@ -96,4 +96,20 @@
     @Scripts.Render("~/bundles/jqueryval")
 
     <script src="~/Canvas/DotLineBkg.js"></script>
+
+    <script>
+        $().ready(function () {
+            $(":text").keydown(function (e) {
+                if (e.keyCode == 13) {
+                    editUser();
+                }
+            });
+            
+            $("textarea").keydown(function (e) {
+                if (e.keyCode == 13) {
+                    editUser();
+                }
+            });
+        });
+    </script>
 }

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace hnliving.web.Areas.Study.Controllers.Program
 {
-    public class SwiperController : Controller
+    public class SwiperController : BaseWebController
     {
         // GET: Study/Program/Swiper
         public ActionResult Index()

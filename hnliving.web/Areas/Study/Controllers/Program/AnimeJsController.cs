@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace hnliving.web.Areas.Study.Controllers.Program
 {
-    public class AnimeJsController : Controller
+    public class AnimeJsController : BaseWebController
     {
         // GET: Study/Program/AnimeJs
         public ActionResult Index()

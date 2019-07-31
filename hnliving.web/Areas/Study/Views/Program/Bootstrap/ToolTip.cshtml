@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "提示框";
+    Layout = "~/Areas/Study/Views/Program/Shared/_LayoutBootstrap.cshtml";
+}
+
+<div class="col-12">
+    <h4 class="mt-4">普通</h4>
+    <div class="code-div">
+        <!-- 注意: 提示框要写在 jQuery 的初始化代码里:$('[data-toggle=/"tooltip/"]').tooltip();  -->
+        <a href="#" data-toggle="tooltip" title="我是提示内容!">鼠标移动到我这</a>
+    </div>
+
+    <h4 class="mt-4">顶部提示框</h4>
+    <div class="code-div">
+        <!-- 注意: 提示框要写在 jQuery 的初始化代码里:$('[data-toggle=/"tooltip/"]').tooltip();  -->
+        <a href="#" data-toggle="tooltip" data-placement="top" title="我是提示内容!">鼠标移动到我这</a>
+    </div>
+
+    <h4 class="mt-4">底部提示框</h4>
+    <div class="code-div">
+        <!-- 注意: 提示框要写在 jQuery 的初始化代码里:$('[data-toggle=/"tooltip/"]').tooltip();  -->
+        <a href="#" data-toggle="tooltip" data-placement="bottom" title="我是提示内容!">鼠标移动到我这</a>
+    </div>
+
+    <h4 class="mt-4">左边提示框</h4>
+    <div class="code-div">
+        <!-- 注意: 提示框要写在 jQuery 的初始化代码里:$('[data-toggle=/"tooltip/"]').tooltip();  -->
+        <a href="#" data-toggle="tooltip" data-placement="left" title="我是提示内容!">鼠标移动到我这</a>
+    </div>
+
+    <h4 class="mt-4">右边提示框</h4>
+    <div class="code-div">
+        <!-- 注意: 提示框要写在 jQuery 的初始化代码里:$('[data-toggle=/"tooltip/"]').tooltip();  -->
+        <a href="#" data-toggle="tooltip" data-placement="right" title="我是提示内容!">鼠标移动到我这</a>
+    </div>
+</div>
+
+  
+
+@section Scripts {
+
+    <script src="~/Navigate/BootstrapNav.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            // 绑定导航栏菜单
+            $('[data-toggle="tooltip"]').tooltip();
+
+        });
+    </script>
+
+}

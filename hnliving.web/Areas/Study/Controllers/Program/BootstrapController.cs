@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace hnliving.web.Areas.Study.Controllers.Program
 {
-    public class BootstrapController : Controller
+    public class BootstrapController : BaseWebController
     {
         // GET: Study/Program/Bootstrap
         public ActionResult Index()
@@ -35,6 +35,16 @@ namespace hnliving.web.Areas.Study.Controllers.Program
         }
 
         public ActionResult TabPane()
+        {
+            return View();
+        }
+
+        public ActionResult Modal()
+        {
+            return View();
+        }
+
+        public ActionResult ToolTip()
         {
             return View();
         }

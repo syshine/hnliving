@@ -262,24 +262,11 @@
             }
         }
     </style>
+
+    @Scripts.Render("~/bundles/jquery")
 </head>
 <body class="bg-dark text-light">
-    <div class="navbar navbar-expand-md bg-dark navbar-dark fixed-top" id="navMain">
-        @Html.ActionLink("琼游记", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#collapsibleNavbarMain">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-        <div class="collapse navbar-collapse" id="collapsibleNavbarMain">
-            <ul class="navbar-nav">
-                <li class="nav-item">@Html.ActionLink("主页", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("关于", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("联系方式", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-            </ul>
-            @*@Html.Partial("_LoginPartial")*@
-        </div>
-    </div>
+    @Html.Partial("_LayoutHead")
 
     @*<div style="margin-top:56px;"></div>   设置margin-top是为了不让固定的导航栏遮挡住内容*@
     <div class="left-nav-toggler d-md-none" id="left-nav-toggler">
@@ -311,13 +298,11 @@
         <br />
         @*显示html代码的div参考位置*@
         <div id="ref-loc"></div>
-        <div id="code-wrap" class="m-0 show-code-wrap-height">
-            <ul id="tabCode" class="nav nav-tabs">
-                <li class="nav-item">
+        <div class="m-0 show-code-wrap-height" id="code-wrap">
+            <ul class="nav nav-tabs" id="tabCode">
+                <li class="nav-item" id="btm-fix-toggler">
                     <div class="nav-link bg-gray-8">
-                        <div class="" id="btm-fix-toggler">
-                            <i class="glyphicon glyphicon-menu-down"></i>
-                        </div>
+                        <i class="glyphicon glyphicon-menu-down"></i>
                     </div>
                 </li>
                 <li class="nav-item"><a href="#html-code" class="nav-link active show" data-toggle="tab">html</a></li>
@@ -341,8 +326,7 @@
     <div id="js-code-wrap" class="d-none">
         @RenderSection("JsCode", required: false)
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
+    
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/anime-js")
     @RenderSection("scripts", required: false)
@@ -422,15 +406,12 @@
                 if (enableFixBtm) {
                     // 关闭固定
                     enableFixBtm = false;
-                    $(this).children(".glyphicon").removeClass("glyphicon-menu-down").addClass("glyphicon-menu-up");
-                    //$(this).addClass("btm-fix-toggler");
+                    $(this).find(".glyphicon").removeClass("glyphicon-menu-down").addClass("glyphicon-menu-up");
                     $("#code-wrap").removeClass("bottom-fixed");
                 } else {
                     // 打开固定
                     enableFixBtm = true;
-                    $(this).children(".glyphicon").removeClass("glyphicon-menu-up").addClass("glyphicon-menu-down");
-                    //$(this).removeClass("btm-fix-toggler");
-                    //$("#aaa").removeClass("invisible");
+                    $(this).find(".glyphicon").removeClass("glyphicon-menu-up").addClass("glyphicon-menu-down");
                     fixBottom();
                 }
             })
@@ -522,7 +503,7 @@
             //$("#show-code").text($(ctrl).prop("outerHTML"));
 
             // 内容变化时引起高度变化
-            code_height = $("#code-wrap").height();
+            code_height = $("#code-wrap").outerHeight();
         }
 
         // html代码格式化
