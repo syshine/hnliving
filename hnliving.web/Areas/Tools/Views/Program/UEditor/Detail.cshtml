@@ -15,21 +15,22 @@
     </style>
 }
 
-<div class="row ml-0 mr-0 mt-5"> @* align-items-centerjustify-content-center login-center*@
-    <div class="col-10 offset-1 col-sm-8 offset-sm-2 bg-teal-7">
+<div class="row ml-0 mr-0 mt-md-5">
+    <div class="col-12 offset-0 col-md-10 offset-md-1 bg-teal-7" id="container">
         <h4>欢迎使用UEditor编辑器！</h4>
         <hr />
 
 
         <div class="form-group">
             <form action="server.php" method="post">
-                <script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
+                <script id="editor" type="text/plain" style="width:1024px;height:500px;">
+                </script>
             </form>
             <script type="text/javascript">
                 window.UEDITOR_CONFIG.serverUrl = "/Ashx/UEditorUpload.ashx";//"/Tools/Program/UEditor/Add";
                 var ue_editor = UE.getEditor('editor');
                 //ue_editor.setDisabled('fullscreen');
-                ue_editor.ready(function(){ 
+                ue_editor.ready(function(){
                     ue_editor.setContent('@ViewBag.uecontent');
                     //ue_editor.setEnabled();
                 });
@@ -80,11 +81,11 @@
 
 
     @*<script>
-        //实例化编辑器
-        //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
-        window.UEDITOR_CONFIG.imageUrl = "/Tools/Program/UEditor";
-        var ue = UE.getEditor('editor');
+            //实例化编辑器
+            //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+            window.UEDITOR_CONFIG.imageUrl = "/Tools/Program/UEditor";
+            var ue = UE.getEditor('editor');
 
-    </script>*@
+        </script>*@
 
 }

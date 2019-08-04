@@ -21,7 +21,10 @@ namespace hnliving.web.Areas.Tools.Controllers.Program
 
         public ActionResult List()
         {
-            List<UEditorEntity> lstUe = UEditorSer.GetList(WorkContext.Uid);
+            // 获取内容的ID
+            int uid = UserRanks.IsContentEditor(WorkContext.Uid) ? -1 : WorkContext.Uid;
+
+            List<UEditorEntity> lstUe = UEditorSer.GetList(uid);
 
             #region //排序
             //// 排序
@@ -44,7 +47,7 @@ namespace hnliving.web.Areas.Tools.Controllers.Program
             #endregion
 
             // 分类ID名称
-            DataTable dtSort = UEditorSer.GetSort(WorkContext.Uid);
+            DataTable dtSort = UEditorSer.GetSort(uid);
             Hashtable htSort = new Hashtable();
             foreach (DataRow dr in dtSort.Rows)
             {
@@ -61,10 +64,13 @@ namespace hnliving.web.Areas.Tools.Controllers.Program
         [HttpGet]
         public ActionResult Add()
         {
+            // 获取内容的ID
+            int uid = UserRanks.IsContentEditor(WorkContext.Uid) ? -1 : WorkContext.Uid;
+
             AddUEditorModel model = new AddUEditorModel();
 
             // 分类
-            DataTable dtSort = UEditorSer.GetSort(WorkContext.Uid);
+            DataTable dtSort = UEditorSer.GetSort(uid);
             List<SelectListItem> lstType = new List<SelectListItem>();
             foreach (DataRow dr in dtSort.Rows)
             {
@@ -82,9 +88,12 @@ namespace hnliving.web.Areas.Tools.Controllers.Program
         [HttpPost]
         public ActionResult Add(AddUEditorModel model)
         {
+            // 获取内容的ID
+            int uid = UserRanks.IsContentEditor(WorkContext.Uid) ? -1 : WorkContext.Uid;
+
             UEditorEntity uee = new UEditorEntity()
             {
-                Uid = WorkContext.Uid,
+                Uid = uid,
                 Title = model.Title,
                 Typeid = model.TypeId,
                 Ue_content = model.Content,
@@ -104,9 +113,12 @@ namespace hnliving.web.Areas.Tools.Controllers.Program
         [HttpGet]
         public ActionResult Edit(int ueid = -1)
         {
+            // 获取内容的ID
+            int uid = UserRanks.IsContentEditor(WorkContext.Uid) ? -1 : WorkContext.Uid;
+
             UEditorEntity uee = UEditorSer.GetById(ueid);
 
-            if (uee.Uid != WorkContext.Uid)
+            if (uee.Uid != uid)
             {
                 return PromptView("不能操作此内容");
             }
@@ -120,7 +132,7 @@ namespace hnliving.web.Areas.Tools.Controllers.Program
             };
 
             // 分类
-            DataTable dtSort = UEditorSer.GetSort(WorkContext.Uid);
+            DataTable dtSort = UEditorSer.GetSort(uid);
             List<SelectListItem> lstType = new List<SelectListItem>();
             foreach(DataRow dr in dtSort.Rows)
             {
@@ -138,10 +150,13 @@ namespace hnliving.web.Areas.Tools.Controllers.Program
         [HttpPost]
         public ActionResult Edit(EditUEditorModel model, int ueid = -1)
         {
+            // 获取内容的ID
+            int uid = UserRanks.IsContentEditor(WorkContext.Uid) ? -1 : WorkContext.Uid;
+
             UEditorEntity uee = new UEditorEntity()
             {
                 Id = ueid,
-                Uid = WorkContext.Uid,
+                Uid = uid,
                 Title = model.Title,
                 Typeid = model.TypeId,
                 Ue_content = model.Content,
@@ -151,7 +166,7 @@ namespace hnliving.web.Areas.Tools.Controllers.Program
 
             //return View(uee);
             if (UEditorSer.Update(uee) > 0)
-                return PromptView(Url.Action("Edit", new { ueid = ueid }), "保存成功！", true); //("保存成功");
+                return PromptView(Url.Action("Edit", new { ueid = ueid }), "保存成功！", true);
             else
                 return PromptView(Url.Action("Edit", new { ueid = ueid }), "保存失败！", true);
         }
@@ -161,7 +176,10 @@ namespace hnliving.web.Areas.Tools.Controllers.Program
         /// </summary>
         public ActionResult Delete(int ueid)
         {
-            if (UEditorSer.DeleteById(WorkContext.Uid, ueid) > 0)
+            // 获取内容的ID
+            int uid = UserRanks.IsContentEditor(WorkContext.Uid) ? -1 : WorkContext.Uid;
+
+            if (UEditorSer.DeleteById(uid, ueid) > 0)
                 return PromptView(Url.Action("List"), "删除成功！", true);
             else
                 return PromptView(Url.Action("List"), "删除失败！", true);
@@ -174,7 +192,10 @@ namespace hnliving.web.Areas.Tools.Controllers.Program
         /// <returns></returns>
         public ActionResult Sort()
         {
-            DataTable dt = UEditorSer.GetSort(WorkContext.Uid);
+            // 获取内容的ID
+            int uid = UserRanks.IsContentEditor(WorkContext.Uid) ? -1 : WorkContext.Uid;
+
+            DataTable dt = UEditorSer.GetSort(uid);
 
             return View(dt);
         }
@@ -185,7 +206,10 @@ namespace hnliving.web.Areas.Tools.Controllers.Program
         [HttpPost]
         public ActionResult AddSort(string title)
         {
-            if (UEditorSer.AddSort(WorkContext.Uid, title) > 0)
+            // 获取内容的ID
+            int uid = UserRanks.IsContentEditor(WorkContext.Uid) ? -1 : WorkContext.Uid;
+
+            if (UEditorSer.AddSort(uid, title) > 0)
                 return PromptView(Url.Action("Sort"), "新增分类成功！", true);
             else
                 return PromptView(Url.Action("Sort"), "新增分类失败！", true);
@@ -196,7 +220,10 @@ namespace hnliving.web.Areas.Tools.Controllers.Program
         /// </summary>
         public ActionResult DeleteSort(int sid)
         {
-            if (UEditorSer.DeleteSortById(WorkContext.Uid, sid) > 0)
+            // 获取内容的ID
+            int uid = UserRanks.IsContentEditor(WorkContext.Uid) ? -1 : WorkContext.Uid;
+
+            if (UEditorSer.DeleteSortById(uid, sid) > 0)
                 return PromptView(Url.Action("Sort"), "删除成功！", true);
             else
                 return PromptView(Url.Action("Sort"), "删除失败！", true);

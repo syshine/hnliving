@@ -81,4 +81,38 @@ namespace hnliving.web.Models
         public string Content { get; set; }
 
     }
+
+    /// <summary>
+    /// 查看ueditor模型类
+    /// </summary>
+    public class ShowUEditorModel
+    {
+        public ShowUEditorModel()
+        {
+        }
+
+        /// <summary>
+        /// id
+        /// </summary>
+        public int UeId { get; set; }
+
+        /// <summary>
+        /// 分类名称
+        /// </summary>、
+        [DisplayName("分类")]
+        public string TypeName { get; set; }
+
+        /// <summary>
+        /// 标题
+        /// </summary>
+        [DisplayName("标题")]
+        public string Title { get; set; }
+
+        /// <summary>
+        /// 内容
+        /// </summary>
+        [AllowHtml]
+        public string Content { get; set; }
+
+    }
 }

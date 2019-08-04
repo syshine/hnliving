@@ -89,6 +89,13 @@ namespace Lib.Core
         /// <param name="sid"></param>
         /// <returns></returns>
         int DeleteSortUEditorById(int uid, int sid);
+
+        /// <summary>
+        /// 根据ID获取名称
+        /// </summary>
+        /// <param name="typeid"></param>
+        /// <returns></returns>
+        string GetName(int typeid);
         #endregion
         #endregion
     }

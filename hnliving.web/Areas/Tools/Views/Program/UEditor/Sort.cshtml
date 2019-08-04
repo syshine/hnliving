@@ -7,8 +7,8 @@
 @section scriptsHead{
 }
 
-<div class="row ml-0 mr-0 mt-5"> @* align-items-centerjustify-content-center login-center*@
-    <div class="col-10 offset-1 col-sm-8 offset-sm-2 bg-teal-7">
+<div class="row ml-0 mr-0 mt-md-5">
+    <div class="col-12 offset-0 col-md-10 offset-md-1 bg-teal-7" id="container">
         <h4>UEditor列表：</h4>
         <hr />
 
@@ -43,8 +43,8 @@
                 </thead>
                 <tbody>
                     @*@foreach (System.Data.DataRow dr in Model.Rows)*@
-                     @for (int i = 0; i < Model.Rows.Count; i++) 
-                     {
+                    @for (int i = 0; i < Model.Rows.Count; i++)
+                    {
                         <tr>
                             <td></td>
                             <td>@(i + 1)</td>
@@ -52,11 +52,11 @@
                             <td>@Html.ActionLink("编辑", "editSort", new { sid = Model.Rows[i]["sid"].ToString() }, new { @class = "editOperate" })</td>
                             <td>@Html.ActionLink("删除", "deleteSort", new { sid = Model.Rows[i]["sid"].ToString() }, new { @class = "deleteOperate" })</td>
                             @*<td>
-                                @if (i == Model.Rows.Count - 1)
-                                {
-                                    <a href="javascript:void(0)" class="btn btn-primary" role="button" onclick="addSortButton()">添加</a>
-                                }
-                            </td>*@
+                                    @if (i == Model.Rows.Count - 1)
+                                    {
+                                        <a href="javascript:void(0)" class="btn btn-primary" role="button" onclick="addSortButton()">添加</a>
+                                    }
+                                </td>*@
                         </tr>
                     }
                 </tbody>

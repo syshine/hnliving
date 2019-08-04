@@ -20,12 +20,15 @@ namespace hnliving.web.Controllers
 
             try
             {
+                // 获取内容的ID
+                int uid = -1;// UserRanks.IsContentEditor(WorkContext.Uid) ? -1 : WorkContext.Uid;
+
                 // 内容
-                lstUe = UEditorSer.GetList(1);
+                lstUe = UEditorSer.GetList(uid);
                 ViewData["lstUe"] = lstUe;
 
                 // 分类ID名称
-                DataTable dtSort = UEditorSer.GetSort(WorkContext.Uid);
+                DataTable dtSort = UEditorSer.GetSort(uid);
                 htSort = new Hashtable();
                 foreach (DataRow dr in dtSort.Rows)
                 {

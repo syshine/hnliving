@@ -22,7 +22,7 @@
             top:8rem;
         }
 
-        #dyc .container{
+        #dynamic .container{
             opacity:0;
             position:relative;
             top:8rem;
@@ -89,40 +89,42 @@
 <div id="trans-plcholder" style="color:red;height:30rem;"></div>
 
 <!-- 动态 -->
-<div class="bg-lgdt-btg-9" id="dyc">
+<div class="bg-lgdt-btg-9" id="dynamic">
     <div class="container p-1">
-        <h1>动态：</h1>
-        <table class="table table-striped table-hover" id="dyc_list">
-            <thead>
-                <tr>
-                    <th align="left">标题</th>
-                    <th id="dyc-sort" width="80" align="center">分类</th>
-                    <th id="dyc-date" width="100" align="center">更新时间</th>
-                </tr>
-            </thead>
-            <tbody>
-                @if (lstUe != null)
-                {
-                    foreach (UEditorEntity uee in lstUe)
+        <div class="col-md-6">
+            <h3>动态：</h3>
+            <table class="table table-striped table-hover" id="dynamic_list">
+                <thead>
+                    <tr>
+                        <th align="left">标题</th>
+                        <th id="dynamic-sort" width="80" align="center">分类</th>
+                        <th id="dynamic-date" width="100" align="center">更新时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (lstUe != null)
                     {
-                        <tr onclick="location.href='/dyc?id=@uee.Id';">
-                            <td>@uee.Title</td>
-                            <td>
-                                @if (htSort != null)
-                                {
-                                    if (htSort.ContainsKey(@uee.Typeid.ToString()))
-                                    {
-                                        htSort[@uee.Typeid.ToString()].ToString();
-                                    }
-                                }
-                            </td>
-                            <td>@uee.Update_time.ToString("yyyy-MM-dd")</td>
-                        </tr>
+                        foreach (UEditorEntity uee in lstUe)
+                        {
+                                <tr> @*<tr onclick="location.href='/content/index?id=@uee.Id';">*@
+                                    <td><a href="/content/index?id=@uee.Id">@uee.Title</a></td>
+                                    <td>
+                                        @if (htSort != null)
+                                        {
+                                            if (htSort.ContainsKey(@uee.Typeid.ToString()))
+                                            {
+                                                @htSort[@uee.Typeid.ToString()].ToString()
+                                                @*<a href="/content/list?typeid=@uee.Typeid">@htSort[@uee.Typeid.ToString()].ToString()</a>*@
+                                            }
+                                        }
+                                    </td>
+                                    <td>@uee.Update_time.ToString("yyyy-MM-dd")</td>
+                                </tr>
+                        }
                     }
-                }
-            </tbody>
-        </table>
-
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
@@ -218,10 +220,10 @@
             // 窗口改变大小事件
             $(window).resize(function () {
                 // 字体适配不同屏幕大小
-                fontAdapt();
+                //fontAdapt();
 
                 // 设置高度一样(为了顶部菜单占位)
-                setBodyPadding();
+                //setBodyPadding();
 
                 // 设置占位DIV
                 setPlaceholder();
@@ -251,7 +253,7 @@
                 setIntro();
 
                 // 设置动态DIV
-                setDyc();
+                setDynamic();
             }
 
             // 设置背景图片
@@ -360,10 +362,10 @@
             }
 
             // 设置动态DIV
-            function setDyc() {
+            function setDynamic() {
                 // 调整表头宽度
-                $('#dyc-sort').width(4 * rem);
-                $('#dyc-date').width(6 * rem);
+                $('#dynamic-sort').width(4 * rem);
+                $('#dynamic-date').width(6 * rem);
 
                 var opacityValue = 0;   // 不透明值
 
@@ -372,21 +374,21 @@
                 var w_width = $(window).outerWidth();
                 var w_height = $(window).outerHeight();
 
-                // dyc位置信息
-                var top = $('#dyc').offset().top;
-                var height = $("#dyc").outerHeight();
+                // dynamic位置信息
+                var top = $('#dynamic').offset().top;
+                var height = $("#dynamic").outerHeight();
 
                 var startPos = top - 0.6 * w_height;   // 清晰的开始位置
                 var endPos = 0;     // 清晰的结束位置(模糊的开始位置)
 
                 if (rate > 1) { // 宽大于高（电脑）
                     startPos = top - 0.8 * w_height;
-                    endPos = top - 0.3 * w_height;
+                    endPos = top - 0.5 * w_height;
                 } else {        // 宽小于高（手机）
                     startPos = top - 0.8 * w_height;
                     endPos = top - 0.5 * w_height;
                 }
-                //$('#debug-info').text('setDyc startPos=' + startPos + ',top=' + top + ',height=' + height + ',w_height=' + w_height + ',scroll_top=' + scroll_top);
+                //$('#debug-info').text('setDynamic startPos=' + startPos + ',top=' + top + ',height=' + height + ',w_height=' + w_height + ',scroll_top=' + scroll_top);
 
                 // 不透明值
                 if (scroll_top > startPos) {
@@ -397,14 +399,14 @@
 
                 // 渐入动画
                 if (scroll_top > startPos - 0.2 * (endPos - startPos)) {
-                    $("#dyc .container").animate({
+                    $("#dynamic .container").animate({
                         top: '0rem',
                         opacity: '1'
                     }, 1200);
                 }
 
                 // 设置效果
-                $('#dyc').css({
+                $('#dynamic').css({
                     "filter": "opacity(" + opacityValue + "%)",
                     "-webkit-filter": "opacity(" + opacityValue + "%)"
                 });

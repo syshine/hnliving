@@ -129,7 +129,7 @@ namespace hnliving.RDBSStrategy.SqlServer
         /// <returns></returns>
         public DataTable GetUEditorSort(int uid)
         {
-            string commandText = string.Format("SELECT uid, sid, sname FROM [{0}ueditor_sort] WHERE del_flag != 1 AND uid in(0,{1}) order by uid,sid",
+            string commandText = string.Format("SELECT uid, sid, sname FROM [{0}ueditor_sort] WHERE del_flag != 1 AND uid in(-1,{1}) order by uid,sid",
                                                 RDBSHelper.RDBSTablePre,
                                                 uid);
             
@@ -167,6 +167,28 @@ namespace hnliving.RDBSStrategy.SqlServer
             string commandText = string.Format("UPDATE [{0}ueditor_sort] SET del_flag = 1 WHERE uid=@uid AND sid=@sid",
                                                 RDBSHelper.RDBSTablePre);
             return RDBSHelper.ExecuteNonQuery(CommandType.Text, commandText, parms);
+        }
+
+
+
+        /// <summary>
+        /// 根据ID获取名称
+        /// </summary>
+        /// <param name="typeid"></param>
+        /// <returns></returns>
+        public string GetName(int typeid)
+        {
+            DbParameter[] parms = {
+                                    GenerateInParam("@sid", SqlDbType.Int, 4, typeid)
+                                    };
+            string commandText = string.Format("SELECT sname FROM [{0}ueditor_sort] WHERE del_flag != 1 AND sid =@sid",
+                                                RDBSHelper.RDBSTablePre);
+
+            object obj = RDBSHelper.ExecuteScalar(CommandType.Text, commandText, parms);
+            if (obj != null)
+                return obj.ToString();
+            else
+                return null;
         }
         #endregion
 

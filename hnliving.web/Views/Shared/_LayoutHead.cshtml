@@ -16,7 +16,7 @@
         @Html.Partial("_LoginPartial")
     </div>
 </div>
-<div id="head-placeholder"></div>
+@*<div id="head-placeholder"></div>*@
 
 <script>
     setBodyPadding();
@@ -25,4 +25,13 @@
     function setBodyPadding() {
         $('body').css('padding-top', $('#head').outerHeight());
     }
+
+    $().ready(function () {
+        // 窗口改变大小事件
+        $(window).resize(function () {
+
+            // 设置高度一样(为了顶部菜单占位)
+            setBodyPadding();
+        })
+    })
 </script>

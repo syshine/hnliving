@@ -7,6 +7,22 @@ namespace Lib.Core
     /// </summary>
     public class UserRankInfo
     {
+        // 用户等级
+        public enum UserRank
+        {
+            FORBID = 1,
+            SYSTEM = 2,
+            CONTENT = 3,
+            MANAGE1 = 4,
+            MANAGE2 = 5,
+            GUEST = 6,
+            MEMBER = 7,
+            VIP = 8,
+            VIP2 = 9,
+            VIP3 = 10,
+            MEMBER2 = 10,
+        }
+
         private int _userrid;//用户等级id
         private int _system;//是否是系统等级
         private string _title;//用户等级标题

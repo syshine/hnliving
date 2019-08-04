@@ -116,5 +116,31 @@ namespace Lib.Services
             }
             return null;
         }
+
+
+
+        /// <summary>
+        /// 是否内容编辑者
+        /// </summary>
+        /// <param name="uid">用户id</param>
+        /// <returns></returns>
+        public static bool IsContentEditor(int uid)
+        {
+            if (uid > 0)
+            {
+                PartUserInfo partUserInfo = Users.GetPartUserById(uid);
+
+                // 系统管理员和内容管理员可以编辑
+                if ((int)UserRankInfo.UserRank.SYSTEM == partUserInfo.UserRid
+                    || (int)UserRankInfo.UserRank.CONTENT == partUserInfo.UserRid)
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
+            else
+                return false;
+        }
     }
 }

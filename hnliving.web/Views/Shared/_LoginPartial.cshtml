@@ -8,9 +8,9 @@
 
     <ul class="nav navbar-nav">
         <li>
-            @Html.ActionLink(WorkContext.NickName, "UserInfo", "account", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
+            @Html.ActionLink(WorkContext.NickName, "UserInfo", "account", new { area = "" }, htmlAttributes: new { title = "Manage", @class = "nav-link" })
         </li>
-        <li><a class="nav-link" href="@Url.Action("logout", "account")">[退出]</a></li>
+        <li><a class="nav-link" href="@Url.Action("logout", "account", new { area = "" })">[退出]</a></li>
         @*<a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">注销</a>*@
     </ul>
     }
@@ -18,8 +18,8 @@
 else
 {
     <ul class="nav navbar-nav ml-auto">
-        <li>@Html.ActionLink("注册", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })</li>
-        <li>@Html.ActionLink("登录", "Login", "Account", routeValues: new RouteValueDictionary { { "returnUrl", WorkContext.RawUrl } }, htmlAttributes: new Dictionary<string, object> { { "id", "loginLink" }, { "class", "nav-link" } })</li>
+        <li>@Html.ActionLink("注册", "Register", "Account", new { area = "" }, htmlAttributes: new { id = "registerLink", @class = "nav-link" })</li>
+        <li>@Html.ActionLink("登录", "Login", "Account", routeValues: new RouteValueDictionary { { "area", "" }, { "returnUrl", WorkContext.RawUrl } }, htmlAttributes: new Dictionary<string, object> { { "id", "loginLink" }, { "class", "nav-link" } })</li>
         @*<li><a class="nav-link" id="loginLink" href="@Url.Action("login", "account", new RouteValueDictionary { { "returnUrl", WorkContext.Url } })">[登录]</a></li>*@
     </ul>
 }

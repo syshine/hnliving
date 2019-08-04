@@ -11,14 +11,14 @@
     <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
     <script type="text/javascript" charset="utf-8" src="~/Plugins/UEditor/lang/zh-cn/zh-cn.js"></script>
     <style type="text/css">
-        div {
+        #ueditor {
             width: 100%;
         }
     </style>
 }
 
-<div class="row ml-0 mr-0 mt-5"> @* align-items-centerjustify-content-center login-center*@
-    <div class="col-10 offset-1 col-sm-8 offset-sm-2 bg-teal-7">
+<div class="row ml-0 mr-0 mt-md-5">
+    <div class="col-12 offset-0 col-md-10 offset-md-1 bg-teal-7" id="container">
         <h4>欢迎使用UEditor编辑器！</h4>
         <hr />
 
@@ -56,32 +56,32 @@
 
 @section Scripts {
     <script>
-        // 保存
-        function save() {
-            // 获取内容
-            var content = UE.getEditor('editor').getContent();
+        //// 保存
+        //function save() {
+        //    // 获取内容
+        //    var content = UE.getEditor('editor').getContent();
 
-            // 参数
-            var parms = new Object();
-            parms["content"] = content;
-            parms["type"] = 0;
+        //    // 参数
+        //    var parms = new Object();
+        //    parms["content"] = content;
+        //    parms["type"] = 0;
 
-            // 调用
-            $.post("/Tools/Program/UEditor/Save", parms, saveResponse);
-            //$.post("/Ashx/UEditorUpload.ashx", parms, saveResponse);
+        //    // 调用
+        //    $.post("/Tools/Program/UEditor/Save", parms, saveResponse);
+        //    //$.post("/Ashx/UEditorUpload.ashx", parms, saveResponse);
 
-        }
+        //}
 
-        //处理保存反馈信息
-        function saveResponse(data) {
-            var result = eval("(" + data + ")");
-            if (result.state == "success") {
-                alert("保存成功！");
-            }
-            else {
-                showVerifyError(result.content);
-            }
-        }
+        ////处理保存反馈信息
+        //function saveResponse(data) {
+        //    var result = eval("(" + data + ")");
+        //    if (result.state == "success") {
+        //        alert("保存成功！");
+        //    }
+        //    else {
+        //        showVerifyError(result.content);
+        //    }
+        //}
     </script>
 
 

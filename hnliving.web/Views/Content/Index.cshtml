@@ -1,0 +1,36 @@
+﻿@model hnliving.web.Models.ShowUEditorModel
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<div class="row ml-0 mr-0 mt-5"> @* align-items-centerjustify-content-center login-center*@
+    <div class="col-10 offset-1 col-sm-8 offset-sm-2 bg-primary">
+        <h3>@Model.Title</h3>
+
+        <h6>
+            分类：
+            <span class="badge badge-info">@Model.TypeName</span>
+        </h6>
+    </div>
+
+    <hr />
+
+    <div class="col-10 offset-1 col-sm-8 offset-sm-2 bg-teal-7">
+        <div class="">
+            @Model.Content
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <script>
+        getQRCode("@WorkContext.Url");
+
+        function getQRCode(content) {
+            $('#js_qr_code_img').attr("src", '/tools/program/qrcode/GetQRCode?content=' + content);
+            $('#js_qr_code_img').attr("title", content);
+        }
+    </script>
+}
