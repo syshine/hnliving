@@ -19,6 +19,10 @@
 <div id="head-placeholder"></div>
 
 <script>
-    // 设置高度一样
-    $('body').css('padding-top', $('#head').outerHeight());
+    setBodyPadding();
+
+    // 设置高度一样(为了顶部菜单占位)
+    function setBodyPadding() {
+        $('body').css('padding-top', $('#head').outerHeight());
+    }
 </script>

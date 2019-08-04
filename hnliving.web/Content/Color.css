@@ -1,4 +1,15 @@
-﻿
+﻿.bg-transparent {
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.bg-36-189-178-9{
+  background-color: rgba(36, 189, 178, .9) !important;
+}
+
+.bg-40-200-155-9{
+  background-color: rgba(40, 200, 155, .9) !important;
+}
+
 /*背景颜色*/
 .bg-orange-3 {
   background-color: rgba(253, 126, 20, .3) !important;
@@ -177,6 +188,12 @@
     -webkit-text-fill-color: transparent;
 }
 
+.text-v-lgdt-btg-7 {
+    background-image: linear-gradient(0deg,rgba(24, 211, 97, .7), rgba(0, 148, 255, .7));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .text-h-lgdt-btg {
     background-image: linear-gradient(90deg,rgb(24, 211, 97), rgb(0, 148, 255));
     -webkit-background-clip: text;
@@ -222,16 +239,40 @@
     background-image: linear-gradient(0deg,rgb(24, 211, 97),rgb(0, 148, 255));
 }
 
+.bg-lgdt-btg-7 {
+    background-image: linear-gradient(0deg,rgba(24, 211, 97, .7),rgba(0, 148, 255, .7));
+}
+
+.bg-lgdt-btg-9 {
+    background-image: linear-gradient(0deg,rgba(24, 211, 97, .9),rgba(0, 148, 255, .9));
+}
+
 .bg-lgdt-gtb {
     background-image: linear-gradient(0deg,rgb(0, 148, 255),rgb(24, 211, 97));
+}
+
+.bg-lgdt-gtb-7 {
+    background-image: linear-gradient(0deg,rgba(0, 148, 255, .7),rgba(24, 211, 97, .7));
+}
+
+.bg-lgdt-gtb-9 {
+    background-image: linear-gradient(0deg,rgba(0, 148, 255, .9),rgba(24, 211, 97, .9));
 }
 
 .bg-lgdt-vtb {
     background-image: linear-gradient(0deg,rgb(178, 203, 238),rgb(100, 80, 142));
 }
 
+.bg-lgdt-vtb {
+    background-image: linear-gradient(0deg,rgba(178, 203, 238, .7),rgba(100, 80, 142, .7));
+}
+
 .bg-lgdt-btv {
     background-image: linear-gradient(0deg,rgb(100, 80, 142),rgb(178, 203, 238));
+}
+
+.bg-lgdt-btv {
+    background-image: linear-gradient(0deg,rgba(100, 80, 142, .7),rgba(178, 203, 238, .7));
 }
 
 .bg-lgdt-ryr {
@@ -240,4 +281,20 @@
     background: -moz-linear-gradient(#c2382a, #f7c76b, #c2382a); /* Firefox 3.6 - 15 */
     background: linear-gradient(#c2382a, #f7c76b, #c2382a); /* 标准的语法 */
 }
+
+.bg-lgdt-yry {
+    background: -webkit-linear-gradient(#f7c76b, #c2382a, #f7c76b); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#f7c76b, #c2382a, #f7c76b); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#f7c76b, #c2382a, #f7c76b); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#f7c76b, #c2382a, #f7c76b); /* 标准的语法 */
+}
+
+/*径向渐变开始*/
+.bg-rgdt-yry {
+    background: -webkit-radial-gradient(20% 20%, farthest-side,rgb(0, 148, 255),rgb(24, 211, 97)); /* Safari 5.1 - 6.0 */
+    background: -o-radial-gradient(20% 20%, farthest-side,rgb(0, 148, 255),rgb(24, 211, 97)); /* Opera 11.6 - 12.0 */
+    background: -moz-radial-gradient(20% 20%, farthest-side,rgb(0, 148, 255),rgb(24, 211, 97)); /* Firefox 3.6 - 15 */
+    background: radial-gradient(20% 20%, farthest-side,rgb(0, 148, 255),rgb(24, 211, 97)); /* 标准的语法（必须放在最后） */
+}
+/*径向渐变结束*/
 /*渐变背景颜色结束*/

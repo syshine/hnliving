@@ -13,19 +13,22 @@ namespace Lib.Core
         private string _sitename = "网站名称";//网站名称
         private string _siteurl = "http://www.XXX.com";//网站网址
         private string _sitetitle = "网站标题";//网站标题
-        private string _seokeyword = "";//seo关键字
+        private string _seokeyword = "";    //seo关键字
         private string _seodescription = "";//seo描述
-        private string _icp = "ICP00000";//备案编号
-        private string _script = "";//脚本
-        private int _islicensed = 1;//是否显示版权(0代表不显示，1代表显示)
+        private string _icp = "ICP00000";   //备案编号
+        private string _script = "";        //脚本
+        private int _islicensed = 1;        //是否显示版权(0代表不显示，1代表显示)
 
-        private string _wxgzhappid = "";// 公众号开发者ID
+        private bool _enablememcache = false;    //是否开启memcache
+        private bool _enableredis = false;       //是否开启redis
+
+        private string _wxgzhappid = "";    // 公众号开发者ID
         private string _wxgzhappsecret = "";// 公众号开发者密码
-        private string _wxmpappid = "";//小程序开发者ID
-        private string _wxmpappsecret = "";//小程序开发者密码
+        private string _wxmpappid = "";     //小程序开发者ID
+        private string _wxmpappsecret = ""; //小程序开发者密码
 
         /// <summary>
-        /// 商城名称
+        /// 网站名称
         /// </summary>
         public string SiteName
         {
@@ -87,6 +90,22 @@ namespace Lib.Core
         {
             get { return _islicensed; }
             set { _islicensed = value; }
+        }
+        /// <summary>
+        /// 是否开启memcache(0代表不开启，1代表开启)
+        /// </summary>
+        public bool EnableMemcache
+        {
+            get { return _enablememcache; }
+            set { _enablememcache = value; }
+        }
+        /// <summary>
+        /// //是否开启redis(0代表不开启，1代表开启)
+        /// </summary>
+        public bool EnableRedis
+        {
+            get { return _enableredis; }
+            set { _enableredis = value; }
         }
         /// <summary>
         /// 公众号开发者ID

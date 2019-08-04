@@ -218,6 +218,8 @@
     <Content Include="Images\banner03.jpg" />
     <Content Include="Images\component\audio-off.jpg" />
     <Content Include="Images\component\audio-on.jpg" />
+    <Content Include="Images\Films\sd2.jpg" />
+    <Content Include="Images\Films\stxz2.jpg" />
     <Content Include="Images\Icons\lg.ico" />
     <Content Include="Images\Icons\logo16.ico" />
     <Content Include="Images\Icons\logo32.ico" />
@@ -545,6 +547,7 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\Tools\baseFilter.js" />
     <Content Include="WebServices\WebService1.asmx" />
     <Content Include="App_Data\memcachedcache.config" />
     <Content Include="Areas\Tools\Views\Program\Test\MemCache.cshtml" />

@@ -25,6 +25,9 @@ namespace hnliving.web.Areas.Tools.Controllers.Program
         {
             try
             {
+                if (!MngConfig.SiteConfig.EnableMemcache)
+                    return Content("Memcache没有开启！");
+
                 MemCachedHelper mch = new MemCachedHelper();
 
                 if(mch.Set(key, value))
@@ -42,6 +45,9 @@ namespace hnliving.web.Areas.Tools.Controllers.Program
         {
             try
             {
+                if (!MngConfig.SiteConfig.EnableMemcache)
+                    return Content("Memcache没有开启！");
+
                 MemCachedHelper mch = new MemCachedHelper();
 
                 if (!string.IsNullOrWhiteSpace(key))
@@ -67,6 +73,9 @@ namespace hnliving.web.Areas.Tools.Controllers.Program
         {
             try
             {
+                if (!MngConfig.SiteConfig.EnableMemcache)
+                    return Content("Memcache没有开启！");
+
                 MemCachedHelper mch = new MemCachedHelper();
 
                 if (mch.DelFull())
@@ -91,6 +100,9 @@ namespace hnliving.web.Areas.Tools.Controllers.Program
         {
             try
             {
+                if(!MngConfig.SiteConfig.EnableRedis)
+                    return Content("Redis没有开启！");
+
                 if (RedisHelper.Set(key, value))
                     return Content("设置成功！");
                 else
@@ -106,6 +118,9 @@ namespace hnliving.web.Areas.Tools.Controllers.Program
         {
             try
             {
+                if (!MngConfig.SiteConfig.EnableRedis)
+                    return Content("Redis没有开启！");
+
                 if (!string.IsNullOrWhiteSpace(key))
                 {
                     string obj = RedisHelper.GetString(key);
@@ -129,6 +144,9 @@ namespace hnliving.web.Areas.Tools.Controllers.Program
         {
             try
             {
+                if (!MngConfig.SiteConfig.EnableRedis)
+                    return Content("Redis没有开启！");
+
                 RedisHelper.Clear();
                 return Content("清空成功！");
             }

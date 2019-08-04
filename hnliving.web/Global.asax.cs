@@ -22,15 +22,21 @@ namespace hnliving.web
             //Monitor.Init(); //初始化监控
 
             log4net.Config.XmlConfigurator.Configure();
+
             //打开缓存服务连接
-            //MemCachedHelper.Stop();
-            MemCachedHelper.Open(MngConfig.MemcachedCacheConfig, "hnl");
+            if (MngConfig.SiteConfig.EnableMemcache)
+            {
+                MemCachedHelper.Open(MngConfig.MemcachedCacheConfig, "hnl");
+            }
         }
 
         protected void Application_End(object sender, EventArgs e)
         {
             //关闭缓存服务连接
-            MemCachedHelper.Stop();
+            if (MngConfig.SiteConfig.EnableMemcache)
+            {
+                MemCachedHelper.Stop();
+            }
         }
     }
 }
