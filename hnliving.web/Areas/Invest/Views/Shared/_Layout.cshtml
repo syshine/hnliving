@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @*@Scripts.Render("~/bundles/modernizr")*@
+    @RenderSection("csses", required: false)
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scriptsHead", required: false)
+
+    @*字体适配不同屏幕大小*@
+    <script src="~/Scripts/Site/fontadapt.js"></script>
+</head>
+<body>
+    @Html.Partial("_LayoutHead")
+
+    <div class="container-fluid body-content p-0">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

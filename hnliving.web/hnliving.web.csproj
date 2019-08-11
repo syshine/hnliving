@@ -57,13 +57,17 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="LibLtr, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\C#\Library\Libs\LibLtr\bin\Dotfuscated\LibLtr.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\C#\DLL\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="QRCoder, Version=1.3.5.0, Culture=neutral, processorArchitecture=MSIL">
@@ -195,10 +199,13 @@
     <Content Include="Audio\爸爸去哪儿.mp3" />
     <Content Include="Audio\祝福你.mp3" />
     <Content Include="Audio\祝福你亲爱的祖国.mp3" />
+    <Content Include="Canvas\LinkLine.js" />
     <Content Include="Content\ani-tzh.css" />
     <Content Include="Content\Animate.css" />
     <Content Include="Content\bootstrap-3.3.7.css" />
     <Content Include="Content\bootstrap-3.3.7.min.css" />
+    <Content Include="Content\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -244,6 +251,11 @@
     <Content Include="Plugins\Anime\anime.js" />
     <Content Include="Plugins\Anime\anime.min.js" />
     <Content Include="Plugins\jquery.arctext.js" />
+    <Content Include="Plugins\Page\css\pullToRefresh.css" />
+    <Content Include="Plugins\Page\css\reset.css" />
+    <Content Include="Plugins\Page\js\iscroll.js" />
+    <Content Include="Plugins\Page\js\pullToRefresh.js" />
+    <Content Include="Plugins\Page\js\pullToRefresh.mini.js" />
     <Content Include="Plugins\Swiper\css\animate.css" />
     <Content Include="Plugins\Swiper\css\animate.min.css" />
     <Content Include="Plugins\Swiper\css\swiper.css" />
@@ -377,7 +389,22 @@
     <Content Include="Plugins\UEditor\ueditor.all.js" />
     <Content Include="Plugins\UEditor\ueditor.all.min.js" />
     <Content Include="Plugins\UEditor\ueditor.config.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.zh-CN.js" />
     <Content Include="Scripts\imgLoader.js" />
+    <Content Include="Areas\Invest\Views\Ltr\Qxc\Index.cshtml" />
+    <Content Include="Areas\Invest\Views\Ltr\Pl5\Add.cshtml" />
+    <Content Include="Areas\Invest\Views\Ltr\Pl5\Index.cshtml" />
+    <Content Include="Areas\Invest\Views\Ltr\Pl5\SumNumb.cshtml" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datetimepicker.zh-CN.js" />
+    <Content Include="Scripts\locales\bootstrap-datetimepicker.zh-TW.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\prism\prism-Night.js" />
     <Content Include="Scripts\prism\prism.js" />
     <Content Include="Scripts\prism\prismBasic-Night.js" />
@@ -561,6 +588,14 @@
     <Content Include="Areas\Study\Views\Program\Bootstrap\Index.cshtml" />
     <Content Include="Areas\Study\Views\Program\Bootstrap\Modal.cshtml" />
     <Content Include="Areas\Study\Views\Program\Bootstrap\ToolTip.cshtml" />
+    <Content Include="Areas\Invest\Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Areas\Invest\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Invest\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Invest\Views\Ltr\Qxc\SumNumb.cshtml" />
+    <Content Include="Areas\Invest\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Invest\Views\Ltr\Qxc\Add.cshtml" />
     <None Include="Service References\ServiceReferenceJava\configuration91.svcinfo" />
     <None Include="Service References\ServiceReferenceJava\configuration.svcinfo" />
     <Content Include="Service References\ServiceReferenceJava\hnliving.web.ServiceReferenceJava.saveResponse.datasource">
@@ -612,6 +647,11 @@
     <Compile Include="Areas\H5\Controllers\Festival\SpringController.cs" />
     <Compile Include="Areas\H5\Controllers\Wx\GzhController.cs" />
     <Compile Include="Areas\H5\H5AreaRegistration.cs" />
+    <Compile Include="Areas\Invest\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Invest\Controllers\Ltr\Pl5Controller.cs" />
+    <Compile Include="Areas\Invest\Controllers\Ltr\QxcController.cs" />
+    <Compile Include="Areas\Invest\InvestAreaRegistration.cs" />
+    <Compile Include="Areas\Invest\Models\LtrModel.cs" />
     <Compile Include="Areas\Study\Controllers\Program\AnimeJsController.cs" />
     <Compile Include="Areas\Study\Controllers\Program\BootstrapController.cs" />
     <Compile Include="Areas\Study\Controllers\CivilServant\AnalysisController.cs" />
@@ -736,11 +776,9 @@
     <Folder Include="Areas\H5\Models\" />
     <Folder Include="Areas\H5\Views\Default\" />
     <Folder Include="Areas\Study\Models\" />
-    <Folder Include="Areas\Tools\Views\Encrypt\" />
     <Folder Include="Areas\Travel\HaiKou\Models\" />
     <Folder Include="Areas\Travel\SanYa\Models\" />
     <Folder Include="Areas\Travel\WenChang\" />
-    <Folder Include="Views\Dynamic\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

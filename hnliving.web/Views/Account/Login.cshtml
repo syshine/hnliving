@@ -32,6 +32,7 @@
         <hr />
 
         <form name="loginForm" action="">
+            @Html.AntiForgeryToken()
 
             <div class="form-group">
                 <label class="control-label" for="user-name">账号</label>

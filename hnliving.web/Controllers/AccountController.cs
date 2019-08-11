@@ -25,6 +25,7 @@ namespace hnliving.web.Controllers
         // 登陆
         // /Account/Login
         [AllowAnonymous]
+        //[ValidateAntiForgeryToken]
         public ActionResult Login()
         {
             string returnUrl = WebHelper.GetQueryString("returnUrl");

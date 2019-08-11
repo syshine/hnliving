@@ -1,0 +1,96 @@
+﻿@model hnliving.web.Areas.Invest.Models.AddLtrPl5Model
+
+@{
+    ViewBag.Title = "新增Pl5";
+}
+
+@section csses{
+    <link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+    <style>
+        .input-group-addon{
+            width:2.2rem;
+            padding: 0.375rem 0 0 0.5rem;
+        }
+
+        .glyphicon:before{
+            font-size:1rem;
+        }
+    </style>
+}
+
+@section scriptsHead{
+    <script src="~/Scripts/moment-with-locales.min.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.zh-CN.js"></script>
+}
+
+<div class="row ml-0 mr-0 mt-md-5">
+    <div class="col-12 offset-0 col-md-8 offset-md-2 bg-teal-7" id="container">
+        <h4>欢迎新增Pl5！</h4>
+        <hr />
+
+        <div class="col-10 offset-1 col-md-4 offset-md-4">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Issue, new { @class = "control-label" })
+                    @Html.TextBoxFor(x => x.Issue, new { @class = "form-control", @readonly = "readonly" })
+                    @Html.ValidationMessageFor(x => x.Issue, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label for="Dt" class="col-md-2 p-0 control-label">日期</label>
+                    <div class="input-group date form_date p-0" data-date="@Model.Dt.ToString("yyyy-MM-dd")" data-date-format="yyyy-MM-dd" data-link-field="Dt">
+                        <input class="form-control" size="16" type="text" value="@Model.Dt.ToString("yyyy-MM-dd")" readonly>
+                        @*<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>*@
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                    <input type="hidden" id="Dt" name="Dt" value="@Model.Dt.ToString("yyyy-MM-dd")" /><br />
+
+                    @*<input type="text" class="form-control datetimepicker-input" id="date" data-toggle="datetimepicker" data-target="#datetimepicker5" />*@
+                    
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Numb, new { @class = "control-label" })
+                    @Html.TextBoxFor(x => x.Numb, new { @class = "form-control", @oninput = "value=value.replace(/[^\\d]/g,'')" })
+                    @Html.ValidationMessageFor(x => x.Numb, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-info mt-4 mb-2" value="保存">
+                </div>
+            }
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <script>
+        $(function () {
+            // 初始化日期控件
+            var date = new Date();
+            $('.form_date').datetimepicker({
+                locale: 'zh-CN',
+                language: 'zh-CN',
+                format: 'yyyy-mm-dd',
+                weekStart: 1,           // 一周从周一开始
+                todayBtn: 1,            // 显示今天按钮
+                autoclose: 1,           // 当选择一个日期之后是否立即关闭此日期时间选择器。
+                endDate: new Date(),    // 这个时间后面的不能再选择
+                todayHighlight: 1,      // 高亮当前日期
+                startView: 2,
+                minView: 2,             // 设置时间选择为年月日 去掉时分秒选择
+                daysOfWeekDisabled: [@ViewData["daysOfWeekDisablede"]], // 禁用周几
+                forceParse: true
+            });
+        });
+    </script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,134 @@
+﻿@using System.Collections.Generic;
+@using Lib.Core.Domain.Ltr;
+@model List<ShowLtrQxcModel>
+
+@{
+    ViewBag.Title = "数据";
+}
+
+@section csses{
+    @*<link href="~/Plugins/Page/css/pullToRefresh.css" rel="stylesheet" />*@
+
+    <style>
+        th {
+            text-align: center;
+        }
+    </style>
+}
+
+@section scriptsHead{
+    @*<script src="~/Plugins/Page/js/iscroll.js"></script>
+    <script src="~/Plugins/Page/js/pullToRefresh.js"></script>*@
+
+    <script>
+        var issue_small = -1; // 显示的最小期号
+        //if(@Model != null && @Model.Count > 0){
+            issue_small = @Model[@Model.Count - 1].Issue;
+        //}
+    </script>
+}
+
+<div class="row ml-0 mr-0 mt-md-5">
+    <div class="col-12 offset-0 col-md-10 offset-md-1 bg-teal-7" id="container">
+        <h4>欢迎查看数据！</h4>
+        <hr />
+
+        <div class="col-md-8 offset-md-2 p-0" id="data_div">
+            <table class="table" id="tb_data">
+                <thead>
+                    <tr>
+                        <th width="20%">期号</th>
+                        <th width="20%">合数</th>
+                        <th width="">号码</th>
+                        <th width="30%">日期</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        foreach (ShowLtrQxcModel entity in Model)
+                        {
+                            <tr>
+                                <td align="center">@entity.Issue</td>
+                                <td align="center">@entity.Sum</td>
+                                <td align="center">@entity.Numb</td>
+                                <td align="center">@entity.Date.ToString("yyyy-MM-dd")</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+            <button class="btn btn-info" onclick="loadMore()">加载更多</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+
+
+        $().ready(function () {
+        });
+
+        //refresher.init({
+        //    id:"data_div",//<------------------------------------------------------------------------------------┐
+        //    pullDownAction:refresh,
+        //    pullUpAction:loadMore
+        //});
+
+        @*function refresh(){
+            // 参数
+            var parms = new Object();
+            parms["issue"] = -1;
+
+            // 调用
+            $.post("@Url.Action("GetData")", parms, refreshResponse);
+        }
+        
+        function refreshResponse(data) {
+            var result = eval("(" + data + ")");
+            $("#tb_data tbody").innerHTML = "";
+            if (result.length > 0) {
+                for(var i = 0; i < result.length; i++){
+                    var html_append = '<tr><td align="center">'+result[i].Issue+'</td>'
+                        + '<td align="center">'+result[i].Sum+'</td>'
+                        + '<td align="center">'+result[i].Numb+'</td>'
+                        + '<td align="center">'+result[i].Date.substr(0,10)+'</td></tr>'
+                    $("#tb_data tbody").append(html_append);
+                }
+                issue_small = result[result.length-1].Issue;
+                alert("加载成功！");
+            }
+            else {
+                alert("加载失败！");
+            }
+        }*@
+
+        function loadMore(){
+            // 参数
+            var parms = new Object();
+            parms["issue"] = issue_small;
+
+            // 调用
+            $.post("@Url.Action("GetData")", parms, loadResponse);
+        }
+
+        function loadResponse(data) {
+            var result = eval("(" + data + ")");
+            if (result.length > 0) {
+                for(var i = 0; i < result.length; i++){
+                    var html_append = '<tr><td align="center">'+result[i].Issue+'</td>'
+                        + '<td align="center">'+result[i].Sum+'</td>'
+                        + '<td align="center">'+result[i].Numb+'</td>'
+                        + '<td align="center">'+result[i].Date.substr(0,10)+'</td></tr>'
+                    $("#tb_data tbody").append(html_append);
+                }
+                issue_small = result[result.length-1].Issue;
+            }
+            else {
+                alert("加载失败！");
+            }
+        }
+    </script>
+
+}

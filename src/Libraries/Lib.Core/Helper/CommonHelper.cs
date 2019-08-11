@@ -496,6 +496,22 @@ namespace Lib.Core
         }
 
         /// <summary>
+        /// JSON序列化
+        /// </summary>
+        public static string JsonSerializeObject<T>(T t)
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(t);
+        }
+
+        /// <summary>
+        /// JSON序列化
+        /// </summary>
+        public static T JsonSerializer<T>(string json)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(json);
+        }
+
+        /// <summary>
         ///获得邮箱提供者
         /// </summary>
         /// <param name="email">邮箱</param>

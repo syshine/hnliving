@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LibLtr, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\C#\Library\Libs\LibLtr\bin\Dotfuscated\LibLtr.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,6 +46,7 @@
   <ItemGroup>
     <Compile Include="FilterWords.cs" />
     <Compile Include="LoginFailLogs.cs" />
+    <Compile Include="Ltr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UEditorUtils.cs" />
     <Compile Include="UserRanks.cs" />

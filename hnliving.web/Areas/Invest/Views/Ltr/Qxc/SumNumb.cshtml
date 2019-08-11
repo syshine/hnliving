@@ -1,0 +1,307 @@
+﻿@using LibLtr.Entity
+@model LibLtr.Entity.EntitySumResult
+
+@{
+    ViewBag.Title = "合数";
+}
+
+@section csses{
+    <style>
+        .ball {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 1em;
+            margin: 0;
+            color:antiquewhite;
+            background: #17a2b8;
+        }
+
+        th {
+            text-align:center;
+        }
+
+        canvas {
+            position: absolute;
+            visibility: visible;
+        }
+    </style>
+}
+
+@section scriptsHead{
+    <script>
+        var data = eval(@ViewData["json_data"]);
+    </script>
+}
+
+<div class="row ml-0 mr-0 mt-md-5">
+    <div class="col-12 offset-0 col-md-10 offset-md-1 bg-teal-7" id="container">
+        <h4>欢迎查看合数分析！</h4>
+        <hr />
+
+        <div class="col-md-8 offset-md-2 p-0" id="data_div">
+            <div class="form-group col-12">
+                <form>
+                    <label class="control-label" for="issue">期号：</label>
+                    <input type="text" class="form-control d-inline" id="issue" name="issue" value="@Model.Issue" oninput="value=value.replace(/[^\d]/g,'')" />
+                    <input type="submit" class="btn btn-info mb-1" value="查看">
+                </form>
+            </div>
+
+            <table class="table" id="tb_sum">
+                <thead>
+                    <tr>
+                        <th width="">期号</th>
+                        <th width="15%">合数</th>
+                        <th width="13%">千</th>
+                        <th width="13%">百</th>
+                        <th width="13%">十</th>
+                        <th width="13%">个</th>
+                        <th width="13%"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        for (int i = 0; i < 11; i++)
+                        {
+                            <tr>
+                                <td align="center">@Model.Array_number[i, 0]</td>
+                                <td align="center">@Model.Array_number[i, 1]</td>
+                                <td align="center"><label>@Model.Array_number[i, 2]</label></td>
+                                <td align="center"><label>@Model.Array_number[i, 3]</label></td>
+                                <td align="center"><label>@Model.Array_number[i, 4]</label></td>
+                                <td align="center"><label>@Model.Array_number[i, 5]</label></td>
+                                <td align="center"><label></label></td>
+                            </tr>
+                        }
+                        <tr>
+                            <td align="center">@Model.Issue</td>
+                            <td align="center"></td>
+                            <td align="center"><label></label></td>
+                            <td align="center"><label></label></td>
+                            <td align="center"><label></label></td>
+                            <td align="center"><label></label></td>
+                            <td align="center"><label></label></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            @*<span id="test" data-appid="111">aaa</span>*@
+            <!-- 连线 -->
+            <canvas class="cvs-line" width="56" height="35" data-w="0" data-h="0" data-l="0" data-t="0" data-sx="0" data-sy="0" data-ex="0" data-ey="0" style="top: 300px;left: 346px;"></canvas>
+            <canvas class="cvs-line" width="56" height="35" data-w="0" data-h="0" data-l="0" data-t="0" data-sx="0" data-sy="0" data-ex="0" data-ey="0" style="top: 400px;left: 246px;"></canvas>
+            <canvas class="cvs-line" width="56" height="35" data-w="0" data-h="0" data-l="0" data-t="0" data-sx="0" data-sy="0" data-ex="0" data-ey="0" style="top: 500px;left: 146px;"></canvas>
+
+            <canvas class="cvs-line" width="56" height="35" data-w="0" data-h="0" data-l="0" data-t="0" data-sx="0" data-sy="0" data-ex="0" data-ey="0" style="top: 300px;left: 346px;"></canvas>
+            <canvas class="cvs-line" width="56" height="35" data-w="0" data-h="0" data-l="0" data-t="0" data-sx="0" data-sy="0" data-ex="0" data-ey="0" style="top: 400px;left: 246px;"></canvas>
+            <canvas class="cvs-line" width="56" height="35" data-w="0" data-h="0" data-l="0" data-t="0" data-sx="0" data-sy="0" data-ex="0" data-ey="0" style="top: 500px;left: 146px;"></canvas>
+
+            <canvas class="cvs-line" width="56" height="35" data-w="0" data-h="0" data-l="0" data-t="0" data-sx="0" data-sy="0" data-ex="0" data-ey="0" style="top: 400px;left: 246px;"></canvas>
+            <canvas class="cvs-line" width="56" height="35" data-w="0" data-h="0" data-l="0" data-t="0" data-sx="0" data-sy="0" data-ex="0" data-ey="0" style="top: 500px;left: 146px;"></canvas>
+            <canvas class="cvs-line" width="56" height="35" data-w="0" data-h="0" data-l="0" data-t="0" data-sx="0" data-sy="0" data-ex="0" data-ey="0" style="top: 350px;left: 446px;"></canvas>
+
+            <div class="form-group col-12" id="info">
+                <span class="mr-2" id="info-issue"></span>
+                <span class="mr-2 text-danger" id="info-numb"></span>
+                <span class="mr-2" id="info-date"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 offset-0 col-md-10 offset-md-1 p-0 bg-teal-7">
+        <div class="btn-group btn-group-lg col-12 p-0" id="step">
+            <button type="button" class="btn btn-primary col-6 m-0" id="" onclick="move(-1)"><span class="badge badge-light mr-4"></span>上一个</button>
+            <button type="button" class="btn btn-primary col-6 m-0" id="" onclick="move(1)">下一个<span class="badge badge-light ml-4"></span></button>
+        </div>
+        <div class="btn-group btn-group-lg col-12 p-0" id="col_witch">
+            <button type="button" class="btn btn-primary col-3 m-0" id="thousands" onclick="switchCol(this)">千位<span class="badge badge-light ml-4"></span></button>
+            <button type="button" class="btn btn-primary col-3 m-0" id="hundreds" onclick="switchCol(this)">百位<span class="badge badge-light ml-4"></span></button>
+            <button type="button" class="btn btn-primary col-3 m-0" id="tens" onclick="switchCol(this)">十位<span class="badge badge-light ml-4"></span></button>
+            <button type="button" class="btn btn-primary col-3 m-0" id="units" onclick="switchCol(this)">个位<span class="badge badge-light ml-4"></span></button>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        var ind = 0;    // 当前显示的序号
+        function getData(index){
+            if(index < 0){ // 最小为第一个
+                index = 0;
+            }
+            if(index > data.Count - 1){ // 超出范围返回最后一个
+                index = data.Count - 1;
+            }
+
+            var length = [data.LstEsd[0].length, data.LstEsd[1].length, data.LstEsd[2].length, data.LstEsd[3].length];
+
+            if(index < 0){
+                return null;
+            }
+            else if (index < length[0]){ // 第一列
+                return data.LstEsd[0][index];
+            }
+            else if (index < length[0] + length[1]){ // 第二列
+                return data.LstEsd[1][index - length[0]];
+            }
+            else if (index < length[0] + length[1] + length[2]){ // 第三列
+                return data.LstEsd[2][index - length[0] - length[1]];
+            }
+            else { // 第四列
+                return data.LstEsd[3][index - length[0] - length[1] - length[2]];
+            }
+        }
+
+        // 本期信息
+        if (data.LtyNum != "") {
+            $("#info-issue").text("期号：" + data.Issue);
+            $("#info-numb").text("号码：" + data.LtyNum);
+            $("#info-date").text("日期：" + data.LtrDate);
+        } else {
+            $("#info-issue").text("");
+            $("#info-numb").text("");
+            $("#info-date").text("");
+        }
+
+            
+        // 位数按钮徽章
+        for(var i = 0; i < 4; i++){
+            $("#col_witch button span:eq("+i+")").text(data.LstEsd[i].length);
+            if(data.LstEsd[i].length <= 0){
+                $("#col_witch button:eq("+i+")").attr("disabled",true);
+            }
+        }
+
+        // 显示
+        showData(ind);
+
+        $().ready(function () {
+        });
+
+        function move(step) {
+            ind += step;
+            if(ind < 0){
+                ind = 0;
+            }
+            if(ind >= data.Count){
+                ind = data.Count - 1;
+            }
+            showData(ind);
+            updateLine();
+        }
+
+        function showData(index){
+
+            var sd = getData(index);
+            $("#tb_sum tr label").removeClass("ball");
+            $("#tb_sum tbody tr:eq("+(sd.Pt[2].Y+8)+")").find("td label").text("");
+            $("#tb_sum tbody tr:eq("+(sd.Pt[2].Y+8)+")").find("td:eq("+(sd.Pt[2].X+2)+") label").text(sd.Result);
+            for(var i = 0; i < 3; i++){
+                // 第一个球
+                $("#tb_sum tbody tr:eq("+(sd.Pt[0].Y+i*4)+")").find("td:eq("+(sd.Pt[0].X+2)+") label").addClass("ball");
+                // 第二个球
+                $("#tb_sum tbody tr:eq("+(sd.Pt[1].Y+i*4)+")").find("td:eq("+(sd.Pt[1].X+2)+") label").addClass("ball");
+                // 第三个球
+                $("#tb_sum tbody tr:eq("+(sd.Pt[2].Y+i*4)+")").find("td:eq("+(sd.Pt[2].X+2)+") label").addClass("ball");
+                // 合数球
+                $("#tb_sum tbody tr:eq("+(sd.Pt[2].Y+i*4)+")").find("td:eq(6) label").text(sd.Sum).addClass("ball");
+                //$("#tb_sum tbody tr:eq("+(sd.Pt[2].Y+i*4)+")").find("td:eq(6) label").addClass("ball");
+
+                // 连线canvas
+                var start,end;
+                var pt1={X:sd.Pt[0].X,Y:sd.Pt[0].Y+i*4 },pt2={X:sd.Pt[1].X,Y:sd.Pt[1].Y+i*4 };
+                var pts = getPos(pt1, pt2);
+                $("#data_div canvas:eq("+(i*3)+")").data("l",pts.pos.X).data("t",pts.pos.Y)
+                    .data("w",pts.size.W).data("h",pts.size.H)
+                    .data("sx",pts.start.X).data("sy",pts.start.Y).data("ex",pts.end.X).data("ey",pts.end.Y);
+                
+                pt1={X:sd.Pt[1].X,Y:sd.Pt[1].Y+i*4 };
+                pt2={X:sd.Pt[2].X,Y:sd.Pt[2].Y+i*4 };
+                pts = getPos(pt1, pt2);
+                $("#data_div canvas:eq("+(i*3+1)+")").data("l",pts.pos.X).data("t",pts.pos.Y)
+                    .data("w",pts.size.W).data("h",pts.size.H)
+                    .data("sx",pts.start.X).data("sy",pts.start.Y).data("ex",pts.end.X).data("ey",pts.end.Y);
+                
+                pt1={X:sd.Pt[2].X,Y:sd.Pt[2].Y+i*4 };
+                pt2={X:4,Y:3+i*4 };
+                pts = getPos(pt1, pt2);
+                $("#data_div canvas:eq("+(i*3+2)+")").data("l",pts.pos.X).data("t",pts.pos.Y)
+                    .data("w",pts.size.W).data("h",pts.size.H)
+                    .data("sx",pts.start.X).data("sy",pts.start.Y).data("ex",pts.end.X).data("ey",pts.end.Y);
+            }
+
+            // 改变按钮颜色
+            $("#col_witch button:eq("+sd.Pt[2].X+")").removeClass("btn-primary")
+                .siblings("button").addClass("btn-primary").find(".badge").removeClass("badge-info").addClass("badge-light");
+            $("#col_witch button:eq("+sd.Pt[2].X+")").find(".badge").removeClass("badge-light").addClass("badge-info");
+            
+            // 显示上一个下一个剩余数量
+            $("#step button:eq(0)").find(".badge").text(ind);
+            $("#step button:eq(1)").find(".badge").text(data.Count-ind-1);
+
+            // 使能上一个下一个按钮
+            $("#step button:eq(0)").attr("disabled",ind==data.Count-1);
+            $("#step button:eq(0)").attr("disabled",ind==0);
+        }
+
+        function getPos(pt1, pt2){
+            var result = {start:{X:0,Y:0}, end:{X:0,Y:0}, pos:{X:0,Y:0}, size:{W:0,H:0}};
+            if(pt1.X <= pt2.X){
+                if(pt1.Y <= pt2.Y){
+                    result.start = {X:0, Y:0};
+                    result.end = {X:pt2.X-pt1.X, Y:pt2.Y-pt1.Y};
+                    result.pos = {X:pt1.X, Y:pt1.Y};
+                } else {
+                    result.start = {X:0, Y:pt1.Y-pt2.Y};
+                    result.end = {X:pt2.X-pt1.X, Y:0};
+                    result.pos = {X:pt1.X, Y:pt2.Y}
+                }
+            } else {
+                if(pt1.Y <= pt2.Y){
+                    result.start = {X:pt1.X-pt2.X, Y:0};
+                    result.end = {X:0, Y:pt2.Y-pt1.Y};
+                    result.pos = {X:pt2.X, Y:pt1.Y}
+                } else {
+                    result.start = {X:pt2.X-pt1.X, Y:pt2.Y-pt1.Y};
+                    result.end = {X:0, Y:0};
+                    result.pos = {X:pt2.X, Y:pt2.Y}
+                }
+            }
+            result.size = {W:Math.abs(pt2.X - pt1.X), H:Math.abs(pt2.Y - pt1.Y)};
+            return result;
+        }
+
+        // 切换位数
+        function switchCol(obj) {
+            switch (obj.id) {
+                case "thousands":
+                    ind = 0;
+                    break;
+
+                case "hundreds":
+                    ind = data.LstEsd[0].length;
+                    break;
+
+                case "tens":
+                    ind = data.LstEsd[0].length + data.LstEsd[1].length;
+                    break;
+
+                case "units":
+                    ind = data.LstEsd[0].length + data.LstEsd[1].length + data.LstEsd[2].length;
+                    break;
+
+                default:
+                    return;
+            }
+
+            showData(ind);
+            updateLine();
+        }
+
+        
+    </script>
+
+    <script src="~/Canvas/LinkLine.js"></script>
+
+}

@@ -39,6 +39,10 @@
     <Reference Include="Memcached.ClientLibrary">
       <HintPath>..\..\..\..\..\C#\DLL\Memcached.ClientLibrary.DLL</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PubComp.NoSql.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\PubComp.NoSql.Core.2.0.0\lib\net45\PubComp.NoSql.Core.dll</HintPath>
       <Private>True</Private>
@@ -94,10 +98,13 @@
     <Compile Include="Data\MngData.cs" />
     <Compile Include="Data\DbException.cs" />
     <Compile Include="Data\NOSQL\INOSQLStrategy\IUserStrategy.cs" />
+    <Compile Include="Data\RDBS\IRDBSStrategy\ILtrStrategy.cs" />
     <Compile Include="Data\RDBS\IRDBSStrategy\IRDBSStrategy.cs" />
     <Compile Include="Data\RDBS\IRDBSStrategy\ISiteStrategy.cs" />
     <Compile Include="Data\RDBS\IRDBSStrategy\IUserStrategy.cs" />
     <Compile Include="Data\RDBS\RDBSHelper.cs" />
+    <Compile Include="Domain\Ltr\Pl5Entity.cs" />
+    <Compile Include="Domain\Ltr\QxcEntity.cs" />
     <Compile Include="Domain\Site\FilterWordInfo.cs" />
     <Compile Include="Domain\UEditor\UEditorEntity.cs" />
     <Compile Include="Domain\User\OnlineUserInfo.cs" />
