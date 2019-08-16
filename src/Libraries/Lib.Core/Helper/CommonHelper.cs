@@ -495,6 +495,7 @@ namespace Lib.Core
             }
         }
 
+        #region json
         /// <summary>
         /// JSON序列化
         /// </summary>
@@ -510,6 +511,7 @@ namespace Lib.Core
         {
             return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(json);
         }
+        #endregion
 
         /// <summary>
         ///获得邮箱提供者

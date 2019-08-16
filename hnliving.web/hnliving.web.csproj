@@ -397,6 +397,7 @@
     <Content Include="Areas\Invest\Views\Ltr\Pl5\Add.cshtml" />
     <Content Include="Areas\Invest\Views\Ltr\Pl5\Index.cshtml" />
     <Content Include="Areas\Invest\Views\Ltr\Pl5\SumNumb.cshtml" />
+    <Content Include="Areas\Invest\Views\Stock\Download\Index.cshtml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -650,6 +651,7 @@
     <Compile Include="Areas\Invest\Controllers\HomeController.cs" />
     <Compile Include="Areas\Invest\Controllers\Ltr\Pl5Controller.cs" />
     <Compile Include="Areas\Invest\Controllers\Ltr\QxcController.cs" />
+    <Compile Include="Areas\Invest\Controllers\Stock\DownloadController.cs" />
     <Compile Include="Areas\Invest\InvestAreaRegistration.cs" />
     <Compile Include="Areas\Invest\Models\LtrModel.cs" />
     <Compile Include="Areas\Study\Controllers\Program\AnimeJsController.cs" />

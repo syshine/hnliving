@@ -98,6 +98,7 @@
     <Compile Include="Data\MngData.cs" />
     <Compile Include="Data\DbException.cs" />
     <Compile Include="Data\NOSQL\INOSQLStrategy\IUserStrategy.cs" />
+    <Compile Include="Data\RDBS\IRDBSStrategy\IStockStrategy.cs" />
     <Compile Include="Data\RDBS\IRDBSStrategy\ILtrStrategy.cs" />
     <Compile Include="Data\RDBS\IRDBSStrategy\IRDBSStrategy.cs" />
     <Compile Include="Data\RDBS\IRDBSStrategy\ISiteStrategy.cs" />
@@ -106,16 +107,19 @@
     <Compile Include="Domain\Ltr\Pl5Entity.cs" />
     <Compile Include="Domain\Ltr\QxcEntity.cs" />
     <Compile Include="Domain\Site\FilterWordInfo.cs" />
+    <Compile Include="Domain\Stock\StockDataHis.cs" />
     <Compile Include="Domain\UEditor\UEditorEntity.cs" />
     <Compile Include="Domain\User\OnlineUserInfo.cs" />
     <Compile Include="Domain\User\UserInfo.cs" />
     <Compile Include="Domain\User\UserRankInfo.cs" />
     <Compile Include="Helper\CommonHelper.cs" />
+    <Compile Include="Helper\CsvHelper.cs" />
     <Compile Include="Helper\EncryptHelper.cs" />
     <Compile Include="Helper\IOHelper.cs" />
     <Compile Include="Helper\RedisHelper.cs" />
     <Compile Include="Helper\MemCachedHelper.cs" />
     <Compile Include="Helper\SecureHelper.cs" />
+    <Compile Include="Helper\SqlBulkCopyHelper.cs" />
     <Compile Include="Helper\TimeHelper.cs" />
     <Compile Include="Helper\StringHelper.cs" />
     <Compile Include="Helper\TypeHelper.cs" />

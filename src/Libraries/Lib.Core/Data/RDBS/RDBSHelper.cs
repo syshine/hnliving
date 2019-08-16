@@ -243,6 +243,11 @@ namespace Lib.Core
             return ExecuteScalar(cmdType, cmdText, null);
         }
 
+        public static object ExecuteScalar(CommandType cmdType, string cmdText, int cmdTimeout)
+        {
+            return ExecuteScalar(cmdType, cmdText, cmdTimeout, null);
+        }
+
         public static object ExecuteScalar(CommandType cmdType, string cmdText, params DbParameter[] commandParameters)
         {
 #if DEBUG
@@ -269,10 +274,39 @@ namespace Lib.Core
         }
 
 
+        public static object ExecuteScalar(CommandType cmdType, string cmdText, int cmdTimeout, params DbParameter[] commandParameters)
+        {
+#if DEBUG
+            _executecount++;
+#endif
+
+            DbCommand cmd = _factory.CreateCommand();
+
+            using (DbConnection connection = _factory.CreateConnection())
+            {
+                connection.ConnectionString = ConnectionString;
+                PrepareCommand(cmd, connection, null, cmdType, cmdText, cmdTimeout, commandParameters);
+#if DEBUG
+                DateTime startTime = DateTime.Now;
+#endif
+                object val = cmd.ExecuteScalar();
+#if DEBUG
+                DateTime endTime = DateTime.Now;
+                _executedetail += GetExecuteDetail(cmd.CommandText, startTime, endTime, commandParameters);
+#endif
+                cmd.Parameters.Clear();
+                return val;
+            }
+        }
+
 
         public static object ExecuteScalar(DbTransaction trans, CommandType cmdType, string cmdText)
         {
             return ExecuteScalar(trans, cmdType, cmdText, null);
+        }
+        public static object ExecuteScalar(DbTransaction trans, CommandType cmdType, string cmdText, int cmdTimeout)
+        {
+            return ExecuteScalar(trans, cmdType, cmdText, cmdTimeout, null);
         }
 
         public static object ExecuteScalar(DbTransaction trans, CommandType cmdType, string cmdText, params DbParameter[] commandParameters)
@@ -295,6 +329,26 @@ namespace Lib.Core
             return val;
         }
 
+        public static object ExecuteScalar(DbTransaction trans, CommandType cmdType, string cmdText, int cmdTimeout, params DbParameter[] commandParameters)
+        {
+#if DEBUG
+            _executecount++;
+#endif
+
+            DbCommand cmd = _factory.CreateCommand();
+            PrepareCommand(cmd, trans.Connection, trans, cmdType, cmdText, cmdTimeout, commandParameters);
+#if DEBUG
+            DateTime startTime = DateTime.Now;
+#endif
+            object val = cmd.ExecuteScalar();
+#if DEBUG
+            DateTime endTime = DateTime.Now;
+            _executedetail += GetExecuteDetail(cmd.CommandText, startTime, endTime, commandParameters);
+#endif
+            cmd.Parameters.Clear();
+            return val;
+        }
+
         #endregion
 
         #region ExecuteDataset
@@ -302,6 +356,11 @@ namespace Lib.Core
         public static DataSet ExecuteDataset(CommandType cmdType, string cmdText)
         {
             return ExecuteDataset(cmdType, cmdText, null);
+        }
+
+        public static DataSet ExecuteDataset(CommandType cmdType, string cmdText, int cmdTimeout)
+        {
+            return ExecuteDataset(cmdType, cmdText, cmdTimeout, null);
         }
 
         public static DataSet ExecuteDataset(CommandType cmdType, string cmdText, params DbParameter[] commandParameters)
@@ -343,11 +402,54 @@ namespace Lib.Core
             }
         }
 
+        public static DataSet ExecuteDataset(CommandType cmdType, string cmdText, int cmdTimeout, params DbParameter[] commandParameters)
+        {
+#if DEBUG
+            _executecount++;
+#endif
+
+            DbCommand cmd = _factory.CreateCommand();
+            DbConnection conn = _factory.CreateConnection();
+            conn.ConnectionString = ConnectionString;
+            DbDataAdapter adapter = _factory.CreateDataAdapter();
+
+            try
+            {
+                PrepareCommand(cmd, conn, null, cmdType, cmdText, cmdTimeout, commandParameters);
+                adapter.SelectCommand = cmd;
+                DataSet ds = new DataSet();
+
+#if DEBUG
+                DateTime startTime = DateTime.Now;
+#endif
+                adapter.Fill(ds);
+#if DEBUG
+                DateTime endTime = DateTime.Now;
+                _executedetail += GetExecuteDetail(cmd.CommandText, startTime, endTime, commandParameters);
+#endif
+                cmd.Parameters.Clear();
+                return ds;
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                adapter.Dispose();
+                conn.Close();
+            }
+        }
 
 
         public static DataSet ExecuteDataset(DbTransaction trans, CommandType cmdType, string cmdText)
         {
             return ExecuteDataset(trans, cmdType, cmdText, null);
+        }
+
+        public static DataSet ExecuteDataset(DbTransaction trans, CommandType cmdType, string cmdText, int cmdTimeout)
+        {
+            return ExecuteDataset(trans, cmdType, cmdText, cmdTimeout, null);
         }
 
         public static DataSet ExecuteDataset(DbTransaction trans, CommandType cmdType, string cmdText, params DbParameter[] commandParameters)
@@ -375,6 +477,31 @@ namespace Lib.Core
             return ds;
         }
 
+        public static DataSet ExecuteDataset(DbTransaction trans, CommandType cmdType, string cmdText, int cmdTimeout, params DbParameter[] commandParameters)
+        {
+#if DEBUG
+            _executecount++;
+#endif
+
+            DbCommand cmd = _factory.CreateCommand();
+            DbDataAdapter adapter = _factory.CreateDataAdapter();
+
+            PrepareCommand(cmd, trans.Connection, trans, cmdType, cmdText, cmdTimeout, commandParameters);
+            adapter.SelectCommand = cmd;
+            DataSet ds = new DataSet();
+
+#if DEBUG
+            DateTime startTime = DateTime.Now;
+#endif
+            adapter.Fill(ds);
+#if DEBUG
+            DateTime endTime = DateTime.Now;
+            _executedetail += GetExecuteDetail(cmd.CommandText, startTime, endTime, commandParameters);
+#endif
+            cmd.Parameters.Clear();
+            return ds;
+        }
+        
         #endregion
 
         private static void PrepareCommand(DbCommand cmd, DbConnection conn, DbTransaction trans, CommandType cmdType, string cmdText, DbParameter[] cmdParms)
@@ -390,6 +517,40 @@ namespace Lib.Core
                 cmd.Transaction = trans;
 
             cmd.CommandType = cmdType;
+
+            if (cmdParms != null)
+            {
+                foreach (DbParameter parm in cmdParms)
+                {
+                    if (parm != null)
+                    {
+                        if ((parm.Direction == ParameterDirection.InputOutput || parm.Direction == ParameterDirection.Input) &&
+                            (parm.Value == null))
+                        {
+                            parm.Value = DBNull.Value;
+                        }
+                        cmd.Parameters.Add(parm);
+                    }
+                }
+            }
+        }
+
+
+        private static void PrepareCommand(DbCommand cmd, DbConnection conn, DbTransaction trans, CommandType cmdType, string cmdText, int cmdTimeout, DbParameter[] cmdParms)
+        {
+
+            if (conn.State != ConnectionState.Open)
+                conn.Open();
+
+            cmd.Connection = conn;
+            cmd.CommandText = cmdText;
+
+            if (trans != null)
+                cmd.Transaction = trans;
+
+            cmd.CommandType = cmdType;
+
+            cmd.CommandTimeout = cmdTimeout;
 
             if (cmdParms != null)
             {

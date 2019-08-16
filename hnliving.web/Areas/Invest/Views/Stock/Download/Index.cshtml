@@ -1,0 +1,252 @@
+﻿@{
+    ViewBag.Title = "下载";
+}
+
+@section csses{
+    <link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+    <style>
+        textarea.form-control {
+            height: 100px;
+            max-width:100% !important;
+        }
+
+        /*razor语法和媒体查询符号冲突，需使用两个at*/
+        @@media screen and (max-width: 767.98px) {
+            textarea.form-control {
+                height: 100px;
+            }
+        }
+
+        .input-group-addon{
+            width:2.2rem;
+            padding: 0.375rem 0 0 0.5rem;
+        }
+
+        .glyphicon:before{
+            font-size:1rem;
+        }
+    </style>
+}
+
+@section scriptsHead{
+    <script src="~/Scripts/moment-with-locales.min.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.zh-CN.js"></script>
+}
+
+<div class="row ml-0 mr-0 mt-md-5">
+    <div class="col-12 offset-0 col-md-8 offset-md-2 bg-teal-7" id="container">
+        <h4>欢迎使用下载！</h4>
+        <hr />
+
+        <div class="row">
+
+            <div class="form-group col-12">
+                <label class="control-label" for="code">代码：</label>
+                <div class="p-0">
+                    <input type="text" id="code" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group col-12">
+                <label for="start" class="col-md-2 p-0 control-label">开始日期</label>
+                <div class="input-group date form_date p-0" data-date="" data-date-format="yyyy-MM-dd" data-link-field="start">
+                    <input class="form-control" size="16" type="text" value="" readonly>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+                <input type="hidden" id="start" name="start" value="" /><br />
+            </div>
+
+            <div class="form-group col-12">
+                <label for="end" class="col-md-2 p-0 control-label">结束日期</label>
+                <div class="input-group date form_date p-0" data-date="" data-date-format="yyyy-MM-dd" data-link-field="end">
+                    <input class="form-control" size="16" type="text" value="" readonly>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+                <input type="hidden" id="end" name="end" value="" /><br />
+            </div>
+
+            <div class="form-group col-12 p-0">
+                <a href="javascript:void(0)" class="btn btn-primary ml-3 mb-3" role="button" onclick="download111()">调用</a>
+                <a href="javascript:void(0)" class="btn btn-primary ml-3 mb-3" role="button" onclick="zjlx()">查看资金流向</a>
+                <a href="javascript:void(0)" class="btn btn-primary ml-3 mb-3" role="button" onclick="saveStock()">保存基本信息</a>
+                <a href="javascript:void(0)" class="btn btn-primary ml-3 mb-3" role="button" onclick="getStockHis()">获取股票历史数据</a>
+                <a href="javascript:void(0)" class="btn btn-primary ml-3 mb-3" role="button" onclick="saveStockHis()">保存股票历史数据</a>
+            </div>
+
+            <div class="form-group col-12">
+                <label class="control-label" id="lb_result" for="result">结果：</label>
+                <div class="p-0">
+                    <textarea class="form-control" id="result"></textarea>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <script>
+        $(function () {
+            // 初始化日期控件
+            var date = new Date();
+            $('.form_date').datetimepicker({
+                locale: 'zh-CN',
+                language: 'zh-CN',
+                format: 'yyyy-mm-dd',
+                weekStart: 1,           // 一周从周一开始
+                todayBtn: 1,            // 显示今天按钮
+                autoclose: 1,           // 当选择一个日期之后是否立即关闭此日期时间选择器。
+                endDate: new Date(),    // 这个时间后面的不能再选择
+                todayHighlight: 1,      // 高亮当前日期
+                startView: 2,
+                minView: 2,             // 设置时间选择为年月日 去掉时分秒选择
+                daysOfWeekDisabled: [0, 6], // 禁用周几
+                initialDate: new Date(),    // 初始化时间
+                forceParse: true
+            });
+            
+            var month = date.getMonth() < 9 ? "0" + (date.getMonth()+1) : (date.getMonth()+1).toString();   // 月份是从0开始
+            var day = date.getDate() < 9 ? "0" + date.getDate() : date.getDate().toString();
+            var today = date.getFullYear() + "-" + month + "-" + day;
+            //$(".form_date").datetimepicker("setDate", date);
+            $(".form_date").data("date", today);
+            $(".form_date input").val(today);
+            $("#start").val(today);
+            $("#end").val(today);
+        });
+
+        // 调用
+        function download111() {
+            $('#result').val("");
+            $('#lb_result').removeClass("bg-danger").removeClass("bg-success");
+
+            // 参数
+            var parms = new Object();
+            parms["code"] = $("#code").val();
+            parms["start"] = $("#start").val();
+            parms["end"] = $("#end").val();
+
+            // 调用
+            $.post("/Invest/Stock/Download/GetData", parms, downloadResponse);
+        }
+
+        function downloadResponse(data) {
+            var result = eval("(" + data + ")");
+            if (result[0].status == 0) {
+                $('#result').val("");
+                for (var i = 0; i < result[0].hq.length; i++){
+                    $('#result').val($('#result').val()+result[0].hq[i]+"\n");
+                }
+                $('#lb_result').removeClass("bg-danger").addClass("bg-success");
+            } else {
+                $('#result').val(data);
+                $('#lb_result').removeClass("bg-success").addClass("bg-danger");
+            }
+            //var result = eval("(" + data + ")");
+            //if (result.length > 0) {
+            //    for(var i = 0; i < result.length; i++){
+            //        var html_append = '<tr><td align="center">'+result[i].Issue+'</td>'
+            //            + '<td align="center">'+result[i].Sum+'</td>'
+            //            + '<td align="center">'+result[i].Numb+'</td>'
+            //            + '<td align="center">'+result[i].Date.substr(0,10)+'</td></tr>'
+            //        $("#tb_data tbody").append(html_append);
+            //    }
+            //    issue_small = result[result.length-1].Issue;
+            //}
+            //else {
+            //    alert("加载失败！");
+            //}
+        }
+
+
+        // 查看资金流向
+        function zjlx() {
+            $('#result').val("");
+            $('#lb_result').removeClass("bg-danger").removeClass("bg-success");
+
+            // 参数
+            var parms = new Object();
+
+            // 调用
+            $.post("/Invest/Stock/Download/GetStockBaseInfo", parms, zjlxResponse);
+        }
+
+        function zjlxResponse(data) {
+            var result = eval("(" + data + ")");
+            if (typeof(result.data) != 'undefined') {
+                $('#result').val("");
+                for (var i = 0; i < result.data.length; i++) {
+                    $('#result').val($('#result').val() + result.data[i] + "\n");
+                }
+                $('#lb_result').removeClass("bg-danger").addClass("bg-success");
+            } else {
+                $('#result').val(data);
+                $('#lb_result').removeClass("bg-success").addClass("bg-danger");
+            }
+        }
+
+        // 保存基本信息
+        function saveStock() {
+            $('#result').val("");
+            $('#lb_result').removeClass("bg-danger").removeClass("bg-success");
+
+            // 参数
+            var parms = new Object();
+
+            // 调用
+            $.post("/Invest/Stock/Download/SaveStockBaseInfo", parms, function (data) {
+                $('#result').val("结果：" + data);
+            });
+        }
+
+        // 获取股票历史数据
+        function getStockHis() {
+            $('#result').val("");
+            $('#lb_result').removeClass("bg-danger").removeClass("bg-success");
+
+            // 参数
+            var parms = new Object();
+            parms["code"] = $("#code").val();
+            parms["start"] = $("#start").val();
+            parms["end"] = $("#end").val();
+
+            // 调用
+            $.post("/Invest/Stock/Download/GetStockHis", parms, getStockHisResponse);
+        }
+
+        function getStockHisResponse(data) {
+            $('#result').val(data);
+            //var result = eval("(" + data + ")");
+            //if (result[0].status == 0) {
+            //    $('#result').val("");
+            //    for (var i = 0; i < result[0].hq.length; i++) {
+            //        $('#result').val($('#result').val() + result[0].hq[i] + "\n");
+            //    }
+            //    $('#lb_result').removeClass("bg-danger").addClass("bg-success");
+            //} else {
+            //    $('#result').val(data);
+            //    $('#lb_result').removeClass("bg-success").addClass("bg-danger");
+            //}
+        }
+
+        // 保存股票历史数据
+        function saveStockHis() {
+            $('#result').val("");
+            $('#lb_result').removeClass("bg-danger").removeClass("bg-success");
+
+            // 参数
+            var parms = new Object();
+            parms["codes"] = $("#code").val();
+
+            // 调用
+            $.post("/Invest/Stock/Download/SaveStockHis", parms, function (data) {
+                $('#result').val("结果：" + data);
+            });
+        }
+    </script>
+
+}
