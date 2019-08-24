@@ -393,6 +393,36 @@
     <File Include="Areas/H5/Views/_ViewStart.cshtml">
       <publishTime>12/28/2018 19:55:15</publishTime>
     </File>
+    <File Include="Areas/Invest/Views/Home/Index.cshtml">
+      <publishTime>08/05/2019 23:29:32</publishTime>
+    </File>
+    <File Include="Areas/Invest/Views/Ltr/Pl5/Add.cshtml">
+      <publishTime>08/10/2019 20:28:17</publishTime>
+    </File>
+    <File Include="Areas/Invest/Views/Ltr/Pl5/Index.cshtml">
+      <publishTime>08/10/2019 20:28:46</publishTime>
+    </File>
+    <File Include="Areas/Invest/Views/Ltr/Pl5/SumNumb.cshtml">
+      <publishTime>08/10/2019 22:05:16</publishTime>
+    </File>
+    <File Include="Areas/Invest/Views/Ltr/Qxc/Add.cshtml">
+      <publishTime>08/10/2019 19:19:12</publishTime>
+    </File>
+    <File Include="Areas/Invest/Views/Ltr/Qxc/Index.cshtml">
+      <publishTime>08/10/2019 11:42:51</publishTime>
+    </File>
+    <File Include="Areas/Invest/Views/Ltr/Qxc/SumNumb.cshtml">
+      <publishTime>08/10/2019 22:05:35</publishTime>
+    </File>
+    <File Include="Areas/Invest/Views/Shared/_Layout.cshtml">
+      <publishTime>08/05/2019 22:26:21</publishTime>
+    </File>
+    <File Include="Areas/Invest/Views/web.config">
+      <publishTime>08/05/2019 23:35:54</publishTime>
+    </File>
+    <File Include="Areas/Invest/Views/_ViewStart.cshtml">
+      <publishTime>08/05/2019 22:23:14</publishTime>
+    </File>
     <File Include="Areas/Study/Images/bootstrap.jpg">
       <publishTime>11/22/2018 22:31:19</publishTime>
     </File>
@@ -493,7 +523,7 @@
       <publishTime>07/30/2019 21:40:55</publishTime>
     </File>
     <File Include="Areas/Study/Views/Program/Bootstrap/Index.cshtml">
-      <publishTime>07/30/2019 21:51:36</publishTime>
+      <publishTime>08/08/2019 16:44:19</publishTime>
     </File>
     <File Include="Areas/Study/Views/Program/Bootstrap/Modal.cshtml">
       <publishTime>07/30/2019 21:40:40</publishTime>
@@ -697,10 +727,10 @@
       <publishTime>07/29/2019 22:41:34</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>08/04/2019 20:54:18</publishTime>
+      <publishTime>08/11/2019 22:20:52</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>08/04/2019 20:54:18</publishTime>
+      <publishTime>08/11/2019 22:20:52</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>11/03/2015 17:43:42</publishTime>
@@ -709,19 +739,22 @@
       <publishTime>11/03/2015 17:43:42</publishTime>
     </File>
     <File Include="bin/hnliving.web.dll">
-      <publishTime>08/04/2019 20:40:07</publishTime>
+      <publishTime>08/11/2019 22:20:45</publishTime>
     </File>
     <File Include="bin/ICSharpCode.SharpZipLib.dll">
       <publishTime>09/01/2014 14:11:14</publishTime>
     </File>
     <File Include="bin/Lib.Core.dll">
-      <publishTime>08/04/2019 17:33:37</publishTime>
+      <publishTime>08/11/2019 12:27:03</publishTime>
     </File>
     <File Include="bin/Lib.Data.dll">
-      <publishTime>08/04/2019 17:33:37</publishTime>
+      <publishTime>08/11/2019 12:27:04</publishTime>
     </File>
     <File Include="bin/Lib.Services.dll">
-      <publishTime>08/04/2019 17:33:38</publishTime>
+      <publishTime>08/11/2019 12:27:04</publishTime>
+    </File>
+    <File Include="bin/LibLtr.dll">
+      <publishTime>08/11/2019 11:12:37</publishTime>
     </File>
     <File Include="bin/log4net.dll">
       <publishTime>01/16/2013 11:00:38</publishTime>
@@ -736,7 +769,7 @@
       <publishTime>11/23/2018 23:48:06</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>11/23/2018 23:48:06</publishTime>
+      <publishTime>04/22/2019 01:06:16</publishTime>
     </File>
     <File Include="bin/QRCoder.dll">
       <publishTime>01/04/2019 19:15:24</publishTime>
@@ -837,6 +870,9 @@
     <File Include="Canvas/DotLineBkg.js">
       <publishTime>11/30/2018 22:01:47</publishTime>
     </File>
+    <File Include="Canvas/LinkLine.js">
+      <publishTime>08/08/2019 15:55:50</publishTime>
+    </File>
     <File Include="Content/ani-tzh.css">
       <publishTime>01/21/2019 19:17:33</publishTime>
     </File>
@@ -848,6 +884,12 @@
     </File>
     <File Include="Content/bootstrap-3.3.7.min.css">
       <publishTime>11/23/2018 23:48:06</publishTime>
+    </File>
+    <File Include="Content/bootstrap-datetimepicker.css">
+      <publishTime>08/09/2019 11:19:14</publishTime>
+    </File>
+    <File Include="Content/bootstrap-datetimepicker.min.css">
+      <publishTime>08/09/2019 11:19:14</publishTime>
     </File>
     <File Include="Content/bootstrap-grid.css">
       <publishTime>11/26/2018 19:18:21</publishTime>
@@ -1003,7 +1045,7 @@
       <publishTime>07/31/2019 15:52:54</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>07/25/2019 15:07:26</publishTime>
+      <publishTime>08/09/2019 16:35:46</publishTime>
     </File>
     <File Include="Plugins/Anime/anime.js">
       <publishTime>04/22/2018 04:08:58</publishTime>
@@ -1013,6 +1055,21 @@
     </File>
     <File Include="Plugins/jquery.arctext.js">
       <publishTime>01/24/2012 14:52:38</publishTime>
+    </File>
+    <File Include="Plugins/Page/css/pullToRefresh.css">
+      <publishTime>08/10/2019 10:50:34</publishTime>
+    </File>
+    <File Include="Plugins/Page/css/reset.css">
+      <publishTime>08/10/2019 10:50:34</publishTime>
+    </File>
+    <File Include="Plugins/Page/js/iscroll.js">
+      <publishTime>08/10/2019 10:50:17</publishTime>
+    </File>
+    <File Include="Plugins/Page/js/pullToRefresh.js">
+      <publishTime>08/10/2019 10:50:17</publishTime>
+    </File>
+    <File Include="Plugins/Page/js/pullToRefresh.mini.js">
+      <publishTime>08/10/2019 10:50:17</publishTime>
     </File>
     <File Include="Plugins/Swiper/css/animate.css">
       <publishTime>11/12/2018 17:54:11</publishTime>
@@ -1474,7 +1531,7 @@
       <publishTime>07/17/2019 16:06:54</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>08/04/2019 20:54:15</publishTime>
+      <publishTime>08/11/2019 22:20:48</publishTime>
     </File>
     <File Include="Scripts/account.js">
       <publishTime>12/28/2018 19:55:15</publishTime>
@@ -1484,6 +1541,15 @@
     </File>
     <File Include="Scripts/bootstrap-3.3.7.min.js">
       <publishTime>11/23/2018 23:48:06</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap-datetimepicker.js">
+      <publishTime>08/09/2019 11:19:45</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap-datetimepicker.min.js">
+      <publishTime>08/09/2019 11:19:45</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap-datetimepicker.zh-CN.js">
+      <publishTime>08/09/2019 17:36:47</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.js">
       <publishTime>11/26/2018 19:18:21</publishTime>
@@ -1566,8 +1632,29 @@
     <File Include="Scripts/jquery.js">
       <publishTime>11/23/2018 23:48:06</publishTime>
     </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>08/09/2019 16:35:46</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>08/09/2019 16:35:46</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.js">
+      <publishTime>08/09/2019 16:39:50</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>08/09/2019 16:39:50</publishTime>
+    </File>
+    <File Include="Scripts/locales/bootstrap-datetimepicker.zh-CN.js">
+      <publishTime>08/09/2019 17:35:28</publishTime>
+    </File>
+    <File Include="Scripts/locales/bootstrap-datetimepicker.zh-TW.js">
+      <publishTime>08/09/2019 17:35:28</publishTime>
+    </File>
     <File Include="Scripts/modernizr-2.6.2.js">
       <publishTime>11/23/2018 23:48:06</publishTime>
+    </File>
+    <File Include="Scripts/moment-with-locales.min.js">
+      <publishTime>08/09/2019 17:41:17</publishTime>
     </File>
     <File Include="Scripts/popper-utils.js">
       <publishTime>11/26/2018 19:05:24</publishTime>
@@ -1660,7 +1747,7 @@
       <publishTime>05/23/2019 16:20:25</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
-      <publishTime>07/31/2019 20:07:55</publishTime>
+      <publishTime>08/10/2019 11:23:15</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
       <publishTime>01/03/2019 19:34:55</publishTime>
@@ -1708,7 +1795,7 @@
       <publishTime>11/23/2018 23:48:06</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/02/2019 23:44:06</publishTime>
+      <publishTime>08/11/2019 22:20:46</publishTime>
     </File>
     <File Include="WebServices/WebService1.asmx">
       <publishTime>05/23/2019 09:44:46</publishTime>

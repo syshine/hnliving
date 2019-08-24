@@ -1,8 +1,9 @@
-﻿
+﻿@using hnliving.web.Areas.Tools.Models
+
 @{
     ViewBag.Title = "首页";
-    List<UEditorEntity> lstUe = ViewData["lstUe"] as List<UEditorEntity>;
-    System.Collections.Hashtable htSort = ViewData["htSort"] as System.Collections.Hashtable;
+    List<UEditorInfo> lstUe = ViewData["lstUei"] as List<UEditorInfo>;
+    //System.Collections.Hashtable htSort = ViewData["htSort"] as System.Collections.Hashtable;
 }
 
 @section csses {
@@ -89,12 +90,17 @@
 <div id="trans-plcholder" style="color:red;height:30rem;"></div>
 
 <!-- 动态 -->
-<div class="bg-lgdt-btg-9" id="dynamic">
+<div class="bg-light-sky-blue-9" id="dynamic">
     <div class="container p-1">
         <div class="col-md-6">
-            <h3>动态：</h3>
-            <table class="table table-striped table-hover" id="dynamic_list">
-                <thead>
+            <div class="d-flex">
+                <sapn class="font-size-1-5">动态：</sapn>
+                <span class="ml-auto">
+                    <a href="/content/list" class="btn btn-outline-danger" role="button">查看更多</a>
+                </span>
+            </div>
+            <table class="table table-striped table-success table-borderless" id="dynamic_list">
+                <thead class="thead-dark">
                     <tr>
                         <th align="left">标题</th>
                         <th id="dynamic-sort" width="80" align="center">分类</th>
@@ -104,22 +110,13 @@
                 <tbody>
                     @if (lstUe != null)
                     {
-                        foreach (UEditorEntity uee in lstUe)
+                        foreach (UEditorInfo uei in lstUe)
                         {
-                                <tr> @*<tr onclick="location.href='/content/index?id=@uee.Id';">*@
-                                    <td><a href="/content/index?id=@uee.Id">@uee.Title</a></td>
-                                    <td>
-                                        @if (htSort != null)
-                                        {
-                                            if (htSort.ContainsKey(@uee.Typeid.ToString()))
-                                            {
-                                                @htSort[@uee.Typeid.ToString()].ToString()
-                                                @*<a href="/content/list?typeid=@uee.Typeid">@htSort[@uee.Typeid.ToString()].ToString()</a>*@
-                                            }
-                                        }
-                                    </td>
-                                    <td>@uee.Update_time.ToString("yyyy-MM-dd")</td>
-                                </tr>
+                            <tr> @*<tr onclick="location.href='/content/index?id=@uee.Id';">*@
+                                <td><a class="" href="/content/index?id=@uei.Id">@uei.Title</a></td>
+                                <td>@uei.Typename</td>
+                                <td>@uei.Update_time.ToString("yyyy-MM-dd")</td>
+                            </tr>
                         }
                     }
                 </tbody>

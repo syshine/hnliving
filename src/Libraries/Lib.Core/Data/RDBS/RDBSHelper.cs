@@ -569,5 +569,29 @@ namespace Lib.Core
             }
         }
 
+        /// <summary>
+        /// 获取分页sql
+        /// </summary>
+        /// <param name="sqlSource"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="pageIndex"></param>
+        /// <returns></returns>
+        public static string GetPageSql(string sqlSource, int pageSize, int pageIndex = 1)
+        {
+            return string.Format("{0} offset (({2} - 1) * {1}) rows fetch next {1} rows only", sqlSource, pageSize, pageIndex);
+        }
+
+
+        /// <summary>
+        /// 获取总行数sql
+        /// </summary>
+        /// <param name="pageSize"></param>
+        /// <param name="pageIndex"></param>
+        /// <returns></returns>
+        public static int GetPageCount(string sqlSource)
+        {
+            string sql = string.Format("select count(1) from ({0} offset 0 rows) record_counter", sqlSource);
+            return TypeHelper.ObjectToInt(ExecuteScalar(CommandType.Text, sql));
+        }
     }
 }

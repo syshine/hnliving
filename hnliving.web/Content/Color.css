@@ -147,6 +147,13 @@
 .bg-thin-pink-7         { background-color: rgba(251, 137, 251, .7) !important; }
 .bg-thin-pink-8         { background-color: rgba(251, 137, 251, .8) !important; }
 .bg-thin-pink           { background-color: #FB89FB; }
+
+.bg-light-sky-blue-3    { background-color: rgba(135,206,250, .3) !important; }
+.bg-light-sky-blue-5    { background-color: rgba(135,206,250, .5) !important; }
+.bg-light-sky-blue-7    { background-color: rgba(135,206,250, .7) !important; }
+.bg-light-sky-blue-8    { background-color: rgba(135,206,250, .8) !important; }
+.bg-light-sky-blue-9    { background-color: rgba(135,206,250, .9) !important; }
+.bg-light-sky-blue      { background-color: #87CEFA; }
 /*背景颜色结束*/
 
 /*普通文字颜色*/

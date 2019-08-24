@@ -97,6 +97,12 @@ namespace hnliving.web.Models
         public int UeId { get; set; }
 
         /// <summary>
+        /// 分类ID
+        /// </summary>、
+        [DisplayName("分类ID")]
+        public int TypeId { get; set; }
+
+        /// <summary>
         /// 分类名称
         /// </summary>、
         [DisplayName("分类")]

@@ -1,4 +1,5 @@
-﻿using Lib.Core;
+﻿using hnliving.web.Areas.Tools.Models;
+using Lib.Core;
 using Lib.Services;
 using System;
 using System.Collections;
@@ -16,7 +17,7 @@ namespace hnliving.web.Controllers
         public ActionResult Index()
         {
             List<UEditorEntity> lstUe = null;
-            Hashtable htSort = null;
+            List<UEditorInfo> lstUei = new List<UEditorInfo>();
 
             try
             {
@@ -24,17 +25,27 @@ namespace hnliving.web.Controllers
                 int uid = -1;// UserRanks.IsContentEditor(WorkContext.Uid) ? -1 : WorkContext.Uid;
 
                 // 内容
-                lstUe = UEditorSer.GetList(uid);
-                ViewData["lstUe"] = lstUe;
+                lstUe = UEditorSer.GetList(new PageEntity(-1, 7), uid);
 
                 // 分类ID名称
                 DataTable dtSort = UEditorSer.GetSort(uid);
-                htSort = new Hashtable();
-                foreach (DataRow dr in dtSort.Rows)
+                
+                foreach (UEditorEntity ue in lstUe)
                 {
-                    htSort.Add(dr["sid"].ToString(), dr["sname"].ToString());
+                    DataRow[] drs = dtSort.Select("sid=" + ue.Typeid);
+                    string sname = drs.Length > 0 ? drs[0]["sname"].ToString() : "";
+                    UEditorInfo uei = new UEditorInfo()
+                    {
+                        Id = ue.Id,
+                        Typename = sname,
+                        Title = ue.Title,
+                        Create_time = ue.Create_time,
+                        Update_time = ue.Update_time,
+                        Tag = ue.Tag
+                    };
+                    lstUei.Add(uei);
                 }
-                ViewData["htSort"] = htSort;
+                ViewData["lstUei"] = lstUei;
             }
             catch (Exception ex)
             {

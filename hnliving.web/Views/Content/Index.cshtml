@@ -4,23 +4,35 @@
     ViewBag.Title = Model.Title;
 }
 
-<div class="row ml-0 mr-0 mt-5"> @* align-items-centerjustify-content-center login-center*@
-    <div class="col-10 offset-1 col-sm-8 offset-sm-2 bg-primary">
-        <h3>@Model.Title</h3>
+<div class="row ml-0 mr-0 mt-md-5">
+    <div class="col-sm-8 offset-sm-2 p-0">
+        <div class="p-3 bg-primary">
+            <h3>@Model.Title</h3>
 
-        <h6>
-            分类：
-            <span class="badge badge-info">@Model.TypeName</span>
-        </h6>
-    </div>
-
-    <hr />
-
-    <div class="col-10 offset-1 col-sm-8 offset-sm-2 bg-teal-7">
-        <div class="">
-            @Model.Content
+            <h6>
+                分类：
+                <span class="badge badge-info">@Model.TypeName</span>
+            </h6>
         </div>
+
+        <hr class="m-0" />
+
+        <div class="p-3 bg-teal-7">
+            <div class="">
+                @Model.Content
+            </div>
+        </div>
+
+        <div class="bg-teal-7">
+            <div class="btn-group w-100">
+                <a href="/content/list" class="btn btn-primary w-50" role="button">返回<strong class="text-thin-orange">全部</strong>列表</a>
+                <a href="@Url.Action("list", "content", new { typeid = Model.TypeId })" class="btn btn-primary w-50" role="button">返回<strong class="text-thin-orange">@Model.TypeName</strong>列表</a>
+            </div>
+        </div>
+
+
     </div>
+
 
 </div>
 

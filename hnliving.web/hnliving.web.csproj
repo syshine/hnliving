@@ -699,6 +699,10 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\UEditorModel.cs" />
     <Compile Include="Monitor.cs" />
+    <Compile Include="Pager\Base\PageModel.cs" />
+    <Compile Include="Pager\Base\Pager.cs" />
+    <Compile Include="Pager\PagerHtmlExtension.cs" />
+    <Compile Include="Pager\WebPager.cs" />
     <Compile Include="Plugins\UEditor\net\App_Code\Config.cs" />
     <Compile Include="Plugins\UEditor\net\App_Code\ConfigHandler.cs" />
     <Compile Include="Plugins\UEditor\net\App_Code\CrawlerHandler.cs" />
@@ -765,6 +769,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Shared\_LayoutHead.cshtml" />
     <Content Include="Views\Content\Index.cshtml" />
+    <Content Include="Views\Content\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

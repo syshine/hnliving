@@ -2,14 +2,14 @@
 @model UEditorListModel
 
 @{
-    ViewBag.Title = "UEditor列表";
+    ViewBag.Title = "文章列表";
 }
 
 @section scriptsHead{
 }
 
 <div class="bg-teal-7" id="container">
-    <h4>UEditor列表：</h4>
+    <h4>文章列表：</h4>
     <hr />
 
     <div class="row m-0">
@@ -34,8 +34,8 @@
                         }
                         @foreach (KeyValuePair<string, string> kv in Model.TypeList)
                         {
-                            if(kv.Key != ViewBag.TypeId.ToString())
-                            { 
+                            if (kv.Key != ViewBag.TypeId.ToString())
+                            {
                                 <li class="">@Html.ActionLink(kv.Value, "List", new { typeid = kv.Key }, new { @class = "btn btn-primary d-block p-3 font-size-1-5" })</li>
                             }
                             else
@@ -49,7 +49,7 @@
             <!--大屏幕的类型列表-->
             <div class="collapse navbar-collapse" id="collapsibleNavbarType">
                 <div class="col-6 col-md-12 p-0" id="leftNav">
-                    @if (@ViewBag.TypeId != -1)
+                    @if(@ViewBag.TypeId != -1)
                     {
                         @Html.ActionLink("全部", "List", new { typeid = "-1" }, new { @class = "list-group-item" })
                     }
@@ -80,11 +80,9 @@
                         <tr>
                             <th width="4"></th>
                             <th width="10%" align="center">序号</th>
-                            <th width="10%" align="center">分类</th>
+                            <th width="15%" align="center">分类</th>
                             <th align="left">标题</th>
-                            <th width="20%" align="center">更新时间</th>
-                            <th width="10%" align="center">编辑</th>
-                            <th width="10%" align="center">删除</th>
+                            <th width="25%" align="center">更新时间</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -96,8 +94,6 @@
                                 <td>@uei.Typename</td>
                                 <td><a class="" href="/content/index?id=@uei.Id">@uei.Title</a></td>
                                 <td>@uei.Update_time.ToString("yyyy-MM-dd")</td>
-                                <td>@Html.ActionLink("[编辑]", "Edit", new { ueid = uei.Id }, new { @class = "editOperate" })</td>
-                                <td>@Html.ActionLink("[删除]", "Delete", new { ueid = uei.Id }, new { @class = "deleteOperate" })</td>
                             </tr>
                         }
                     </tbody>

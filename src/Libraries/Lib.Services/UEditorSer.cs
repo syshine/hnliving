@@ -69,12 +69,12 @@ namespace Lib.Services
         /// <param name="uid"></param>
         /// <param name="typeid"></param>
         /// <returns></returns>
-        public static List<UEditorEntity> GetList(int uid = -1, int typeid = -1)
+        public static List<UEditorEntity> GetList(PageEntity pager, int uid = -1, int typeid = -1)
         {
             //return Lib.Data.UEditorUtils.GetList(uid);
             
             List<UEditorEntity> ueeList = new List<UEditorEntity>();
-            IDataReader reader = Lib.Core.MngData.RDBS.GetUEditorList(uid, typeid);
+            IDataReader reader = Lib.Core.MngData.RDBS.GetUEditorList(pager, uid, typeid);
             while (reader.Read())
             {
                 UEditorEntity uee = new UEditorEntity();

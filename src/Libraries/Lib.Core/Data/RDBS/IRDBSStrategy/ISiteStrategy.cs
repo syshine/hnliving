@@ -44,7 +44,7 @@ namespace Lib.Core
         IDataReader GetUEditorContentByType(int type);
 
 
-        IDataReader GetUEditorList(int uid, int typeid = -1);
+        IDataReader GetUEditorList(PageEntity pager, int uid, int typeid = -1);
 
         /// <summary>
         /// 新增

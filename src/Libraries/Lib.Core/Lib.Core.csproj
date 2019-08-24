@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Apache.NMS">
+      <HintPath>..\..\..\..\..\安装包\Apache\Active MQ\Apache.NMS.ActiveMQ-1.7.2-bin\lib\Apache.NMS\net-4.0\Apache.NMS.dll</HintPath>
+    </Reference>
+    <Reference Include="Apache.NMS.ActiveMQ">
+      <HintPath>..\..\..\..\..\安装包\Apache\Active MQ\Apache.NMS.ActiveMQ-1.7.2-bin\build\net-4.0\release\Apache.NMS.ActiveMQ.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\..\..\..\..\C#\DLL\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
@@ -104,14 +110,17 @@
     <Compile Include="Data\RDBS\IRDBSStrategy\ISiteStrategy.cs" />
     <Compile Include="Data\RDBS\IRDBSStrategy\IUserStrategy.cs" />
     <Compile Include="Data\RDBS\RDBSHelper.cs" />
+    <Compile Include="Domain\ActiveMQ\ActiveMQModel.cs" />
     <Compile Include="Domain\Ltr\Pl5Entity.cs" />
     <Compile Include="Domain\Ltr\QxcEntity.cs" />
+    <Compile Include="Domain\PageEntity.cs" />
     <Compile Include="Domain\Site\FilterWordInfo.cs" />
     <Compile Include="Domain\Stock\StockDataHis.cs" />
     <Compile Include="Domain\UEditor\UEditorEntity.cs" />
     <Compile Include="Domain\User\OnlineUserInfo.cs" />
     <Compile Include="Domain\User\UserInfo.cs" />
     <Compile Include="Domain\User\UserRankInfo.cs" />
+    <Compile Include="Helper\ActiveMQHelper.cs" />
     <Compile Include="Helper\CommonHelper.cs" />
     <Compile Include="Helper\CsvHelper.cs" />
     <Compile Include="Helper\EncryptHelper.cs" />
@@ -138,6 +147,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

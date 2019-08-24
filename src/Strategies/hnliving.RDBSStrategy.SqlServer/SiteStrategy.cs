@@ -107,18 +107,41 @@ namespace hnliving.RDBSStrategy.SqlServer
         /// <summary>
         /// 获取列表
         /// </summary>
+        /// <param name="pager">页码</param>
         /// <param name="uid">用户id</param>
         /// <param name="typeid">类型id</param>
         /// <returns></returns>
-        public IDataReader GetUEditorList(int uid, int typeid = -1)
+        public IDataReader GetUEditorList(PageEntity pager, int uid, int typeid = -1)
         {
-            string commandText = string.Format("SELECT * FROM [{0}ueditor] WHERE del_flag != 1 AND uid={1} order by update_time desc",
-                                                RDBSHelper.RDBSTablePre,
-                                                uid);
-            if (typeid >= 0)
-                commandText += " AND typeid =" + typeid;
+            string commandText = "";
 
-            return RDBSHelper.ExecuteReader(CommandType.Text, commandText);
+            if (typeid >= 0)
+            {
+                commandText = string.Format("SELECT * FROM [{0}ueditor] WHERE del_flag != 1 AND uid={1} AND typeid ={2} order by update_time desc",
+                                                    RDBSHelper.RDBSTablePre,
+                                                    uid,
+                                                    typeid);
+            }
+            else
+            {
+                commandText = string.Format("SELECT * FROM [{0}ueditor] WHERE del_flag != 1 AND uid={1} order by update_time desc",
+                                                    RDBSHelper.RDBSTablePre,
+                                                    uid);
+            }
+
+            if(pager.Totalcount >= 0)
+            {
+                pager.Totalcount = RDBSHelper.GetPageCount(commandText);
+            }
+
+            string sql = "";
+            if (pager.Pagesize > 0)
+                sql = RDBSHelper.GetPageSql(commandText, pager.Pagesize, pager.Pageindex);
+            else
+                sql = commandText;
+
+            return RDBSHelper.ExecuteReader(CommandType.Text, sql);
+
         }
 
         #region 分类
