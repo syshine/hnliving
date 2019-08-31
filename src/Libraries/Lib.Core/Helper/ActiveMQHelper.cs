@@ -8,9 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lib.Core.Helper
+namespace Lib.Core
 {
-    class ActiveMQHelper
+    public class ActiveMQHelper
     {
         private static IConnectionFactory connFac;
         
@@ -58,8 +58,11 @@ namespace Lib.Core.Helper
                 //新建消费者对象:持久"订阅"模式：
                 //    持久“订阅”后，如果你的程序被停止工作后，恢复运行，
                 //从第一次持久订阅开始，没收到的消息还可以继续收
+                //consumer = session.CreateDurableConsumer(
+                //    session.GetTopic(strsendTopicName)
+                //    , connection.ClientId, null, false);
                 consumer = session.CreateDurableConsumer(
-                    session.GetTopic(strsendTopicName)
+                    session.GetTopic(strreceiveTopicName)
                     , connection.ClientId, null, false);
                 
                 //设置消息接收事件
@@ -70,7 +73,8 @@ namespace Lib.Core.Helper
             }
             catch (Exception e)
             {
-                System.Diagnostics.Debug.WriteLine("初始化ActiveMQ失败:" + e.Message);
+                MngLog.Instance.Write("初始化ActiveMQ失败:" + e.Message);
+                //System.Diagnostics.Debug.WriteLine("初始化ActiveMQ失败:" + e.Message);
                 //SysErrorLog.SaveErrorInfo(e, "初始化ActiveMQ失败");
             }
         }
@@ -105,7 +109,9 @@ namespace Lib.Core.Helper
             model.guid = guid;
             model.method = method;
             model.json = JsonConvert.SerializeObject(t);
-            var i = session.CreateObjectMessage(model);
+            //var i = session.CreateObjectMessage(model);
+            string jsonText = JsonConvert.SerializeObject(model);
+            var i = session.CreateTextMessage(jsonText);
             producer.Send(i);
         }
         
@@ -120,9 +126,16 @@ namespace Lib.Core.Helper
                 var message = receivedMsg as IObjectMessage;
                 if (message.Body is ActiveMQModel)
                 {
-                    System.Diagnostics.Debug.WriteLine("ActiveMQModel=" + JsonConvert.SerializeObject(message.Body));
+                    MngLog.Instance.Write("ActiveMQModel=" + JsonConvert.SerializeObject(message.Body));
+                    //System.Diagnostics.Debug.WriteLine("ActiveMQModel=" + JsonConvert.SerializeObject(message.Body));
                     //SysErrorLog.SaveErrorInfo("ActiveMQModel=" + JsonConvert.SerializeObject(message.Body));
                 }
+            }
+            else if (receivedMsg is ITextMessage)
+            {
+                ITextMessage message = receivedMsg as ITextMessage;
+                string msg = message.NMSDestination + " : " + message.Text;
+                MngLog.Instance.Write(msg);
             }
         }
     }

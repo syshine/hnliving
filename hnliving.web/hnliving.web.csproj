@@ -398,6 +398,7 @@
     <Content Include="Areas\Invest\Views\Ltr\Pl5\Index.cshtml" />
     <Content Include="Areas\Invest\Views\Ltr\Pl5\SumNumb.cshtml" />
     <Content Include="Areas\Invest\Views\Stock\Download\Index.cshtml" />
+    <Content Include="Areas\Tools\Views\Program\Test\PushMsg.cshtml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />

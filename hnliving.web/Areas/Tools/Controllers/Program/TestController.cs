@@ -157,5 +157,45 @@ namespace hnliving.web.Areas.Tools.Controllers.Program
 
         }
         #endregion
+
+        #region ActiveMQ 消息推送
+        public ActionResult PushMsg()
+        {
+            return View();
+        }
+
+        public ActionResult Push(string msg = "")
+        {
+            try
+            {
+                //if (!MngConfig.SiteConfig.EnableActiveMQ)
+                //    return Content("ActiveMQ没有开启！");
+
+                var model = new
+                {
+                    ShopId = "222",//门店编码
+                    proNum = msg,//库存
+                    skuNo = "111",//sku
+                };
+
+                var guid = Guid.NewGuid().ToString();
+                var method = "updatestoreproductkuc111";
+                var lst = new List<object>();
+                lst.Add(model);
+
+                ActiveMQHelper.Send(guid, lst, method);
+
+                return Content("推送成功！");
+                //if (ActiveMQHelper)
+                //    return Content("设置成功！");
+                //else
+                //    return Content("设置失败！");
+            }
+            catch (Exception ex)
+            {
+                return Content("推送错误！错误内容如下：\r\n" + ex.Message);
+            }
+        }
+        #endregion
     }
 }

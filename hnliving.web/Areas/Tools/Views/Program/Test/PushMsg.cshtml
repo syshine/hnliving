@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "推送消息";
+}
+
+@section csses{
+    <style>
+        textarea.form-control {
+            height: 100px;
+            max-width:100% !important;
+        }
+
+        /*razor语法和媒体查询符号冲突，需使用两个at*/
+        @@media screen and (max-width: 767.98px) {
+            textarea.form-control {
+                height: 100px;
+            }
+        }
+    </style>
+}
+
+<div class="row ml-0 mr-0">
+    <div class="col-10 offset-1 bg-teal-7">
+        <h4>欢迎推送消息！</h4>
+        <hr />
+        <div class="row">
+
+            @*<div class="form-group col-md-6">
+                <label class="control-label" for="key">键：</label>
+                <div class="p-0">
+                    <input type="text" id="key" class="form-control" />
+                </div>
+            </div>*@
+
+            <div class="form-group col-md-6">
+                <label class="control-label" for="value">消息：</label>
+                <div class="p-0">
+                    <input type="text" id="value" class="form-control w-100" />
+                </div>
+            </div>
+
+            <div class="form-group col-md-12">
+                <a href="javascript:void(0)" class="btn btn-primary mr-5" role="button" onclick="push()">推送</a>
+            </div>
+
+            <div class="form-group col-12">
+                <label class="control-label" for="result">结果：</label>
+                <div class="p-0">
+                    <textarea class="form-control" id="result"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group col-12">
+                <button type="button" class="btn btn-outline-info" data-toggle="collapse" data-target="#tips">
+                    提示
+                </button> 
+                <textarea class="form-control collapse" id="tips" readonly="readonly">
+1.
+                </textarea>
+            </div>
+
+            <div class="form-group col-12">
+                链接：
+                <a href="https://www.cnblogs.com/a735882640/p/7625771.html" class="ml-3">MQ_ActiveMQ环境部署+C#推送和接收消息</a>
+                <a href="https://blog.csdn.net/PeterPan_hai/article/details/52354913" class="ml-3">C#客户端 消息队列的使用（存和取）</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // 推送
+        function push() {
+            var value = $("#value").val();
+            var params = 'msg=' + value;
+            $.ajax({
+                type: 'get',
+                url: '/tools/program/test/push',
+                data: params,
+                success: function (ret) {
+                    $('#result').val(ret);
+                },
+                error: function (e) {
+                    $('#result').val("执行失败，返回结果：" + e.responseText);
+                }
+            })
+        }
+
+    </script>
+}
