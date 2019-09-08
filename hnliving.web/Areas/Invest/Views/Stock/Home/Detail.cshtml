@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "个股";
+}
+
+@section csses{
+
+    <style>
+        textarea.form-control {
+            height: 100px;
+            max-width:100% !important;
+        }
+
+        /*razor语法和媒体查询符号冲突，需使用两个at*/
+        @@media screen and (max-width: 767.98px) {
+            textarea.form-control {
+                height: 100px;
+            }
+        }
+
+    </style>
+}
+
+@section scriptsHead{
+}
+
+<div class="row ml-0 mr-0 mt-md-5">
+    <div class="col-12 offset-0 col-md-8 offset-md-2 bg-teal-7" id="container">
+        <h4>欢迎使用下载！</h4>
+        <hr />
+
+        <div class="row">
+
+            <div class="form-group col-12">
+                <label class="control-label" for="code">代码：</label>
+                <div class="p-0">
+                    <input type="text" id="code" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group col-12">
+                <a href="javascript:void(0)" class="btn btn-primary mb-3" role="button" onclick="call('getDetail')">查看</a>
+                <a href="javascript:void(0)" class="btn btn-primary mb-3" role="button" onclick="call('getAverageLine')">查看均线数据</a>
+            </div>
+
+            <div class="form-group col-12">
+                <label class="control-label" id="lb_result" for="result">结果：</label>
+                <div class="p-0">
+                    <textarea class="form-control" id="result"></textarea>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <script>
+        $(function () {
+        });
+
+
+        //// 获取股票信息
+        //function getDetail() {
+        //    $('#result').val("");
+        //    $('#lb_result').removeClass("bg-danger").removeClass("bg-success");
+
+        //    // 参数
+        //    var parms = new Object();
+        //    parms["code"] = $("#code").val();
+
+        //    // 调用
+        //    $.post("/Invest/Stock/Home/getDetail", parms, function (data) {
+        //        //$('#result').val("结果：" + data);
+        //        var result = eval("(" + data + ")");
+        //        if (result.Status == 'success') {
+        //            $('#result').val(result.Data);
+        //            $('#lb_result').removeClass("bg-danger").addClass("bg-success");
+        //        } else {
+        //            $('#result').val(result.Message);
+        //            $('#lb_result').removeClass("bg-success").addClass("bg-danger");
+        //        }
+        //    });
+        //}
+
+        // 调用接口
+        function call(action) {
+            $('#result').val("");
+            $('#lb_result').removeClass("bg-danger").removeClass("bg-success");
+
+            // 地址
+            var uri = "/Invest/Stock/Home/" + action;
+
+            // 参数
+            var parms = new Object();
+            parms["code"] = $("#code").val();
+
+            // 调用
+            $.post(uri, parms, function (data) {
+                //$('#result').val("结果：" + data);
+                var result = eval("(" + data + ")");
+                //if (result.Status == 'success') {
+                if (result.IsSuccess) {
+                    $('#result').val(JSON.stringify(result.Data));
+                    $('#lb_result').removeClass("bg-danger").addClass("bg-success");
+                } else {
+                    $('#result').val(result.Message);
+                    $('#lb_result').removeClass("bg-success").addClass("bg-danger");
+                }
+            });
+        }
+    </script>
+
+}

@@ -16,6 +16,18 @@ textarea {
     max-width: 280px;
 }
 
+input[type="checkbox"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    vertical-align: text-bottom;
+}
+
+input[type="radio"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    vertical-align: text-bottom;
+}
+
 a:hover{
     text-decoration:none;
 }

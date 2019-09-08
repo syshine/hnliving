@@ -114,8 +114,14 @@
     <Compile Include="Domain\Ltr\Pl5Entity.cs" />
     <Compile Include="Domain\Ltr\QxcEntity.cs" />
     <Compile Include="Domain\PageEntity.cs" />
+    <Compile Include="Domain\ProcessEntity.cs" />
+    <Compile Include="Domain\ResultEntity.cs" />
     <Compile Include="Domain\Site\FilterWordInfo.cs" />
+    <Compile Include="Domain\Stock\StockAlgorithm.cs" />
     <Compile Include="Domain\Stock\StockDataHis.cs" />
+    <Compile Include="Domain\Stock\StockDefine.cs" />
+    <Compile Include="Domain\Stock\StockEntity.cs" />
+    <Compile Include="Domain\Stock\StockKLineData.cs" />
     <Compile Include="Domain\UEditor\UEditorEntity.cs" />
     <Compile Include="Domain\User\OnlineUserInfo.cs" />
     <Compile Include="Domain\User\UserInfo.cs" />
@@ -129,6 +135,7 @@
     <Compile Include="Helper\MemCachedHelper.cs" />
     <Compile Include="Helper\SecureHelper.cs" />
     <Compile Include="Helper\SqlBulkCopyHelper.cs" />
+    <Compile Include="Helper\StockHelper.cs" />
     <Compile Include="Helper\TimeHelper.cs" />
     <Compile Include="Helper\StringHelper.cs" />
     <Compile Include="Helper\TypeHelper.cs" />

@@ -44,11 +44,16 @@ namespace hnliving.web.Areas.Invest.Controllers.Stock
             return Content(result);
         }
 
-        public ActionResult SaveStockHis(string codes = "")
+        public ActionResult SaveStockHis(string codes = "", string guid = "")
         {
             List<string> lstCode = codes != "" ? codes.Split(',').ToList() : null;
-            string result = Lib.Services.Stock.SaveStockHis(lstCode);
+            string result = Lib.Services.Stock.SaveStockHis(lstCode, guid);
             return Content(result);
+        }
+
+        public ActionResult GetProcess(string guid)
+        {
+            return GetAjaxProcess(guid);
         }
     }
 }

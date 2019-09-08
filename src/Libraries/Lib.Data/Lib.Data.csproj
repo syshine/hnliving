@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="FilterWords.cs" />
     <Compile Include="LoginFailLogs.cs" />
+    <Compile Include="Stock.cs" />
     <Compile Include="Ltr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UEditorUtils.cs" />

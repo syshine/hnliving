@@ -37,9 +37,9 @@ namespace hnliving.RDBSStrategy.SqlServer
         /// <returns></returns>
         public DataSet GetAllStock()
         {
-            string sql = @"select s_code, s_type from [hnliving].[dbo].[{0}stock] order by s_code;
-                            select scode, max(hdate) last_date from [hnliving].[dbo].[{0}stock_his_data1] group by scode;
-                            select scode, max(hdate) last_date from [hnliving].[dbo].[{0}stock_his_data2] group by scode;";
+            string sql = @"select s_code, s_type from [{0}stock] order by s_code;
+                            select scode, max(hdate) last_date from [{0}stock_his_data1] group by scode;
+                            select scode, max(hdate) last_date from [{0}stock_his_data2] group by scode;";
 
             string commandText = string.Format(sql, RDBSHelper.RDBSTablePre);
 
@@ -53,9 +53,9 @@ namespace hnliving.RDBSStrategy.SqlServer
         /// <returns></returns>
         public DataSet GetPartStock(List<string> lstCode)
         {
-            string sql = @"select s_code, s_type from [hnliving].[dbo].[{0}stock] where s_code in ({1}) order by s_code;
-                            select scode, max(hdate) last_date from [hnliving].[dbo].[{0}stock_his_data1] where scode in ({1}) group by scode;
-                            select scode, max(hdate) last_date from [hnliving].[dbo].[{0}stock_his_data2] where scode in ({1}) group by scode;";
+            string sql = @"select s_code, s_type from [{0}stock] where s_code in ({1}) order by s_code;
+                            select scode, max(hdate) last_date from [{0}stock_his_data1] where scode in ({1}) group by scode;
+                            select scode, max(hdate) last_date from [{0}stock_his_data2] where scode in ({1}) group by scode;";
 
             string commandText = string.Format(sql, RDBSHelper.RDBSTablePre, string.Join(",", lstCode));
 
@@ -77,6 +77,36 @@ namespace hnliving.RDBSStrategy.SqlServer
                                                                    string.Format("{0}savestockdatahis", RDBSHelper.RDBSTablePre),
                                                                    timeout,
                                                                    parms), -1);
+        }
+
+
+        /// <summary>
+        /// 获取股票信息
+        /// </summary>
+        /// <param name="code">股票代码编号</param>
+        /// <returns></returns>
+        public DataSet GetStockInfo(string code)
+        {
+            string sql = @"select * from [{0}stock] where s_code = '{1}'";
+
+            string commandText = string.Format(sql, RDBSHelper.RDBSTablePre, code);
+
+            return RDBSHelper.ExecuteDataset(CommandType.Text, commandText);
+        }
+        /// <summary>
+        /// 获取股票历史信息
+        /// </summary>
+        /// <param name="code">股票代码编号</param>
+        /// <param name="type">沪市1,深市2</param>
+        /// <returns></returns>
+        public DataTable GetStockInfoHis(string code, string type)
+        {
+            // 排除停牌的数据CHG <> 'None'
+            string sql = @"select *, CONVERT(varchar(8),HDATE, 112) fdate from [{0}stock_his_data{1}] where scode = '{2}' and CHG <> 'None' order by hdate asc";
+
+            string commandText = string.Format(sql, RDBSHelper.RDBSTablePre, type, code);
+
+            return RDBSHelper.ExecuteDataset(CommandType.Text, commandText).Tables[0];
         }
     }
 }

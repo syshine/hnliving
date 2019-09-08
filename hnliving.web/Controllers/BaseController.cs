@@ -14,7 +14,7 @@ namespace hnliving.web
     {
         protected override void OnException(ExceptionContext filterContext)
         {
-            System.Diagnostics.Debug.WriteLine(filterContext.Exception);
+                System.Diagnostics.Debug.WriteLine(filterContext.Exception);
             //Logs.Write(filterContext.Exception);
         }
 

@@ -1,0 +1,266 @@
+﻿@{
+    ViewBag.Title = "选股器";
+}
+
+@section csses{
+
+    @*<link href="~/Content/bootstrap-extra/font-awesome.min.css" rel="stylesheet" />*@
+    @*<link href="http://www.jq22.com/jquery/font-awesome.4.6.0.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-extra/build.css" rel="stylesheet" />*@
+
+    <style>
+        textarea.form-control {
+            height: 200px;
+            max-width:100% !important;
+        }
+
+        /*razor语法和媒体查询符号冲突，需使用两个at*/
+        @@media screen and (max-width: 767.98px) {
+            textarea.form-control {
+                height: 200px;
+            }
+        }
+
+        .form-control.small_width {
+            width: 4rem;
+            height: auto;
+        }
+
+        .form-control.medium_width {
+            width: 7rem;
+            height: auto;
+        }
+    </style>
+}
+
+@section scriptsHead{
+    @*<script src="~/Scripts/bootstrap-extra/Awesome.js"></script>*@
+}
+
+<div class="row ml-0 mr-0 mt-md-5">
+    <div class="col-12 offset-0 col-md-8 offset-md-2 bg-teal-7" id="container">
+        <h4>欢迎使用选股器！</h4>
+        <hr />
+
+        <div class="row">
+            <div class="form-group col-12">
+                <div class="p-0">
+                    <input type="checkbox" class="checkbox d-inline" id="use_former_complex_rights" checked="checked" />
+                    <label class="control-label" for="result">使用前复权数据</label>
+                </div>
+            </div>
+
+            <div class="form-group col-12">
+                <div class="p-0">
+                    <input type="checkbox" class="checkbox d-inline" id="pchg_enable" checked="checked" />
+                    <sapn>连续</sapn>
+                    <input type="text" class="form-control small_width p-0 d-inline" id="days" value="2"/>
+                    <sapn>天</sapn>
+                    <select class="form-control small_width p-0 d-inline" id="rise" onchange="riseChange()">
+                        <option selected="selected" value="1">上涨</option>
+                        <option value="0">下跌</option>
+                    </select>
+                    <sapn>并且幅度</sapn>
+                    <select class="form-control medium_width p-0 d-inline" id="operator">
+                        <option selected="selected" value="<=">不超过</option>
+                        <option value=">">超过</option>
+                    </select>
+                    <input type="text" class="form-control small_width p-0 d-inline font-weight-bold text-danger" id="pchg" value="3"/>%
+                </div>
+            </div>
+
+            <div class="form-group col-12">
+                <div class="p-0">
+                    <input type="checkbox" class="checkbox d-inline" id="price_enable" checked="checked" />
+                    当前价格：
+                    <input type="text" class="form-control medium_width p-0 d-inline" id="price_low" value="0"/>
+                    -
+                    <input type="text" class="form-control medium_width p-0 d-inline" id="price_high" value="100" />
+                    （元）
+                </div>
+            </div>
+
+            <div class="form-group col-12">
+                <div class="p-0">
+                    <input type="checkbox" class="checkbox d-inline" id="mcap_enable" checked="checked" />
+                    流通市值：
+                    <input type="text" class="form-control medium_width p-0 d-inline" id="mcap_low" value="0" />
+                    -
+                    <input type="text" class="form-control medium_width p-0 d-inline" id="mcap_high" value="100" />
+                    （亿）
+                </div>
+            </div>
+
+            <div class="form-group col-12">
+                <a href="javascript:void(0)" class="btn btn-primary" role="button" onclick="pick()">选股</a>
+            </div>
+
+            <!--挑选出来的股票-->
+            <div class="form-group col-12">
+                <label class="control-label">挑选结果：</label>
+                <div class="row col-12" id="pick_result">
+                </div>
+            </div>
+
+            @*<div class="form-group col-12 d-flex">
+                <label class="control-label" id="lb_result" for="result">调用结果：</label>
+            </div>*@
+
+            <div class="form-group col-12">
+                <label class="control-label" id="lb_result" for="result">调用结果：</label>
+                <div class="p-0">
+                    <textarea class="form-control" id="result"></textarea>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!--进度条-->
+<div class="fixed-bottom d-none" id="progress_div">
+    <div class="progress d-flex">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" id="progressbar" style="width:0%"></div>
+    </div>
+</div>
+<div class="fixed-bottom pr-3 d-none" id="process_text_container" z-index="2000">
+    <div class="mb-0 text-center" id="process_text"></div>
+</div>
+
+@section Scripts {
+    <script>
+        $(function () {
+            // 不使用某个条件时则让该条件的参数不能操作
+            $("input[type='checkbox']").click(function () {
+                var bcheck = $(this).prop('checked');
+                $(this).siblings("input").attr("readonly", !bcheck);
+                $(this).siblings("select").attr("disabled", !bcheck);
+            });
+        });
+
+        $("input").keydown(function (e) {
+            // 按下回车直接调用
+            if (e.keyCode == 13) {
+                pick();
+            }
+        });
+
+        function riseChange() {
+            if ($("#rise").val() == "1") {
+                $("#pchg").removeClass("text-success").addClass("text-danger");
+            } else {
+                $("#pchg").removeClass("text-danger").addClass("text-success");
+            }
+        }
+
+        // 获取股票信息
+        function pick() {
+            guid = getGuid();
+
+            // 初始化
+            $('#pick_result').html("");
+            $('#lb_process').text("");
+            $('#progressbar').css("width", "0%");
+            $('#result').val("");
+            $('#lb_result').removeClass("bg-danger").removeClass("bg-success");
+
+            // 参数
+            var parms = new Object();
+            parms["guid"] = guid;
+
+            // 涨幅条件
+            parms["useFormerComplexRights"] = $("#use_former_complex_rights").prop('checked');
+
+            // 涨幅条件
+            parms["pchgEnable"] = $("#pchg_enable").prop('checked');
+            parms["days"] = $("#days").val();
+            parms["isRise"] = $("#rise").val() == "1" ? true : false;
+            parms["operator"] = $("#operator").val();
+            parms["pchg"] = $("#pchg").val();
+
+            // 价格条件
+            parms["priceEnable"] = $("#price_enable").prop('checked');
+            parms["priceLow"] = $("#price_low").val();
+            parms["priceHigh"] = $("#price_high").val();
+
+            // 流通市值条件
+            parms["mcapEnable"] = $("#mcap_enable").prop('checked');
+            parms["mcapLow"] = $("#mcap_low").val();
+            parms["mcapHigh"] = $("#mcap_high").val();
+
+
+            // 启动定时器查看进度
+            intervalId = setInterval(function () {
+                $.get("/Invest/Stock/Intelligent/GetProcess?guid=" + guid, function (data) {
+                    var result = eval("(" + data + ")");
+                    if (result.IsSuccess) { // 获取成功
+                        $('#process_text_container').removeClass("d-none");
+                        $('#progress_div').removeClass("d-none");
+
+                        $('#progressbar').css("width", result.Data.Present + "%");
+                        $('#process_text').text("执行时间：" + result.Data.ExecTime + "  进度：" + result.Data.Text);
+                        $('#progress_div .progress').css("height", $('#process_text').css("height"));
+                    } else if (result.Status == "inexistence") { // 不存在进度
+                        $('#process_text_container').addClass("d-none");
+                        $('#progress_div').addClass("d-none");
+
+                        $('#progressbar').css("width", "0%");
+                        $('#process_text').text("");
+
+                        // 清除定时器
+                        clearInterval(intervalId);
+                    } else if (result.Status == "error") { // 不存在进度
+                        //$('#process_text_container').addClass("d-none");
+                        //$('#progress_div').addClass("d-none");
+
+                        //$('#progressbar').css("width", "0%");
+                        //$('#process_text').text("");
+
+                        console.log(result.Message);
+                    }
+                });
+            }, 1000);
+
+            // 调用
+            $.post("/Invest/Stock/Intelligent/pick", parms, function (data) {
+                // 清除定时器
+                clearInterval(intervalId);
+                $('#progress_div').addClass("d-none");
+                $('#process_text_container').addClass("d-none");
+
+                // 处理结果
+                var result = eval("(" + data + ")");
+                if (result.IsSuccess) {
+                    //json对象转换成字符串显示
+                    $('#result').val(JSON.stringify(result.Data) + '\r\n' + result.Message);
+                    $('#lb_result').removeClass("bg-danger").addClass("bg-success");
+
+                    // 添加链接到页面
+                    var html_stocks = '';
+                    for (var i in result.Data) {
+                        html_stocks += '<div class="d-flex mr-2 mb-2"><a href="/Invest/Stock/Home/KLine?code='
+                            + result.Data[i].Code + '" class="btn btn-outline-primary">' + result.Data[i].Name + '</a></div>';
+                    }
+                    $('#pick_result').html(html_stocks);
+                } else {
+                    $('#result').val(result.Message);
+                    $('#lb_result').removeClass("bg-success").addClass("bg-danger");
+                }
+            });
+        }
+
+        var intervalId = -1;
+        var guid = ''; // 用于获取进度
+        function getGuid() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+                return v.toString(16);
+            });
+        }
+
+        
+    </script>
+
+}

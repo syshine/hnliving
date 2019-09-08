@@ -212,6 +212,8 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\clchart\font\fontello.svg" />
+    <Content Include="Content\clchart\style.css" />
     <Content Include="Content\Color.css" />
     <Content Include="Content\prism\prism-Night.css" />
     <Content Include="Content\prism\prism.css" />
@@ -392,6 +394,11 @@
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.zh-CN.js" />
+    <Content Include="Scripts\clchart\clchart.js" />
+    <Content Include="Scripts\clchart\clchart-min.js" />
+    <Content Include="Scripts\clchart\debounce.js" />
+    <Content Include="Scripts\clchart\menus.js" />
+    <Content Include="Scripts\clchart\stockdata.js" />
     <Content Include="Scripts\imgLoader.js" />
     <Content Include="Areas\Invest\Views\Ltr\Qxc\Index.cshtml" />
     <Content Include="Areas\Invest\Views\Ltr\Pl5\Add.cshtml" />
@@ -399,6 +406,14 @@
     <Content Include="Areas\Invest\Views\Ltr\Pl5\SumNumb.cshtml" />
     <Content Include="Areas\Invest\Views\Stock\Download\Index.cshtml" />
     <Content Include="Areas\Tools\Views\Program\Test\PushMsg.cshtml" />
+    <Content Include="Areas\Invest\Views\Stock\Home\Index.cshtml" />
+    <Content Include="Areas\Invest\Views\Stock\Home\Detail.cshtml" />
+    <Content Include="Areas\Invest\Views\Stock\Home\KLine.cshtml" />
+    <Content Include="Content\clchart\font\fontello.eot" />
+    <Content Include="Content\clchart\font\fontello.ttf" />
+    <Content Include="Content\clchart\font\fontello.woff" />
+    <Content Include="Content\clchart\font\fontello.woff2" />
+    <Content Include="Areas\Invest\Views\Stock\Intelligent\Picker.cshtml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -585,7 +600,9 @@
     <Content Include="App_Data\log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_Data\redis.config" />
+    <Content Include="App_Data\redis.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Areas\Tools\Views\Program\Test\Redis.cshtml" />
     <Content Include="Areas\Study\Views\Program\Bootstrap\Index.cshtml" />
     <Content Include="Areas\Study\Views\Program\Bootstrap\Modal.cshtml" />
@@ -653,6 +670,8 @@
     <Compile Include="Areas\Invest\Controllers\Ltr\Pl5Controller.cs" />
     <Compile Include="Areas\Invest\Controllers\Ltr\QxcController.cs" />
     <Compile Include="Areas\Invest\Controllers\Stock\DownloadController.cs" />
+    <Compile Include="Areas\Invest\Controllers\Stock\HomeController.cs" />
+    <Compile Include="Areas\Invest\Controllers\Stock\IntelligentController.cs" />
     <Compile Include="Areas\Invest\InvestAreaRegistration.cs" />
     <Compile Include="Areas\Invest\Models\LtrModel.cs" />
     <Compile Include="Areas\Study\Controllers\Program\AnimeJsController.cs" />

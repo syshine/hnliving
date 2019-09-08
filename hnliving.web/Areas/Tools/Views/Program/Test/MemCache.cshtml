@@ -42,6 +42,7 @@
             <div class="form-group col-md-12">
                 <a href="javascript:void(0)" class="btn btn-primary mr-5" role="button" onclick="setValue()">设置</a>
                 <a href="javascript:void(0)" class="btn btn-primary mr-5" role="button" onclick="getValue()">获取</a>
+                <a href="javascript:void(0)" class="btn btn-primary mr-5" role="button" onclick="clearAll()">清空</a>
             </div>
 
             <div class="form-group col-12">
@@ -58,6 +59,12 @@
                 <textarea class="form-control collapse" id="tips" readonly="readonly">
 1.Memcached.ClientLibrary.dll和log4net.dll有版本对应关系
 2.需要在Properties/AssemblyInfo.cs里添加配置[assembly: log4net.Config.XmlConfigurator(ConfigFile = "App_Data/log4net.config", Watch = true)]
+3.memcache占用CPU过高的解决办法：进入注册表,找到：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\memcached Server
+ 在ImagePath项的值为：“D:\memcached\memcached.exe” -d runservice
+ 改成：“D:\memcached\memcached.exe” -d runservice -m 256
+ 在值后面加上 -m 你想要分配的内存大小 -m 256就是内存256M
+ 修改端口的话 加上 -p 12345 是端口号
+ 修改完成后 进入服务(services.msc),找到memcached server 重启服务
                 </textarea>
             </div>
 

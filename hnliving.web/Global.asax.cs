@@ -32,11 +32,11 @@ namespace hnliving.web
 
         protected void Application_End(object sender, EventArgs e)
         {
-            //关闭缓存服务连接
-            if (MngConfig.SiteConfig.EnableMemcache)
-            {
-                MemCachedHelper.Stop();
-            }
+            ////关闭缓存服务连接
+            //if (MngConfig.SiteConfig.EnableMemcache)
+            //{
+            //    MemCachedHelper.Stop();
+            //}
         }
     }
 }

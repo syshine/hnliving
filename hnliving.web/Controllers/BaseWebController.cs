@@ -223,5 +223,106 @@ namespace hnliving.web
         {
             return View("Prompt", new PromptModel(message));
         }
+
+
+        /// <summary>
+        /// 获取进度
+        /// </summary>
+        /// <param name="guid"></param>
+        /// <returns></returns>
+        protected ActionResult GetAjaxProcess(string guid)
+        {
+            ResultEntity result = new ResultEntity();
+
+            try
+            {
+                #region memcache
+                //  从memcache获取进度
+                if (MngConfig.SiteConfig.EnableMemcache)
+                {
+                    MemCachedHelper mch = new MemCachedHelper();
+                    // 总行数
+                    int total_cnt = Convert.ToInt32(mch.Get(guid + "_total_cnt"));
+
+                    // 线程数
+                    int thread_cnt = Convert.ToInt32(mch.Get(guid + "_thread_cnt"));
+
+                    // 已执行行数
+                    int done_cnt = 0;
+                    for (int i = 0; i < thread_cnt; i++)
+                    {
+                        string name = guid + "_td_pk_" + (i + 1);
+                        done_cnt += Convert.ToInt32(mch.Get(name));
+                    }
+
+                    ProcessEntity progress = null;
+
+                    // 执行时间
+                    string key = guid + "_exec_time";
+                    if (mch.IsExists(key))
+                    {
+                        DateTime dtStart = (DateTime)mch.Get(key);
+                        progress = new ProcessEntity(total_cnt, done_cnt, dtStart);
+                    }
+                    else
+                    {
+                        progress = new ProcessEntity(total_cnt, done_cnt);
+                    }
+
+
+                    result.SetSuccess(progress);
+                }
+                #endregion
+                #region redis
+                //  从redis获取进度
+                else if (MngConfig.SiteConfig.EnableRedis)
+                {
+                    // 总行数
+                    int total_cnt = Convert.ToInt32(RedisHelper.GetString(guid + "_total_cnt"));
+                    int total_count123 = RedisHelper.Get<int>(guid + "_total_cnt");
+                    string total_count = RedisHelper.GetString(guid + "_total_cnt");
+
+                    // 线程数
+                    int thread_cnt = Convert.ToInt32(RedisHelper.GetString(guid + "_thread_cnt"));
+
+                    // 已执行行数
+                    int done_cnt = 0;
+                    for (int i = 0; i < thread_cnt; i++)
+                    {
+                        string name = guid + "_td_pk_" + (i + 1);
+                        done_cnt += Convert.ToInt32(RedisHelper.GetString(name));
+                    }
+
+                    ProcessEntity progress = null;
+
+                    // 执行时间
+                    string key = guid + "_exec_time";
+                    DateTime dtStart = RedisHelper.Get<DateTime>(key);
+                    if (dtStart != null)
+                    {
+                        progress = new ProcessEntity(total_cnt, done_cnt, dtStart);
+                    }
+                    else
+                    {
+                        progress = new ProcessEntity(total_cnt, done_cnt);
+                    }
+
+                    result.SetSuccess(progress);
+                }
+                #endregion
+                else
+                {
+                    result.Set("inexistence", null, "未开启");
+                }
+            }
+            catch (Exception ex)
+            {
+                result.SetError(ex.Message);
+            }
+
+            // 转成json格式返回
+            string strResult = Newtonsoft.Json.JsonConvert.SerializeObject(result);
+            return Content(strResult);
+        }
     }
 }

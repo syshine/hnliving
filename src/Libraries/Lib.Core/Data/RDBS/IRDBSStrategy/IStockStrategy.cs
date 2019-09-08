@@ -34,5 +34,20 @@ namespace Lib.Core
         /// <param name="timeout">超时时间</param>
         /// <returns></returns>
         int SaveStockHis(string data, int timeout = 180);
+
+        /// <summary>
+        /// 获取股票基本信息
+        /// </summary>
+        /// <param name="code">股票代码编号</param>
+        /// <returns></returns>
+        DataSet GetStockInfo(string code);
+
+        /// <summary>
+        /// 获取股票历史信息
+        /// </summary>
+        /// <param name="code">股票代码编号</param>
+        /// <param name="type">沪市1,深市2</param>
+        /// <returns></returns>
+        DataTable GetStockInfoHis(string code, string type);
     }
 }

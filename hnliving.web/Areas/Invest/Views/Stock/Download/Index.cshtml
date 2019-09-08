@@ -67,12 +67,12 @@
                 <input type="hidden" id="end" name="end" value="" /><br />
             </div>
 
-            <div class="form-group col-12 p-0">
-                <a href="javascript:void(0)" class="btn btn-primary ml-3 mb-3" role="button" onclick="download111()">调用</a>
-                <a href="javascript:void(0)" class="btn btn-primary ml-3 mb-3" role="button" onclick="zjlx()">查看资金流向</a>
-                <a href="javascript:void(0)" class="btn btn-primary ml-3 mb-3" role="button" onclick="saveStock()">保存基本信息</a>
-                <a href="javascript:void(0)" class="btn btn-primary ml-3 mb-3" role="button" onclick="getStockHis()">获取股票历史数据</a>
-                <a href="javascript:void(0)" class="btn btn-primary ml-3 mb-3" role="button" onclick="saveStockHis()">保存股票历史数据</a>
+            <div class="form-group col-12">
+                <a href="javascript:void(0)" class="btn btn-primary mr-3 mb-3" role="button" onclick="download111()">调用</a>
+                <a href="javascript:void(0)" class="btn btn-primary mr-3 mb-3" role="button" onclick="zjlx()">查看资金流向</a>
+                <a href="javascript:void(0)" class="btn btn-primary mr-3 mb-3" role="button" onclick="saveStock()">保存基本信息</a>
+                <a href="javascript:void(0)" class="btn btn-primary mr-3 mb-3" role="button" onclick="getStockHis()">获取股票历史数据</a>
+                <a href="javascript:void(0)" class="btn btn-primary mr-3 mb-3" role="button" onclick="saveStockHis()">保存股票历史数据</a>
             </div>
 
             <div class="form-group col-12">
@@ -86,6 +86,16 @@
 
     </div>
 
+</div>
+
+<!--进度条-->
+<div class="fixed-bottom d-none" id="progress_div">
+    <div class="progress d-flex">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" id="progressbar" style="width:0%"></div>
+    </div>
+</div>
+<div class="fixed-bottom pr-3 d-none" id="process_text_container" z-index="2000">
+    <div class="mb-0 text-center" id="process_text"></div>
 </div>
 
 @section Scripts {
@@ -235,16 +245,59 @@
 
         // 保存股票历史数据
         function saveStockHis() {
+            guid = getGuid();
+
+            // 初始化
             $('#result').val("");
             $('#lb_result').removeClass("bg-danger").removeClass("bg-success");
+            $('#process_text_container').removeClass("d-none");
+            $('#process_text').text("进度:0%");
+            $('#progress_div').removeClass("d-none");
+            $('#progress_div .progress').css("height", $('#process_text').css("height"));
 
             // 参数
             var parms = new Object();
+            parms["guid"] = guid;
             parms["codes"] = $("#code").val();
+
+
+            // 启动定时器查看进度
+            intervalId = setInterval(function () {
+                $.get("/Invest/Stock/Download/GetProcess?guid=" + guid, function (data) {
+                    var result = eval("(" + data + ")");
+                    if (result.IsSuccess) { // 获取成功
+                        $('#progressbar').css("width", result.Data.Present + "%");
+                        $('#process_text').text("执行时间：" + result.Data.ExecTime + "  进度：" + result.Data.Text);
+                    } else if (result.Status == "inexistence") { // 不存在进度
+                        $('#process_text_container').addClass("d-none");
+                        $('#progress_div').addClass("d-none");
+
+                        $('#progressbar').css("width", "0%");
+                        $('#process_text').text("");
+
+                        // 清除定时器
+                        clearInterval(intervalId);
+                    }
+                });
+            }, 2000);
 
             // 调用
             $.post("/Invest/Stock/Download/SaveStockHis", parms, function (data) {
+                // 清除定时器
+                clearInterval(intervalId);
+                $('#progress_div').addClass("d-none");
+                $('#process_text_container').addClass("d-none");
+
                 $('#result').val("结果：" + data);
+            });
+        }
+
+        var intervalId = -1;
+        var guid = ''; // 用于获取进度
+        function getGuid() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
             });
         }
     </script>
