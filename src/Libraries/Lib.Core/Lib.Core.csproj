@@ -117,10 +117,15 @@
     <Compile Include="Domain\ProcessEntity.cs" />
     <Compile Include="Domain\ResultEntity.cs" />
     <Compile Include="Domain\Site\FilterWordInfo.cs" />
+    <Compile Include="Domain\Stock\FormulaCalc.cs" />
+    <Compile Include="Domain\Stock\FormulaException.cs" />
     <Compile Include="Domain\Stock\StockAlgorithm.cs" />
     <Compile Include="Domain\Stock\StockDataHis.cs" />
     <Compile Include="Domain\Stock\StockDefine.cs" />
     <Compile Include="Domain\Stock\StockEntity.cs" />
+    <Compile Include="Domain\Stock\StockExpression.cs" />
+    <Compile Include="Domain\Stock\StockFormulaCalc.cs" />
+    <Compile Include="Domain\Stock\StockFunction.cs" />
     <Compile Include="Domain\Stock\StockKLineData.cs" />
     <Compile Include="Domain\UEditor\UEditorEntity.cs" />
     <Compile Include="Domain\User\OnlineUserInfo.cs" />

@@ -30,8 +30,9 @@ namespace Lib.Core
         /// </summary>
         /// <param name="dtData"></param>
         /// <param name="lstDays">需要获取的哪几个N日均线</param>
+        /// <param name="fieldName">计算哪个字段的均线</param>
         /// <returns></returns>
-        public static DataTable GetAverageLine(DataTable dtData, List<ushort> lstDays)
+        public static DataTable GetAverageLine(DataTable dtData, List<ushort> lstDays, string fieldName = "TCLOSE")
         {
             // 计时
             DateTime startTime = DateTime.Now;
@@ -67,10 +68,10 @@ namespace Lib.Core
 
                 // 是否有脏数据
                 decimal value = 0m;
-                if (!decimal.TryParse(drsTemp[i]["TCLOSE"].ToString(), out value))
+                if (!decimal.TryParse(drsTemp[i][fieldName].ToString(), out value))
                 {
-                    string msg = string.Format("编码{0}计算均线时，日期{1}的数据可能有误，收盘价：{2}",
-                        drsTemp[i]["s_code"].ToString(), drsTemp[i]["HDATE"].ToString(), drsTemp[i]["TCLOSE"].ToString());
+                    string msg = string.Format("编码{0}计算均线时，日期{1}的数据可能有误，数据：{2}",
+                        drsTemp[i]["s_code"].ToString(), drsTemp[i]["HDATE"].ToString(), drsTemp[i][fieldName].ToString());
                     MngLog.Instance.Write(msg);
                 }
 
@@ -90,6 +91,25 @@ namespace Lib.Core
             System.Diagnostics.Debug.WriteLine(string.Format("计算均线耗时：{0}秒", timespan));
 
             return dtLine;
+        }
+
+        /// <summary>
+        /// 获取前复权数据 (正序倒序数据)
+        /// </summary>
+        /// <param name="dtHis"></param>
+        /// <param name="isDesc"></param>
+        /// <returns></returns>
+        public static DataTable GetFormerComplexRights(DataTable dtHis, bool isDesc)
+        {
+            if(!isDesc) // 正序数据
+            {
+                return GetFormerComplexRights(dtHis);
+            }
+            else // 倒序数据
+            {
+                DataTable dtTemp = dtHis.Select("", "fdate asc").CopyToDataTable();
+                return GetFormerComplexRights(dtTemp).Select("", "fdate desc").CopyToDataTable();
+            }
         }
 
         /// <summary>
@@ -117,9 +137,10 @@ namespace Lib.Core
                 // 如果这条数据的收盘价不等于后一天数据的前一日收盘价，则明天为除权日，今天之前的数据需要复权
                 if (TCLOSE != LCLOSE)
                 {
+                    //LCLOSE = Convert.ToDecimal(dtData.Rows[i + 1]["LCLOSE"]);
                     // 计算系数因子(因子=前一日数据中收盘价/今日数据中昨日收盘价)
-                    decimal coef = Math.Round(LCLOSE / TCLOSE, 4); // 保留4位小数，四舍五入
-                    //decimal coef = (int)((LCLOSE / TCLOSE) * 10000) / 10000.0m; // 保留4位小数，不进行四舍五入
+                    //decimal coef = Math.Round(LCLOSE / TCLOSE, 4); // 保留4位小数，四舍五入
+                    decimal coef = (int)((LCLOSE / TCLOSE) * 10000) / 10000.0m; // 保留4位小数，不进行四舍五入
                     coefficient *= (int)(coef * 10000) / 10000.0m;              // 该因子是累计的(历史有多次除权)
                     //coefficient *= (LCLOSE / TCLOSE); // 该因子是累计的(历史有多次除权)
                 }

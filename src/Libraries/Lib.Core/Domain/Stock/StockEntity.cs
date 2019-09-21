@@ -125,6 +125,25 @@ namespace Lib.Core
         /// </summary>
         private decimal _mCAPHigh;
 
+        /// <summary>
+        /// 使用公式
+        /// </summary>
+        private bool _formulaEnable;
+
+        /// <summary>
+        /// 预处理哪几天均线
+        /// </summary>
+        private string _preAvgLines;
+
+        /// <summary>
+        /// 预处理均线天数
+        /// </summary>
+        private int _preDays;
+
+        /// <summary>
+        /// 公式
+        /// </summary>
+        private string _formula;
 
 
         public bool UseFormerComplexRights
@@ -280,6 +299,58 @@ namespace Lib.Core
             set
             {
                 _mCAPHigh = value;
+            }
+        }
+
+        public bool FormulaEnable
+        {
+            get
+            {
+                return _formulaEnable;
+            }
+
+            set
+            {
+                _formulaEnable = value;
+            }
+        }
+
+        public string PreAvgLines
+        {
+            get
+            {
+                return _preAvgLines;
+            }
+
+            set
+            {
+                _preAvgLines = value;
+            }
+        }
+
+        public int PreDays
+        {
+            get
+            {
+                return _preDays;
+            }
+
+            set
+            {
+                _preDays = value;
+            }
+        }
+
+        public string Formula
+        {
+            get
+            {
+                return _formula;
+            }
+
+            set
+            {
+                _formula = value;
             }
         }
     }

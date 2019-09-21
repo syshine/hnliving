@@ -52,7 +52,7 @@
 
             <div class="form-group col-12">
                 <div class="p-0">
-                    <input type="checkbox" class="checkbox d-inline" id="pchg_enable" checked="checked" />
+                    <input type="checkbox" class="checkbox d-inline" id="pchg_enable" checked="" />
                     <sapn>连续</sapn>
                     <input type="text" class="form-control small_width p-0 d-inline" id="days" value="2"/>
                     <sapn>天</sapn>
@@ -71,7 +71,7 @@
 
             <div class="form-group col-12">
                 <div class="p-0">
-                    <input type="checkbox" class="checkbox d-inline" id="price_enable" checked="checked" />
+                    <input type="checkbox" class="checkbox d-inline" id="price_enable" checked="" />
                     当前价格：
                     <input type="text" class="form-control medium_width p-0 d-inline" id="price_low" value="0"/>
                     -
@@ -82,7 +82,7 @@
 
             <div class="form-group col-12">
                 <div class="p-0">
-                    <input type="checkbox" class="checkbox d-inline" id="mcap_enable" checked="checked" />
+                    <input type="checkbox" class="checkbox d-inline" id="mcap_enable" checked="" />
                     流通市值：
                     <input type="text" class="form-control medium_width p-0 d-inline" id="mcap_low" value="0" />
                     -
@@ -90,6 +90,51 @@
                     （亿）
                 </div>
             </div>
+
+            <div class="form-group col-12">
+                <div class="p-0">
+                    <input type="checkbox" class="checkbox d-inline" id="formula_enable" checked="" />
+                    <label class="control-label" for="formula_enable">公式：</label>
+                    <sapn>预处理均线</sapn>
+                    <input type="text" class="form-control medium_width p-0 d-inline" id="pre_avg_lines" value="5,10,20,30" />
+                    <input type="text" class="form-control small_width p-0 d-inline" id="pre_avg_days" value="100" />
+                    <sapn>个交易日</sapn>
+                    <textarea class="form-control" id="formula"></textarea>
+                </div>
+            </div>
+
+            @*<div class="form-group col-12">
+                <ul class="list-group">
+                    <li class="list-group-item bg-transparent">
+                        <input type="checkbox" class="checkbox d-inline" id="enable_node1" checked="checked" />
+                        <label class="control-label" id="lb_result" for="enable_node1">时间节点1</label>
+
+                        <div class="btn-group">
+                            <input type="text" class="form-control small_width p-0 d-inline" id="test" value="0" />
+                            <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+                                <span class="caret"></span>
+                            </button>
+                            <div class="dropdown-menu editable">
+                                <a class="dropdown-item" href="javascript:void(0)">5日线</a>
+                                <a class="dropdown-item" href="javascript:void(0)">10日线</a>
+                                <a class="dropdown-item" href="javascript:void(0)">20日线</a>
+                                <a class="dropdown-item" href="javascript:void(0)">30日线</a>
+                                <a class="dropdown-item" href="javascript:void(0)">60日线</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item bg-transparent">Second item</li>
+                    <li class="list-group-item bg-transparent">Third item</li>
+                </ul>
+            </div>
+
+            <div class="form-group col-12">
+                <ul class="list-group">
+                    <li class="list-group-item bg-transparent">Active item</li>
+                    <li class="list-group-item bg-transparent">Second item</li>
+                    <li class="list-group-item bg-transparent">Third item</li>
+                </ul>
+            </div>*@
 
             <div class="form-group col-12">
                 <a href="javascript:void(0)" class="btn btn-primary" role="button" onclick="pick()">选股</a>
@@ -135,9 +180,16 @@
             // 不使用某个条件时则让该条件的参数不能操作
             $("input[type='checkbox']").click(function () {
                 var bcheck = $(this).prop('checked');
-                $(this).siblings("input").attr("readonly", !bcheck);
-                $(this).siblings("select").attr("disabled", !bcheck);
+                $(this).siblings("input").attr("readonly", !bcheck)
+                $(this).siblings("select").attr("disabled", !bcheck)
+                $(this).siblings("textarea").attr("disabled", !bcheck);
             });
+        });
+
+        // 可编辑下拉框选择事件
+        $(".dropdown-menu.editable a").click(function (e) {
+            // 将列表的值填入文本框
+            $(this).parent().siblings("input[type='text']").val($(this).text());
         });
 
         $("input").keydown(function (e) {
@@ -157,6 +209,10 @@
 
         // 获取股票信息
         function pick() {
+            //alert($('#test').val());
+            //return;
+
+
             guid = getGuid();
 
             // 初始化
@@ -189,6 +245,12 @@
             parms["mcapEnable"] = $("#mcap_enable").prop('checked');
             parms["mcapLow"] = $("#mcap_low").val();
             parms["mcapHigh"] = $("#mcap_high").val();
+
+            // 公式
+            parms["formulaEnable"] = $("#formula_enable").prop('checked');
+            parms["preAvgLines"] = $("#pre_avg_lines").val();
+            parms["preDays"] = $("#pre_avg_days").val();
+            parms["formula"] = $("#formula").val();
 
 
             // 启动定时器查看进度

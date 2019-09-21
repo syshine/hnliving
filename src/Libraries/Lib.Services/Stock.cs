@@ -598,7 +598,7 @@ namespace Lib.Services
             DateTime dtStart = DateTime.Now;
 
             // 设置5个线程取执行保存
-            const int THREAD_COUNT = 5;
+            const int THREAD_COUNT = 1;//5
             List<Task> lstTask = new List<Task>();
 
             try
@@ -762,10 +762,20 @@ namespace Lib.Services
                     // 获取的记录条数
                     int cntRecord = 1;
                     cntRecord = condition.Days;
+                    if(condition.FormulaEnable)
+                    {
+                        string[] arrAvgLines = condition.PreAvgLines.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+                        // 字符串数组转数字数组
+                        int[] iAvgLines = Array.ConvertAll(arrAvgLines, int.Parse);
+
+                        int days = iAvgLines.Max() + condition.PreDays;
+                        cntRecord = Math.Max(condition.Days, days);
+                    }
 
                     #region 获取数据
                     // 获取数据 (去掉停牌的数据：[PCHG] <> 'None')(此处[SCODE] = '{2}'必须加引号，否则执行时间为500ms以上)
-                    string sql = @"select top {3} * from [{0}stock_his_data{1}] where [SCODE] = '{2}' AND [PCHG] <> 'None' order by [HDATE] desc";
+                    string sql = @"select top {3} *, CONVERT(varchar(8),HDATE, 112) fdate from [{0}stock_his_data{1}] where [SCODE] = '{2}' AND [PCHG] <> 'None' order by [HDATE] desc";
 
                     string commandText = string.Format(sql, RDBSHelper.RDBSTablePre, dtStock.Rows[i]["s_type"].ToString(), code, cntRecord);
 
@@ -778,7 +788,7 @@ namespace Lib.Services
                     #endregion
 
                     // 筛选
-                    ResultEntity pickRusult = Lib.Data.Stock.PickStock(dtHis, condition);
+                    ResultEntity pickRusult = Lib.Data.Stock.PickStock(code, dtHis, condition);
                     if(pickRusult.IsSuccess)
                     {
                         lstStock.Add(new StockCodeName(code, name));
