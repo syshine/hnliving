@@ -9,6 +9,8 @@ using System.Text;
 
 namespace Lib.Core
 {
+    // datatable 列转list
+    //var list =dt.AsEnumerable().Select<DataRow, int>(x => Convert.ToInt32(x["列名"])).ToList<int>();
     public class StockHelper
     {
         /// <summary>
@@ -34,8 +36,10 @@ namespace Lib.Core
         /// <returns></returns>
         public static DataTable GetAverageLine(DataTable dtData, List<ushort> lstDays, string fieldName = "TCLOSE")
         {
+#if DEBUG
             // 计时
             DateTime startTime = DateTime.Now;
+#endif
 
             // 去重后排序再处理
             List<ushort> days = lstDays.Distinct().ToList();
@@ -85,12 +89,174 @@ namespace Lib.Core
                 dtLine.Rows.Add(newRow);
             }
 
+#if DEBUG
             // 打印耗时
             DateTime endTime = DateTime.Now;
             double timespan = endTime.Subtract(startTime).TotalMilliseconds / 1000.0;
             System.Diagnostics.Debug.WriteLine(string.Format("计算均线耗时：{0}秒", timespan));
+#endif
 
             return dtLine;
+        }
+
+        /// <summary>
+        /// 获取指数平均数
+        /// 公式 : EMA (N) = (2 * value  + (N - 1) * EMA(N - 1)) / (N + 1)
+        /// </summary>
+        /// <param name="dtData"></param>
+        /// <param name="lstDays">需要获取的哪几个N指数平均数</param>
+        /// <param name="X"></param>
+        /// <returns></returns>
+        public static DataTable GetEMA(DataTable dtData, List<ushort> lstDays, string X = "CLOSE")
+        {
+            // 去重后排序再处理
+            List<ushort> days = lstDays.Distinct().ToList();
+            days.Sort();
+
+            // 初始化数据集
+            DataTable dtEMA = new DataTable();
+            dtEMA.Columns.Add("date");
+            foreach (ushort nDay in days)
+            {
+                // 添加数据集列
+                string colName = "EMA" + nDay;
+                dtEMA.Columns.Add(colName, Type.GetType("System.Decimal"));
+            }
+
+            // 添加数据
+            if(dtData.Rows.Count > 0)
+            {
+                string field = GetField(X);
+
+                // 添加第一个数据
+                DataRow row0 = dtEMA.NewRow();
+                row0["date"] = dtData.Rows[0]["fdate"].ToString();
+                foreach (ushort nDay in days)
+                {
+                    string colName = "EMA" + nDay;
+                    row0[colName] = dtData.Rows[0][field].ToString();
+                }
+                dtEMA.Rows.Add(row0);
+
+                // 循环计算值
+                for (int i = 1; i < dtData.Rows.Count; i++)
+                {
+                    DataRow newRow = dtEMA.NewRow();
+                    newRow["date"] = dtData.Rows[0]["fdate"].ToString();
+
+                    foreach (ushort nDay in days)
+                    {
+                        string colName = "EMA" + nDay;
+
+                        // 计算EMA    公式 : EMA (N) = (2 * value  + (N - 1) * EMA(N - 1)) / (N + 1)
+                        decimal preEMA = Convert.ToDecimal(dtEMA.Rows[i - 1][colName]); // 前一日EMA
+                        decimal value = Convert.ToDecimal(dtData.Rows[i][field]);
+                        decimal EMA = (2 * value + (nDay - 1) * preEMA) / (nDay + 1);
+
+                        newRow[colName] = EMA;
+                    }
+
+                    dtEMA.Rows.Add(newRow);
+                }
+            }
+
+            return dtEMA;
+        }
+
+
+
+        /// <summary>
+        /// GetDIFF
+        /// DIFF : EMA(CLOSE,SHORT) - EMA(CLOSE,LONG);
+        /// DEA  : EMA(DIFF,M);
+        /// MACD : 2*(DIFF-DEA), COLORSTICK;
+        /// </summary>
+        /// <param name="dtData"></param>
+        /// <param name="shortDay"></param>
+        /// <param name="longDay"></param>
+        /// <param name="fieldName"></param>
+        /// <returns></returns>
+        public static DataTable GetDIFF(DataTable dtData, ushort shortDay = 12, ushort longDay = 26, string fieldName = "CLOSE")
+        {
+            DataTable dtEMA = GetEMA(dtData, new List<ushort>() { shortDay, longDay }, fieldName);
+            string colNameShort = "EMA" + shortDay;
+            string colNameLong = "EMA" + longDay;
+
+            DataTable dtDIFF = new DataTable();
+            dtDIFF.Columns.Add("date");
+            dtDIFF.Columns.Add("DIFF", Type.GetType("System.Decimal"));
+
+            // 遍历赋值
+            for (int i = 0; i < dtEMA.Rows.Count; i++)
+            {
+                DataRow newRow = dtDIFF.NewRow();
+
+                newRow["date"] = dtData.Rows[i]["fdate"].ToString();
+
+                // 计算DIFF
+                decimal emaShort = Convert.ToDecimal(dtEMA.Rows[i][colNameShort]);
+                decimal emaLong = Convert.ToDecimal(dtEMA.Rows[i][colNameLong]);
+                newRow["DIFF"] = emaShort - emaLong;
+
+                // 添加新行
+                dtDIFF.Rows.Add(newRow);
+            }
+
+            return dtDIFF;
+        }
+
+        /// <summary>
+        /// GetDEA
+        /// DIFF : EMA(CLOSE,SHORT) - EMA(CLOSE,LONG);
+        /// DEA  : EMA(DIFF,M);
+        /// MACD : 2*(DIFF-DEA), COLORSTICK;
+        /// </summary>
+        /// <param name="dtData"></param>
+        /// <param name="M">DIFF的M日平滑移动平均值</param>
+        /// <param name="shortDay"></param>
+        /// <param name="longDay"></param>
+        /// <param name="fieldName"></param>
+        /// <returns></returns>
+        public static DataTable GetDEA(DataTable dtDIFF, ushort M = 9)
+        {
+            // 获取DEA数据
+            DataTable dtDEA = GetEMA(dtDIFF, new List<ushort> { M }, "DIFF");
+            // 更改列名
+            dtDEA.Columns["EMA" + M].ColumnName = "DEA";
+            return dtDEA;
+        }
+
+        /// <summary>
+        /// GetMACD
+        /// DIFF : EMA(CLOSE,SHORT) - EMA(CLOSE,LONG);
+        /// DEA  : EMA(DIFF,M);
+        /// MACD : 2*(DIFF-DEA), COLORSTICK;
+        /// </summary>
+        /// <param name="dtData"></param>
+        /// <param name="shortDay"></param>
+        /// <param name="longDay"></param>
+        /// <param name="fieldName"></param>
+        /// <returns></returns>
+        public static DataTable GetMACD(DataTable dtData, ushort M = 9, ushort shortDay = 12, ushort longDay = 26, string fieldName = "CLOSE")
+        {
+            DataTable dtDataDIFF = GetDIFF(dtData, shortDay, longDay, fieldName);
+            DataTable dtDataDEA = GetDEA(dtDataDIFF, M);
+            DataTable dtDataMACD = dtDataDIFF.Copy();
+            dtDataMACD.Columns.Add("DEA", Type.GetType("System.Decimal"));
+            dtDataMACD.Columns.Add("MACD", Type.GetType("System.Decimal"));
+
+            // 遍历赋值
+            for (int i = 0; i < dtDataMACD.Rows.Count; i++)
+            {
+                decimal dea = Convert.ToDecimal(dtDataDEA.Rows[i]["DEA"]);
+                decimal diff = Convert.ToDecimal(dtDataDIFF.Rows[i]["DIFF"]);
+                
+                dtDataMACD.Rows[i]["DEA"] = Math.Round(dea, 2);
+                dtDataMACD.Rows[i]["DIFF"] = Math.Round(diff, 2);
+                dtDataMACD.Rows[i]["MACD"] = Math.Round(2 * (diff - dea), 2);
+            }
+
+            return dtDataMACD;
         }
 
         /// <summary>
@@ -180,6 +346,53 @@ namespace Lib.Core
             }
 
             return dtData;
+        }
+
+        /// <summary>
+        /// 获取字段名
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static string GetField(string key)
+        {
+            string result = key;
+            switch (key.Trim().ToUpper())
+            {
+                // 收盘价
+                case "C":
+                case "CLOSE":
+                    result = "TCLOSE";
+                    break;
+
+                // 开盘价
+                case "O":
+                case "OPEN":
+                    result = "TOPEN";
+                    break;
+
+                // 最高价
+                case "H":
+                case "HIGH":
+                    result = "HIGH";
+                    break;
+
+                // 最低价
+                case "L":
+                case "LOW":
+                    result = "LOW";
+                    break;
+
+                // 成交量
+                case "V":
+                case "VAL":
+                    result = "VOTURNOVER";
+                    break;
+
+                default:
+                    break;
+            }
+
+            return result;
         }
     }
 

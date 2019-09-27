@@ -127,6 +127,7 @@
     <Compile Include="Domain\Stock\StockFormulaCalc.cs" />
     <Compile Include="Domain\Stock\StockFunction.cs" />
     <Compile Include="Domain\Stock\StockKLineData.cs" />
+    <Compile Include="Domain\Stock\UnselectException.cs" />
     <Compile Include="Domain\UEditor\UEditorEntity.cs" />
     <Compile Include="Domain\User\OnlineUserInfo.cs" />
     <Compile Include="Domain\User\UserInfo.cs" />

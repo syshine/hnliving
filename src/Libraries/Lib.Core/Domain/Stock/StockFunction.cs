@@ -268,7 +268,7 @@ namespace Lib.Core.Stock
                 case "O":
                 case "OPEN":
                     {
-                        DataTable dtAver = StockHelper.GetAverageLine(dtData, lstDays, "TOPEN");
+                        //DataTable dtAver = StockHelper.GetAverageLine(dtData, lstDays, "TOPEN");
                     }
                     break;
 

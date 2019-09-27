@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Optimization;
 using Lib.Core;
+using System.Diagnostics;
 
 namespace hnliving.web
 {
@@ -28,6 +29,9 @@ namespace hnliving.web
             {
                 MemCachedHelper.Open(MngConfig.MemcachedCacheConfig, "hnl");
             }
+
+            // 开启sql server服务
+            StartSqlserver();
         }
 
         protected void Application_End(object sender, EventArgs e)
@@ -37,6 +41,27 @@ namespace hnliving.web
             //{
             //    MemCachedHelper.Stop();
             //}
+        }
+
+        private void StartSqlserver()
+        {
+            Process proc = null;
+            try
+            {
+                string targetDir = string.Format(@"E:\编程\批处理\sql server start.bat");//this is where testChange.bat lies
+                proc = new Process();
+                proc.StartInfo.WorkingDirectory = targetDir;
+                proc.StartInfo.FileName = "Video.bat";
+                proc.StartInfo.Arguments = string.Format("20");
+                //proc.StartInfo.CreateNoWindow = true;
+                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
+                proc.Start();
+                proc.WaitForExit();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Exception Occurred :{0},{1}", ex.Message, ex.StackTrace.ToString());
+            }
         }
     }
 }

@@ -87,5 +87,21 @@ namespace hnliving.web.Areas.Invest.Controllers.Stock
             return Content(strResult);
             //return Json(result, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult GetMACD(string code)
+        {
+            ResultEntity result;
+            if (string.IsNullOrWhiteSpace(code))
+            {
+                result = ResultEntity.ParamsError("股票代码不能为空");
+            }
+            else
+            {
+                result = Lib.Services.Stock.GetMACD(code);
+            }
+
+            string strResult = JsonConvert.SerializeObject(result);
+            return Content(strResult);
+        }
     }
 }

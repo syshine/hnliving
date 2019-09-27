@@ -154,9 +154,15 @@ namespace Lib.Data
                 {
                     if (dtData.Rows.Count > 0)
                     {
-                        // 均线数据
-                        DataTable dtAvg = StockHelper.GetAverageLine(dtData).Select("", "date desc").CopyToDataTable();
+                        // 预处理哪几条均线
+                        string[] arrAvgLines = condition.PreAvgLines.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
+                        // 字符串数组转数字数组
+                        List<ushort> lstAvgLines = Array.ConvertAll(arrAvgLines, ushort.Parse).ToList();
+
+                        // 均线数据
+                        DataTable dtAvg = StockHelper.GetAverageLine(dtData, lstAvgLines).Select("", "date desc").CopyToDataTable();
+                        
                         // 初始化公式计算
                         StockFormulaCalc sfc = new StockFormulaCalc(code, dtData, dtAvg);
 
@@ -233,6 +239,10 @@ namespace Lib.Data
                 //    //}
                 //}
                 #endregion
+            }
+            catch (UnselectException ue)
+            {
+                bPick = false;
             }
             catch (Exception ex)
             {

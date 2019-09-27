@@ -336,9 +336,8 @@ namespace Lib.Core
                 }
                 else // 是函数
                 {
-                    decimal val = ExecFunction(lst[i][0], lst[i][1]);
-
-
+                    object val = ExecFunction(lst[i][0], lst[i][1]);
+                    
                     // 递归计算
                     lstCalc.Add(val);
 
@@ -763,9 +762,9 @@ namespace Lib.Core
         /// <param name="functionName"></param>
         /// <param name="Params"></param>
         /// <returns></returns>
-        public virtual decimal ExecFunction(string functionName, string Params)
+        public virtual object ExecFunction(string functionName, string Params)
         {
-            decimal result;
+            object result;
 
             // 函数公式
             string funcFormula = GetFuncFormula(functionName, Params);
@@ -1109,15 +1108,15 @@ namespace Lib.Core
             #endregion
             else
             {
-                if(tempExp == "1")
-                {
-                    result = true;
-                }
-                else if (tempExp == "0")
-                {
-                    result = false;
-                }
-                else
+                //if(tempExp == "1")
+                //{
+                //    result = true;
+                //}
+                //else if (tempExp == "0")
+                //{
+                //    result = false;
+                //}
+                //else
                 {
                     // 如果表达式没有运算，且不能转换成布尔类型，则返回不是逻辑运算
                     if (!bool.TryParse(tempExp, out result))

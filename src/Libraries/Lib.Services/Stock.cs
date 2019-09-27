@@ -553,6 +553,47 @@ namespace Lib.Services
         }
 
         /// <summary>
+        /// 获取MACD
+        /// 指数平滑移动平均线（Moving Average Convergence and Divergence，简称MACD）
+        /// </summary>
+        /// <param name="stockCode"></param>
+        /// <returns></returns>
+        public static ResultEntity GetMACD(string stockCode)
+        {
+            ResultEntity result = new ResultEntity();
+
+            try
+            {
+                // 获取基础信息
+                DataSet dsStock = Lib.Core.MngData.RDBS.GetStockInfo(stockCode);
+
+                if (dsStock.Tables[0].Rows.Count > 0)
+                {
+                    DataRow dr = dsStock.Tables[0].Rows[0];
+
+                    // 获取历史数据
+                    DataTable dtStockHis = Lib.Core.MngData.RDBS.GetStockInfoHis(stockCode, dr["s_type"].ToString());
+
+                    // 获取MACD数据
+                    DataTable stockData = StockHelper.GetMACD(dtStockHis);
+
+                    // 转换结果
+                    result.SetSuccess(stockData);
+                }
+                else
+                {
+                    result.Message = "没有代码为" + stockCode + "的股票";
+                }
+            }
+            catch(Exception ex)
+            {
+                result.SetError(ex.Message);
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// 获取前复权数据
         /// </summary>
         /// <param name="stockCode"></param>
@@ -762,22 +803,32 @@ namespace Lib.Services
                     // 获取的记录条数
                     int cntRecord = 1;
                     cntRecord = condition.Days;
+                    string cntSql = "top " + cntRecord;
                     if(condition.FormulaEnable)
                     {
-                        string[] arrAvgLines = condition.PreAvgLines.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        if (condition.PreDays >= 0)
+                        {
+                            string[] arrAvgLines = condition.PreAvgLines.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
-                        // 字符串数组转数字数组
-                        int[] iAvgLines = Array.ConvertAll(arrAvgLines, int.Parse);
+                            // 字符串数组转数字数组
+                            int[] iAvgLines = Array.ConvertAll(arrAvgLines, int.Parse);
 
-                        int days = iAvgLines.Max() + condition.PreDays;
-                        cntRecord = Math.Max(condition.Days, days);
+                            int days = iAvgLines.Max() + condition.PreDays;
+                            cntRecord = Math.Max(condition.Days, days);
+
+                            cntSql = "top " + cntRecord;
+                        }
+                        else
+                        {
+                            cntSql = "";
+                        }
                     }
 
                     #region 获取数据
                     // 获取数据 (去掉停牌的数据：[PCHG] <> 'None')(此处[SCODE] = '{2}'必须加引号，否则执行时间为500ms以上)
-                    string sql = @"select top {3} *, CONVERT(varchar(8),HDATE, 112) fdate from [{0}stock_his_data{1}] where [SCODE] = '{2}' AND [PCHG] <> 'None' order by [HDATE] desc";
+                    string sql = @"select {3} *, CONVERT(varchar(8),HDATE, 112) fdate from [{0}stock_his_data{1}] where [SCODE] = '{2}' AND [PCHG] <> 'None' order by [HDATE] desc";
 
-                    string commandText = string.Format(sql, RDBSHelper.RDBSTablePre, dtStock.Rows[i]["s_type"].ToString(), code, cntRecord);
+                    string commandText = string.Format(sql, RDBSHelper.RDBSTablePre, dtStock.Rows[i]["s_type"].ToString(), code, cntSql);
 
                     //DateTime start = DateTime.Now;
                     DataTable dtHis = RDBSHelper.ExecuteDataset(CommandType.Text, commandText).Tables[0];

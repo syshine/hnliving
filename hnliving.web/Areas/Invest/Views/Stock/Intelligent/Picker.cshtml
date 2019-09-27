@@ -52,7 +52,7 @@
 
             <div class="form-group col-12">
                 <div class="p-0">
-                    <input type="checkbox" class="checkbox d-inline" id="pchg_enable" checked="" />
+                    <input type="checkbox" class="checkbox d-inline" id="pchg_enable" checked=""/>
                     <sapn>连续</sapn>
                     <input type="text" class="form-control small_width p-0 d-inline" id="days" value="2"/>
                     <sapn>天</sapn>
@@ -71,7 +71,7 @@
 
             <div class="form-group col-12">
                 <div class="p-0">
-                    <input type="checkbox" class="checkbox d-inline" id="price_enable" checked="" />
+                    <input type="checkbox" class="checkbox d-inline" id="price_enable" checked=""/>
                     当前价格：
                     <input type="text" class="form-control medium_width p-0 d-inline" id="price_low" value="0"/>
                     -
@@ -82,7 +82,7 @@
 
             <div class="form-group col-12">
                 <div class="p-0">
-                    <input type="checkbox" class="checkbox d-inline" id="mcap_enable" checked="" />
+                    <input type="checkbox" class="checkbox d-inline" id="mcap_enable" checked=""/>
                     流通市值：
                     <input type="text" class="form-control medium_width p-0 d-inline" id="mcap_low" value="0" />
                     -
@@ -97,7 +97,7 @@
                     <label class="control-label" for="formula_enable">公式：</label>
                     <sapn>预处理均线</sapn>
                     <input type="text" class="form-control medium_width p-0 d-inline" id="pre_avg_lines" value="5,10,20,30" />
-                    <input type="text" class="form-control small_width p-0 d-inline" id="pre_avg_days" value="100" />
+                    <input type="text" class="form-control small_width p-0 d-inline" id="pre_avg_days" value="20" />
                     <sapn>个交易日</sapn>
                     <textarea class="form-control" id="formula"></textarea>
                 </div>
@@ -143,6 +143,7 @@
             <!--挑选出来的股票-->
             <div class="form-group col-12">
                 <label class="control-label">挑选结果：</label>
+                <label class="control-label" id="stock_cnt"></label>
                 <div class="row col-12" id="pick_result">
                 </div>
             </div>
@@ -177,13 +178,18 @@
 @section Scripts {
     <script>
         $(function () {
-            // 不使用某个条件时则让该条件的参数不能操作
-            $("input[type='checkbox']").click(function () {
-                var bcheck = $(this).prop('checked');
-                $(this).siblings("input").attr("readonly", !bcheck)
-                $(this).siblings("select").attr("disabled", !bcheck)
-                $(this).siblings("textarea").attr("disabled", !bcheck);
-            });
+            // 默认不开启
+            $("#pchg_enable").click();
+            $("#price_enable").click();
+            $("#mcap_enable").click();
+        });
+
+        // 不使用某个条件时则让该条件的参数不能操作
+        $("input[type='checkbox']").change(function () {
+            var bcheck = $(this).prop('checked');
+            $(this).siblings("input").attr("readonly", !bcheck)
+            $(this).siblings("select").attr("disabled", !bcheck)
+            $(this).siblings("textarea").attr("disabled", !bcheck);
         });
 
         // 可编辑下拉框选择事件
@@ -219,6 +225,7 @@
             $('#pick_result').html("");
             $('#lb_process').text("");
             $('#progressbar').css("width", "0%");
+            $('#stock_cnt').text("");
             $('#result').val("");
             $('#lb_result').removeClass("bg-danger").removeClass("bg-success");
 
@@ -299,11 +306,14 @@
                     $('#result').val(JSON.stringify(result.Data) + '\r\n' + result.Message);
                     $('#lb_result').removeClass("bg-danger").addClass("bg-success");
 
+                    // 选出股票数量
+                    $('#stock_cnt').text('共选出' + result.Data.length + '个品种');
+
                     // 添加链接到页面
                     var html_stocks = '';
                     for (var i in result.Data) {
-                        html_stocks += '<div class="d-flex mr-2 mb-2"><a href="/Invest/Stock/Home/KLine?code='
-                            + result.Data[i].Code + '" class="btn btn-outline-primary">' + result.Data[i].Name + '</a></div>';
+                        html_stocks += '<div class="d-flex mr-2 mb-2"><a href="/Invest/Stock/Home/KLine?code=' + result.Data[i].Code
+                            + '" class="btn btn-outline-primary" target="_blank">' + result.Data[i].Name + '</a></div>';
                     }
                     $('#pick_result').html(html_stocks);
                 } else {
