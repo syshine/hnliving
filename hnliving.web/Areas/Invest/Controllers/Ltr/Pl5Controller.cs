@@ -1,10 +1,10 @@
 ﻿using hnliving.web.Areas.Invest.Models;
 using Lib.Core;
-using Lib.Core.Domain.Ltr;
 using Lib.Services;
 using LibLtr.Entity;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -20,6 +20,15 @@ namespace hnliving.web.Areas.Invest.Controllers.Ltr
             List<ShowLtrPl5Model> lstEntity = ltr.GetPl5Data(count);
 
             return View(lstEntity);
+        }
+
+        public ActionResult HighFrequency(int count = 100)
+        {
+            Lib.Services.Ltr ltr = new Lib.Services.Ltr();
+            DataTable lstEntity = ltr.GetPl5HighFrequency(count);
+            var json_data = CommonHelper.JsonSerializeObject(lstEntity);
+
+            return Content(json_data);
         }
 
         public ActionResult GetData(int issue = -1, int count = 50)
@@ -101,17 +110,16 @@ namespace hnliving.web.Areas.Invest.Controllers.Ltr
             switch(Lib.Services.Ltr.AddPl5Numb(entity))
             {
                 case 1:
-                    bool b = Lib.Services.Ltr.UpdatePl5Data();
-                    return PromptView(Url.Action("Index"), "新增分类成功！"+ b, true);
+                    return PromptView(Url.Action("Index"), "新增成功！", true);
 
                 case 2:
-                    return PromptView("", "新增分类失败！号码错误！", true);
+                    return PromptView("", "新增失败！号码错误！", true);
 
                 case 3:
-                    return PromptView("", "新增分类失败！期号已经存在！", true);
+                    return PromptView("", "新增失败！期号已经存在！", true);
 
                 default:
-                    return PromptView("", "新增分类失败！", true);
+                    return PromptView("", "新增失败！", true);
             }
             
             //return View();

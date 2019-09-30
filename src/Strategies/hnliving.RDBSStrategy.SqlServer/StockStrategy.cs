@@ -2,7 +2,6 @@
 
 using Lib.Core;
 using System.Data.Common;
-using Lib.Core.Domain.Ltr;
 using System.Collections.Generic;
 
 namespace hnliving.RDBSStrategy.SqlServer

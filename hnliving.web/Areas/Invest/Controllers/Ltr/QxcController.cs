@@ -1,10 +1,10 @@
 ﻿using hnliving.web.Areas.Invest.Models;
 using Lib.Core;
-using Lib.Core.Domain.Ltr;
 using Lib.Services;
 using LibLtr.Entity;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -20,6 +20,15 @@ namespace hnliving.web.Areas.Invest.Controllers.Ltr
             List<ShowLtrQxcModel> lstEntity = ltr.GetQxcData(count);
 
             return View(lstEntity);
+        }
+
+        public ActionResult HighFrequency(int count = 100)
+        {
+            Lib.Services.Ltr ltr = new Lib.Services.Ltr();
+            DataTable lstEntity = ltr.GetQxcHighFrequency(count);
+            var json_data = CommonHelper.JsonSerializeObject(lstEntity);
+
+            return Content(json_data);
         }
 
         public ActionResult GetData(int issue = -1, int count = 10)
@@ -101,8 +110,7 @@ namespace hnliving.web.Areas.Invest.Controllers.Ltr
             switch(Lib.Services.Ltr.AddQxcNumb(entity))
             {
                 case 1:
-                    bool b = Lib.Services.Ltr.UpdateQxcData();
-                    return PromptView(Url.Action("Index"), "新增分类成功！"+ b, true);
+                    return PromptView(Url.Action("Index"), "新增分类成功！", true);
 
                 case 2:
                     return PromptView("", "新增分类失败！号码错误！", true);

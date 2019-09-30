@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LibLtr;
-using Lib.Core.Domain.Ltr;
+using Lib.Core;
 
 namespace Lib.Data
 {

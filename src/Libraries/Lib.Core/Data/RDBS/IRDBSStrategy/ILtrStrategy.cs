@@ -1,5 +1,4 @@
-﻿using Lib.Core.Domain.Ltr;
-using System.Data;
+﻿using System.Data;
 
 namespace Lib.Core
 {

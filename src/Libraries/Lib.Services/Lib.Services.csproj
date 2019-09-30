@@ -32,7 +32,7 @@
   <ItemGroup>
     <Reference Include="LibLtr, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\C#\Library\Libs\LibLtr\bin\Dotfuscated\LibLtr.dll</HintPath>
+      <HintPath>..\..\..\..\..\C#\Library\Libs\LibLtr\bin\Debug\LibLtr.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>

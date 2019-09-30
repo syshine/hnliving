@@ -59,7 +59,7 @@
     </Reference>
     <Reference Include="LibLtr, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\C#\Library\Libs\LibLtr\bin\Dotfuscated\LibLtr.dll</HintPath>
+      <HintPath>..\..\..\C#\Library\Libs\LibLtr\bin\Debug\LibLtr.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -738,6 +738,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="TimingTask.cs" />
     <Compile Include="ViewPages\WebViewPage.cs" />
     <Compile Include="WebServices\WebService1.asmx.cs">
       <DependentUpon>WebService1.asmx</DependentUpon>

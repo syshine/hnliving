@@ -146,32 +146,35 @@ namespace hnliving.web
 
                 // 没有权限访问
                 //if (!WorkContext.ModulesId.Contains("0") && !WorkContext.ModulesId.Contains(controllerName) && !WorkContext.ModulesId.Contains(areaName))
-                bool bAccess = true;
+                bool bAccess = false;
                 if (aciAllAction != null)
                 {
                     List<string> lstAll = new List<string>(aciAllAction.Value.Split(','));
-                    if (!lstAll.Contains(WorkContext.UserRid.ToString()))
+                    if (lstAll.Contains(WorkContext.UserRid.ToString()))
                     {
-                        // 单个Action权限
-                        AccessConfigInfo aci = MngConfig.Lstaccessconfiginfo.Find(value => value.Area.ToLower() == areaName
-                                                                                        && value.Control.ToLower() == controllerName
-                                                                                        && value.Action.ToLower() == actionName);
-
-                        if (aci != null)
-                        {
-                            List<string> lst = new List<string>(aci.Value.Split(','));
-                            if (!lst.Contains(WorkContext.UserRid.ToString()))
-                                bAccess = false;
-                        }
-                        else
-                        {
-                            bAccess = false;
-                        }
+                        bAccess = true;
                     }
                 }
                 else
                 {
-                    bAccess = false;
+                    // 单个Action权限
+                    AccessConfigInfo aci = MngConfig.Lstaccessconfiginfo.Find(value => value.Area.ToLower() == areaName
+                                                                                    && value.Control.ToLower() == controllerName
+                                                                                    && value.Action.ToLower() == actionName);
+
+                    if (aci != null)
+                    {
+                        List<string> lst = new List<string>(aci.Value.Split(','));
+                        // 0代表都可以访问
+                        if (lst.Contains("0") || lst.Contains(WorkContext.UserRid.ToString()))
+                        {
+                            bAccess = true;
+                        }
+                    }
+                    else
+                    {
+                        bAccess = false;
+                    }
                 }
 
                 if(!bAccess)

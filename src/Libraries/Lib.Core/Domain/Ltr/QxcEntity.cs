@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lib.Core.Domain.Ltr
+namespace Lib.Core
 {
     public class QxcEntity
     {

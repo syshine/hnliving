@@ -31,7 +31,19 @@ namespace hnliving.web
             }
 
             // 开启sql server服务
-            StartSqlserver();
+            //StartSqlserver();
+
+            // 监控Qxc
+            if (MngConfig.SiteConfig.IsMonitorQxc)
+            {
+                TimingTask.MonitorQxc();
+            }
+
+            // 监控Pl5
+            if (MngConfig.SiteConfig.IsMonitorPl5)
+            {
+                TimingTask.MonitorPl5();
+            }
         }
 
         protected void Application_End(object sender, EventArgs e)
@@ -48,7 +60,7 @@ namespace hnliving.web
             Process proc = null;
             try
             {
-                string targetDir = string.Format(@"E:\编程\批处理\sql server start.bat");//this is where testChange.bat lies
+                string targetDir = string.Format(@"E:\\sql server start.bat");//this is where testChange.bat lies
                 proc = new Process();
                 proc.StartInfo.WorkingDirectory = targetDir;
                 proc.StartInfo.FileName = "Video.bat";

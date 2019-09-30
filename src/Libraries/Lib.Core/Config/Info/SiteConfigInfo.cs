@@ -22,6 +22,9 @@ namespace Lib.Core
         private bool _enablememcache = false;    //是否开启memcache
         private bool _enableredis = false;       //是否开启redis
 
+        private bool _isMonitorQxc = false;     //是否监控Qxc
+        private bool _isMonitorPl5 = false;     //是否监控Pl5
+
         private string _wxgzhappid = "";    // 公众号开发者ID
         private string _wxgzhappsecret = "";// 公众号开发者密码
         private string _wxmpappid = "";     //小程序开发者ID
@@ -106,6 +109,22 @@ namespace Lib.Core
         {
             get { return _enableredis; }
             set { _enableredis = value; }
+        }
+        /// <summary>
+        /// 是否监控Qxc
+        /// </summary>
+        public bool IsMonitorQxc
+        {
+            get { return _isMonitorQxc; }
+            set { _isMonitorQxc = value; }
+        }
+        /// <summary>
+        /// 是否监控Pl5
+        /// </summary>
+        public bool IsMonitorPl5
+        {
+            get { return _isMonitorPl5; }
+            set { _isMonitorPl5 = value; }
         }
         /// <summary>
         /// 公众号开发者ID
