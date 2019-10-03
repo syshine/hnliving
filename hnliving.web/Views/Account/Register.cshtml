@@ -63,6 +63,20 @@
 
                 <div class="form-group">
                     @*<div class="col-md-10 p-0">*@
+                    <label class="control-label col-md-4 text-md-right p-0" for="pwdquestion"><span class="text-danger">*</span>&nbsp;密码提示问题：</label>
+                    <input type="text" id="pwdquestion" name="pwdQuestion" class="form-control col-md-6 d-md-inline" value="" />
+                    @*</div>*@
+                </div>
+
+                <div class="form-group">
+                    @*<div class="col-md-10 p-0">*@
+                    <label class="control-label col-md-4 text-md-right p-0" for="pwdanswer"><span class="text-danger">*</span>&nbsp;密码提示答案：</label>
+                    <input type="text" id="pwdanswer" name="pwdAnswer" class="form-control col-md-6 d-md-inline" value="" />
+                    @*</div>*@
+                </div>
+
+                <div class="form-group">
+                    @*<div class="col-md-10 p-0">*@
                         <label class="control-label col-md-4 text-md-right p-0" for="verify_code"><span class="text-danger">*</span>&nbsp;验证码：</label>
                         <input type="text" name="verifyCode" autocomplete="off" class="form-control col-6 col-md-3 d-inline" />
                         <img id="verifyImage" class="" style="cursor:hand" title="点击刷新验证码" onclick="this.src='/tool/verifyimage?time=' + new Date()" src="/tool/verifyimage" height="48" />
@@ -117,4 +131,13 @@
     @Scripts.Render("~/bundles/jqueryval")
 
     <script src="~/Canvas/DotLineBkg.js"></script>
+
+    <script>
+        $("input").keydown(function (e) {
+            // 按下回车直接调用
+            if (e.keyCode == 13) {
+                register();
+            }
+        });
+    </script>
 }

@@ -68,9 +68,11 @@ function register() {
     var accountName = registerForm.elements[shadowName].value;
     var password = registerForm.elements["password"].value;
     var confirmPwd = registerForm.elements["confirmPwd"].value;
+    var pwdQuestion = registerForm.elements["pwdQuestion"].value;
+    var pwdAnswer = registerForm.elements["pwdAnswer"].value;
     var verifyCode = registerForm.elements["verifyCode"] ? registerForm.elements["verifyCode"].value : undefined;
 
-    if (!verifyRegister(accountName, password, confirmPwd, verifyCode)) {
+    if (!verifyRegister(accountName, password, confirmPwd, pwdQuestion, pwdAnswer, verifyCode)) {
         return;
     }
 
@@ -78,12 +80,14 @@ function register() {
     parms[shadowName] = accountName;
     parms["password"] = password;
     parms["confirmPwd"] = confirmPwd;
+    parms["pwdQuestion"] = pwdQuestion;
+    parms["pwdAnswer"] = pwdAnswer;
     parms["verifyCode"] = verifyCode;
     $.post("/account/register", parms, registerResponse)
 }
 
 //验证注册
-function verifyRegister(accountName, password, confirmPwd, verifyCode) {
+function verifyRegister(accountName, password, confirmPwd, pwdQuestion, pwdAnswer, verifyCode) {
     if (accountName.length == 0) {
         alert("请输入帐号名");
         return false;
@@ -94,6 +98,14 @@ function verifyRegister(accountName, password, confirmPwd, verifyCode) {
     }
     if (password != confirmPwd) {
         alert("两次输入的密码不一样");
+        return false;
+    }
+    if (pwdQuestion.length == 0) {
+        alert("请输入密码提示问题");
+        return false;
+    }
+    if (pwdAnswer.length == 0) {
+        alert("请输入密码提示答案");
         return false;
     }
     if (verifyCode != undefined && verifyCode.length == 0) {

@@ -65,7 +65,7 @@
 
                 <tr>
                     <th width="" align="right">身份证号码：</th>
-                    <td><input class="form-control" type="text" name="idCard" value="@Model.UserInfo.IdCard" maxlength="18" style="width:200px" />@*<span class="tip">这里是提示信息</span>*@</td>
+                    <td><input class="form-control mw-100" type="text" name="idCard" value="@Model.UserInfo.IdCard" maxlength="18" style="width:300px" />@*<span class="tip">这里是提示信息</span>*@</td>
                 </tr>
 
                 <tr>
@@ -75,12 +75,12 @@
 
                 <tr>
                     <th width="" align="right">详细地址：</th>
-                    <td><input class="form-control" type="text" name="address" value="@Model.UserInfo.Address" maxlength="15" />@*<span class="tip">这里是提示信息</span>*@</td>
+                    <td><input class="form-control mw-100" type="text" name="address" value="@Model.UserInfo.Address" maxlength="15" />@*<span class="tip">这里是提示信息</span>*@</td>
                 </tr>
 
                 <tr>
                     <th width="" align="right">@*<em>*</em>*@个人简介：</th>
-                    <td><textarea rows="5" cols="40" name="bio" class="text" style="height:100px;">@Model.UserInfo.Bio</textarea>@*<span class="tip">这里是提示信息</span>*@</td>
+                    <td><textarea class="form-control mw-100" rows="5" cols="40" name="bio" style="height:100px;">@Model.UserInfo.Bio</textarea>@*<span class="tip">这里是提示信息</span>*@</td>
                 </tr>
 
                 <tr>

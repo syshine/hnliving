@@ -21,6 +21,8 @@ namespace Lib.Core
         private DateTime _liftbantime = new DateTime(1900, 1, 1);//解禁时间
         private string _salt;//盐值
         private string _modules_id;//模块id
+        private string _pwdquestion;//密码提示问题
+        private string _pwdanswer;//密码提示答案
 
         /// <summary>
         ///用户id
@@ -133,6 +135,38 @@ namespace Lib.Core
         {
             get { return _modules_id; }
             set { _modules_id = value; }
+        }
+
+        /// <summary>
+        /// 密码提示问题
+        /// </summary>
+        public string Pwdquestion
+        {
+            get
+            {
+                return _pwdquestion;
+            }
+
+            set
+            {
+                _pwdquestion = value;
+            }
+        }
+
+        /// <summary>
+        /// 密码提示答案
+        /// </summary>
+        public string Pwdanswer
+        {
+            get
+            {
+                return _pwdanswer;
+            }
+
+            set
+            {
+                _pwdanswer = value;
+            }
         }
     }
 

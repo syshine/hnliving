@@ -218,6 +218,8 @@ namespace hnliving.web.Controllers
             string password = WebHelper.GetFormString("password");
             string confirmPwd = WebHelper.GetFormString("confirmPwd");
             string verifyCode = WebHelper.GetFormString("verifyCode");
+            string pwdQuestion = WebHelper.GetFormString("pwdQuestion");
+            string pwdAnswer = WebHelper.GetFormString("pwdAnswer");
 
             StringBuilder errorList = new StringBuilder("[");
             #region 验证
@@ -272,6 +274,26 @@ namespace hnliving.web.Controllers
             else if (password != confirmPwd)
             {
                 errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "password", "两次输入的密码不一样", "}");
+            }
+
+            //密码提示问题验证
+            if (string.IsNullOrWhiteSpace(pwdQuestion))
+            {
+                errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "pwdQuestion", "密码提示问题不能为空", "}");
+            }
+            else if (pwdQuestion.Length < 6 || pwdQuestion.Length > 30)
+            {
+                errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "pwdQuestion", "密码提示问题必须大于5且不大于30个字符", "}");
+            }
+
+            //密码提示答案验证
+            if (string.IsNullOrWhiteSpace(pwdAnswer))
+            {
+                errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "pwdAnswer", "密码提示答案不能为空", "}");
+            }
+            else if (pwdAnswer.Length < 6 || pwdAnswer.Length > 30)
+            {
+                errorList.AppendFormat("{0}\"key\":\"{1}\",\"msg\":\"{2}\"{3},", "{", "pwdAnswer", "密码提示答案必须大于5且不大于30个字符", "}");
             }
 
             //验证码验证
@@ -438,6 +460,8 @@ namespace hnliving.web.Controllers
                 userInfo.VerifyEmail = 0;
                 userInfo.VerifyMobile = 0;
                 userInfo.Modules_id = "";
+                userInfo.Pwdquestion = WebHelper.HtmlEncode(pwdQuestion);
+                userInfo.Pwdanswer = WebHelper.HtmlEncode(pwdAnswer);
 
                 userInfo.LastVisitIP = WorkContext.IP;
                 userInfo.LastVisitRgId = WorkContext.RegionId;

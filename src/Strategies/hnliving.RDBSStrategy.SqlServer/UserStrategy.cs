@@ -417,7 +417,9 @@ namespace hnliving.RDBSStrategy.SqlServer
                                        GenerateInParam("@idcard",SqlDbType.VarChar,18,userInfo.IdCard),
 									   GenerateInParam("@regionid",SqlDbType.SmallInt,2,userInfo.RegionId),
 									   GenerateInParam("@address",SqlDbType.NVarChar,150,userInfo.Address),
-									   GenerateInParam("@bio",SqlDbType.NVarChar,300,userInfo.Bio)
+									   GenerateInParam("@bio",SqlDbType.NVarChar,300,userInfo.Bio),
+									   GenerateInParam("@pwdquestion",SqlDbType.NVarChar,20,userInfo.Pwdquestion),
+									   GenerateInParam("@pwdanswer",SqlDbType.NVarChar,20,userInfo.Pwdanswer)
 								   };
 
             return TypeHelper.ObjectToInt(RDBSHelper.ExecuteScalar(CommandType.StoredProcedure,
