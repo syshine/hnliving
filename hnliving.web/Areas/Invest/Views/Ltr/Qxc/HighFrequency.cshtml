@@ -1,0 +1,252 @@
+﻿@{
+    ViewBag.Title = "Qxc高频数据";
+}
+
+@section csses{
+    <style>
+        th {
+            text-align: center;
+        }
+    </style>
+}
+
+@section scriptsHead{
+    <script>
+        var lstData = null;
+        var pageSize = 30;  // 每页数据
+        var curPage = 0;    // 当前页
+        var pageCount = 0;  // 总页数
+        //var issue_small = @ViewBag.Issue; // 当前期号
+    </script>
+}
+
+<div class="row ml-0 mr-0 mt-md-5">
+    <div class="col-12 offset-0 col-md-10 offset-md-1 bg-teal-7" id="container">
+        <h4>欢迎查看Qxc高频数据！</h4>
+        <hr />
+
+        <div class="row">
+
+            <div class="form-group col-12">
+                <label class="control-label" for="issue">期号：</label>
+                <div class="p-0">
+                    <input type="text" class="form-control" id="issue" />
+                </div>
+            </div>
+
+            <div class="form-group col-12">
+                <label class="control-label" for="count">统计期数：</label>
+                <div class="p-0">
+                    <input type="text" class="form-control" id="count" value="100" />
+                </div>
+            </div>
+
+            <div class="form-group col-12">
+                <label class="control-label" for="filter">数据筛选条件</label>
+                <div class="p-0">
+                    <input type="text" class="form-control mw-100" id="filter" />
+                </div>
+            </div>
+
+            <div class="form-group col-12">
+                <label class="control-label" for="filter_ret">结果筛选条件</label>
+                <div class="p-0">
+                    <input type="text" class="form-control mw-100" id="filter_ret" />
+                </div>
+            </div>
+
+            <div class="form-group col-12">
+                <a href="javascript:void(0)" class="btn btn-primary mb-3" role="button" onclick="getHighFrequency()">查看</a>
+            </div>
+
+        </div>
+
+        <div class="p-0 d-none" id="data_div"> @*col-md-8 offset-md-2*@ 
+            <table class="table" id="tb_data">
+                <thead>
+                    <tr>
+                        <th width="10%">序号</th>
+                        <th width="20%">号码</th>
+                        <th width="20%">回报率</th>
+                        <th width="15%">出现次数</th>
+                        <th width="20%">概率</th>
+                        <th width="15%">号码数量</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="p-0 d-flex ml-auto d-none" id="page_div">
+            <ul class="pagination d-flex ml-auto" id="page">
+                @*<li class="page-item"><a class="page-link" href="#">首页</a></li>
+                <li class="page-item"><a class="page-link" href="#">上一页</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">下一页</a></li>
+                <li class="page-item"><a class="page-link" href="#">末页</a></li>*@
+            </ul>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        //$().ready(function () {
+        //});
+
+        $("input").keydown(function (e) {
+            // 按下回车直接调用
+            if (e.keyCode == 13) {
+                getHighFrequency();
+            }
+        });
+
+        function getHighFrequency() {
+            lstData = null;
+
+            // 参数
+            var parms = new Object();
+            var issue = $("#issue").val();
+            if(issue != ''){
+                parms["issue"] = issue;
+            }
+            var count = $("#count").val();
+            if(count != ''){
+                parms["count"] = count;
+            }
+            var filter = $("#filter").val();
+            if(filter != ''){
+                parms["filter"] = filter;
+            }
+            var filter_ret = $("#filter_ret").val();
+            if (filter_ret != '') {
+                parms["filter_ret"] = filter_ret;
+            }
+
+            // 调用
+            $.post("@Url.Action("GetHighFrequency")", parms, getResponse);
+        }
+
+        function getResponse(data) {
+            var result = eval("(" + data + ")");
+            if (result.IsSuccess) {
+
+                $("#data_div").removeClass("d-none");
+                $("#page_div").removeClass("d-none").addClass("d-flex");
+                if (result.Data != null) {
+                    lstData = result.Data;
+                    pageCount = Math.ceil(lstData.length / pageSize);
+                    curPage = 0;
+                    jump(curPage);
+
+                    // 自动滑动到列表处
+                    document.getElementById('data_div').scrollIntoView(true);
+                } else { // 没有数据
+                    $("#tb_data tbody").html('');
+                    $("#page").html('');
+                    $("#data_div").addClass("d-none");
+                    $("#page_div").removeClass("d-flex").addClass("d-none");
+                    alert("没有找到符合条件的数据！");
+                }
+            }
+            else {
+                $("#data_div").addClass("d-none");
+                $("#page_div").removeClass("d-flex").addClass("d-none");
+                alert("获取数据失败！");
+            }
+        }
+
+        function move(step) {
+            curPage += step;
+            if (curPage < 0) {
+                curPage = 0;
+            }
+            if (curPage >= pageCount) {
+                curPage = pageCount - 1;
+            }
+            showData(curPage);
+        }
+
+        function jump(page) {
+            curPage = page;
+            if (curPage < 0) {
+                curPage = 0;
+            }
+            if (curPage >= pageCount) {
+                curPage = pageCount - 1;
+            }
+            showData(curPage);
+        }
+
+        // 设置分页
+        function setPageUl() {
+            if (lstData != null && lstData.length > 0) {
+                var html_page = '<li class="page-item"><a class="page-link" href="javascript:void(0)" role="button" onclick="jump(0)">第一页</a></li>'
+                        + '<li class="page-item"><a class="page-link" href="javascript:void(0)" role="button" onclick="move(-1)">上一页</a></li>';
+
+                if (curPage > 2) {
+                    html_page += '<li class="page-item"><a class="page-link" href="javascript:void(0)" role="button" disabled>...</a></li>';
+                }
+
+                if (curPage > 1) {
+                    html_page += '<li class="page-item"><a class="page-link" href="javascript:void(0)" role="button" onclick="jump(' + (curPage - 2) + ')">' + (curPage - 1) + '</a></li>';
+                }
+
+                if (curPage > 0) {
+                    html_page += '<li class="page-item"><a class="page-link" href="javascript:void(0)" role="button" onclick="jump(' + (curPage - 1) + ')">' + curPage + '</a></li>';
+                }
+
+                html_page += '<li class="page-item active"><a class="page-link" href="javascript:void(0)" role="button" onclick="jump(' + curPage + ')">' + (curPage + 1) + '</a></li>';
+
+                if (curPage < pageCount - 1) {
+                    html_page += '<li class="page-item"><a class="page-link" href="javascript:void(0)" role="button" onclick="jump(' + (curPage + 1) + ')">' + (curPage + 2) + '</a></li>';
+                }
+
+                if (curPage < pageCount - 2) {
+                    html_page += '<li class="page-item"><a class="page-link" href="javascript:void(0)" role="button" onclick="jump(' + (curPage + 2) + ')">' + (curPage + 3) + '</a></li>';
+                }
+
+                if (curPage < pageCount - 3) {
+                    html_page += '<li class="page-item"><a class="page-link" href="javascript:void(0)" role="button" disabled>...</a></li>';
+                }
+
+                html_page += '<li class="page-item"><a class="page-link" href="javascript:void(0)" role="button" onclick="move(1)">下一页</a></li>'
+                        + '<li class="page-item"><a class="page-link" href="javascript:void(0)" role="button" onclick="jump(' + (pageCount - 1) + ')">最后一页</a></li>'
+                html_page += '<li class="page-item"><span class="page-detail">当前' + (curPage + 1) + '/' + pageCount + '页 共' + lstData.length + '条记录</span></li>';
+                $("#page").html(html_page);
+            } else {
+                $("#page").html('');
+            }
+        }
+
+        function showData(page) {
+            curPage = page;
+            $("#tb_data tbody").html('');
+            setPageUl();
+
+            if (lstData != null && lstData.length > 0) {
+                for (var i = 0; i < pageSize; i++) {
+
+                    var index = i + page * pageSize;
+                    if (index >= lstData.length) {
+                        break;
+                    }
+
+                    // 添加显示数据
+                    var html_data = '<tr><td align="center">' + (i+1) + '</td>'
+                        + '<td align="center">' + lstData[index].号码 + '</td>'
+                        + '<td align="center">' + lstData[index].回报率 + '</td>'
+                        + '<td align="center">' + lstData[index].出现次数 + '</td>'
+                        + '<td align="center">' + lstData[index].概率 + '</td>'
+                        + '<td align="center">' + lstData[index].号码数量 + '</td></tr>'
+                    $("#tb_data tbody").append(html_data);
+                }
+
+            }
+        }
+    </script>
+
+}

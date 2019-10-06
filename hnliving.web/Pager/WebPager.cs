@@ -123,8 +123,7 @@ namespace hnliving.web
 
             if (_showsummary)
             {
-                html.AppendFormat(@"<li class='page-item'><span style='position: relative;display: block;padding: 0.5rem 0.75rem;margin-left: -1px;
-                line-height: 1.25;color: #6c757d;background-color: #dee2e6;border: 1px solid #dee2e6;'>当前{0}/{1}页&nbsp;共{2}条记录</span></li>"
+                html.AppendFormat(@"<li class='page-item'><span class='page-detail'>当前{0}/{1}页&nbsp;共{2}条记录</span></li>"
                 , _pagemodel.PageNumber, _pagemodel.TotalPages, _pagemodel.TotalCount);
             }
 

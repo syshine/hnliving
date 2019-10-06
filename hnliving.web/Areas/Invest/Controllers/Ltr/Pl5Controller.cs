@@ -22,13 +22,18 @@ namespace hnliving.web.Areas.Invest.Controllers.Ltr
             return View(lstEntity);
         }
 
-        public ActionResult HighFrequency(int count = 100)
+        public ActionResult HighFrequency()
+        {
+            return View();
+        }
+
+        public ActionResult GetHighFrequency(int issue = -1, int count = 100, string filter = "", string filter_ret = "")
         {
             Lib.Services.Ltr ltr = new Lib.Services.Ltr();
-            DataTable lstEntity = ltr.GetPl5HighFrequency(count);
-            var json_data = CommonHelper.JsonSerializeObject(lstEntity);
+            ResultEntity entity = ltr.GetPl5HighFrequency(count, issue, filter, filter_ret);
+            var result = CommonHelper.JsonSerializeObject(entity);
 
-            return Content(json_data);
+            return Content(result);
         }
 
         public ActionResult GetData(int issue = -1, int count = 50)

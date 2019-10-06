@@ -19,6 +19,8 @@ namespace Lib.Core
         private string _script = "";        //脚本
         private int _islicensed = 1;        //是否显示版权(0代表不显示，1代表显示)
 
+        private int _logSaveDays = 0;     //日志保存时间（天）
+
         private bool _enablememcache = false;    //是否开启memcache
         private bool _enableredis = false;       //是否开启redis
 
@@ -93,6 +95,21 @@ namespace Lib.Core
         {
             get { return _islicensed; }
             set { _islicensed = value; }
+        }
+        /// <summary>
+        /// 日志保存时间（天）
+        /// </summary>
+        public int LogSaveDays
+        {
+            get
+            {
+                return _logSaveDays;
+            }
+
+            set
+            {
+                _logSaveDays = value;
+            }
         }
         /// <summary>
         /// 是否开启memcache(0代表不开启，1代表开启)

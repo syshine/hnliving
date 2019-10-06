@@ -24,6 +24,12 @@ namespace hnliving.web
 
             log4net.Config.XmlConfigurator.Configure();
 
+            // 自动删除过期日志
+            if(MngConfig.SiteConfig.LogSaveDays > 0)
+            {
+                SiteMonitor.MonitorLogs();
+            }
+
             //打开缓存服务连接
             if (MngConfig.SiteConfig.EnableMemcache)
             {

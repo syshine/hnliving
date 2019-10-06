@@ -15,6 +15,9 @@ namespace hnliving.web
 {
     public class TimingTask
     {
+        private static object _lockerQxc = new object();//锁对象
+        private static object _lockerPl5 = new object();//锁对象
+
         private static QxcEntity _qxc = null;
         private static Pl5Entity _pl5 = null;
 
@@ -117,148 +120,154 @@ namespace hnliving.web
 
         private static void DownloadQxc()
         {
-            // 获取当前期号数据
-            _qxc = Ltr.GetCurrentQxc();
-
-            bool bAcquire = false; // 是否获取数据
-            if (DateTime.Now.Date > Qxc.Date) // 日期已经超过开奖日
-                bAcquire = true;
-            else if (DateTime.Now.Date == Qxc.Date)
+            lock (_lockerQxc)
             {
-                // 8点半开奖
-                if (DateTime.Now.Hour > 20)
-                    bAcquire = true;
-                else if (DateTime.Now.Hour == 20 && DateTime.Now.Minute >= 30)
-                    bAcquire = true;
-            }
+                // 获取当前期号数据
+                _qxc = Ltr.GetCurrentQxc();
 
-            if (bAcquire)
-            {
-                try
+                bool bAcquire = false; // 是否获取数据
+                if (DateTime.Now.Date > Qxc.Date) // 日期已经超过开奖日
+                    bAcquire = true;
+                else if (DateTime.Now.Date == Qxc.Date)
                 {
-                    bool bOK = false;
-                    int cnt = 5; // 获取数据量
-                    do
+                    // 8点半开奖
+                    if (DateTime.Now.Hour > 20)
+                        bAcquire = true;
+                    else if (DateTime.Now.Hour == 20 && DateTime.Now.Minute >= 30)
+                        bAcquire = true;
+                }
+
+                if (bAcquire)
+                {
+                    try
                     {
-                        string uri = "http://datachart.500.com/qxc/history/inc/history.php?limit=" + cnt;
-                        string pageHtml = WebHelper.GetRequestData(uri, "get", "", Encoding.GetEncoding("gb2312"));
-                        int start = pageHtml.IndexOf("class=\"chart\"");
-                        string strReg = pageHtml.Substring(start);
-                        // 模板
-                        string pattern = @"<table(\s|\S)+?</table>";    // 匹配<table>的内容（非贪婪算法）
-
-                        // 匹配
-                        MatchCollection mc = Regex.Matches(strReg, pattern);
-
-                        // 解析数据
-                        DataTable dt = ParsingLtrData(mc[0].Value, 7);
-
-                        // 如果数据不够，则多获取20条
-                        int minIssue = Convert.ToInt32(dt.Compute("min(issue)", ""));
-                        if(minIssue > Qxc.Issue)
+                        bool bOK = false;
+                        int cnt = 5; // 获取数据量
+                        do
                         {
-                            cnt += 20;
-                        }
-                        else
-                        {
-                            // 选出新的数据
-                            DataRow[] drs = dt.Select("issue >= " + Qxc.Issue, "issue asc");
+                            string uri = "http://datachart.500.com/qxc/history/inc/history.php?limit=" + cnt;
+                            string pageHtml = WebHelper.GetRequestData(uri, "get", "", Encoding.GetEncoding("gb2312"));
+                            int start = pageHtml.IndexOf("class=\"chart\"");
+                            string strReg = pageHtml.Substring(start);
+                            // 模板
+                            string pattern = @"<table(\s|\S)+?</table>";    // 匹配<table>的内容（非贪婪算法）
 
-                            // 保存到数据库
-                            for (int i = 0; i < drs.Length; i++)
+                            // 匹配
+                            MatchCollection mc = Regex.Matches(strReg, pattern);
+
+                            // 解析数据
+                            DataTable dt = ParsingLtrData(mc[0].Value, 7);
+
+                            // 如果数据不够，则多获取20条
+                            int minIssue = Convert.ToInt32(dt.Compute("min(issue)", ""));
+                            if (minIssue > Qxc.Issue)
                             {
-                                QxcEntity entity = new QxcEntity()
-                                {
-                                    Issue = Convert.ToInt32(drs[i]["issue"]),
-                                    Date = Convert.ToDateTime(drs[i]["ltr_date"]),
-                                    Numb = drs[i]["numbers"].ToString()
-                                };
+                                cnt += 20;
+                            }
+                            else
+                            {
+                                // 选出新的数据
+                                DataRow[] drs = dt.Select("issue >= " + Qxc.Issue, "issue asc");
 
-                                if(Lib.Services.Ltr.AddQxcNumb(entity) != 1)
+                                // 保存到数据库
+                                for (int i = 0; i < drs.Length; i++)
                                 {
-                                    throw new Exception("新增Qxc失败！");
+                                    QxcEntity entity = new QxcEntity()
+                                    {
+                                        Issue = Convert.ToInt32(drs[i]["issue"]),
+                                        Date = Convert.ToDateTime(drs[i]["ltr_date"]),
+                                        Numb = drs[i]["numbers"].ToString()
+                                    };
+
+                                    if (Lib.Services.Ltr.AddQxcNumb(entity) != 1)
+                                    {
+                                        throw new Exception("新增Qxc失败！");
+                                    }
                                 }
                             }
-                        }
-                    } while (!bOK);
-                }
-                catch (Exception ex)
-                {
-                    Logs.Write(ex.Message);
+                        } while (!bOK);
+                    }
+                    catch (Exception ex)
+                    {
+                        Logs.Write(ex.Message);
+                    }
                 }
             }
         }
 
         private static void DownloadPl5()
         {
-            // 获取当前期号数据
-            _pl5 = Ltr.GetCurrentPl5();
-
-            bool bAcquire = false; // 是否获取数据
-            if (DateTime.Now.Date > Pl5.Date) // 日期已经超过开奖日
-                bAcquire = true;
-            else if (DateTime.Now.Date == Pl5.Date)
+            lock (_lockerPl5)
             {
-                // 8点半开奖
-                if (DateTime.Now.Hour > 20)
-                    bAcquire = true;
-                else if (DateTime.Now.Hour == 20 && DateTime.Now.Minute >= 30)
-                    bAcquire = true;
-            }
+                // 获取当前期号数据
+                _pl5 = Ltr.GetCurrentPl5();
 
-            if (bAcquire)
-            {
-                try
+                bool bAcquire = false; // 是否获取数据
+                if (DateTime.Now.Date > Pl5.Date) // 日期已经超过开奖日
+                    bAcquire = true;
+                else if (DateTime.Now.Date == Pl5.Date)
                 {
-                    bool bOK = false;
-                    int cnt = 5; // 获取数据量
-                    do
+                    // 8点半开奖
+                    if (DateTime.Now.Hour > 20)
+                        bAcquire = true;
+                    else if (DateTime.Now.Hour == 20 && DateTime.Now.Minute >= 30)
+                        bAcquire = true;
+                }
+
+                if (bAcquire)
+                {
+                    try
                     {
-                        string uri = "http://datachart.500.com/plw/history/inc/history.php?limit=" + cnt;
-                        string pageHtml = WebHelper.GetRequestData(uri, "get", "", Encoding.GetEncoding("gb2312"));
-                        int start = pageHtml.IndexOf("class=\"chart\"");
-                        string strReg = pageHtml.Substring(start);
-                        // 模板
-                        string pattern = @"<table(\s|\S)+?</table>";    // 匹配<table>的内容（非贪婪算法）
-
-                        // 匹配
-                        MatchCollection mc = Regex.Matches(strReg, pattern);
-
-                        // 解析数据
-                        DataTable dt = ParsingLtrData(mc[0].Value, 5);
-
-                        // 如果数据不够，则多获取20条
-                        int minIssue = Convert.ToInt32(dt.Compute("min(issue)", ""));
-                        if(minIssue > Pl5.Issue)
+                        bool bOK = false;
+                        int cnt = 5; // 获取数据量
+                        do
                         {
-                            cnt += 20;
-                        }
-                        else
-                        {
-                            // 选出新的数据
-                            DataRow[] drs = dt.Select("issue >= " + Pl5.Issue, "issue asc");
+                            string uri = "http://datachart.500.com/plw/history/inc/history.php?limit=" + cnt;
+                            string pageHtml = WebHelper.GetRequestData(uri, "get", "", Encoding.GetEncoding("gb2312"));
+                            int start = pageHtml.IndexOf("class=\"chart\"");
+                            string strReg = pageHtml.Substring(start);
+                            // 模板
+                            string pattern = @"<table(\s|\S)+?</table>";    // 匹配<table>的内容（非贪婪算法）
 
-                            // 保存到数据库
-                            for (int i = 0; i < drs.Length; i++)
+                            // 匹配
+                            MatchCollection mc = Regex.Matches(strReg, pattern);
+
+                            // 解析数据
+                            DataTable dt = ParsingLtrData(mc[0].Value, 5);
+
+                            // 如果数据不够，则多获取20条
+                            int minIssue = Convert.ToInt32(dt.Compute("min(issue)", ""));
+                            if (minIssue > Pl5.Issue)
                             {
-                                Pl5Entity entity = new Pl5Entity()
-                                {
-                                    Issue = Convert.ToInt32(drs[i]["issue"]),
-                                    Date = Convert.ToDateTime(drs[i]["ltr_date"]),
-                                    Numb = drs[i]["numbers"].ToString()
-                                };
+                                cnt += 20;
+                            }
+                            else
+                            {
+                                // 选出新的数据
+                                DataRow[] drs = dt.Select("issue >= " + Pl5.Issue, "issue asc");
 
-                                if(Lib.Services.Ltr.AddPl5Numb(entity) != 1)
+                                // 保存到数据库
+                                for (int i = 0; i < drs.Length; i++)
                                 {
-                                    throw new Exception("新增Pl5失败！");
+                                    Pl5Entity entity = new Pl5Entity()
+                                    {
+                                        Issue = Convert.ToInt32(drs[i]["issue"]),
+                                        Date = Convert.ToDateTime(drs[i]["ltr_date"]),
+                                        Numb = drs[i]["numbers"].ToString()
+                                    };
+
+                                    if (Lib.Services.Ltr.AddPl5Numb(entity) != 1)
+                                    {
+                                        throw new Exception("新增Pl5失败！");
+                                    }
                                 }
                             }
-                        }
-                    } while (!bOK);
-                }
-                catch (Exception ex)
-                {
-                    Logs.Write(ex.Message);
+                        } while (!bOK);
+                    }
+                    catch (Exception ex)
+                    {
+                        Logs.Write(ex.Message);
+                    }
                 }
             }
         }
