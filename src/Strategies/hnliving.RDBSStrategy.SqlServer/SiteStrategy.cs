@@ -117,29 +117,29 @@ namespace hnliving.RDBSStrategy.SqlServer
 
             if (typeid >= 0)
             {
-                commandText = string.Format("SELECT * FROM [{0}ueditor] WHERE del_flag != 1 AND uid={1} AND typeid ={2} order by update_time desc",
+                commandText = string.Format("SELECT top 100 percent * FROM [{0}ueditor] WHERE del_flag != 1 AND uid={1} AND typeid ={2} order by update_time desc",
                                                     RDBSHelper.RDBSTablePre,
                                                     uid,
                                                     typeid);
             }
             else
             {
-                commandText = string.Format("SELECT * FROM [{0}ueditor] WHERE del_flag != 1 AND uid={1} order by update_time desc",
+                commandText = string.Format("SELECT top 100 percent * FROM [{0}ueditor] WHERE del_flag != 1 AND uid={1} order by update_time desc",
                                                     RDBSHelper.RDBSTablePre,
                                                     uid);
             }
 
             if(pager.Totalcount >= 0)
             {
-                pager.Totalcount = RDBSHelper.GetPageCount(commandText);
+                pager.Totalcount = RDBSHelper.GetPageCount2008(commandText);
             }
 
             string sql = "";
             if (pager.Pagesize > 0)
-                sql = RDBSHelper.GetPageSql(commandText, pager.Pagesize, pager.Pageindex);
+                sql = RDBSHelper.GetPageSql2008(commandText, pager.Pagesize, pager.Pageindex);
             else
                 sql = commandText;
-
+            
             return RDBSHelper.ExecuteReader(CommandType.Text, sql);
 
         }

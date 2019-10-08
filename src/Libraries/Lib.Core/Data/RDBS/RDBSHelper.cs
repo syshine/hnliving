@@ -571,19 +571,53 @@ namespace Lib.Core
 
         /// <summary>
         /// 获取分页sql
+        /// sql server 2012
         /// </summary>
         /// <param name="sqlSource"></param>
         /// <param name="pageSize"></param>
-        /// <param name="pageIndex"></param>
+        /// <param name="pageIndex">从1开始</param>
         /// <returns></returns>
         public static string GetPageSql(string sqlSource, int pageSize, int pageIndex = 1)
         {
-            return string.Format("{0} offset (({2} - 1) * {1}) rows fetch next {1} rows only", sqlSource, pageSize, pageIndex);
+            string sql = string.Format("{0} offset (({2} - 1) * {1}) rows fetch next {1} rows only", sqlSource, pageSize, pageIndex);
+            //MngLog.Instance.Write(sql);
+            return sql;
         }
 
+        /// <summary>
+        /// 获取分页sql
+        /// sql server 2008
+        /// </summary>
+        /// <param name="sqlSource"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="pageIndex">从1开始</param>
+        /// <returns></returns>
+        public static string GetPageSql2008(string sqlSource, int pageSize, int pageIndex = 1)
+        {
+            string sql = string.Format("SELECT * FROM( SELECT *, ROW_NUMBER() OVER(order by (select 0))RN FROM({0})TT)TP WHERE RN>{1} * ({2}-1) AND RN<={1} * {2}", sqlSource, pageSize, pageIndex);
+            //MngLog.Instance.Write(sql);
+            return sql;
+        }
 
         /// <summary>
         /// 获取总行数sql
+        /// sql server 2008
+        /// </summary>
+        /// <param name="pageSize"></param>
+        /// <param name="pageIndex"></param>
+        /// <returns></returns>
+        public static int GetPageCount2008(string sqlSource)
+        {
+            // "select count(1) from ({0} offset 0 rows) record_counter"
+            // sql server 2008 不支持 offset ,所以需要在sqlSource里加入top 100 percent
+            string sql = string.Format("select count(1) from ({0}) record_counter", sqlSource);
+            //MngLog.Instance.Write(sql);
+            return TypeHelper.ObjectToInt(ExecuteScalar(CommandType.Text, sql));
+        }
+
+        /// <summary>
+        /// 获取总行数sql
+        /// sql server 2012
         /// </summary>
         /// <param name="pageSize"></param>
         /// <param name="pageIndex"></param>
@@ -591,6 +625,7 @@ namespace Lib.Core
         public static int GetPageCount(string sqlSource)
         {
             string sql = string.Format("select count(1) from ({0} offset 0 rows) record_counter", sqlSource);
+            //MngLog.Instance.Write(sql);
             return TypeHelper.ObjectToInt(ExecuteScalar(CommandType.Text, sql));
         }
     }
