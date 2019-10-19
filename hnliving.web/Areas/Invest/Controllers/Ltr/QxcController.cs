@@ -116,16 +116,16 @@ namespace hnliving.web.Areas.Invest.Controllers.Ltr
             switch(Lib.Services.Ltr.AddQxcNumb(entity))
             {
                 case 1:
-                    return PromptView(Url.Action("Index"), "新增分类成功！", true);
+                    return PromptView(Url.Action("Index"), "新增成功！", true);
 
                 case 2:
-                    return PromptView("", "新增分类失败！号码错误！", true);
+                    return PromptView("", "新增失败！号码错误！", true);
 
                 case 3:
-                    return PromptView("", "新增分类失败！期号已经存在！", true);
+                    return PromptView("", "新增失败！期号已经存在！", true);
 
                 default:
-                    return PromptView("", "新增分类失败！", true);
+                    return PromptView("", "新增失败！", true);
             }
             
             //return View();

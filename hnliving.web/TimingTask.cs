@@ -58,7 +58,7 @@ namespace hnliving.web
                 {
                     _timerLtr = new System.Timers.Timer();
                     _timerLtr.Enabled = true;
-                    _timerLtr.Interval = 300000; //执行间隔时间,单位为毫秒; 这里实际间隔为5分钟
+                    _timerLtr.Interval = 600000; //执行间隔时间,单位为毫秒; 这里间隔为10分钟
                     _timerLtr.Elapsed += new System.Timers.ElapsedEventHandler(DownloadLtr);
                     _timerLtr.Start();
                 }
@@ -179,11 +179,14 @@ namespace hnliving.web
                                         Numb = drs[i]["numbers"].ToString()
                                     };
 
-                                    if (Lib.Services.Ltr.AddQxcNumb(entity) != 1)
+                                    int ret = Lib.Services.Ltr.AddQxcNumb(entity);
+                                    if (ret != 1 && ret != 3)
                                     {
                                         throw new Exception("新增Qxc失败！");
                                     }
                                 }
+
+                                bOK = true;
                             }
                         } while (!bOK);
                     }
@@ -255,12 +258,14 @@ namespace hnliving.web
                                         Date = Convert.ToDateTime(drs[i]["ltr_date"]),
                                         Numb = drs[i]["numbers"].ToString()
                                     };
-
-                                    if (Lib.Services.Ltr.AddPl5Numb(entity) != 1)
+                                    int ret = Lib.Services.Ltr.AddPl5Numb(entity);
+                                    if (ret != 1 && ret != 3)
                                     {
                                         throw new Exception("新增Pl5失败！");
                                     }
                                 }
+
+                                bOK = true;
                             }
                         } while (!bOK);
                     }
