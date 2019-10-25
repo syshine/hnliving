@@ -416,6 +416,13 @@
     <Content Include="Areas\Invest\Views\Stock\Intelligent\Picker.cshtml" />
     <Content Include="Areas\Invest\Views\Ltr\Qxc\HighFrequency.cshtml" />
     <Content Include="Areas\Invest\Views\Ltr\Pl5\HighFrequency.cshtml" />
+    <Content Include="Areas\Invest\Views\Stock\Intelligent\List.cshtml" />
+    <Content Include="Areas\Invest\Views\Stock\Intelligent\FormulaGroup.cshtml" />
+    <Content Include="Areas\Invest\Views\Stock\Formula\Add.cshtml" />
+    <Content Include="Areas\Invest\Views\Stock\Formula\Edit.cshtml" />
+    <Content Include="Areas\Invest\Views\Stock\Formula\List.cshtml" />
+    <Content Include="Areas\Invest\Views\Stock\Formula\Group.cshtml" />
+    <Content Include="Areas\Invest\Views\Stock\Formula\Index.cshtml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -672,6 +679,7 @@
     <Compile Include="Areas\Invest\Controllers\Ltr\Pl5Controller.cs" />
     <Compile Include="Areas\Invest\Controllers\Ltr\QxcController.cs" />
     <Compile Include="Areas\Invest\Controllers\Stock\DownloadController.cs" />
+    <Compile Include="Areas\Invest\Controllers\Stock\FormulaController.cs" />
     <Compile Include="Areas\Invest\Controllers\Stock\HomeController.cs" />
     <Compile Include="Areas\Invest\Controllers\Stock\IntelligentController.cs" />
     <Compile Include="Areas\Invest\InvestAreaRegistration.cs" />
@@ -691,6 +699,7 @@
     <Compile Include="Areas\Tools\Controllers\Program\UEditorController.cs" />
     <Compile Include="Areas\Tools\Controllers\Program\HttpController.cs" />
     <Compile Include="Areas\Tools\Controllers\Program\QRCodeController.cs" />
+    <Compile Include="Areas\Tools\Models\StockModel.cs" />
     <Compile Include="Areas\Tools\Models\UEditorModel.cs" />
     <Compile Include="Areas\Tools\ToolsAreaRegistration.cs" />
     <Compile Include="Areas\Travel\HaiKou\Controllers\HomeController.cs" />
@@ -719,6 +728,7 @@
     <Compile Include="ImageResult.cs" />
     <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\StockFormualModel.cs" />
     <Compile Include="Models\UEditorModel.cs" />
     <Compile Include="Monitor.cs" />
     <Compile Include="Pager\Base\PageModel.cs" />

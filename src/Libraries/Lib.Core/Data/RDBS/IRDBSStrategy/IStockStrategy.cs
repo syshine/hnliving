@@ -49,5 +49,75 @@ namespace Lib.Core
         /// <param name="type">沪市1,深市2</param>
         /// <returns></returns>
         DataTable GetStockInfoHis(string code, string type);
+
+        /// <summary>
+        /// 新增
+        /// </summary>
+        /// <param name="spe"></param>
+        /// <returns></returns>
+        int AddFormula(StockPickEntity spe);
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="spe"></param>
+        /// <returns></returns>
+        int UpdateFormula(StockPickEntity spe);
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="uid"></param>
+        /// <param name="fid"></param>
+        /// <returns></returns>
+        int DeleteFormulaById(int uid, int fid);
+
+        /// <summary>
+        /// 获取公式列表
+        /// </summary>
+        /// <param name="pager"></param>
+        /// <param name="uid"></param>
+        /// <param name="groupid"></param>
+        /// <returns></returns>
+        IDataReader GetFormulaList(PageEntity pager, int uid, int groupid = -1);
+
+        /// <summary>
+        /// 通过ID获取公式
+        /// </summary>
+        /// <param name="fid"></param>
+        /// <returns></returns>
+        IDataReader GetFormulaById(int fid);
+
+        #region 分组
+        /// <summary>
+        /// 获取分组列表
+        /// </summary>
+        /// <param name="uid">用户id</param>
+        /// <returns></returns>
+        DataTable GetFormulaGroupList(int uid);
+
+        /// <summary>
+        /// 新增公式分组
+        /// </summary>
+        /// <param name="uid"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        int AddFormulaGroup(int uid, string name);
+
+        /// <summary>
+        /// 删除公式分组
+        /// </summary>
+        /// <param name="uid"></param>
+        /// <param name="gid"></param>
+        /// <returns></returns>
+        int DeleteFormulaGroupById(int uid, int gid);
+        
+        /// <summary>
+        /// 根据ID获取名称
+        /// </summary>
+        /// <param name="gid"></param>
+        /// <returns></returns>
+        string GetFormulaGroupName(int gid);
+        #endregion
     }
 }

@@ -6,8 +6,98 @@ using System.Threading.Tasks;
 
 namespace Lib.Core
 {
+    [Serializable]
     public class StockEntity
     {
+        /// <summary>
+        /// 股票代码
+        /// </summary>
+        private string _code;
+
+        /// <summary>
+        /// 股票名称
+        /// </summary>
+        private string _name;
+
+        /// <summary>
+        /// 股票市场（1为沪市，2为深市）
+        /// </summary>
+        private int _type;
+
+        /// <summary>
+        /// 股票价格
+        /// </summary>
+        private decimal _price;
+
+        public StockEntity()
+        {
+        }
+
+        public StockEntity(string _code, string _name)
+        {
+            this._code = _code;
+            this._name = _name;
+        }
+
+        public StockEntity(string _code, string _name, int _type, decimal _price)
+        {
+            this._code = _code;
+            this._name = _name;
+            this._type = _type;
+            this._price = _price;
+        }
+
+        public string Code
+        {
+            get
+            {
+                return _code;
+            }
+
+            set
+            {
+                _code = value;
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+
+            set
+            {
+                _name = value;
+            }
+        }
+
+        public int Type
+        {
+            get
+            {
+                return _type;
+            }
+
+            set
+            {
+                _type = value;
+            }
+        }
+
+        public decimal Price
+        {
+            get
+            {
+                return _price;
+            }
+
+            set
+            {
+                _price = value;
+            }
+        }
     }
 
     /// <summary>
@@ -63,8 +153,196 @@ namespace Lib.Core
         }
     }
 
+    [Serializable]
+    public class StockShow
+    {
+        /// <summary>
+        /// 股票代码
+        /// </summary>
+        private string _code;
+
+        /// <summary>
+        /// 股票名称
+        /// </summary>
+        private string _name;
+
+        /// <summary>
+        /// 股票市场（1为沪市，2为深市）
+        /// </summary>
+        private int _type = 1;
+
+        /// <summary>
+        /// 价格
+        /// </summary>
+        private decimal _price = 0m;
+
+        /// <summary>
+        /// 涨跌幅
+        /// </summary>
+        private string _pCHG;
+
+        /// <summary>
+        /// 查看股票地址
+        /// </summary>
+        private string _url = "";
+
+        public StockShow()
+        {
+        }
+
+        public StockShow(string _code, string _name)
+        {
+            this._code = _code;
+            this._name = _name;
+        }
+
+        public StockShow(string _code, string _name, int _type, decimal _price, string _pCHG, string _url = "")
+        {
+            this._code = _code;
+            this._name = _name;
+            this._type = _type;
+            this._price = _price;
+
+            // 涨跌幅
+            decimal pchg = 0m;
+            if (decimal.TryParse(_pCHG, out pchg))
+            {
+                this._pCHG = (pchg / 100).ToString("P");
+            }
+            else
+            {
+                this._pCHG = _pCHG;
+            }
+
+            // url地址
+            if(string.IsNullOrWhiteSpace(_url))
+            {
+                if(_type == 1) // 沪市
+                {
+                    this._url = string.Format(@"http://quote.eastmoney.com/{0}{1}.html", "sh", _code); // 东方财富
+                    //this._url = string.Format(@"https://finance.sina.com.cn/realstock/company/{0}{1}/nc.shtml", "sh", _code); // 新浪财经
+                }
+                else // 深市
+                {
+                    this._url = string.Format(@"http://quote.eastmoney.com/{0}{1}.html", "sz", _code);
+                    //this._url = string.Format(@"https://finance.sina.com.cn/realstock/company/{0}{1}/nc.shtml", "sz", _code); // 新浪财经
+                }
+            }
+            else
+                this._url = _url;
+        }
+
+        public string Code
+        {
+            get
+            {
+                return _code;
+            }
+
+            set
+            {
+                _code = value;
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+
+            set
+            {
+                _name = value;
+            }
+        }
+
+        public int Type
+        {
+            get
+            {
+                return _type;
+            }
+
+            set
+            {
+                _type = value;
+            }
+        }
+
+        public decimal Price
+        {
+            get
+            {
+                return _price;
+            }
+
+            set
+            {
+                _price = value;
+            }
+        }
+
+        public string PCHG
+        {
+            get
+            {
+                return _pCHG;
+            }
+
+            set
+            {
+                _pCHG = value;
+            }
+        }
+
+        public string Url
+        {
+            get
+            {
+                return _url;
+            }
+
+            set
+            {
+                _url = value;
+            }
+        }
+    }
+
     public class StockPickEntity
     {
+        /// <summary>
+        /// 公式ID
+        /// </summary>
+        private int _fid;
+
+        /// <summary>
+        /// 用户ID
+        /// </summary>
+        private int _uid;
+
+        /// <summary>
+        /// 分组ID
+        /// </summary>
+        private int _groupid;
+
+        /// <summary>
+        /// 名称
+        /// </summary>
+        private string _fname;
+
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        private DateTime _createTime;
+
+        /// <summary>
+        /// 更新时间
+        /// </summary>
+        private DateTime _updateTime;
+
         /// <summary>
         /// 使用前复权数据
         /// </summary>
@@ -145,6 +423,84 @@ namespace Lib.Core
         /// </summary>
         private string _formula;
 
+
+        public int Fid
+        {
+            get
+            {
+                return _fid;
+            }
+
+            set
+            {
+                _fid = value;
+            }
+        }
+
+        public int Uid
+        {
+            get
+            {
+                return _uid;
+            }
+
+            set
+            {
+                _uid = value;
+            }
+        }
+
+        public int Groupid
+        {
+            get
+            {
+                return _groupid;
+            }
+
+            set
+            {
+                _groupid = value;
+            }
+        }
+
+        public string Fname
+        {
+            get
+            {
+                return _fname;
+            }
+
+            set
+            {
+                _fname = value;
+            }
+        }
+
+        public DateTime CreateTime
+        {
+            get
+            {
+                return _createTime;
+            }
+
+            set
+            {
+                _createTime = value;
+            }
+        }
+
+        public DateTime UpdateTime
+        {
+            get
+            {
+                return _updateTime;
+            }
+
+            set
+            {
+                _updateTime = value;
+            }
+        }
 
         public bool UseFormerComplexRights
         {

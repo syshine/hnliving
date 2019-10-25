@@ -1,12 +1,13 @@
-﻿@{
-    ViewBag.Title = "选股器";
+﻿@model hnliving.web.Models.AddStockFormulaModel
+@{
+    ViewBag.Title = "新增公式";
 }
 
 @section csses{
 
     @*<link href="~/Content/bootstrap-extra/font-awesome.min.css" rel="stylesheet" />*@
     @*<link href="http://www.jq22.com/jquery/font-awesome.4.6.0.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap-extra/build.css" rel="stylesheet" />*@
+        <link href="~/Content/bootstrap-extra/build.css" rel="stylesheet" />*@
 
     <style>
         th {
@@ -18,23 +19,23 @@
             border-top-color: rgba(148, 157, 199, 0.45);
         }
 
-        .sort:hover{
+        .sort:hover {
             cursor: pointer;
         }
 
-        .asc:after{
+        .asc:after {
             content: " ↑";
-    		color:#dc3545;
-    	}
+            color: #dc3545;
+        }
 
-        .desc:after{
+        .desc:after {
             content: " ↓";
-    		color:#28a745;
-    	}
+            color: #28a745;
+        }
 
         textarea.form-control {
             height: 200px;
-            max-width:100% !important;
+            max-width: 100% !important;
         }
 
         /*razor语法和媒体查询符号冲突，需使用两个at*/
@@ -70,165 +71,136 @@
 
 <div class="row ml-0 mr-0 mt-md-5">
     <div class="col-12 offset-0 col-md-8 offset-md-2 bg-teal-7" id="container">
-        <h4>欢迎使用选股器！</h4>
+        <h4>欢迎新增公式！</h4>
         <hr />
 
-        <div class="row">
-            <div class="form-group col-12">
-                <div class="p-0">
-                    <label class="control-label" for="name">名称：</label>
-                    <input type="text" class="form-control medium_width p-0 d-inline" id="name" value="" placeholder="请输入名称…" />
-                </div>
-            </div>
 
-            <div class="form-group col-12">
-                <div class="p-0">
-                    <input type="checkbox" class="checkbox d-inline" id="use_former_complex_rights" checked="checked" />
-                    <label class="control-label" for="result">使用前复权数据</label>
-                </div>
-            </div>
-
-            <div class="form-group col-12">
-                <div class="p-0">
-                    <input type="checkbox" class="checkbox d-inline" id="pchg_enable" checked=""/>
-                    <sapn>连续</sapn>
-                    <input type="text" class="form-control small_width p-0 d-inline" id="days" value="2"/>
-                    <sapn>天</sapn>
-                    <select class="form-control small_width p-0 d-inline" id="rise" onchange="riseChange()">
-                        <option selected="selected" value="1">上涨</option>
-                        <option value="0">下跌</option>
-                    </select>
-                    <sapn>并且幅度</sapn>
-                    <select class="form-control medium_width p-0 d-inline" id="operator">
-                        <option selected="selected" value="<=">不超过</option>
-                        <option value=">">超过</option>
-                    </select>
-                    <input type="text" class="form-control small_width p-0 d-inline font-weight-bold text-danger" id="pchg" value="3"/>%
-                </div>
-            </div>
-
-            <div class="form-group col-12">
-                <div class="p-0">
-                    <input type="checkbox" class="checkbox d-inline" id="price_enable" checked=""/>
-                    当前价格：
-                    <input type="text" class="form-control medium_width p-0 d-inline" id="price_low" value="0"/>
-                    -
-                    <input type="text" class="form-control medium_width p-0 d-inline" id="price_high" value="100" />
-                    （元）
-                </div>
-            </div>
-
-            <div class="form-group col-12">
-                <div class="p-0">
-                    <input type="checkbox" class="checkbox d-inline" id="mcap_enable" checked=""/>
-                    流通市值：
-                    <input type="text" class="form-control medium_width p-0 d-inline" id="mcap_low" value="0" />
-                    -
-                    <input type="text" class="form-control medium_width p-0 d-inline" id="mcap_high" value="100" />
-                    （亿）
-                </div>
-            </div>
-
-            <div class="form-group col-12">
-                <div class="p-0">
-                    <input type="checkbox" class="checkbox d-inline" id="formula_enable" checked="" />
-                    <label class="control-label" for="formula_enable">公式：</label>
-                    <sapn>预处理均线</sapn>
-                    <input type="text" class="form-control medium_width p-0 d-inline" id="pre_avg_lines" value="5,10,20,30" />
-                    <input type="text" class="form-control small_width p-0 d-inline" id="pre_avg_days" value="20" />
-                    <sapn>个交易日</sapn>
-                    <textarea class="form-control" id="formula" placeholder="请输入公式！赋值为：= ，结果为:"></textarea>
-                </div>
-            </div>
-
-            @*<div class="form-group col-12">
-                <ul class="list-group">
-                    <li class="list-group-item bg-transparent">
-                        <input type="checkbox" class="checkbox d-inline" id="enable_node1" checked="checked" />
-                        <label class="control-label" id="lb_result" for="enable_node1">时间节点1</label>
-
-                        <div class="btn-group">
-                            <input type="text" class="form-control small_width p-0 d-inline" id="test" value="0" />
-                            <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
-                                <span class="caret"></span>
-                            </button>
-                            <div class="dropdown-menu editable">
-                                <a class="dropdown-item" href="javascript:void(0)">5日线</a>
-                                <a class="dropdown-item" href="javascript:void(0)">10日线</a>
-                                <a class="dropdown-item" href="javascript:void(0)">20日线</a>
-                                <a class="dropdown-item" href="javascript:void(0)">30日线</a>
-                                <a class="dropdown-item" href="javascript:void(0)">60日线</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item bg-transparent">Second item</li>
-                    <li class="list-group-item bg-transparent">Third item</li>
-                </ul>
-            </div>
-
-            <div class="form-group col-12">
-                <ul class="list-group">
-                    <li class="list-group-item bg-transparent">Active item</li>
-                    <li class="list-group-item bg-transparent">Second item</li>
-                    <li class="list-group-item bg-transparent">Third item</li>
-                </ul>
-            </div>*@
-
-            <div class="form-group col-12">
-                <a href="javascript:void(0)" class="btn btn-primary mr-3" role="button" onclick="pick()">选股</a>
-                <a href="javascript:void(0)" class="btn btn-primary mr-3" role="button" onclick="saveFormula()">保存公式</a>
-            </div>
-
-            <!--挑选出来的股票-->
-            <div class="form-group col-12">
-                <label class="control-label">挑选结果：</label>
-                <label class="control-label" id="stock_cnt"></label>
-                <div class="row col-12" id="pick_result">
+        @using (Html.BeginForm())
+        {
+            <div class="row">
+                <div class="form-group col-12">
+                    <div class="p-0">
+                        <label class="control-label" for="name">名称：</label>
+                        <input type="text" class="form-control medium_width p-0 d-inline" id="name" name="Name" value="@Model.Name" placeholder="请输入名称…" />
+                    </div>
                 </div>
 
-                <div class="p-0 d-none" id="data_div">
-                    @*col-md-8 offset-md-2*@
-                    <table class="table" id="tb_data">
-                        <thead>
-                            <tr>
-                                <th width="10%">序号</th>
-                                <th class="sort asc" id="th_code" onclick="SortTable(this)" width="20%">代码</th>
-                                <th width="20%">名称</th>
-                                <th class="sort" id="th_price" onclick="SortTable(this)" width="20%">价格</th>
-                                <th class="sort" id="th_pchg" onclick="SortTable(this)" width="20%">涨跌幅</th>
-                                <th width="10%"></th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
+                <div class="form-group col-12">
+                    @Html.LabelFor(x => x.GroupId)
+                    @Html.DropDownListFor(x => x.GroupId, ViewData["slGroup"] as SelectList, null, new { @class = "form-control medium_width p-0 d-inline" })
+                    @Html.ValidationMessageFor(x => x.GroupId)
                 </div>
 
-                <div class="p-0 d-flex ml-auto d-none" id="page_div">
-                    <ul class="pagination d-flex ml-auto" id="page">
-                        @*<li class="page-item"><a class="page-link" href="#">首页</a></li>
-                        <li class="page-item"><a class="page-link" href="#">上一页</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">下一页</a></li>
-                        <li class="page-item"><a class="page-link" href="#">末页</a></li>*@
-                    </ul>
+                <div class="form-group col-12">
+                    <div class="p-0">
+                        @Html.CheckBoxFor(x => x.UseFormerComplexRights, new { @class = "checkbox d-inline", id = "use_former_complex_rights", @checked = "checked" })
+                        @*<input type="checkbox" class="checkbox d-inline" id="use_former_complex_rights" name="UseFormerComplexRights" checked="checked" />*@
+                        <label class="control-label" for="result">使用前复权数据</label>
+                    </div>
                 </div>
+
+                <div class="form-group col-12">
+                    <div class="p-0">
+                        @Html.CheckBoxFor(x => x.PCHGEnable, new { @class = "checkbox d-inline", id = "pchg_enable" })
+                        @*<input type="checkbox" class="checkbox d-inline" id="pchg_enable" name="PCHGEnable" checked="" />*@
+                        <sapn>连续</sapn>
+                        <input type="text" class="form-control small_width p-0 d-inline" id="days" name="Days" value="@Model.Days" />
+                        <sapn>天</sapn>
+                        @Html.DropDownListFor(x => x.IsRise, ViewData["slRise"] as SelectList, null, new { @class = "form-control medium_width p-0 d-inline", @id = "rise", onchange = "riseChange()" })
+                        @*<select class="form-control small_width p-0 d-inline" id="rise" onchange="riseChange()">
+                                <option selected="selected" value="1">上涨</option>
+                                <option value="0">下跌</option>
+                            </select>*@
+                        <sapn>并且幅度</sapn>
+                        @Html.DropDownListFor(x => x.Operator, ViewData["slOperator"] as SelectList, null, new { @class = "form-control medium_width p-0 d-inline" })
+                        @*<select class="form-control medium_width p-0 d-inline" id="operator">
+                                <option selected="selected" value="<=">不超过</option>
+                                <option value=">">超过</option>
+                            </select>*@
+                        <input type="text" class="form-control small_width p-0 d-inline font-weight-bold text-danger" id="pchg" name="PCHG" value="@Model.PCHG" />%
+                    </div>
+                </div>
+
+                <div class="form-group col-12">
+                    <div class="p-0">
+                        @Html.CheckBoxFor(x => x.PriceEnable, new { @class = "checkbox d-inline", id = "price_enable" })
+                        @*<input type="checkbox" class="checkbox d-inline" id="price_enable" name="PriceEnable" checked="" />*@
+                        当前价格：
+                        <input type="text" class="form-control medium_width p-0 d-inline" id="price_low" name="PriceLow" value="@Model.PriceLow" />
+                        -
+                        <input type="text" class="form-control medium_width p-0 d-inline" id="price_high" name="PriceHigh" value="@Model.PriceHigh" />
+                        （元）
+                    </div>
+                </div>
+
+                <div class="form-group col-12">
+                    <div class="p-0">
+                        @Html.CheckBoxFor(x => x.MCAPEnable, new { @class = "checkbox d-inline", id = "mcap_enable" })
+                        @*<input type="checkbox" class="checkbox d-inline" id="mcap_enable" name="MCAPEnable" checked="" />*@
+                        流通市值：
+                        <input type="text" class="form-control medium_width p-0 d-inline" id="mcap_low" name="MCAPLow" value="@Model.MCAPLow" />
+                        -
+                        <input type="text" class="form-control medium_width p-0 d-inline" id="mcap_high" name="MCAPHigh" value="@Model.MCAPHigh" />
+                        （亿）
+                    </div>
+                </div>
+
+                <div class="form-group col-12">
+                    <div class="p-0">
+                        @Html.CheckBoxFor(x => x.FormulaEnable, new { @class = "checkbox d-inline", id = "formula_enable" })
+                        @*<input type="checkbox" class="checkbox d-inline" id="formula_enable" name="FormulaEnable" checked="" />*@
+                        <label class="control-label" for="formula_enable">公式：</label>
+                        <sapn>预处理均线</sapn>
+                        <input type="text" class="form-control medium_width p-0 d-inline" id="pre_avg_lines" name="PreAvgLines" value="@Model.PreAvgLines" />
+                        <input type="text" class="form-control small_width p-0 d-inline" id="pre_avg_days" name="PreDays" value="@Model.PreDays" />
+                        <sapn>个交易日</sapn>
+                        <textarea class="form-control" id="formula" name="Formula" placeholder="请输入公式！赋值为：= ，结果为:">@Model.Formula</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group col-12">
+                    <a href="javascript:void(0)" class="btn btn-primary mr-3" role="button" onclick="pick()">选股</a>
+                    <input type="submit" class="btn btn-primary mr-3" value="保存公式">
+                </div>
+
+                <!--挑选出来的股票-->
+                <div class="form-group col-12">
+                    <label class="control-label">挑选结果：</label>
+                    <label class="control-label" id="stock_cnt"></label>
+                    <div class="row col-12" id="pick_result">
+                    </div>
+
+                    <div class="p-0 d-none" id="data_div">
+                        @*col-md-8 offset-md-2*@
+                        <table class="table" id="tb_data">
+                            <thead>
+                                <tr>
+                                    <th width="10%">序号</th>
+                                    <th class="sort asc" id="th_code" onclick="SortTable(this)" width="20%">代码</th>
+                                    <th width="20%">名称</th>
+                                    <th class="sort" id="th_price" onclick="SortTable(this)" width="20%">价格</th>
+                                    <th class="sort" id="th_pchg" onclick="SortTable(this)" width="20%">涨跌幅</th>
+                                    <th width="10%"></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+
+                    <div class="p-0 d-flex ml-auto d-none" id="page_div">
+                        <ul class="pagination d-flex ml-auto" id="page"></ul>
+                    </div>
+                </div>
+
+                <div class="form-group col-12">
+                    <label class="control-label" id="lb_result" for="result">调用结果：</label>
+                    <div class="p-0">
+                        <textarea class="form-control" id="result"></textarea>
+                    </div>
+                </div>
+
             </div>
-
-            @*<div class="form-group col-12 d-flex">
-                <label class="control-label" id="lb_result" for="result">调用结果：</label>
-            </div>*@
-
-            <div class="form-group col-12">
-                <label class="control-label" id="lb_result" for="result">调用结果：</label>
-                <div class="p-0">
-                    <textarea class="form-control" id="result"></textarea>
-                </div>
-            </div>
-
-        </div>
-
+        }
     </div>
 
 </div>
@@ -246,19 +218,25 @@
 @section Scripts {
     <script>
         $(function () {
-            // 默认不开启
-            $("#pchg_enable").click();
-            $("#price_enable").click();
-            $("#mcap_enable").click();
+            setInputAttr($("#pchg_enable"));
+            setInputAttr($("#price_enable"));
+            setInputAttr($("#mcap_enable"));
+            setInputAttr($("#formula_enable"));
+
+            riseChange();
         });
 
         // 不使用某个条件时则让该条件的参数不能操作
         $("input[type='checkbox']").change(function () {
-            var bcheck = $(this).prop('checked');
-            $(this).siblings("input").attr("readonly", !bcheck)
-            $(this).siblings("select").attr("disabled", !bcheck)
-            $(this).siblings("textarea").attr("disabled", !bcheck);
+            setInputAttr($(this));
         });
+
+        function setInputAttr(obj) {
+            var bcheck = obj.prop('checked');
+            obj.siblings("input").attr("readonly", !bcheck)
+            obj.siblings("select").attr("readonly", !bcheck)
+            obj.siblings("textarea").attr("readonly", !bcheck);
+        }
 
         // 可编辑下拉框选择事件
         $(".dropdown-menu.editable a").click(function (e) {
@@ -540,7 +518,7 @@
         function SortTable(obj) {
             // 升序还是降序
             var jObj = $(obj);
-            var x = -1; 
+            var x = -1;
             if (jObj.hasClass('desc')) { // 升序
                 x = 1;
                 jObj.removeClass('desc').addClass('asc');

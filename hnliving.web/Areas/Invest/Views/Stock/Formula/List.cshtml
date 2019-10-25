@@ -1,0 +1,134 @@
+﻿@using hnliving.web.Areas.Tools.Models
+@model StockFormulaListModel
+
+@{
+    ViewBag.Title = "股票公式列表";
+}
+
+@section scriptsHead{
+}
+
+<div class="bg-teal-7" id="container">
+    <h4>股票公式列表：</h4>
+    <hr />
+
+    <div class="row m-0">
+
+        <!--类型列表-->
+        <div class="col-12 col-md-2 p-0 navbar navbar-expand-md d-block" id="head">
+            <!--小屏幕的类型列表-->
+            <div class="navbar-header">
+                <div class="col-12 p-0 btn-group-vertical navbar-toggler" data-toggle="collapse">
+                    <button type="button" class="btn btn-default dropdown-toggle font-size-1-5" id="btn_type" data-toggle="dropdown">
+                        @ViewBag.GroupName
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu w-100 p-0" id="ul_type">
+                        @if (@ViewBag.GroupId != -1)
+                        {
+                            @*<li class="">@Html.ActionLink("全部", "List", new { groupid = "-1" }, new { @class = "btn btn-primary d-block p-3 font-size-1-5" })</li>*@
+                            <li class=""><a class="btn btn-primary d-block p-3 font-size-1-5" href="/Invest/Stock/Formula/List?groupid=-1">全部</a></li>
+                        }
+                        else
+                        {
+                            @*<li class="">@Html.ActionLink("全部", "List", new { groupid = "-1" }, new { @class = "btn btn-primary d-block p-3 font-size-1-5 disabled" })</li>*@
+                            <li class=""><a class="btn btn-primary d-block p-3 font-size-1-5 disabled" href="/Invest/Stock/Formula/List?groupid=-1">全部</a></li>
+                        }
+                        @foreach (KeyValuePair<string, string> kv in Model.GroupList)
+                        {
+                            if(kv.Key != ViewBag.GroupId.ToString())
+                            { 
+                                @*<li class="">@Html.ActionLink(kv.Value, "List", new { groupid = kv.Key }, new { @class = "btn btn-primary d-block p-3 font-size-1-5" })</li>*@
+                                <li class=""><a class="btn btn-primary d-block p-3 font-size-1-5" href="/Invest/Stock/Formula/List?groupid=@kv.Key">@kv.Value</a></li>
+                            }
+                            else
+                            {
+                                @*<li class="">@Html.ActionLink(kv.Value, "List", new { groupid = kv.Key }, new { @class = "btn btn-primary d-block p-3 font-size-1-5 disabled" })</li>*@
+                                <li class=""><a class="btn btn-primary d-block p-3 font-size-1-5 disabled" href="/Invest/Stock/Formula/List?groupid=@kv.Key">@kv.Value</a></li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+            <!--大屏幕的类型列表-->
+            <div class="collapse navbar-collapse" id="collapsibleNavbarType">
+                <div class="col-6 col-md-12 p-0" id="leftNav">
+                    @if (@ViewBag.GroupId != -1)
+                    {
+                        @*@Html.ActionLink("全部", "List", new { groupid = "-1" }, new { @class = "list-group-item" })*@
+                        <a class="list-group-item" href="/Invest/Stock/Formula/List?groupid=-1">全部</a>
+                    }
+                    else
+                    {
+                        @*@Html.ActionLink("全部", "List", new { groupid = "-1" }, new { @class = "list-group-item active" })*@
+                        <a class="list-group-item active" href="/Invest/Stock/Formula/List?groupid=-1">全部</a>
+                    }
+                    @foreach (KeyValuePair<string, string> kv in Model.GroupList)
+                    {
+                        if (@ViewBag.GroupId.ToString() != @kv.Key)
+                        {
+                            @*@Html.ActionLink(@kv.Value, "List", new { groupid = @kv.Key }, new { @class = "list-group-item" })*@
+                            <a class="list-group-item" href="/Invest/Stock/Formula/List?groupid=@kv.Key">@kv.Value</a>
+                        }
+                        else
+                        {
+                            @*@Html.ActionLink(@kv.Value, "List", new { groupid = @kv.Key }, new { @class = "list-group-item active" })*@
+                            <a class="list-group-item active" href="/Invest/Stock/Formula/List?groupid=@kv.Key">@kv.Value</a>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!--公式列表-->
+        <div class="col-md-10 p-0 pl-md-3">
+            <div class="form-group">
+                <table class="table table-striped table-hover table-borderless" id="list">
+                    <thead class="thead-light">
+                        <tr>
+                            <th width="4"></th>
+                            <th width="10%" align="center">序号</th>
+                            <th width="20%" align="center">分类</th>
+                            <th align="left">名称</th>
+                            <th width="20%" align="center">最后更新时间</th>
+                            @*<th width="10%" align="center">编辑</th>*@
+                            <th width="10%" align="center">删除</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (StockFormulaInfo sfi in Model.StockFormulaList)
+                        {
+                            <tr>
+                                <td></td>
+                                <td>@(Model.StockFormulaList.IndexOf(sfi) + 1)</td>
+                                <td>@sfi.GroupName</td>
+                                @*<td><a class="" href="/content/index?id=@sfi.Fid">@sfi.Fname</a></td>*@
+                                <td><a class="editOperate" href="/Invest/Stock/Formula/Edit?fid=@sfi.Fid">@sfi.Fname</a></td>
+                                <td>@sfi.Update_time.ToString("yyyy-MM-dd")</td>
+                                @*<td>@Html.ActionLink("[编辑]", "Edit", new { fid = sfi.Fid }, new { @class = "editOperate" })</td>*@
+                                @*<td>@Html.ActionLink("[删除]", "Delete", new { fid = sfi.Fid }, new { @class = "deleteOperate" })</td>*@
+                                <td><a class="deleteOperate" href="/Invest/Stock/Formula/DeleteFormula?fid=@sfi.Fid">[删除]</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @Html.WebPager(Model.PageModel)
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+    <script>
+
+        $().ready(function () {
+        });
+
+    </script>
+
+}

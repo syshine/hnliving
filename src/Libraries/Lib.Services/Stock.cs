@@ -633,13 +633,175 @@ namespace Lib.Services
             return result;
         }
 
+        public static int AddFormula(StockPickEntity spe)
+        {
+            return Lib.Core.MngData.RDBS.AddFormula(spe);
+        }
+
+        public static int UpdateFormula(StockPickEntity spe)
+        {
+            return Lib.Core.MngData.RDBS.UpdateFormula(spe);
+        }
+
+        public static StockPickEntity GetFormulaById(int fid)
+        {
+            StockPickEntity spe = new StockPickEntity();
+            IDataReader reader = Lib.Core.MngData.RDBS.GetFormulaById(fid);
+            while (reader.Read())
+            {
+                spe = ConvertToStockPickEntity(reader);
+                //spe.Fid = Convert.ToInt32(reader["fid"]);
+                //spe.Uid = Convert.ToInt32(reader["uid"]);
+                //spe.Groupid = Convert.ToInt32(reader["Groupid"]);
+                //spe.Name = reader["Name"].ToString();
+                //if (reader["create_time"] != null)
+                //    spe.CreateTime = DateTime.Parse(reader["create_time"].ToString());
+                //if (reader["update_time"] != null)
+                //    spe.UpdateTime = DateTime.Parse(reader["update_time"].ToString());
+                //spe.UseFormerComplexRights = Convert.ToBoolean(reader["UseFormerComplexRights"]);
+                //spe.PCHGEnable = Convert.ToBoolean(reader["PCHGEnable"]);
+                //spe.Days = Convert.ToInt32(reader["Days"]);
+                //spe.IsRise = Convert.ToBoolean(reader["IsRise"]);
+                //spe.Operator = reader["Operator"].ToString();
+                //spe.PCHG = Convert.ToDecimal(reader["PCHG"]);
+                //spe.PriceEnable = Convert.ToBoolean(reader["PriceEnable"]);
+                //spe.PriceLow = Convert.ToDecimal(reader["PriceLow"]);
+                //spe.PriceHigh = Convert.ToDecimal(reader["PriceHigh"]);
+                //spe.MCAPEnable = Convert.ToBoolean(reader["MCAPEnable"]);
+                //spe.MCAPLow = Convert.ToDecimal(reader["MCAPLow"]);
+                //spe.MCAPHigh = Convert.ToDecimal(reader["MCAPHigh"]);
+                //spe.FormulaEnable = Convert.ToBoolean(reader["FormulaEnable"]);
+                //spe.PreAvgLines = reader["PreAvgLines"].ToString();
+                //spe.PreDays = Convert.ToInt32(reader["PreDays"]);
+                //spe.Formula = reader["Formula"].ToString();
+            }
+            reader.Close();
+
+            return spe;
+        }
+
+        public static StockPickEntity ConvertToStockPickEntity(IDataReader reader)
+        {
+            StockPickEntity spe = new StockPickEntity();
+            spe.Fid = Convert.ToInt32(reader["fid"]);
+            spe.Uid = Convert.ToInt32(reader["uid"]);
+            spe.Groupid = Convert.ToInt32(reader["Groupid"]);
+            spe.Fname = reader["fname"].ToString();
+            if (reader["create_time"] != null)
+                spe.CreateTime = DateTime.Parse(reader["create_time"].ToString());
+            if (reader["update_time"] != null)
+                spe.UpdateTime = DateTime.Parse(reader["update_time"].ToString());
+            spe.UseFormerComplexRights = Convert.ToBoolean(reader["UseFormerComplexRights"]);
+            spe.PCHGEnable = Convert.ToBoolean(reader["PCHGEnable"]);
+            spe.Days = Convert.ToInt32(reader["Days"]);
+            spe.IsRise = Convert.ToBoolean(reader["IsRise"]);
+            spe.Operator = reader["Operator"].ToString();
+            spe.PCHG = Convert.ToDecimal(reader["PCHG"]);
+            spe.PriceEnable = Convert.ToBoolean(reader["PriceEnable"]);
+            spe.PriceLow = Convert.ToDecimal(reader["PriceLow"]);
+            spe.PriceHigh = Convert.ToDecimal(reader["PriceHigh"]);
+            spe.MCAPEnable = Convert.ToBoolean(reader["MCAPEnable"]);
+            spe.MCAPLow = Convert.ToDecimal(reader["MCAPLow"]);
+            spe.MCAPHigh = Convert.ToDecimal(reader["MCAPHigh"]);
+            spe.FormulaEnable = Convert.ToBoolean(reader["FormulaEnable"]);
+            spe.PreAvgLines = reader["PreAvgLines"].ToString();
+            spe.PreDays = Convert.ToInt32(reader["PreDays"]);
+            spe.Formula = reader["Formula"].ToString();
+            return spe;
+        }
+
+        /// <summary>
+        /// 根据用户ID和分组获取列表
+        /// </summary>
+        /// <param name="uid"></param>
+        /// <param name="groupid"></param>
+        /// <returns></returns>
+        public static List<StockPickEntity> GetFormulaList(PageEntity pager, int uid = -1, int groupid = -1)
+        {
+            //return Lib.Data.UEditorUtils.GetList(uid);
+
+            List<StockPickEntity> speList = new List<StockPickEntity>();
+            IDataReader reader = Lib.Core.MngData.RDBS.GetFormulaList(pager, uid, groupid);
+            while (reader.Read())
+            {
+                StockPickEntity spe = ConvertToStockPickEntity(reader);
+                speList.Add(spe);
+                //StockPickEntity spe = new StockPickEntity();
+                //spe.Fid = int.Parse(reader["Fid"].ToString());
+                //spe.Uid = int.Parse(reader["Uid"].ToString());
+                //spe.Groupid = int.Parse(reader["Groupid"].ToString());
+                //spe.Name = reader["Name"].ToString();
+                //if (reader["create_time"] != null)
+                //    spe.CreateTime = DateTime.Parse(reader["create_time"].ToString());
+                //if (reader["update_time"] != null)
+                //    spe.UpdateTime = DateTime.Parse(reader["update_time"].ToString());
+                //spe.UseFormerComplexRights = Convert.ToBoolean(reader["UseFormerComplexRights"]);
+                //spe.PCHGEnable = Convert.ToBoolean(reader["PCHGEnable"]);
+                //spe.Days = Convert.ToInt32(reader["Days"]);
+                //spe.IsRise = Convert.ToBoolean(reader["IsRise"]);
+                //spe.Operator = reader["Operator"].ToString();
+                //spe.PCHG = Convert.ToDecimal(reader["PCHG"]);
+                //spe.PriceEnable = Convert.ToBoolean(reader["PriceEnable"]);
+                //spe.PriceLow = Convert.ToDecimal(reader["PriceLow"]);
+                //spe.PriceHigh = Convert.ToDecimal(reader["PriceHigh"]);
+                //spe.MCAPEnable = Convert.ToBoolean(reader["MCAPEnable"]);
+                //spe.MCAPLow = Convert.ToDecimal(reader["MCAPLow"]);
+                //spe.MCAPHigh = Convert.ToDecimal(reader["MCAPHigh"]);
+                //spe.FormulaEnable = Convert.ToBoolean(reader["FormulaEnable"]);
+                //spe.PreAvgLines = reader["PreAvgLines"].ToString();
+                //spe.PreDays = Convert.ToInt32(reader["PreDays"]);
+                //spe.Formula = reader["Formula"].ToString();
+            }
+            reader.Close();
+            return speList;
+        }
+
+        public static int DeleteFormulaById(int uid, int fid)
+        {
+            return Lib.Core.MngData.RDBS.DeleteFormulaById(uid, fid);
+        }
+
+        #region 分类
+
+        /// <summary>
+        /// 根据用户ID获取公式分组列表
+        /// </summary>
+        /// <param name="uid"></param>
+        /// <returns></returns>
+        public static DataTable GetFormulaGroup(int uid)
+        {
+            return MngData.RDBS.GetFormulaGroupList(uid); ;
+        }
+
+        public static int AddFormulaGroup(int uid, string name)
+        {
+            return MngData.RDBS.AddFormulaGroup(uid, name);
+        }
+
+        public static int DeleteFormulaGroupById(int uid, int gid)
+        {
+            return MngData.RDBS.DeleteFormulaGroupById(uid, gid);
+        }
+
+        /// <summary>
+        /// 根据ID获取公式分组名称
+        /// </summary>
+        /// <param name="groupid"></param>
+        /// <returns></returns>
+        public static string GetFormulaGroupName(int groupid)
+        {
+            string name = MngData.RDBS.GetFormulaGroupName(groupid);
+            return name == null ? "" : name;
+        }
+        #endregion
+
         public static ResultEntity Pick(StockPickEntity pickEntity, string guid = "")
         {
             ResultEntity result = new ResultEntity();
             DateTime dtStart = DateTime.Now;
 
             // 设置5个线程取执行保存
-            const int THREAD_COUNT = 1;//5
+            const int THREAD_COUNT = 5;//5
             List<Task> lstTask = new List<Task>();
 
             try
@@ -672,7 +834,7 @@ namespace Lib.Services
 
                 #region 获取基础信息
                 // 获取基础信息
-                string sql = @"select s_type, s_code, s_name from [{0}stock] order by s_code";
+                string sql = @"select s_type, s_code, s_name, s_price from [{0}stock] order by s_code";
 
                 string commandText = string.Format(sql, RDBSHelper.RDBSTablePre);
 
@@ -718,7 +880,7 @@ namespace Lib.Services
                 #endregion
                 
                 #region  处理多线程执行结果
-                List<StockCodeName> lstStock = new List<StockCodeName>();
+                List<StockShow> lstStock = new List<StockShow>();
                 StringBuilder sb = new StringBuilder();
                 // 将多线程的结果合并
                 foreach (Task<ResultEntity> t in lstTask)
@@ -726,7 +888,7 @@ namespace Lib.Services
                     ResultEntity resultPart = t.Result;
                     if (resultPart.IsSuccess)
                     {
-                        lstStock.AddRange((List<StockCodeName>)resultPart.Data);
+                        lstStock.AddRange((List<StockShow>)resultPart.Data);
                         sb.Append(resultPart.Message);
                     }
                 }
@@ -779,7 +941,7 @@ namespace Lib.Services
 
             MemCachedHelper mch = new MemCachedHelper();
 
-            List<StockCodeName> lstStock = new List<StockCodeName>();
+            List<StockShow> lstStock = new List<StockShow>();
             List<string> lstMsg = new List<string>();
             DateTime dtStartPick = DateTime.Now;
 
@@ -810,10 +972,15 @@ namespace Lib.Services
                         {
                             string[] arrAvgLines = condition.PreAvgLines.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
-                            // 字符串数组转数字数组
-                            int[] iAvgLines = Array.ConvertAll(arrAvgLines, int.Parse);
+                            int days = 0;
+                            if (arrAvgLines.Length > 0 )
+                            {
+                                // 字符串数组转数字数组
+                                int[] iAvgLines = Array.ConvertAll(arrAvgLines, int.Parse);
 
-                            int days = iAvgLines.Max() + condition.PreDays;
+                                days = iAvgLines.Max() + condition.PreDays;
+                            }
+
                             cntRecord = Math.Max(condition.Days, days);
 
                             cntSql = "top " + cntRecord;
@@ -842,7 +1009,10 @@ namespace Lib.Services
                     ResultEntity pickRusult = Lib.Data.Stock.PickStock(code, dtHis, condition);
                     if(pickRusult.IsSuccess)
                     {
-                        lstStock.Add(new StockCodeName(code, name));
+                        StockShow stock = new StockShow(code, name, Convert.ToInt32(dtStock.Rows[i]["s_type"]),
+                            Convert.ToDecimal(dtStock.Rows[i]["s_price"]), dtHis.Rows[0]["PCHG"].ToString());
+                        
+                        lstStock.Add(stock);
                     }
                     else
                     {
